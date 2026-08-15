@@ -8,10 +8,15 @@ malformed, or that two cases shared an id and silently overwrote each other.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
 REQUIRED = ("id", "question", "expected", "dimensions")
+
+# Ids name trace files, so anything path-ish has to be rejected here rather
+# than sanitised later — sanitising two different ids can collide silently.
+ID_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
 
 
 @dataclass
@@ -34,6 +39,11 @@ def _parse(raw: dict, where: str) -> Case:
     for key in REQUIRED:
         if key not in raw or raw[key] in (None, "", []):
             raise ValueError(f"{where}: missing required field {key!r}")
+    if not ID_PATTERN.match(str(raw["id"])):
+        raise ValueError(
+            f"{where}: id {raw['id']!r} must contain only letters, digits, "
+            "'.', '_' or '-' — ids are used as filenames"
+        )
     if not isinstance(raw["dimensions"], list) or not all(
         isinstance(d, str) for d in raw["dimensions"]
     ):

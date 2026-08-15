@@ -81,6 +81,13 @@ def test_malformed_json_names_the_line(tmp_path):
         cases.load(p)
 
 
+def test_ids_must_be_filename_safe(tmp_path):
+    """Trace files are named after the id. A '/' would write outside the run
+    directory; two ids differing only by an unsafe character would collide."""
+    with pytest.raises(ValueError, match="id"):
+        cases.load(write(tmp_path, [{**MINIMAL, "id": "multi hop/1"}]))
+
+
 def test_dimensions_must_be_a_list_of_strings(tmp_path):
     with pytest.raises(ValueError, match="dimensions"):
         cases.load(write(tmp_path, [{**MINIMAL, "dimensions": "factual"}]))

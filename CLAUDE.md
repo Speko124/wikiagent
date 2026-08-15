@@ -20,7 +20,17 @@ More details are under `docs/`. Load them only when needed to avoid context bloa
 - `assignment.md` — full assignment details
 - `reference.md` — prompt engineering and eval methodology references
 - `project.md` - this where the spec live and we keep it up to date with decision we take
+- `journal.md` - append-only decision log. Never edit or delete an entry, only add.
+  Append one when we take a real decision, reject an option, correct course, or hit a
+  finding that changes the plan. Keep it to a few lines. Rationale lives here; current
+  design lives in `project.md`.
 - Add docs references where needed like design doc / execution plan (some you might need to create)
 
 # Dev process
-- TDD - we first write tests that fit the design and outcome
+- TDD for `wikiagent/` only. It is the system under test and its failure modes are silent
+  (poisoned cache, a control arm that quietly retrieves, a trace that misreports what the
+  model saw), so a bug there corrupts every downstream number without ever raising.
+- Not TDD for `evals/`. The harness is disposable and its correctness is checked by the eval
+  results themselves. A wrong grader shows up as a nonsensical score on the first run.
+- Before adding coverage or abstraction anywhere, ask whether it is buying insurance against a
+  silent failure. If not, skip it and spend the time on evals.

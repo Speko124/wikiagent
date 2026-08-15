@@ -183,7 +183,15 @@ signal.
 
 ### 3.8 Eval dataset
 
-Mostly hand-written with research, some borrowed. ~40 cases.
+Mostly hand-written with research, some borrowed. **Start at ~10 cases, grow to
+20–25** as failure modes come into view.
+
+Starting small is the point, not a compromise: 10 cases × 3 repeats = 30 runs is
+one cheap loop through observe → categorise → fix → re-run, and cases written
+*after* seeing real failures are better targeted than cases written up front.
+The cost is statistical: at n=10 the headline rates are noise. So the summary is
+read as **per-case buckets and traces**, never as a percentage moving by a few
+points. Aggregates only become meaningful nearer 25.
 
 Fields: `id` · `question` · `expected` · `gold_articles` (**optional**) ·
 `dimension` tags.
@@ -200,6 +208,27 @@ parametric memory and needs rewriting toward obscure/multi-hop/post-cutoff
 facts. Also exposes the interesting cell: **control passes, tool-on fails** —
 retrieval actively hurting by distraction.
 
+### 3.9 Harness durability
+
+A sweep is real money, so the runner is built around not wasting it and — more
+importantly — around never producing results that are quietly wrong:
+
+| Guarantee | Why |
+|---|---|
+| Row written after **every** run | An interruption at run 90 costs one run, not ninety |
+| Re-run resumes, skipping completed runs | Retries are free; no accidental double spend |
+| Errored runs are **retried**, not kept | A network blip must not be frozen in as a result |
+| One bad case never ends the sweep | Failure is recorded as a row and the sweep continues |
+| A failed run's retrieval signals are `None` | An infrastructure error is not a retrieval miss |
+| Resume **refuses** a changed config | Two configs merged into one file still look plausible |
+| Full config in every row *and* `config.json` | Results outlive the command that produced them |
+| Summary rebuilt from the file, not memory | A resumed sweep's summary covers the whole sweep |
+| Summary states "correctness not measured" | The dangerous summary is one that reads like a score |
+
+Usage: `python -m evals.run --cases evals/cases --repeats 3 [--no-tools]`.
+Output goes to `results/<ts>-<model>-<arm>/`; passing an existing `--out`
+resumes it.
+
 ---
 
 ## 4. Phases
@@ -208,8 +237,8 @@ retrieval actively hurting by distraction.
 |---|---|---|
 | 1 | Design the tool | ✅ Tool schema, result format, error/empty shapes, v0 prompt |
 | 2 | Build e2e | ✅ CLI works; cache works; 63 tests green |
-| 3 | Build eval harness | ⬜ **Next.** Cases → agent → graders → summary + traces |
-| 4 | Design & build eval set | ⬜ ~40 tagged cases; no-tool control validates headroom |
+| 3 | Build eval harness | ✅ Cases → agent → graders → summary + traces; resumable; 120 tests green |
+| 4 | Design & build eval set | ⬜ **Next.** ~10 tagged cases → 20–25; no-tool control validates headroom |
 | 5 | Run & manually debug | ⬜ Open-code traces into a taxonomy; variance floor; validate judge |
 | 6 | Iterate | ⬜ Scored changelog; per-case pass→fail diffs, not just aggregates |
 
@@ -233,9 +262,10 @@ tests/
   test_tools.py     # schema/description accuracy, dispatch error handling
   test_agent.py     # loop, API contracts, capability gating, control arm, trace
 evals/
-  cases/*.jsonl   # (Phase 4)
-  graders.py      # (Phase 3)
-  run.py          # (Phase 3) -> results/<ts>/{summary.md,traces/}
+  cases/*.jsonl   # (Phase 4) strict loading; duplicate/unsafe ids rejected
+  cases.py        # Case + loader
+  graders.py      # deterministic signals only — no verdict, no semantics
+  run.py          # sweep runner -> <out>/{config.json,results.jsonl,summary.md,traces/}
 docs/
   project.md      # this file
   error-analysis.md  # (Phase 5 output)
