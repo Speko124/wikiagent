@@ -27,12 +27,13 @@ def test_description_matches_the_number_actually_returned(top_k, phrase):
     assert f"{phrase} best-matching" in tools.schema(top_k)["description"]
 
 
-def test_description_warns_that_only_intros_come_back():
+@pytest.mark.parametrize("version", ["v0", "v1"])
+def test_description_warns_that_only_intros_come_back(version):
     """The intro-only limitation is the single most important thing for the
     model to know — it's what should drive a re-query rather than a guess."""
-    d = tools.schema()["description"].lower()
+    d = tools.schema(version=version)["description"].lower()
     assert "opening section" in d
-    assert "not the full article" in d
+    assert "not the whole article" in d or "not the full article" in d
 
 
 def test_dispatch_runs_a_search(cache_dir, fake_search):

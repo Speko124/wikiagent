@@ -110,6 +110,56 @@ traces**, so debugging leans on tool calls and answers.
 - Provenance shows in the **user-facing answer**, labelled "Searched/Retrieved"
   — never "sources used", which only the model can know.
 
+### 3.3b The prompt surface (the main lever)
+
+There are three things the model reads, and all three are prompt engineering:
+
+| Surface | Where | What it controls |
+|---|---|---|
+| System prompt | `prompts.py` | when to search, how to answer, when to refuse |
+| Tool description | `prompts.py` | when to reach for the tool, how to phrase a query |
+| Rendered result | `wikipedia.render()` | what evidence looks like, incl. the cut-off marker |
+
+**A version pins all of them.** The tool description lives in `prompts.py`
+beside the system prompt because they're one surface, and versioning them apart
+would let a tool-description edit silently invalidate a previous sweep while
+`prompt_version` in the trace still claimed the runs were comparable.
+
+**Old versions are frozen** — a hash canary in `test_prompts.py` fails if one is
+edited, because results scored against `v0` stop meaning anything if `v0` moves.
+
+**v1 (default)** is a defect fix plus structure, not new behaviour:
+
+1. v0 hardcoded "the three best-matching articles" while `top_k` is a knob, so
+   `--top-k 5` shipped a prompt that lied. The count now appears only in the
+   tool description, which is built from the real value.
+2. v0 said "name the article" without saying how, and the model paraphrased
+   (*"articles on penicillin discovery"* for *Discovery of penicillin*). v1 asks
+   for exact titles as shown — which is what makes `cited_titles` mean anything,
+   and it's why the deterministic fabrication check had to be dropped.
+3. Extracts are cut short and marked `[...]`, but nothing told the model what
+   the marker meant, so *"the article doesn't say"* and *"the text stopped
+   here"* looked identical — one leads to false abstention, the other to a
+   guess. The tool description now names the marker, and a test asserts it's
+   the same string `_truncate` actually emits.
+
+Structure is three labelled blocks — *Searching* / *Answering* / *When Wikipedia
+doesn't answer it* — mapping onto funnel stages, so a failure at a stage points
+at one block to edit. Kept deliberately short: **~130 words leaves room to
+hill-climb where the evals say it's needed**, and a long prompt makes it
+impossible to attribute a delta to any one line.
+
+The one behavioural addition is *"one subject per search; if the answer needs
+two facts, search for each"* — the single multi-hop failure seen so far.
+
+**Deliberately not added yet** (candidate levers, to be spent where evals point):
+few-shot examples · explicit citation markers · guidance to issue parallel
+searches in one turn · retry guidance duplicated into the tool description ·
+telling the model it may ask for more results.
+
+v0 stays available (`--prompt v0`), so "is v1 actually better?" is a cheap
+first experiment rather than an assumption.
+
 ### 3.4 Rejected: running the agent through `claude -p`
 
 Considered to avoid API spend by using a Claude plan. **Rejected.** It required
@@ -177,9 +227,19 @@ boundary examples, validated against hand labels on ~20 traces before any number
 is trusted. Judge-vs-human agreement reported. Poor agreement → fix the rubric
 before touching the agent.
 
-**Repeats: 3× per question**, bucketed `3/3` (solid) · `1-2/3` (flaky) · `0/3`
-(systematic — prioritise). Gives both a variance floor and a prioritisation
-signal.
+**Two-stage protocol.** Repeats are for scoring, not for looking:
+
+1. **Read pass — 10 questions, 1 run each.** Purpose is error analysis, not
+   measurement: read every trace, open-code the failures into a taxonomy, fix
+   what's obviously broken. Repeating a run you're about to read by hand buys
+   nothing and costs 3×.
+2. **Score pass — 3× per question**, bucketed `3/3` (solid) · `1-2/3` (flaky) ·
+   `0/3` (systematic — prioritise). Gives both a variance floor and a
+   prioritisation signal, and flakiness is itself a finding: a case that flips
+   between runs is a different problem from one that fails every time.
+
+Cheap by construction: the Wikipedia cache is warm after the read pass, so the
+score pass re-pays only for model calls.
 
 ### 3.8 Eval dataset
 
@@ -319,6 +379,12 @@ Exactly the failure the intro-only design was expected to produce, so the
 `fetch_article` question in §8 is now evidence-backed. **Not acting on it yet** —
 one case is no basis for a tool redesign; Phase 5 shows how often it occurs.
 
+**Spot-check after v1 (n=1 again, so no conclusions):** asked directly which
+Oxford college Dawkins attended, *both* v0 and v1 now abstain correctly, naming
+what they did find. So the invented join isn't reproducible on this phrasing —
+which is itself the argument for repeats: a single run can't tell a fixed
+failure from a flaky one.
+
 Three more candidate eval dimensions:
 
 - **Over-searching.** Five searches on the failure vs one on each success. A
@@ -340,6 +406,9 @@ Three more candidate eval dimensions:
 - Haiku vs Sonnet 5 as the agent — decide from the paired baseline sweep (§3.2).
 - Is prose-mention source matching reliable enough, or are inline markers
   needed? — decide from Phase 5.
+- Does prompt v1 actually beat v0? Both are available and the sweep is
+  resumable, so this is a cheap A/B once the case set exists — not an
+  assumption baked into the baseline.
 
 ---
 

@@ -20,10 +20,6 @@ More details are under `docs/`. Load them only when needed to avoid context bloa
 - `assignment.md` — full assignment details
 - `reference.md` — prompt engineering and eval methodology references
 - `project.md` - this where the spec live and we keep it up to date with decision we take
-- `journal.md` - append-only decision log. Never edit or delete an entry, only add.
-  Append one when we take a real decision, reject an option, correct course, or hit a
-  finding that changes the plan. Keep it to a few lines. Rationale lives here; current
-  design lives in `project.md`.
 - Add docs references where needed like design doc / execution plan (some you might need to create)
 
 # Dev process

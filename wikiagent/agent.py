@@ -70,7 +70,7 @@ def ask(
     request: dict = {
         "model": model,
         "max_tokens": MAX_TOKENS,
-        "system": prompts.get(prompt_version),
+        "system": prompts.get(prompt_version).system,
     }
     if _supports_adaptive_thinking(model):
         # display=summarized so reasoning lands in the trace; it costs nothing
@@ -84,7 +84,7 @@ def ask(
             "family parameter and returns a 400 on older models."
         )
     if use_tools:
-        request["tools"] = [tools.schema(top_k)]
+        request["tools"] = [tools.schema(top_k, version=prompt_version)]
 
     messages: list[dict] = [{"role": "user", "content": question}]
     started = time.monotonic()

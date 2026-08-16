@@ -141,7 +141,7 @@ def _add_common(p: argparse.ArgumentParser) -> None:
     p.add_argument(
         "--prompt",
         default=prompts.DEFAULT_VERSION,
-        choices=sorted(prompts.SYSTEM_PROMPTS),
+        choices=sorted(prompts.PROMPTS),
         help="system prompt version",
     )
     p.add_argument(

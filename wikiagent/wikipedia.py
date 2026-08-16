@@ -23,6 +23,12 @@ DEFAULT_CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
 # questions, short enough to keep three results affordable.
 EXTRACT_CHARS = 1500
 
+# Appended when an intro is cut short. Named because the tool description tells
+# the model what it means — without that, "the article doesn't say" and "the
+# text stopped here" look identical, and the model either abstains wrongly or
+# fills the gap from memory.
+TRUNCATION_MARKER = "[...]"
+
 # How many results the model sees. The one knob; `--top-k` on the CLI.
 DEFAULT_TOP_K = 3
 
@@ -109,8 +115,8 @@ def _truncate(text: str, limit: int = EXTRACT_CHARS) -> str:
     for stop in (". ", "! ", "? "):
         idx = cut.rfind(stop)
         if idx > limit * 0.6:
-            return cut[: idx + 1] + " [...]"
-    return cut.rsplit(" ", 1)[0] + " [...]"
+            return f"{cut[: idx + 1]} {TRUNCATION_MARKER}"
+    return f"{cut.rsplit(' ', 1)[0]} {TRUNCATION_MARKER}"
 
 
 def _fetch(query: str, fetch_k: int, timeout: float) -> list[Article]:
