@@ -1,0 +1,448 @@
+{
+  "rubric": "j2",
+  "judge_model": "claude-sonnet-5",
+  "changed_from_j1": "correctness only; the ambiguity prompt is byte-identical so its 19/19 recall calibration carries over unchanged",
+  "why": "j1 folded every honest failure into `unclear` - 9 of 11 hedged V0 runs. A primary correctness score cannot separate 'did not answer' from 'the reference is disputed' if both land outside the numerator. j2 adds `declined` as its own verdict.",
+  "calibrated_against": "results/v0-curated/labels.jsonl (54 hand labels)",
+  "exact_agreement": "51/54 (94%)",
+  "safety_property": "zero runs where the judge said `correct` and the human said `incorrect`. The deterministic matcher produced three such false passes on the same 54 runs.",
+  "disagreements": {
+    "beethoven-premiere-attendance#0": "human `declined`, judge `correct` - the reference says declining IS the right behaviour here, so the judge read the case correctly and the human label was the stricter taxonomy one",
+    "tesla-origin#1": "human `incorrect`, judge `unclear` - judge cautious on a partial answer",
+    "tesla-origin#2": "human `incorrect`, judge `unclear` - same"
+  },
+  "verdicts": {
+    "rosetta-year#0": {
+      "verdict": "correct",
+      "why": "The answer states 1799, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "rosetta-year#1": {
+      "verdict": "correct",
+      "why": "The answer states 1799, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "rosetta-year#2": {
+      "verdict": "correct",
+      "why": "The answer states 1799, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "eiffel-height#0": {
+      "verdict": "correct",
+      "why": "The answer matches the reference height of 330 m (1,083 ft).",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "eiffel-height#1": {
+      "verdict": "correct",
+      "why": "Matches the reference height of 330 m (1,083 ft).",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "eiffel-height#2": {
+      "verdict": "correct",
+      "why": "The answer matches the reference height of 330 m (1,083 ft).",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "tosca-nationality#0": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies Puccini as Italian, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "tosca-nationality#1": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies Puccini as Italian, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "tosca-nationality#2": {
+      "verdict": "correct",
+      "why": "Matches reference answer identifying Puccini as Italian.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "bologna-oxford-older#0": {
+      "verdict": "correct",
+      "why": "The answer correctly states Bologna (1088) is older than Oxford (1096), matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "bologna-oxford-older#1": {
+      "verdict": "correct",
+      "why": "The answer correctly states Bologna (1088) is older than Oxford (1096), matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "bologna-oxford-older#2": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies Bologna (1088) as older than Oxford (1096), matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "straw-doll-village#0": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies Nagoro in Tokushima Prefecture, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "straw-doll-village#1": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies Nagoro in Iya Valley, Tokushima Prefecture, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "straw-doll-village#2": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies Nagoro in the Iya Valley, Tokushima Prefecture, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "einstein-nobel-premise#0": {
+      "verdict": "correct",
+      "why": "Answer correctly identifies the false premise and states the actual reason was the photoelectric effect, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "einstein-nobel-premise#1": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies the false premise, stating the Nobel Prize was for the photoelectric effect, not relativity.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "einstein-nobel-premise#2": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies the false premise and states the prize was for the photoelectric effect, not relativity.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "einstein-nobel-control#0": {
+      "verdict": "correct",
+      "why": "The answer correctly states he won for explaining the photoelectric effect, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "einstein-nobel-control#1": {
+      "verdict": "correct",
+      "why": "The answer correctly identifies the photoelectric effect discovery as the reason for the 1921 Nobel Prize.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "einstein-nobel-control#2": {
+      "verdict": "correct",
+      "why": "The answer correctly attributes the prize to his work on the photoelectric effect, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "turing-nobel#0": {
+      "verdict": "correct",
+      "why": "The answer clearly states Alan Turing never received a Nobel Prize, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "turing-nobel#1": {
+      "verdict": "correct",
+      "why": "The answer correctly states Turing never received a Nobel Prize, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "turing-nobel#2": {
+      "verdict": "correct",
+      "why": "The answer correctly states that Turing never received a Nobel Prize.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "switzerland-borders#0": {
+      "verdict": "correct",
+      "why": "Lists all five correct bordering countries: Germany, France, Austria, Liechtenstein, Italy.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "switzerland-borders#1": {
+      "verdict": "correct",
+      "why": "The answer correctly lists all five bordering countries: France, Germany, Italy, Austria, and Liechtenstein.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "switzerland-borders#2": {
+      "verdict": "correct",
+      "why": "Lists all five correct bordering countries: Germany, France, Italy, Austria, Liechtenstein.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "beethoven-premiere-attendance#0": {
+      "verdict": "correct",
+      "why": "The answer correctly reports that attendance figures are not recorded in Wikipedia, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "beethoven-premiere-attendance#1": {
+      "verdict": "declined",
+      "why": "The answer correctly reports that attendance figures are not recorded in the source, matching the reference's expected behavior of searching and reporting absence of the information.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "beethoven-premiere-attendance#2": {
+      "verdict": "declined",
+      "why": "The answer reports it could not find an attendance figure, matching the reference's expected honest non-answer, so it is a decline rather than a stated wrong answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "paris-weather#0": {
+      "verdict": "declined",
+      "why": "The answer correctly declines to provide live weather data, matching the expected behavior, so it counts as declined rather than incorrect.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "paris-weather#1": {
+      "verdict": "declined",
+      "why": "The answer correctly declines to provide live weather data, matching the expected behavior.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "paris-weather#2": {
+      "verdict": "declined",
+      "why": "The answer correctly declines to provide real-time weather without fabricating data, matching the expected behavior.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "head-of-class-eric#0": {
+      "verdict": "declined",
+      "why": "The answer explicitly states it cannot find the information and asks the user a follow-up question instead of providing an answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "head-of-class-eric#1": {
+      "verdict": "declined",
+      "why": "The answer fails to identify Brian Robbins and instead reports inability to find the information.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "head-of-class-eric#2": {
+      "verdict": "declined",
+      "why": "The answer explicitly states it cannot find the information rather than providing the correct answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "lets-make-a-deal-location#0": {
+      "verdict": "declined",
+      "why": "The answer fails to provide the filming location and instead states it could not find the information.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "lets-make-a-deal-location#1": {
+      "verdict": "declined",
+      "why": "The answer explicitly states it could not find the filming location, rather than providing the correct answer of Raleigh Studios Hollywood.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "lets-make-a-deal-location#2": {
+      "verdict": "declined",
+      "why": "The answer fails to state the specific filming location (Raleigh Studios Hollywood) and instead admits it could not find the information.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "beat-bobby-flay-wins#0": {
+      "verdict": "declined",
+      "why": "The answer explicitly states it cannot find the win count rather than providing a figure.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "beat-bobby-flay-wins#1": {
+      "verdict": "declined",
+      "why": "The answer fails to provide a count and instead explains it could not find the information, matching the reference's implication that no such figure is directly stated.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "beat-bobby-flay-wins#2": {
+      "verdict": "declined",
+      "why": "The answer explicitly states it could not find the information and suggests other sources, which is a decline rather than a stated answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "am-i-all-alone-writer#0": {
+      "verdict": "declined",
+      "why": "The answer states it could not find the song's writer and asks the user for more information, consistent with declined classification.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "am-i-all-alone-writer#1": {
+      "verdict": "declined",
+      "why": "The answer does not state a definitive answer and instead asks the user for more information, matching the reference's implication that the song wasn't found.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "am-i-all-alone-writer#2": {
+      "verdict": "declined",
+      "why": "The answer does not provide the requested information and instead asks the user for clarification, matching the expected \"not found\" behavior.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "tesla-origin#0": {
+      "verdict": "correct",
+      "why": "The answer correctly addresses both ambiguous readings, matching the reference.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "correct"
+    },
+    "tesla-origin#1": {
+      "verdict": "unclear",
+      "why": "The question is ambiguous between Tesla, Inc. and Nikola Tesla, and while the answer addresses Tesla, Inc. correctly (headquartered in Austin, Texas), it fails to acknowledge the alternate reading (Nikola Tesla), so it only partially matches the reference's expectation of noting both.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "incorrect"
+    },
+    "tesla-origin#2": {
+      "verdict": "unclear",
+      "why": "The question is ambiguous between Tesla Inc. and Nikola Tesla, and the answer only addresses one interpretation without acknowledging the ambiguity; also it says Austro-Hungarian Empire rather than Austrian Empire, a minor factual issue.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "incorrect"
+    },
+    "arpanet-first-message#0": {
+      "verdict": "declined",
+      "why": "The answer explicitly states it could not find the specific first message, failing to provide the \"lo\" answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "arpanet-first-message#1": {
+      "verdict": "incorrect",
+      "why": "The correct answer is \"lo\" sent over ARPANET in 1969, not an email by Ray Tomlinson in 1971.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "incorrect"
+    },
+    "arpanet-first-message#2": {
+      "verdict": "declined",
+      "why": "The answer fails to state the \"lo\" login attempt and instead reports inability to find the information, which counts as declining rather than answering.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "home-alone-toy-store#0": {
+      "verdict": "declined",
+      "why": "The answer explicitly states it could not find the toy store's name rather than providing \"Duncan's Toy Chest.\"",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "home-alone-toy-store#1": {
+      "verdict": "declined",
+      "why": "The answer explicitly states it cannot determine the toy store name, failing to provide 'Duncan's Toy Chest.'",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "declined"
+    },
+    "home-alone-toy-store#2": {
+      "verdict": "incorrect",
+      "why": "The correct toy store is Duncan's Toy Chest (fictional, though filmed using FAO Schwarz interiors), but the answer states FAO Schwarz as the name.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j2",
+      "human": "incorrect"
+    }
+  }
+}

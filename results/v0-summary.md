@@ -6,6 +6,8 @@
 |---|---|---|
 | Runs | 54 | 30 |
 | Correct (deterministic) | 28/42 (67%) | 23/30 (77%) |
+| **pass^k** (correct on every repeat) | 9/14 (64%) | 7/10 (70%) |
+|   of which | 9 solid (k/k) · 1 flaky · 4 systematic (0/k) | 7 solid (k/k) · 1 flaky · 2 systematic (0/k) |
 | Evidence retrieved | 27/39 (69%) | 24/30 (80%) |
 | Answer completeness (mean) | 70% | 77% |
 | Searched at all | 51/54 (94%) | 30/30 (100%) |
@@ -33,13 +35,13 @@ Computed from `answer_match`, `evidence_match` and `searched` — the same attri
 
 | Stage | Curated | Holdout |
 |---|---|---|
+| 1 query: did not search at all | 0 | 0 |
+| 2 retrieval: the answer-bearing article never surfaced | 0 | 3 |
+| 3 evidence: right article, fact not in the retrieved text | 12 | 3 |
+| 4 synthesis: had the evidence, answered wrong | 2 | 1 |
+| 5 grounding: answered from memory | 0 | 0 |
 | correct, grounded | 25 | 23 |
 | correct, evidence not checkable | 3 | 0 |
-| 5 grounding: answered from memory | 0 | 0 |
-| 4 synthesis: had the evidence, answered wrong | 2 | 1 |
-| 3 evidence: right article, fact not in the retrieved text | 12 | 3 |
-| 2 retrieval: the answer-bearing article never surfaced | 0 | 3 |
-| 1 query: did not search at all | 0 | 0 |
 | not scorable (abstention cases) | 12 | 0 |
 
 ## Curated, by case

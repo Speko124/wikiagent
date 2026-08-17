@@ -1,54 +1,54 @@
-{"run_id": "rosetta-year#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "rosetta-year#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "rosetta-year#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "eiffel-height#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "eiffel-height#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "eiffel-height#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "tosca-nationality#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "tosca-nationality#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "tosca-nationality#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "bologna-oxford-older#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "bologna-oxford-older#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "bologna-oxford-older#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "tesla-origin#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "tesla-origin#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "tesla-origin#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "straw-doll-village#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "straw-doll-village#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "straw-doll-village#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "arpanet-first-message#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "arpanet-first-message#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "arpanet-first-message#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "einstein-nobel-premise#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "einstein-nobel-premise#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "einstein-nobel-premise#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "einstein-nobel-control#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "einstein-nobel-control#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "einstein-nobel-control#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "turing-nobel#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "turing-nobel#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "turing-nobel#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "switzerland-borders#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "switzerland-borders#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "switzerland-borders#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "beethoven-premiere-attendance#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "beethoven-premiere-attendance#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "beethoven-premiere-attendance#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "paris-weather#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "paris-weather#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "paris-weather#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "head-of-class-eric#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "head-of-class-eric#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "head-of-class-eric#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "lets-make-a-deal-location#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "lets-make-a-deal-location#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "lets-make-a-deal-location#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "home-alone-toy-store#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "home-alone-toy-store#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "home-alone-toy-store#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "beat-bobby-flay-wins#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "beat-bobby-flay-wins#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "beat-bobby-flay-wins#2", "verdict": "", "stage": "", "note": ""}
-{"run_id": "am-i-all-alone-writer#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "am-i-all-alone-writer#1", "verdict": "", "stage": "", "note": ""}
-{"run_id": "am-i-all-alone-writer#2", "verdict": "", "stage": "", "note": ""}
+{"run_id": "rosetta-year#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "rosetta-year#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "rosetta-year#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "eiffel-height#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "eiffel-height#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "eiffel-height#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "tosca-nationality#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "tosca-nationality#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "tosca-nationality#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "bologna-oxford-older#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "bologna-oxford-older#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "bologna-oxford-older#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "tesla-origin#0", "verdict": "correct", "stage": "", "note": "covers both readings - person and company", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "tesla-origin#1", "verdict": "incorrect", "stage": "", "note": "company reading only; the question's ambiguity is unaddressed", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "tesla-origin#2", "verdict": "incorrect", "stage": "", "note": "person reading only; 'Serbian-American' is not the company", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "straw-doll-village#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "straw-doll-village#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "straw-doll-village#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "arpanet-first-message#0", "verdict": "declined", "stage": "", "note": "says it could not find what the first message was", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "arpanet-first-message#1", "verdict": "incorrect", "stage": "", "note": "asserts the 1971 Tomlinson email - wrong reading, stated as fact", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "arpanet-first-message#2", "verdict": "declined", "stage": "", "note": "says the articles do not provide it", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "einstein-nobel-premise#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "einstein-nobel-premise#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "einstein-nobel-premise#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "einstein-nobel-control#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "einstein-nobel-control#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "einstein-nobel-control#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "turing-nobel#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "turing-nobel#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "turing-nobel#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "switzerland-borders#0", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "switzerland-borders#1", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "switzerland-borders#2", "verdict": "correct", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "beethoven-premiere-attendance#0", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "beethoven-premiere-attendance#1", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "beethoven-premiere-attendance#2", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "paris-weather#0", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "paris-weather#1", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "paris-weather#2", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "head-of-class-eric#0", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "head-of-class-eric#1", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "head-of-class-eric#2", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "lets-make-a-deal-location#0", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "lets-make-a-deal-location#1", "verdict": "declined", "stage": "", "note": "mentions Prospect Studios but explicitly does not confirm it", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "lets-make-a-deal-location#2", "verdict": "declined", "stage": "", "note": "mentions CBS facilities but explicitly does not confirm", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "home-alone-toy-store#0", "verdict": "declined", "stage": "", "note": "declines; had queried Duncan's from memory and could not confirm", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "home-alone-toy-store#1", "verdict": "declined", "stage": "", "note": "declines", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "home-alone-toy-store#2", "verdict": "incorrect", "stage": "", "note": "'The answer is FAO Schwarz' - asserted, and wrong", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "beat-bobby-flay-wins#0", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "beat-bobby-flay-wins#1", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "beat-bobby-flay-wins#2", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "am-i-all-alone-writer#0", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "am-i-all-alone-writer#1", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}
+{"run_id": "am-i-all-alone-writer#2", "verdict": "declined", "stage": "", "note": "", "labelled_by": "human, before the j2 judge ran on these answers"}

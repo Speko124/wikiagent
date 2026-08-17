@@ -134,7 +134,7 @@ def test_both_judges_use_the_judge_model(fn):
 # belong to a rubric version. Editing a calibrated rubric in place detaches the
 # alignment evidence from the thing it measured, and every row still says `j1`.
 # If a change is intended, add a version, re-calibrate, and update this digest.
-FROZEN_RUBRICS = {"j1": "702cc4a8a5468af5"}
+FROZEN_RUBRICS = {"j1": "702cc4a8a5468af5", "j2": "b9b6fe414c0199c8"}
 
 
 @pytest.mark.parametrize("version,digest", sorted(FROZEN_RUBRICS.items()))
@@ -250,3 +250,23 @@ def test_defect_flags_ride_along_with_the_verdict():
     trace = type("T", (), {"answer": "a", "shown_titles": []})()
     out = judge.SweepJudge(client=client)(CASE, trace)
     assert out["ambiguity"]["flags"] == ["suspect:undeterminable-not-ambiguous"]
+
+
+def test_j2_carries_j1s_ambiguity_text_unchanged():
+    """j2 revises correctness only. The ambiguity prompt is byte-identical, so
+    its 19/19 recall calibration still describes it and does not have to be
+    re-earned - but that has to be asserted, not assumed."""
+    assert judge.rubric("j2").ambiguity == judge.rubric("j1").ambiguity
+    assert judge.rubric("j2").correctness != judge.rubric("j1").correctness
+
+
+def test_declining_is_its_own_verdict_not_unclear():
+    """The reason for j2. j1 folded every honest failure into `unclear`, so a
+    primary correctness score could not separate 'did not answer' from 'the
+    reference is disputed' - and both fell outside the numerator."""
+    client = StubClient([Response([verdict_block(verdict="declined", why="no answer given")])])
+    out = judge.correctness(CASE, "I could not find that.", client=client)
+    assert out["verdict"] == "declined"
+    schema = client.calls[0]["tools"][0]["input_schema"]
+    assert set(schema["properties"]["verdict"]["enum"]) == {
+        "correct", "incorrect", "declined", "unclear"}

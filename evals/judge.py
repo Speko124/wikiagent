@@ -87,12 +87,42 @@ an ambiguity missed here is invisible to everything downstream. If a careful \
 person could reasonably read the question two ways, say yes."""
 
 
-RUBRICS = {"j1": Rubric(correctness=_J1_CORRECTNESS, ambiguity=_J1_AMBIGUITY)}
+# j2 changes ONLY the correctness prompt. j1's correctness folded every honest
+# failure into `unclear` - 9 of 11 hedged V0 runs were "the answer declines to
+# provide the information", including one where its own rationale said the
+# information was genuinely available. That is unusable as a primary score: it
+# cannot separate "did not answer" from "the reference is disputed", and both
+# land outside the numerator.
+#
+# The ambiguity text is carried over BYTE-IDENTICAL, so its 19/19 recall
+# calibration still describes it. A test asserts that rather than trusting it.
+_J2_CORRECTNESS = """You grade whether an answer is factually correct.
 
-# Calibrated on the read pass: correctness 23/24 decided verdicts agreed with
-# hand labels; ambiguity recall 11/11 with 6 false positives, several of which
-# turned out to be labelling errors on our side rather than judge errors.
-RUBRIC_VERSION = "j1"
+Judge the substance, not the wording. An answer using different phrasing from \
+the reference is correct if it says the same thing.
+
+Choose exactly one verdict:
+
+- `correct` — states the right answer.
+- `incorrect` — states a wrong answer, or states a right answer for a \
+different question than the one asked.
+- `declined` — does not state an answer at all: reports that it could not find \
+the information, or asks the user a question instead of answering. **This is a \
+failure to answer, not a wrong claim, and it is NOT `unclear`.** Use it even \
+when declining was the honest thing to do.
+- `unclear` — use ONLY when the reference answer itself looks wrong or \
+disputed, or the question has more than one defensible answer. Never for an \
+honest failure to find something.
+
+An answer that declines and then volunteers a related fact is `declined`, \
+unless the volunteered fact actually answers the question asked."""
+
+RUBRICS = {
+    "j1": Rubric(correctness=_J1_CORRECTNESS, ambiguity=_J1_AMBIGUITY),
+    "j2": Rubric(correctness=_J2_CORRECTNESS, ambiguity=_J1_AMBIGUITY),
+}
+
+RUBRIC_VERSION = "j2"
 
 
 def rubric(version: str = RUBRIC_VERSION) -> Rubric:
@@ -154,7 +184,8 @@ def correctness(case: Case, answer: str, client=None) -> dict:
         f"ANSWER TO GRADE\n{answer}"
     )
     tool = _tool({
-        "verdict": {"type": "string", "enum": ["correct", "incorrect", "unclear"]},
+        "verdict": {"type": "string",
+                    "enum": ["correct", "incorrect", "declined", "unclear"]},
         "why": {"type": "string", "description": "One sentence."},
     })
     out = _ask(rubric().correctness, content, tool, client)

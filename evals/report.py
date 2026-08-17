@@ -45,6 +45,7 @@ def _metrics(rows: list[dict]) -> dict:
     completeness = [
         r["answer_completeness"] for r in ok if r.get("answer_completeness") is not None
     ]
+    solid, n_cases, buckets = pass_at_k(rows)
     judged = [
         r for r in ok
         if (r.get("judge") or {}).get("correctness", {}).get("verdict")
@@ -77,6 +78,8 @@ def _metrics(rows: list[dict]) -> dict:
             sum(1 for r in with_ev if r["evidence_match"]), len(with_ev)
         ),
         "completeness": f"{statistics.mean(completeness):.0%}" if completeness else "n/a",
+        "pass_at_k": _rate(solid, n_cases),
+        "buckets": " · ".join(f"{v} {k}" for k, v in buckets.items()),
         "searched": _rate(sum(1 for r in ok if r["searched"]), len(ok)),
         "mean_searches": f"{statistics.mean([r['n_searches'] for r in ok]):.1f}"
         if ok else "n/a",
@@ -116,14 +119,18 @@ def _cross_tab(rows: list[dict]) -> dict[str, int]:
     return cells
 
 
+# Ordered upstream to downstream, so the table reads the way the failure
+# propagates: a stage-2 miss guarantees everything below it fails, and seeing
+# stage 1 at the top makes that ordering obvious rather than something the
+# reader has to reconstruct.
 FUNNEL_STAGES = (
+    "1 query: did not search at all",
+    "2 retrieval: the answer-bearing article never surfaced",
+    "3 evidence: right article, fact not in the retrieved text",
+    "4 synthesis: had the evidence, answered wrong",
+    "5 grounding: answered from memory",
     "correct, grounded",
     "correct, evidence not checkable",
-    "5 grounding: answered from memory",
-    "4 synthesis: had the evidence, answered wrong",
-    "3 evidence: right article, fact not in the retrieved text",
-    "2 retrieval: the answer-bearing article never surfaced",
-    "1 query: did not search at all",
     "not scorable (abstention cases)",
 )
 
@@ -167,6 +174,26 @@ def funnel(rows: list[dict]) -> dict[str, int]:
     return out
 
 
+def pass_at_k(rows: list[dict]) -> tuple[int, int, dict[str, int]]:
+    """pass^k: cases correct on *every* repeat, not runs correct on average.
+
+    A per-run rate hides the shape. Two cases at 50% could be one case that
+    always works and one that never does, or two that flip a coin - and those
+    need completely different responses. pass^k collapses to the strict
+    reading, and the buckets say which kind of failure each case is.
+    """
+    by_case: dict[str, list[bool]] = {}
+    for r in rows:
+        if r.get("answer_match") is not None and not r.get("error"):
+            by_case.setdefault(r["case_id"], []).append(bool(r["answer_match"]))
+    buckets = {"solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0}
+    for hits in by_case.values():
+        buckets["solid (k/k)" if hits and all(hits)
+                else "systematic (0/k)" if not any(hits)
+                else "flaky"] += 1
+    return buckets["solid (k/k)"], len(by_case), buckets
+
+
 def _buckets(rows: list[dict]) -> list[tuple[str, int, int]]:
     by_case: dict[str, list[bool]] = {}
     for r in rows:
@@ -203,6 +230,8 @@ def compare(curated_dir, holdout_dir=None) -> str:
 
     rows_ = [
         ("Correct (deterministic)", "correct"),
+        ("**pass^k** (correct on every repeat)", "pass_at_k"),
+        ("  of which", "buckets"),
         ("Evidence retrieved", "evidence_found"),
         ("Answer completeness (mean)", "completeness"),
         ("Searched at all", "searched"),

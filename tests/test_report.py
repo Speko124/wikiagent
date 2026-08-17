@@ -252,3 +252,22 @@ def test_holdout_hedged_verdicts_are_counted_not_named(tmp_path):
         judge={"correctness": {"verdict": "unclear", "why": "leaky"}})], holdout=True)
     text = report.compare(cur, hld)
     assert "hd-hedge" not in text and "leaky" not in text
+
+
+def test_pass_at_k_is_stricter_than_the_run_rate():
+    """A per-run rate hides the shape: 50% could be one case that always works
+    beside one that never does, or two that flip a coin - and those need
+    different responses."""
+    rows = [
+        row("always", answer_match=True), row("always", answer_match=True),
+        row("never", answer_match=False), row("never", answer_match=False),
+        row("coinflip", answer_match=True), row("coinflip", answer_match=False),
+    ]
+    solid, n_cases, buckets = report.pass_at_k(rows)
+    assert (solid, n_cases) == (1, 3)          # only `always` passes every repeat
+    assert buckets == {"solid (k/k)": 1, "flaky": 1, "systematic (0/k)": 1}
+
+
+def test_pass_at_k_ignores_unscorable_cases():
+    assert report.pass_at_k([row("x", answer_match=None)]) == (0, 0, {
+        "solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0})
