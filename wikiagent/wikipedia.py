@@ -88,8 +88,13 @@ class SearchResponse:
         offline analysis only."""
         return self.results[: self.top_k]
 
-    def render(self) -> str:
-        """The exact string the model sees as the tool result."""
+    def render(self, show_ids: bool = False) -> str:
+        """The exact string the model sees as the tool result.
+
+        `show_ids` is off by default so `v0`'s rendered output stays
+        byte-identical now that a second tool exists - the V0 results on disk
+        have to stay reproducible.
+        """
         if self.error:
             return f"Search failed: {self.error}"
         if not self.results:
@@ -103,76 +108,121 @@ class SearchResponse:
             return f"{article.title}\n{article.extract}"
         blocks = []
         for i, a in enumerate(self.shown, 1):
-            blocks.append(f"[{i}] {a.title}\n{a.extract}")
+            label = f"{a.title} (id {a.pageid})" if show_ids else a.title
+            blocks.append(f"[{i}] {label}\n{a.extract}")
         return "\n\n".join(blocks)
 
 
-def _fetch_full(title: str, timeout: float) -> tuple[str | None, str]:
-    """Full plaintext of one article. Returns `(resolved_title, text)`.
+def _fetch_full(
+    title: str | None = None, pageid: int | None = None, timeout: float = 20.0
+) -> tuple[str | None, str, int | None]:
+    """Full plaintext of one article. Returns `(resolved_title, text, pageid)`.
 
-    The resolved title is returned separately because redirects mean the
-    article you get may not be the title you asked for, and "did it open the
-    right article" is only answerable against the one it actually got.
+    The resolved title comes back separately because redirects mean the article
+    you get may not be the title you asked for, and "did it open the right
+    article" is only answerable against the one it actually got.
     """
+    params = {
+        "action": "query", "prop": "extracts|info", "explaintext": 1,
+        "redirects": 1, "inprop": "url", "format": "json",
+    }
+    params["pageids" if pageid is not None else "titles"] = (
+        str(pageid) if pageid is not None else title
+    )
     headers = {"User-Agent": USER_AGENT}
     with httpx.Client(timeout=timeout, headers=headers, follow_redirects=True) as client:
-        page = client.get(API_URL, params={
-            "action": "query", "prop": "extracts|info", "explaintext": 1,
-            "titles": title, "redirects": 1, "inprop": "url", "format": "json",
-        })
+        page = client.get(API_URL, params=params)
         page.raise_for_status()
         found = next(iter(page.json().get("query", {}).get("pages", {}).values()), {})
     if "missing" in found or not found.get("extract"):
-        return None, ""
-    return found["title"], found["extract"]
+        return None, "", None
+    return found["title"], found["extract"], found.get("pageid", -1)
 
 
 def fetch(
-    title: str,
+    title: str | None = None,
+    pageid: int | None = None,
     cache_dir: Path | None = None,
     use_cache: bool = True,
     timeout: float = 20.0,
 ) -> SearchResponse:
     """Open one article and return its full text, bounded.
 
+    Addressable by title or by pageid. The pageid wins when both are given: it
+    comes straight from a search result and cannot be mistyped or
+    mis-capitalised, which is the one title failure MediaWiki does not already
+    absorb (it folds diacritics, redirects and a leading "The", but not
+    internal capitalisation - "home alone 2: lost in new york" 404s).
+
     Returns a `SearchResponse` so the trace, the graders and the renderer all
-    keep one shape — a fetch is a retrieval that happened to return exactly one
-    article.
+    keep one shape: a fetch is a retrieval that returned exactly one article.
     """
     cache_dir = Path(cache_dir) if cache_dir else DEFAULT_CACHE_DIR
     # `article:` prefix keeps this out of the search key space. Sharing one
     # would let a cached search for X serve a fetch of X and hand back the
     # intro when the body was asked for - the exact failure fetch exists to fix.
-    key = hashlib.sha256(f"article:{title.strip().lower()}".encode()).hexdigest()[:32]
+    ident = f"id:{pageid}" if pageid is not None else (title or "").strip().lower()
+    key = hashlib.sha256(f"article:{ident}".encode()).hexdigest()[:32]
     path = cache_dir / f"{key}.json"
+    label = title or f"pageid {pageid}"
 
     if use_cache and path.exists():
         raw = json.loads(path.read_text())
         return SearchResponse(
-            query=title, results=[Article(**a) for a in raw["results"]],
+            query=label, results=[Article(**a) for a in raw["results"]],
             top_k=1, cache_hit=True, error=raw.get("error"),
         )
 
     started = time.monotonic()
+    resolved = text = found_id = None
+    error = None
     try:
-        resolved, text = _fetch_full(title, timeout)
-        error = None if resolved else f"No Wikipedia article titled {title!r}."
+        resolved, text, found_id = _fetch_full(title, pageid, timeout)
+        if resolved is None and pageid is None and title:
+            # MediaWiki capitalises only the first letter, so a lowercased
+            # title misses. Retry title-cased before giving up - this is a
+            # transcription artefact, not the model asking for the wrong thing.
+            retry = " ".join(w[:1].upper() + w[1:] for w in title.split())
+            if retry != title:
+                resolved, text, found_id = _fetch_full(retry, None, timeout)
+        if resolved is None:
+            error = _no_article(title, pageid, timeout)
     except Exception as exc:  # network, HTTP, or malformed payload
         resolved, text, error = None, "", f"{type(exc).__name__}: {exc}"
 
     results = (
         [Article(title=resolved,
                  url=f"https://en.wikipedia.org/wiki/{resolved.replace(' ', '_')}",
-                 extract=_truncate(text, ARTICLE_CHARS), pageid=-1)]
+                 extract=_truncate(text, ARTICLE_CHARS), pageid=found_id or -1)]
         if resolved else []
     )
-    response = SearchResponse(query=title, results=results, top_k=1, error=error,
+    response = SearchResponse(query=label, results=results, top_k=1, error=error,
                               latency_s=time.monotonic() - started)
     # Errors are never cached - one blip must not poison this title forever.
     if use_cache and error is None:
         cache_dir.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(response.to_dict(), indent=2))
     return response
+
+
+def _no_article(title: str | None, pageid: int | None, timeout: float) -> str:
+    """Report a miss with near matches, and never substitute one.
+
+    Silently opening a different article than the one asked for is the failure
+    class this project keeps guarding against; naming candidates instead keeps
+    the model in control and leaves the miss visible in the trace.
+    """
+    if pageid is not None:
+        return f"No Wikipedia article with pageid {pageid}."
+    try:
+        near = [a.title for a in _fetch(title or "", 3, timeout)]
+    except Exception:  # a failed suggestion lookup must not mask the real miss
+        near = []
+    suggestion = (
+        " Did you mean: " + ", ".join(repr(t) for t in near) + "?" if near
+        else " Search for it first and copy the title exactly."
+    )
+    return f"No Wikipedia article titled {title!r}.{suggestion}"
 
 
 def _cache_path(query: str, fetch_k: int, cache_dir: Path) -> Path:

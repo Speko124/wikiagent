@@ -83,8 +83,13 @@ def ask(
             f"--effort is not supported on {model}; it is an Opus/Sonnet-5 "
             "family parameter and returns a 400 on older models."
         )
+    show_ids = False
     if use_tools:
         request["tools"] = tools.all_schemas(top_k, version=prompt_version)
+        # Only render pageids when there is a tool that can use one. Otherwise
+        # v0's rendered output would change and the baseline on disk would stop
+        # being reproducible.
+        show_ids = tools.fetch_schema(prompt_version) is not None
 
     messages: list[dict] = [{"role": "user", "content": question}]
     started = time.monotonic()
@@ -134,7 +139,7 @@ def ask(
                     cache_dir=cache_dir,
                     use_cache=use_cache,
                 )
-                rendered = found.render()
+                rendered = found.render(show_ids=show_ids)
                 turn.tool_calls.append(
                     ToolCall(
                         query=found.query,

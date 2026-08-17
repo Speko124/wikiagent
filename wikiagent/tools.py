@@ -64,7 +64,14 @@ def fetch_schema(version: str = prompts.DEFAULT_VERSION) -> dict | None:
         "description": description,
         "input_schema": {
             "type": "object",
-            "properties": {"title": FETCH_SCHEMA_TITLE},
+            "properties": {
+                "title": FETCH_SCHEMA_TITLE,
+                "pageid": {
+                    "type": "integer",
+                    "description": ("The result's id, if you have it. Exact, and "
+                                    "immune to spelling or capitalisation."),
+                },
+            },
             "required": ["title"],
         },
     }
@@ -94,13 +101,16 @@ def dispatch(
     """
     if name == "fetch_article":
         title = (tool_input or {}).get("title", "")
-        if not isinstance(title, str) or not title.strip():
+        raw_id = (tool_input or {}).get("pageid")
+        pageid = raw_id if isinstance(raw_id, int) else None
+        if pageid is None and (not isinstance(title, str) or not title.strip()):
             return wikipedia.SearchResponse(
                 query="", top_k=1,
                 error="No title provided. Copy an exact title from a search result.",
             )
         return wikipedia.fetch(
-            title, cache_dir=cache_dir, use_cache=use_cache
+            title=title if isinstance(title, str) else None,
+            pageid=pageid, cache_dir=cache_dir, use_cache=use_cache,
         )
     if name != "search_wikipedia":
         return wikipedia.SearchResponse(

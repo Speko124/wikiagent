@@ -177,6 +177,17 @@ def grade(case: Case, trace: Trace) -> dict:
         "searched": trace.searched,
         "n_searches": trace.n_searches,
         "queries": trace.queries,
+        # Tool use split by tool. A fetch that follows a search is the intended
+        # escalation; a fetch with no search before it means the agent guessed
+        # a title from memory. A failed fetch is its own problem again - turns
+        # burned on titles that do not exist.
+        "n_fetches": trace.n_fetches,
+        "fetched_titles": trace.fetched_titles,
+        "failed_fetches": sum(
+            1 for t in trace.turns for c in t.tool_calls
+            if c.tool == "fetch_article" and c.raw.get("error")
+        ),
+        "escalated": trace.escalated,
         # correctness and retrieval quality — the two exact signals. Crossing
         # them is what separates "never had the evidence" from "had it and
         # didn't use it" from "answered from memory", but that cross-tab is
