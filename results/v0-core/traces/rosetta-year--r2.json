@@ -1,0 +1,106 @@
+{
+  "question": "In what year was the Rosetta Stone discovered?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "According to the Wikipedia article on the Rosetta Stone, it was discovered in **July 1799** by French army officer Pierre-Fran\u00e7ois Bouchard during France's invasion of Egypt. The stone was found at Fort Julien near the town of Rosetta in the Nile Delta.",
+  "error": null,
+  "latency_s": 2.578,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "Rosetta Stone"
+    ],
+    "shown_titles": [
+      "Rosetta Stone",
+      "Rosetta Stone (software)",
+      "Rosetta Stone (disambiguation)"
+    ],
+    "retrieved_titles": [
+      "Rosetta Stone",
+      "Rosetta Stone (software)",
+      "Rosetta Stone (disambiguation)",
+      "Rosetta Stone decree",
+      "Rosetta Stone (band)"
+    ],
+    "usage": {
+      "input_tokens": 2415,
+      "output_tokens": 122,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Rosetta Stone",
+          "raw": {
+            "query": "Rosetta Stone",
+            "results": [
+              {
+                "title": "Rosetta Stone",
+                "url": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+                "extract": "The Rosetta Stone is a stele of granodiorite inscribed with three versions of a decree issued in 196 BC during the Ptolemaic dynasty of Egypt, on behalf of King Ptolemy V Epiphanes. The top and middle texts are in Ancient Egyptian using hieroglyphic and Demotic scripts, respectively, while the bottom is in Ancient Greek. The decree has only minor differences across the three versions, making the Rosetta Stone key to deciphering the Egyptian scripts. The stone was carved during the Hellenistic period and is believed to have originally been displayed within a temple, possibly at Sais. It was probably moved in late antiquity or during the Mamluk period, and was eventually used as building material in the construction of Fort Julien near the town of Rashid (Rosetta) in the Nile Delta. It was found there in July 1799 by French army officer Pierre-Fran\u00e7ois Bouchard during France's invasion of Egypt. It was the first Ancient Egyptian bilingual text recovered in modern times, and it aroused widespread public interest with its potential to decipher this previously untranslated hieroglyphic script. Lithographic copies and plaster casts soon began circulating among European museums and scholars. When the British defeated the French, they took the stone to London under the terms of the Capitulation of Alexandria in 1801. Since 1802, it has been on public display at the British Museum almost continuously and it is the most visited object there. [...]",
+                "pageid": 26428
+              },
+              {
+                "title": "Rosetta Stone (software)",
+                "url": "https://en.wikipedia.org/wiki/Rosetta_Stone_(software)",
+                "extract": "Rosetta Stone Language Learning is proprietary, computer-assisted language learning (CALL) software published by Rosetta Stone Inc, part of the IXL Learning family of products. The software uses images, text, and sound to teach words and grammar by spaced repetition, without translation. Rosetta Stone calls its approach Dynamic Immersion. The software's name and logo allude to the ancient stone slab of the same name on which the Decree of Memphis is inscribed in three writing systems. IXL Learning acquired Rosetta Stone in March 2021.",
+                "pageid": 2336347
+              },
+              {
+                "title": "Rosetta Stone (disambiguation)",
+                "url": "https://en.wikipedia.org/wiki/Rosetta_Stone_(disambiguation)",
+                "extract": "The Rosetta Stone is an ancient artifact used to decipher Egyptian hieroglyphs. Rosetta Stone may also refer to:",
+                "pageid": 4240464
+              },
+              {
+                "title": "Rosetta Stone decree",
+                "url": "https://en.wikipedia.org/wiki/Rosetta_Stone_decree",
+                "extract": "The Rosetta Stone decree, or the Decree of Memphis, is a Ptolemaic decree most notable for its bilingual and tri-scriptual nature, which enabled the decipherment of Egyptian hieroglyphs. Issued by a council of priests confirming the royal cult of Ptolemy V in 196 BC at Memphis, it was written in Egyptian hieroglyphs, Egyptian Demotic and Ancient Greek. It mentions the Egyptian rebellion against the Greek rulers, otherwise known only through Greek sources and remains of graffiti.",
+                "pageid": 28189112
+              },
+              {
+                "title": "Rosetta Stone (band)",
+                "url": "https://en.wikipedia.org/wiki/Rosetta_Stone_(band)",
+                "extract": "Rosetta Stone are an English gothic rock band formed in the 1980s by Porl King (guitar/vocals/keyboards) and Karl North (bass), plus their drum machine and synthesizer rack nicknamed \"Madame Razor\". The band is named after the Rosetta Stone, an Egyptian historical artifact, and the band used much ancient mythological imagery, especially in their earlier work. Their early style and first album reflected the jangly-guitar sounds of 1980s gothic rock, and their first big break came after live gigs supporting the then already well-established band The Mission. The band then moved to a more electronic sound before disbanding in 1998. After time spent on different music projects, new Rosetta Stone material appeared in 2019, 2020, 2024, and 2025.",
+                "pageid": 2960428
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Rosetta Stone\nThe Rosetta Stone is a stele of granodiorite inscribed with three versions of a decree issued in 196 BC during the Ptolemaic dynasty of Egypt, on behalf of King Ptolemy V Epiphanes. The top and middle texts are in Ancient Egyptian using hieroglyphic and Demotic scripts, respectively, while the bottom is in Ancient Greek. The decree has only minor differences across the three versions, making the Rosetta Stone key to deciphering the Egyptian scripts. The stone was carved during the Hellenistic period and is believed to have originally been displayed within a temple, possibly at Sais. It was probably moved in late antiquity or during the Mamluk period, and was eventually used as building material in the construction of Fort Julien near the town of Rashid (Rosetta) in the Nile Delta. It was found there in July 1799 by French army officer Pierre-Fran\u00e7ois Bouchard during France's invasion of Egypt. It was the first Ancient Egyptian bilingual text recovered in modern times, and it aroused widespread public interest with its potential to decipher this previously untranslated hieroglyphic script. Lithographic copies and plaster casts soon began circulating among European museums and scholars. When the British defeated the French, they took the stone to London under the terms of the Capitulation of Alexandria in 1801. Since 1802, it has been on public display at the British Museum almost continuously and it is the most visited object there. [...]\n\n[2] Rosetta Stone (software)\nRosetta Stone Language Learning is proprietary, computer-assisted language learning (CALL) software published by Rosetta Stone Inc, part of the IXL Learning family of products. The software uses images, text, and sound to teach words and grammar by spaced repetition, without translation. Rosetta Stone calls its approach Dynamic Immersion. The software's name and logo allude to the ancient stone slab of the same name on which the Decree of Memphis is inscribed in three writing systems. IXL Learning acquired Rosetta Stone in March 2021.\n\n[3] Rosetta Stone (disambiguation)\nThe Rosetta Stone is an ancient artifact used to decipher Egyptian hieroglyphs. Rosetta Stone may also refer to:",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 918,
+      "output_tokens": 57,
+      "cache_read_tokens": 0,
+      "latency_s": 1.1456188749871217
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "According to the Wikipedia article on the Rosetta Stone, it was discovered in **July 1799** by French army officer Pierre-Fran\u00e7ois Bouchard during France's invasion of Egypt. The stone was found at Fort Julien near the town of Rosetta in the Nile Delta.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1497,
+      "output_tokens": 65,
+      "cache_read_tokens": 0,
+      "latency_s": 1.431365582975559
+    }
+  ]
+}

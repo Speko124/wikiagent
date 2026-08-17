@@ -40,6 +40,12 @@ class Case:
     # is what stops a synthesis question being blamed on retrieval.
     evidence_contains: list[list[str]] = field(default_factory=list)
 
+    # Anticipated ambiguity, authored by hand. Ground truth for validating the
+    # ambiguity judge — which is the one dimension no deterministic rule can
+    # compute (disambiguation-page retrieval was measured and both
+    # false-positives and misses the real cases).
+    ambiguous: bool | None = None
+
     # extractive: answer is a span that should appear in some article.
     # derived:    answer is computed from evidence (compare, count, date maths).
     # none:       no answer exists to check (unanswerable, no-search-needed).
@@ -100,6 +106,7 @@ def _parse(raw: dict, where: str) -> Case:
         expected=raw["expected"],
         dimensions=list(raw["dimensions"]),
         answer_kind=kind,
+        ambiguous=raw.get("ambiguous"),
         gold_articles=[str(g) for g in gold],
         notes=raw.get("notes", ""),
         **specs,

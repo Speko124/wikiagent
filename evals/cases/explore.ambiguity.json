@@ -1,0 +1,82 @@
+{
+  "nq-001": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-002": {
+    "ambiguous": true,
+    "why": "entity: the song or the band named after it"
+  },
+  "nq-003": {
+    "ambiguous": true,
+    "why": "event: 1967 vs 2006 Casino Royale"
+  },
+  "nq-004": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-005": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-006": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-007": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-008": {
+    "ambiguous": true,
+    "why": "underspecified: headquarters, territory, or barracks?"
+  },
+  "nq-009": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-010": {
+    "ambiguous": true,
+    "why": "scope: won what?"
+  },
+  "nq-011": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-012": {
+    "ambiguous": true,
+    "why": "entity: men's or women's World Cup"
+  },
+  "nq-013": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-014": {
+    "ambiguous": true,
+    "why": "scope: solar system or all known planets"
+  },
+  "nq-015": {
+    "ambiguous": true,
+    "why": "event: 1991 animated vs 2017 live-action"
+  },
+  "nq-016": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-017": {
+    "ambiguous": false,
+    "why": ""
+  },
+  "nq-018": {
+    "ambiguous": true,
+    "why": "answer-type: founded 1776 vs chapel completed 1791"
+  },
+  "nq-019": {
+    "ambiguous": true,
+    "why": "answer-type: which resource counts as 'important'"
+  },
+  "nq-020": {
+    "ambiguous": false,
+    "why": ""
+  }
+}
