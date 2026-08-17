@@ -34,11 +34,15 @@ API = "https://datasets-server.huggingface.co/rows"
 DATASET = "google-research-datasets/nq_open"
 SPLIT = "train"
 
-SEED = 20260816
-N = 20
+CASES = Path(__file__).parent / "cases"
 
-OUT = Path(__file__).parent / "cases" / "explore.jsonl"
-PROVENANCE = Path(__file__).parent / "cases" / "explore.provenance.json"
+# Each draw is a named, seeded, frozen sample. `exclude` names earlier draws
+# whose rows must not reappear: a holdout that shares rows with the set we
+# tuned against is not a holdout, and the overlap would be invisible later.
+DRAWS = {
+    "explore": {"seed": 20260816, "n": 20, "prefix": "nq", "exclude": []},
+    "holdout": {"seed": 20260817, "n": 10, "prefix": "hd", "exclude": ["explore"]},
+}
 
 
 def _row(client: httpx.Client, index: int) -> dict:
@@ -56,7 +60,23 @@ def _row(client: httpx.Client, index: int) -> dict:
     return r.json()["rows"][0]["row"]
 
 
-def main() -> None:
+def _already_drawn(names: list[str]) -> set[int]:
+    used: set[int] = set()
+    for name in names:
+        path = CASES / f"{name}.provenance.json"
+        if not path.exists():
+            raise SystemExit(f"{path} missing - draw {name!r} first")
+        used.update(json.loads(path.read_text())["row_indices"])
+    return used
+
+
+def main(name: str = "explore") -> None:
+    draw = DRAWS[name]
+    seed, n, prefix = draw["seed"], draw["n"], draw["prefix"]
+    excluded = _already_drawn(draw["exclude"])
+    out = CASES / f"{name}.jsonl"
+    provenance = CASES / f"{name}.provenance.json"
+
     with httpx.Client(timeout=30.0) as client:
         head = client.get(
             API,
@@ -66,21 +86,22 @@ def main() -> None:
         head.raise_for_status()
         total = head.json()["num_rows_total"]
 
-        indices = sorted(random.Random(SEED).sample(range(total), N))
+        pool = [i for i in range(total) if i not in excluded]
+        indices = sorted(random.Random(seed).sample(pool, n))
         rows = [_row(client, i) for i in indices]
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    with OUT.open("w") as fh:
-        for n, (index, row) in enumerate(zip(indices, rows), 1):
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with out.open("w") as fh:
+        for i, (index, row) in enumerate(zip(indices, rows), 1):
             fh.write(
                 json.dumps(
                     {
-                        "id": f"nq-{n:03d}",
+                        "id": f"{prefix}-{i:03d}",
                         "question": row["question"],
                         "expected": " | ".join(row["answer"]),
                         # Deliberately untagged beyond `explore`: the taxonomy
                         # comes out of reading these, not imposed before.
-                        "dimensions": ["explore"],
+                        "dimensions": [name],
                         "gold_articles": [],
                         "notes": (
                             f"NQ-open {SPLIT} row {index}, verbatim. Reference "
@@ -91,15 +112,18 @@ def main() -> None:
                 + "\n"
             )
 
-    PROVENANCE.write_text(
+    provenance.write_text(
         json.dumps(
             {
                 "dataset": DATASET,
                 "config": "nq_open",
                 "split": SPLIT,
                 "license": "CC BY-SA 3.0",
-                "seed": SEED,
-                "n": N,
+                "draw": name,
+                "seed": seed,
+                "n": n,
+                "excluded_draws": draw["exclude"],
+                "excluded_rows": len(excluded),
                 "population_rows": total,
                 "row_indices": indices,
                 "note": "Every drawn row was kept. No filtering, no substitution.",
@@ -108,8 +132,10 @@ def main() -> None:
         )
         + "\n"
     )
-    print(f"wrote {len(rows)} cases to {OUT}")
+    print(f"wrote {len(rows)} cases to {out}")
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main(sys.argv[1] if len(sys.argv) > 1 else "explore")

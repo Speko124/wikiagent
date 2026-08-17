@@ -23,6 +23,7 @@ from evals import cases as cases_mod
 CASES_DIR = Path(__file__).resolve().parent.parent / "evals" / "cases"
 CORE = CASES_DIR / "core.jsonl"
 EXPLORE = CASES_DIR / "explore.jsonl"
+HOLDOUT = CASES_DIR / "holdout.jsonl"
 
 
 @pytest.fixture(scope="module")
@@ -38,9 +39,32 @@ def explore():
 def test_the_whole_directory_loads_without_id_collisions():
     """Loading the directory is what a sweep does; a collision across files
     would silently drop a case."""
-    assert len(cases_mod.load(CASES_DIR)) == len(cases_mod.load(CORE)) + len(
-        cases_mod.load(EXPLORE)
+    parts = sum(len(cases_mod.load(f)) for f in (CORE, EXPLORE, HOLDOUT))
+    assert len(cases_mod.load(CASES_DIR)) == parts
+
+
+# --- holdout ----------------------------------------------------------------
+
+HOLDOUT_DIGEST = "671ac923d8f82635"
+
+
+def test_the_holdout_is_frozen():
+    actual = hashlib.sha256(HOLDOUT.read_bytes()).hexdigest()[:16]
+    assert actual == HOLDOUT_DIGEST, (
+        "holdout.jsonl changed. A holdout that gets edited after seeing "
+        "results is not a holdout."
     )
+
+
+def test_the_holdout_shares_no_rows_with_the_tuning_set():
+    """The whole point. A holdout overlapping the set we tuned against would
+    report generalisation it hasn't earned, and the overlap is invisible once
+    the questions are separated from their row indices."""
+    explore = json.loads((CASES_DIR / "explore.provenance.json").read_text())
+    holdout = json.loads((CASES_DIR / "holdout.provenance.json").read_text())
+    assert set(explore["row_indices"]).isdisjoint(holdout["row_indices"])
+    assert holdout["seed"] != explore["seed"]
+    assert holdout["excluded_rows"] == len(explore["row_indices"])
 
 
 # --- core -------------------------------------------------------------------

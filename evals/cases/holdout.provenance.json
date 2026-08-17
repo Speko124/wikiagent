@@ -1,0 +1,27 @@
+{
+  "dataset": "google-research-datasets/nq_open",
+  "config": "nq_open",
+  "split": "train",
+  "license": "CC BY-SA 3.0",
+  "draw": "holdout",
+  "seed": 20260817,
+  "n": 10,
+  "excluded_draws": [
+    "explore"
+  ],
+  "excluded_rows": 20,
+  "population_rows": 87925,
+  "row_indices": [
+    4367,
+    6121,
+    8139,
+    17288,
+    19453,
+    25626,
+    44533,
+    67129,
+    72142,
+    84342
+  ],
+  "note": "Every drawn row was kept. No filtering, no substitution."
+}
