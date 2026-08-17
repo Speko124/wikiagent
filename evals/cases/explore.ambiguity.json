@@ -1,7 +1,7 @@
 {
   "nq-001": {
-    "ambiguous": false,
-    "why": ""
+    "ambiguous": true,
+    "why": "Two 'Head of the Class' series exist (1986, 2021) and the search returned both."
   },
   "nq-002": {
     "ambiguous": true,

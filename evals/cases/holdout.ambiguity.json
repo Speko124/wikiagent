@@ -1,0 +1,38 @@
+{
+  "_note": "Ambiguity is a property of the question, so labelling it touches no agent output and the holdout stays clean for measuring the agent. Used only to calibrate the judge.",
+  "hd-001": {
+    "ambiguous": false
+  },
+  "hd-002": {
+    "ambiguous": true,
+    "why": "Our own case file already says 'it was not led by one man' and accepts any of four leaders - the label contradicted the spec beside it."
+  },
+  "hd-003": {
+    "ambiguous": false
+  },
+  "hd-004": {
+    "ambiguous": true,
+    "why": "'last year's super bowl 2017' is self-contradictory"
+  },
+  "hd-005": {
+    "ambiguous": false
+  },
+  "hd-006": {
+    "ambiguous": false
+  },
+  "hd-007": {
+    "ambiguous": false
+  },
+  "hd-008": {
+    "ambiguous": true,
+    "why": "Search returns the 1999 film, the 2009 TV series and the song - three distinct works sharing the title."
+  },
+  "hd-009": {
+    "ambiguous": true,
+    "why": "'wrote' - music (MacDermot) or lyrics (Rado, Ragni)"
+  },
+  "hd-010": {
+    "ambiguous": true,
+    "why": "'the new lion king' - 2019 remake or Mufasa (2024)"
+  }
+}

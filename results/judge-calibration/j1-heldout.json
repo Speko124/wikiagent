@@ -1,0 +1,258 @@
+{
+  "rubric": "j1",
+  "judge_model": "claude-sonnet-5",
+  "set": "18 questions the judge had never seen: 8 new curated + 10 holdout",
+  "note": "Holdout QUESTIONS were labelled for ambiguity, which touches no agent output - the holdout remains clean for measuring the agent.",
+  "before_label_corrections": {
+    "accuracy": "13/18",
+    "recall": "5/5",
+    "precision": "5/10"
+  },
+  "after_label_corrections": {
+    "accuracy": "15/18",
+    "recall": "7/7",
+    "precision": "7/10"
+  },
+  "corrections": {
+    "hd-002": "our own case file already said it was not led by one man",
+    "hd-008": "search returns film, TV series and song - three distinct works"
+  },
+  "caveat": "Post-hoc relabelling inflates precision. Each correction is justified by evidence independent of the judge, which bounds the inflation but does not remove it. Recall is unaffected - no negative was reclassified as a positive that the judge missed.",
+  "known_rubric_defect": "j1 conflates 'the answer cannot be determined' with 'the question has multiple readings'. Seen twice: einstein-nobel-premise (a false premise, not an ambiguity) and am-i-all-alone-writer (no source exists). Both are real false positives and both are the same category error - the one precision problem attributable to the rubric rather than to our labels.",
+  "verdicts": {
+    "bologna-oxford-older": {
+      "ambiguous": false,
+      "why": "Both universities have well-documented, unambiguous founding dates (1088 vs c.1096-1167), so there's a single clear answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "List of oldest universities in continuous operation",
+        "Bologna",
+        "The Europaeum"
+      ]
+    },
+    "arpanet-first-message": {
+      "ambiguous": true,
+      "why": "This could refer to the first message on ARPANET (the \"LO\" from \"LOGIN\" attempt in 1969) versus other claimed \"firsts\" like the first email, and the retrieved articles don't even clarify which historical event or content (\"the message\" text itself vs which network/system) is intended.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": true,
+      "titles": [
+        "Text messaging",
+        "Email",
+        "WhatsApp"
+      ]
+    },
+    "einstein-nobel-control": {
+      "ambiguous": false,
+      "why": "The Nobel Prize citation for Einstein is a well-documented single fact (discovery of the law of the photoelectric effect), so there is only one reasonable answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "Nobel Prize in Physics controversies",
+        "List of Nobel laureates in Physics",
+        "Albert Einstein"
+      ]
+    },
+    "beethoven-premiere-attendance": {
+      "ambiguous": false,
+      "why": "The question clearly refers to the premiere of Beethoven's Fifth Symphony, which was a single specific historical event (December 22, 1808 in Vienna), so despite the search results not directly showing an article on it, the question itself is unambiguous.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "Symphony No. 9 (Beethoven)",
+        "Ludwig van Beethoven",
+        "Dmitri Shostakovich"
+      ]
+    },
+    "lets-make-a-deal-location": {
+      "ambiguous": false,
+      "why": "Only one version of \"Let's Make a Deal\" (the Wayne Brady-hosted CBS revival) was airing in 2018, so its filming location has a single reasonable reading.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "Let's Make a Deal",
+        "Wayne Brady",
+        "Mike Richards (television personality)"
+      ]
+    },
+    "home-alone-toy-store": {
+      "ambiguous": false,
+      "why": "The question clearly asks about the toy store featured in Home Alone 2: Lost in New York (Duncan's Toy Chest), with no other reasonable reading.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "Home Alone 2: Lost in New York",
+        "Toy Story 2",
+        "Jessie (Toy Story)"
+      ]
+    },
+    "beat-bobby-flay-wins": {
+      "ambiguous": true,
+      "why": "It's unclear who \"he\" refers to (which challenger/chef) and whether the question asks about wins on the show \"Beat Bobby Flay\" or Bobby Flay's own win count, and if a specific person is intended, which of the many chefs who appeared is meant.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": true,
+      "titles": [
+        "Gigi Hadid",
+        "Food Network Star",
+        "Michael Symon"
+      ]
+    },
+    "am-i-all-alone-writer": {
+      "ambiguous": true,
+      "why": "No Wikipedia article or clear source identifies this specific lyric/quote, so it's unclear which song, poem, or work is being referenced, making the answer indeterminate.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "I Know Who Killed Me",
+        "Who Am I (2014 film)",
+        "I Am Legend (film)"
+      ]
+    },
+    "hd-001": {
+      "ambiguous": true,
+      "why": "There are two well-known songs titled \"Like Toy Soldiers\" (Martika's 1989 song and Eminem's 2004 song), and each references different real-life deaths (Martika's is about drug addiction deaths generally, while Eminem's alludes to the death of rapper Proof).",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "Like Toy Soldiers",
+        "Small Soldiers",
+        "List of Toy Story characters"
+      ]
+    },
+    "hd-002": {
+      "ambiguous": true,
+      "why": "Multiple leaders (Little Crow as principal war leader, but also chiefs like Mankato, Big Eagle, and others) were involved, so \"led\" could refer to different individuals depending on which faction or battle is meant.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "Dakota War of 1862",
+        "Lower Sioux Agency",
+        "Mankato (Mdewakanton)"
+      ]
+    },
+    "hd-003": {
+      "ambiguous": false,
+      "why": "The question clearly asks for the winner of the 2014 US Open men's singles title, which has a single unambiguous answer (Marin \u010cili\u0107).",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "US Open (tennis)",
+        "List of Grand Slam men's singles champions",
+        "List of US Open men's singles champions"
+      ]
+    },
+    "hd-004": {
+      "ambiguous": true,
+      "why": "\"Last year's Super Bowl\" relative to an unspecified reference point conflicts with the explicit \"2017,\" and it's unclear whether the question asks about the halftime show performer or the national anthem singer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": true,
+      "titles": [
+        "Super Bowl LII",
+        "Super Bowl XXXV",
+        "Super Bowl LVI"
+      ]
+    },
+    "hd-005": {
+      "ambiguous": false,
+      "why": "The Doctor in Star Trek: Voyager was portrayed by a single actor, Robert Picardo, so there is only one reasonable answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "The Doctor (Star Trek)",
+        "Kes (Star Trek)",
+        "Star Trek: Voyager"
+      ]
+    },
+    "hd-006": {
+      "ambiguous": true,
+      "why": "The title \"second founder of the Maratha kingdom\" could refer to different historical figures (e.g., Rajaram or another Maratha ruler) depending on the source, since multiple people credited with reviving or re-establishing the Maratha state after Shivaji.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "Maratha Empire",
+        "Mor\u00e8 (clan)",
+        "Sambhaji"
+      ]
+    },
+    "hd-007": {
+      "ambiguous": false,
+      "why": "The question clearly asks for the songwriter(s) of the specific Aaliyah song \"Are You That Somebody?\", which has a definite, well-documented answer.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "Are You That Somebody?",
+        "Aaliyah",
+        "Aaliyah (album)"
+      ]
+    },
+    "hd-008": {
+      "ambiguous": true,
+      "why": "The question could refer to the writers of the 1999 film's screenplay (Karen McCullah and Kirsten Smith) or the writers of the TV series adaptation.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": false,
+      "titles": [
+        "10 Things I Hate About You",
+        "10 Things I Hate About You (TV series)",
+        "I Love You, You Hate Me"
+      ]
+    },
+    "hd-009": {
+      "ambiguous": true,
+      "why": "The question could refer to the songwriters of \"Aquarius/Let the Sunshine In\" from the musical Hair (Galt MacDermot, James Rado, Gerome Ragni), or could be conflated with The 5th Dimension's performance, or with the unrelated \"Age of Aquarius\"/Aquarius themes in Tinashe's album.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": true,
+      "titles": [
+        "Hair (musical)",
+        "The 5th Dimension",
+        "Aquarius (Tinashe album)"
+      ]
+    },
+    "hd-010": {
+      "ambiguous": true,
+      "why": "\"The new Lion King\" could refer to Mufasa: The Lion King (2024 prequel) or another Lion King-related release, and different sources give different release dates depending on region.",
+      "error": null,
+      "judge_model": "claude-sonnet-5",
+      "rubric": "j1",
+      "human": true,
+      "titles": [
+        "Mufasa: The Lion King",
+        "The Lion King",
+        "The Lion King 1\u00bd"
+      ]
+    }
+  }
+}
