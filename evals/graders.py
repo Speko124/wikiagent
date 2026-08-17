@@ -14,6 +14,7 @@ Two design rules, both load-bearing:
 from __future__ import annotations
 
 import re
+import unicodedata
 
 from wikiagent.trace import Trace
 
@@ -27,12 +28,18 @@ def _norm(title: str) -> str:
 def _normalise(text: str) -> str:
     """Fold the differences that are the matcher's problem, not the agent's.
 
-    Two real ones, both found by measuring against hand labels rather than
-    guessed: thousands separators ("2,679" vs "2679"), and non-breaking spaces,
-    which Natural Questions uses inside dates — `June\xa09,\xa02017` never
-    matches a plainly typed `June 9, 2017`.
+    Three real ones, each found by measuring rather than by guessing:
+
+    * thousands separators — "2,679" in an article, "2679" in an answer;
+    * non-breaking spaces — Natural Questions writes dates as
+      `June\xa09,\xa02017`, which never matches a plainly typed date;
+    * diacritics — Wikipedia writes `Marin Čilić` and an answer may write
+      `Marin Cilic`. Both are the same name, and scoring one as a miss would
+      systematically penalise every non-English name in the set.
     """
     text = " ".join((text or "").split())  # folds \xa0 and friends
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
     return re.sub(r"(?<=\d),(?=\d)", "", text).casefold()
 
 

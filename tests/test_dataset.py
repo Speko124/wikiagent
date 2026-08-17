@@ -45,15 +45,37 @@ def test_the_whole_directory_loads_without_id_collisions():
 
 # --- holdout ----------------------------------------------------------------
 
-HOLDOUT_DIGEST = "671ac923d8f82635"
+HOLDOUT_DIGEST = "79a2c39d8baa021d"
 
 
-def test_the_holdout_is_frozen():
-    actual = hashlib.sha256(HOLDOUT.read_bytes()).hexdigest()[:16]
-    assert actual == HOLDOUT_DIGEST, (
-        "holdout.jsonl changed. A holdout that gets edited after seeing "
-        "results is not a holdout."
+def questions_digest(path):
+    """Digest the ids and questions only.
+
+    The freeze protects "nobody curated the *questions*" — that is what makes
+    a random sample worth having. Scoring metadata (accepted phrasings, notes,
+    reference articles) is authored by hand on purpose and has to be editable,
+    so hashing the whole file would make the guarantee unusable and it would
+    get switched off.
+    """
+    rows = [json.loads(ln) for ln in path.read_text().splitlines() if ln.strip()]
+    blob = "\n".join(f"{r['id']}\t{r['question']}" for r in rows)
+    return hashlib.sha256(blob.encode()).hexdigest()[:16]
+
+
+def test_the_holdout_questions_are_frozen():
+    assert questions_digest(HOLDOUT) == HOLDOUT_DIGEST, (
+        "holdout questions changed. A holdout edited after seeing results is "
+        "not a holdout."
     )
+
+
+def test_the_holdout_is_scorable_without_a_judge(explore):
+    """Authored before any holdout run existed, which is what makes it a clean
+    test of the matcher — unlike the curated specs, written after reading the
+    baseline answers."""
+    for case in cases_mod.load(HOLDOUT):
+        assert case.answer_contains, f"{case.id} has no accepted phrasings"
+        assert case.evidence_contains, f"{case.id} has no evidence spec"
 
 
 def test_the_holdout_shares_no_rows_with_the_tuning_set():
@@ -155,11 +177,11 @@ def test_every_core_case_records_why_it_exists(core):
 # This digest is the freeze. It fails if a question is reworded, a case is
 # dropped for being awkward, or a "better" one is swapped in — each of which
 # would quietly turn a random sample back into a curated one.
-EXPLORE_DIGEST = "d2472b9571eb7f34"
+EXPLORE_DIGEST = "30458d78c5e006ef"
 
 
 def test_the_random_sample_is_frozen():
-    actual = hashlib.sha256(EXPLORE.read_bytes()).hexdigest()[:16]
+    actual = questions_digest(EXPLORE)
     assert actual == EXPLORE_DIGEST, (
         "explore.jsonl changed. This set's only value is that nobody curated "
         "it. Re-draw with a new seed and record it, or restore the file."

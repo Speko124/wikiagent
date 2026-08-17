@@ -130,3 +130,10 @@ def test_non_breaking_spaces_do_not_defeat_a_match():
     """Natural Questions stores dates with non-breaking spaces. Found by
     measuring the matcher against hand labels, not by guessing."""
     assert graders.matches([["June\xa09,\xa02017"]], "premiered on June 9, 2017.")[0]
+
+
+def test_diacritics_fold_both_ways():
+    """Wikipedia writes 'Marin Čilić'; an answer may write 'Marin Cilic'. Same
+    name. Without folding, every non-English name in the set is penalised."""
+    assert graders.matches([["Marin Čilić"]], "won by Marin Cilic.")[0] is True
+    assert graders.matches([["Marin Cilic"]], "won by Marin Čilić.")[0] is True

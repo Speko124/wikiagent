@@ -43,6 +43,11 @@ class Config:
     use_cache: bool = True
     top_k: int = wikipedia.DEFAULT_TOP_K
     repeats: int = 3
+    # Suppresses the reading artifacts. Error analysis over a holdout is what
+    # turns it into training data, so the affordance is removed rather than
+    # merely discouraged - and it lives in the config so a resume cannot flip
+    # it silently.
+    holdout: bool = False
     # Recorded even when absent, so a results file can never be mistaken for
     # one that was judged. Filled in from the judge object when there is one.
     judge_model: str | None = None
@@ -185,8 +190,9 @@ def sweep(
 
     rows = [json.loads(ln) for ln in results_path.read_text().splitlines() if ln.strip()]
     (out_dir / "summary.md").write_text(summarize(rows, config))
-    (out_dir / "review.md").write_text(review(rows, config))
-    _seed_labels(out_dir / "labels.jsonl", rows)
+    if not config.holdout:
+        (out_dir / "review.md").write_text(review(rows, config))
+        _seed_labels(out_dir / "labels.jsonl", rows)
     return out_dir
 
 
@@ -309,6 +315,13 @@ def summarize(rows: list[dict], config: Config) -> str:
     out = [
         "# Sweep summary",
         "",
+        *((
+            "> **HOLDOUT — metrics only.** Do not open the traces for error "
+            "analysis until the comparison this set exists to make has been "
+            "made. Reading them turns the holdout into training data, and "
+            "nothing downstream can detect that it happened.",
+            "",
+        ) if config.holdout else ()),
         f"**Model** `{config.model}` · **prompt** `{config.prompt_version}` · "
         f"**top_k** {config.top_k} · **tools** "
         f"{'on' if config.use_tools else 'OFF (control arm)'} · "
@@ -405,6 +418,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--top-k", type=int, default=Config.top_k)
     p.add_argument("--repeats", type=int, default=Config.repeats)
     p.add_argument("--no-tools", action="store_true", help="control arm")
+    p.add_argument("--holdout", action="store_true",
+                   help="metrics only: no review worksheet, no label file")
     p.add_argument("--no-cache", action="store_true")
     p.add_argument("--limit", type=int, help="run only the first N cases")
     args = p.parse_args(argv)
@@ -418,6 +433,7 @@ def main(argv: list[str] | None = None) -> int:
         use_cache=not args.no_cache,
         top_k=args.top_k,
         repeats=args.repeats,
+        holdout=args.holdout,
     )
     loaded = cases_mod.load(args.cases)
     if args.limit:

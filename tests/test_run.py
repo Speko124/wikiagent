@@ -413,3 +413,36 @@ def test_the_summary_says_correctness_is_unmeasured_without_a_judge():
 
 def test_summarize_handles_an_empty_sweep():
     assert run.summarize([], CONFIG)
+
+
+# --- holdout discipline -----------------------------------------------------
+
+def test_holdout_runs_produce_no_review_worksheet(tmp_path):
+    """Error analysis over the holdout is what turns it into training data.
+    Suppressing the artifacts makes that structurally awkward rather than
+    merely discouraged - the file isn't there to open."""
+    run.sweep([case(1)], tmp_path, run.Config(repeats=1, holdout=True), ask=FakeAsk())
+    assert not (tmp_path / "review.md").exists()
+    assert not (tmp_path / "labels.jsonl").exists()
+
+
+def test_holdout_runs_still_produce_metrics_and_traces(tmp_path):
+    """Suppressed for reading, not for measuring. The traces are still needed
+    to compute the delta, and to inspect *after* the comparison is made."""
+    run.sweep([case(1)], tmp_path, run.Config(repeats=1, holdout=True), ask=FakeAsk())
+    assert (tmp_path / "results.jsonl").exists()
+    assert (tmp_path / "summary.md").exists()
+    assert list((tmp_path / "traces").glob("*.json"))
+
+
+def test_the_holdout_summary_says_so(tmp_path):
+    run.sweep([case(1)], tmp_path, run.Config(repeats=1, holdout=True), ask=FakeAsk())
+    assert "HOLDOUT" in (tmp_path / "summary.md").read_text()
+
+
+def test_holdout_is_part_of_the_config_so_resume_cannot_flip_it(tmp_path):
+    """Otherwise a resume could quietly turn a holdout directory into a
+    reviewable one and nothing would record that it happened."""
+    run.sweep([case(1)], tmp_path, run.Config(repeats=1, holdout=True), ask=FakeAsk())
+    with pytest.raises(ValueError, match="holdout"):
+        run.sweep([case(1)], tmp_path, run.Config(repeats=1), ask=FakeAsk())
