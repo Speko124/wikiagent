@@ -1,0 +1,106 @@
+{
+  "question": "Which Japanese village is known for having more life-size straw dolls than residents?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "The Japanese village known for having more life-size straw dolls than residents is **Nagoro** (now known as Nagoro Doll Village), located in the Iya Valley in Miyoshi, Tokushima Prefecture on the island of Shikoku.\n\nAccording to the Wikipedia article \"Nagoro,\" the village has about 350 life-size dolls scattered throughout it, while the actual human population has dwindled to just 25 residents as of January 2026. The dolls were primarily created by Tsukimi Ayano, who moved back to the village in the early 2000s and has made more than 400 dolls (including replacements) over the years. Many of the dolls are likenesses of residents or former residents, while others are invented characters.",
+  "error": null,
+  "latency_s": 3.62,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Japanese village straw dolls more than residents"
+    ],
+    "shown_titles": [
+      "Nagoro",
+      "Cremation in Japan",
+      "One Piece season 20"
+    ],
+    "retrieved_titles": [
+      "Nagoro",
+      "Cremation in Japan",
+      "One Piece season 20",
+      "Kappa (folklore)",
+      "Kobold"
+    ],
+    "usage": {
+      "input_tokens": 2839,
+      "output_tokens": 258,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I'll search for information about this Japanese village known for straw dolls.",
+      "tool_calls": [
+        {
+          "query": "Japanese village straw dolls more than residents",
+          "raw": {
+            "query": "Japanese village straw dolls more than residents",
+            "results": [
+              {
+                "title": "Nagoro",
+                "url": "https://en.wikipedia.org/wiki/Nagoro",
+                "extract": "Nagoro (Japanese: \u540d\u9803), now known as Nagoro Doll Village (\u540d\u9803\u304b\u304b\u3057\u306e\u91cc, Nagoro Kakashi-no-sato; lit. 'Nagaro Scarecrow village'), is a village in the Iya Valley in the city of Miyoshi, Tokushima Prefecture in the island of Shikoku in Japan. It is known for the large number of realistic dolls positioned throughout the village, which have made it a tourist attraction. The village is located on Route 439 in the Iya Valley, in a remote mountainous area of in Higashiiyasugeoi-ch\u014d, Miyoshi, Tokushima. It formerly had about 300 inhabitants, but the decline in Japan's population has caused that to fall to 35 by January 2015, 30 as of August 2016, , 27 by September 2019, and 25 by January 2026. In the early 2000s, Tsukimi Ayano, whose family left the area when she was a child, moved back to Nagoro to look after her father, and made a doll in his likeness that she placed in a field. She has since made more than 400, including replacements, and about 350 are in the village. Many are also likenesses of residents or former residents, while others are invented people. Soon, others followed in Ayano's footsteps. The village school, which closed in 2012, includes a large number of dolls; in one classroom, two children are self-portraits by the last two students to study there, who dressed them in their own clothes. [...]",
+                "pageid": 51470754
+              },
+              {
+                "title": "Cremation in Japan",
+                "url": "https://en.wikipedia.org/wiki/Cremation_in_Japan",
+                "extract": "Cremation in Japan was originally practiced by monks seeking to emulate the cremation of the Buddha. Virtually all deceased are now cremated in Japan \u2013 as of 2012, it had the highest cremation rate in the world of over 99.9%. The Meiji government attempted to ban the practice in the 19th century, but the ban was only in effect for less than two years.",
+                "pageid": 60611549
+              },
+              {
+                "title": "One Piece season 20",
+                "url": "https://en.wikipedia.org/wiki/One_Piece_season_20",
+                "extract": "The twentieth season of the One Piece anime television series is produced by Toei Animation and directed by Tatsuya Nagamine, Satoshi It\u014d and Yasunori Koyama. The season was broadcast in Japan on Fuji Television from July 7, 2019, to December 17, 2023. On April 19, 2020, Toei Animation announced that the series would be delayed due to the ongoing COVID-19 pandemic. They later scheduled the series' return for June 28, 2020, resuming from episode 930. On March 10, 2022, it was announced that the series would be delayed until further notice due to a security breach in Toei Animation's network on March 6, 2022. On April 5, 2022, it was announced that the series would return on April 17, 2022, with the airing of episode 1014. Like the rest of the series, this season follows the adventures of Monkey D. Luffy and his Straw Hat Pirates. The main story arc, called \"Wano Country\", adapts material from the rest of the 90th volume to the beginning of the 105th volume of the manga by Eiichiro Oda. It deals with the alliance between the pirates, samurai, minks and ninja to liberate Wano Country from the corrupt shogun Kurozumi Orochi, who has allied with the Beast Pirates led by one of the Four Emperors, Kaido. Episodes 895 and 896 contain an original story arc, \"Cidre Guild\" which ties into the film One Piece: Stampede. Episode 907 is an adaptation of Oda's one-shot manga Romance Dawn, which features \"the story of a Luffy slightly different from the one in One Piece\". [...]",
+                "pageid": 60374823
+              },
+              {
+                "title": "Kappa (folklore)",
+                "url": "https://en.wikipedia.org/wiki/Kappa_(folklore)",
+                "extract": "In Japanese folklore, the kappa (\u6cb3\u7ae5; \"river-child\") is a familiar type of water monster, considered one of three major y\u014dkai. Kappa are said to be inhabiting the ponds and rivers of Japan. It is also known by various local names, including kawatar\u014d (\u5ddd\u592a\u90ce; \"river-boy\"). The kappa had been dangerous mankillers that drowned people, also targeting horses and cattle to be dragged into water. Later, they came to be depicted as mischievous beings which get punished (captured, having its arm severed, etc.), and in exchange of forgiveness, gratefully performed labor, or revealed a secret medicinal recipe (kappa's wonder drug). Accounts typically depict them as green, slimy (or scaly), human-like beings with webbed hands and feet and turtle-like carapaces on their backs. A depression on the head, called a \"dish\" (sara), retains water, and if this receptacle is damaged or if its liquid is spilled or dried, a kappa becomes severely weakened. The kappa favor cucumbers and love to engage in sumo-wrestling. They are often accused of assaulting humans in water and removing a mythical organ called the shirikodama (lit. \"buttocks-wee-ball\") from their victim's anus.",
+                "pageid": 409476
+              },
+              {
+                "title": "Kobold",
+                "url": "https://en.wikipedia.org/wiki/Kobold",
+                "extract": "Kobold (German: [\u02c8ko\u02d0b\u0254lt]; kobolt, kobolde, cobold) is a generic name for a household spirit (hausgeist) in German folklore. Kobolds are associated with both mischief and the performance of helpful tasks \u2013 especially household chores, such as washing dishes. The latter are often performed in exchange for offerings. On the other hand, they may cause damage when mistreated. A h\u00fctchen (Low German: hodeken), meaning \"little hat\", is one subtype of kobold; this and other kobold sprites are known for their pointy red caps, such as the niss (cognate of nisse of Norway) or puk (cognate of puck fairy) which are attested in Northern Germany, alongside drak, a dragon-type name, as the sprite is sometimes said to appear as a shaft of fire with what looks like a head. There is also the combined form Nis Puk. A house sprite Hinzelmann is a shape-shifter assuming many forms, such as a feather or animals. The name supposedly refers to it appearing in cat-form, Hinz[e] being an archetypical cat name. The similarly named Heinzelm\u00e4nnchen of Cologne (recorded 1826) is distinguished from Hinzelmann. The Schrat is cross-categorized as a wood sprite and a house sprite, and some regional examples correspond to kobold, e.g., Upper Franconia in northern Bavaria. The kobold is sometimes conflated with the mine demon kobel or Bergm\u00e4nnlein/Bergm\u00e4nnchen, which Paracelsus equated with the earth elemental gnome. [...]",
+                "pageid": 223630
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.527
+          },
+          "rendered": "[1] Nagoro\nNagoro (Japanese: \u540d\u9803), now known as Nagoro Doll Village (\u540d\u9803\u304b\u304b\u3057\u306e\u91cc, Nagoro Kakashi-no-sato; lit. 'Nagaro Scarecrow village'), is a village in the Iya Valley in the city of Miyoshi, Tokushima Prefecture in the island of Shikoku in Japan. It is known for the large number of realistic dolls positioned throughout the village, which have made it a tourist attraction. The village is located on Route 439 in the Iya Valley, in a remote mountainous area of in Higashiiyasugeoi-ch\u014d, Miyoshi, Tokushima. It formerly had about 300 inhabitants, but the decline in Japan's population has caused that to fall to 35 by January 2015, 30 as of August 2016, , 27 by September 2019, and 25 by January 2026. In the early 2000s, Tsukimi Ayano, whose family left the area when she was a child, moved back to Nagoro to look after her father, and made a doll in his likeness that she placed in a field. She has since made more than 400, including replacements, and about 350 are in the village. Many are also likenesses of residents or former residents, while others are invented people. Soon, others followed in Ayano's footsteps. The village school, which closed in 2012, includes a large number of dolls; in one classroom, two children are self-portraits by the last two students to study there, who dressed them in their own clothes. [...]\n\n[2] Cremation in Japan\nCremation in Japan was originally practiced by monks seeking to emulate the cremation of the Buddha. Virtually all deceased are now cremated in Japan \u2013 as of 2012, it had the highest cremation rate in the world of over 99.9%. The Meiji government attempted to ban the practice in the 19th century, but the ban was only in effect for less than two years.\n\n[3] One Piece season 20\nThe twentieth season of the One Piece anime television series is produced by Toei Animation and directed by Tatsuya Nagamine, Satoshi It\u014d and Yasunori Koyama. The season was broadcast in Japan on Fuji Television from July 7, 2019, to December 17, 2023. On April 19, 2020, Toei Animation announced that the series would be delayed due to the ongoing COVID-19 pandemic. They later scheduled the series' return for June 28, 2020, resuming from episode 930. On March 10, 2022, it was announced that the series would be delayed until further notice due to a security breach in Toei Animation's network on March 6, 2022. On April 5, 2022, it was announced that the series would return on April 17, 2022, with the airing of episode 1014. Like the rest of the series, this season follows the adventures of Monkey D. Luffy and his Straw Hat Pirates. The main story arc, called \"Wano Country\", adapts material from the rest of the 90th volume to the beginning of the 105th volume of the manga by Eiichiro Oda. It deals with the alliance between the pirates, samurai, minks and ninja to liberate Wano Country from the corrupt shogun Kurozumi Orochi, who has allied with the Beast Pirates led by one of the Four Emperors, Kaido. Episodes 895 and 896 contain an original story arc, \"Cidre Guild\" which ties into the film One Piece: Stampede. Episode 907 is an adaptation of Oda's one-shot manga Romance Dawn, which features \"the story of a Luffy slightly different from the one in One Piece\". [...]",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 925,
+      "output_tokens": 78,
+      "cache_read_tokens": 0,
+      "latency_s": 0.9947511670179665
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "The Japanese village known for having more life-size straw dolls than residents is **Nagoro** (now known as Nagoro Doll Village), located in the Iya Valley in Miyoshi, Tokushima Prefecture on the island of Shikoku.\n\nAccording to the Wikipedia article \"Nagoro,\" the village has about 350 life-size dolls scattered throughout it, while the actual human population has dwindled to just 25 residents as of January 2026. The dolls were primarily created by Tsukimi Ayano, who moved back to the village in the early 2000s and has made more than 400 dolls (including replacements) over the years. Many of the dolls are likenesses of residents or former residents, while others are invented characters.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1914,
+      "output_tokens": 180,
+      "cache_read_tokens": 0,
+      "latency_s": 2.0976017499924637
+    }
+  ]
+}

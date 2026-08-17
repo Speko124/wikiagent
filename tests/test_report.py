@@ -133,3 +133,64 @@ def test_a_missing_holdout_arm_is_not_fatal(tmp_path):
     """The curated numbers are still worth having before the holdout runs."""
     cur = write(tmp_path, "cur", [row("c1")])
     assert report.compare(cur, None)
+
+
+# --- funnel attribution -----------------------------------------------------
+
+def test_the_funnel_is_computed_not_hand_labelled():
+    """Iteration 0 needed a human to read 31 traces. The same attribution is
+    now three exact signals, which is what makes it repeatable per sweep."""
+    rows = [
+        row("a", answer_match=True, evidence_match=True),
+        row("b", answer_match=True, evidence_match=False),
+        row("c", answer_match=False, evidence_match=True),
+        row("d", answer_match=False, evidence_match=False, gold_shown=True),
+        row("e", answer_match=False, evidence_match=False, gold_shown=False),
+        row("f", answer_match=False, evidence_match=False, searched=False,
+            n_searches=0),
+    ]
+    f = report.funnel(rows)
+    assert f["correct, grounded"] == 1
+    assert f["5 grounding: answered from memory"] == 1
+    assert f["4 synthesis: had the evidence, answered wrong"] == 1
+    assert f["3 evidence: right article, fact not in the retrieved text"] == 1
+    assert f["2 retrieval: the answer-bearing article never surfaced"] == 1
+    assert f["1 query: did not search at all"] == 1
+
+
+def test_unscorable_cases_sit_outside_the_funnel():
+    """Abstention cases have no correct answer to attribute, so counting them
+    anywhere would distort every stage below."""
+    f = report.funnel([row("x", answer_match=None, evidence_match=None)])
+    assert f["not scorable (abstention cases)"] == 1
+    assert sum(v for k, v in f.items() if k.startswith(("1", "2", "3"))) == 0
+
+
+def test_the_funnel_appears_for_both_arms(tmp_path):
+    cur = write(tmp_path, "cur", [row("c1", answer_match=False, evidence_match=False)])
+    hld = write(tmp_path, "hld", [row("h1", answer_match=False, evidence_match=False)],
+                holdout=True)
+    text = report.compare(cur, hld)
+    assert "Funnel" in text
+
+
+def test_a_missing_evidence_spec_is_not_read_as_ungrounded():
+    """turing-nobel's evidence is an absence, so it has no spec. Unknown
+    grounding is not the same as ungrounded - conflating them invents a
+    failure out of a missing check. Found by reading the V0 report: the funnel
+    said 6 answered-from-memory where the cross-tab said 3."""
+    f = report.funnel([row("t", answer_match=True, evidence_match=None)])
+    assert f["correct, evidence not checkable"] == 1
+    assert f["5 grounding: answered from memory"] == 0
+
+
+def test_unscorable_runs_cannot_disagree_with_the_judge():
+    """`bool(None)` is False, so an abstention case would read as a matcher
+    'incorrect' on every run and manufacture a disagreement with the judge.
+    Found by reading the V0 report: all 8 reported clashes were abstention
+    cases where nothing had been scored."""
+    rows = [row("abstain", answer_match=None,
+                judge={"correctness": {"verdict": "correct", "why": "right to decline"}})]
+    text = report.compare(write.__wrapped__ if False else None, None) if False else None
+    m = report._metrics(rows)
+    assert m["_clashes"] == []

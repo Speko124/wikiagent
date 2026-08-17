@@ -1,0 +1,228 @@
+{
+  "question": "What was the first message sent over the internet?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on my search results, I found information about the early ARPANET but the Wikipedia articles don't provide specific details about the exact content of the first message sent. The search results confirm that:\n\n- The first computers were connected in 1969\n- The Network Control Program was implemented in 1970\n- Remote login and file transfer capabilities were later enabled on ARPANET\n\nHowever, the Wikipedia articles I found don't specify what the actual first message was or its exact wording. To properly answer this question, I would need to find a more detailed Wikipedia article about the specific first message transmission, but my searches haven't returned that level of detail. I can tell you that early ARPANET communication involved the development of protocols and network control programs, but the exact content of the first message sent is not covered in the Wikipedia search results I obtained.",
+  "error": null,
+  "latency_s": 7.483,
+  "summary": {
+    "searched": true,
+    "n_searches": 3,
+    "n_turns": 4,
+    "cache_hits": 0,
+    "queries": [
+      "first message sent over internet ARPANET",
+      "first ARPANET message 1969 UCLA Stanford",
+      "\"LOGIN\" first message ARPANET October 1969"
+    ],
+    "shown_titles": [
+      "ARPANET",
+      "History of the Internet",
+      "Private message",
+      "Interface Message Processor",
+      "Leonard Kleinrock"
+    ],
+    "retrieved_titles": [
+      "ARPANET",
+      "History of the Internet",
+      "Private message",
+      "Email",
+      "Protocol Wars",
+      "Interface Message Processor",
+      "Leonard Kleinrock",
+      "October 1969",
+      "Request for Comments",
+      "Internet protocol suite",
+      "RTX BBN Technologies"
+    ],
+    "usage": {
+      "input_tokens": 9077,
+      "output_tokens": 415,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I'll search for information about the first message sent over the internet.",
+      "tool_calls": [
+        {
+          "query": "first message sent over internet ARPANET",
+          "raw": {
+            "query": "first message sent over internet ARPANET",
+            "results": [
+              {
+                "title": "ARPANET",
+                "url": "https://en.wikipedia.org/wiki/ARPANET",
+                "extract": "The Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency (now DARPA) of the United States Department of Defense. Building on the ideas of J. C. R. Licklider, Bob Taylor initiated the ARPANET project in 1966 to enable resource sharing between remote computers. Taylor appointed Larry Roberts as program manager. Roberts made the key decisions about the request for proposal to build the network. He incorporated Donald Davies' concepts and designs for packet switching, and sought input from Paul Baran. In 1969, ARPA awarded the contract to build the Interface Message Processors (IMPs) for the network to Bolt Beranek & Newman (BBN). The design was led by Bob Kahn who developed the first protocol for the network. Roberts engaged Leonard Kleinrock at UCLA to develop mathematical methods for analyzing the packet network technology. The first computers were connected in 1969 and the Network Control Program was implemented in 1970, development of which was led by Steve Crocker at UCLA and other graduate students, including Jon Postel. The network was declared operational in 1971. Further software development enabled remote login and file transfer, which was used to provide an early form of email. [...]",
+                "pageid": 253111
+              },
+              {
+                "title": "History of the Internet",
+                "url": "https://en.wikipedia.org/wiki/History_of_the_Internet",
+                "extract": "The Internet originated in the efforts of scientists and engineers to build and interconnect computer networks. The Internet Protocol Suite, the set of rules used to communicate between networks and devices on the Internet, arose from research and development in the United States and involved international collaboration, particularly with researchers in the United Kingdom and France. Computer science was an emerging discipline in the late 1950s that began to consider time-sharing between computer users, and later, the possibility of achieving this over wide area networks. J. C. R. Licklider articulated the idea of a universal network at the Information Processing Techniques Office (IPTO) of the United States Department of Defense (DoD) Advanced Research Projects Agency (ARPA). Independently, Paul Baran at the RAND Corporation proposed a distributed network based on data in message blocks in the early 1960s, and Donald Davies conceived of packet switching in 1965 at the National Physical Laboratory (NPL), proposing a national commercial data network in the United Kingdom. ARPA awarded contracts in 1969 for the development of the ARPANET project, directed by Robert Taylor and managed by Lawrence Roberts. ARPANET adopted the packet switching technology proposed by Davies and sought input from Baran. The network of Interface Message Processors (IMPs) was built by a team at Bolt, Beranek, and Newman, with the design and specification led by Bob Kahn. [...]",
+                "pageid": 13692
+              },
+              {
+                "title": "Private message",
+                "url": "https://en.wikipedia.org/wiki/Private_message",
+                "extract": "In computer networking, a private message (PM), or direct message (DM), refers to a private communication, often text-based, sent or received by a user of a private communication channel on any given platform. Unlike public posts, PMs are only viewable by the participants. Long a function present on IRCs and Internet forums, private channels for PMs have also been prevalent features on instant messaging (IM) and on social media networks. It may be either synchronous (e.g. on an IM) or asynchronous (e.g. on an Internet forum). The term private message (PM) originated as a feature on internet forums, while the term direct message (DM) originated as a feature on Twitter. Due to the popularity of the latter service, DM has since been appropriated by other platforms, such as Instagram, and is often genericized in popular usage.",
+                "pageid": 5855447
+              },
+              {
+                "title": "Email",
+                "url": "https://en.wikipedia.org/wiki/Email",
+                "extract": "Electronic mail (usually shortened to email; alternatively hyphenated e-mail) is a method of transmitting and receiving digital messages using electronic devices over a computer network. It was conceived in the late\u201320th century as the digital version of, or counterpart to, mail (hence e- + mail). Email is a ubiquitous and very widely used communication medium; in current use, an email address (commonly local-part + @ + domain name) is often treated as a basic and necessary part of many processes in business, commerce, government, education, entertainment, and other spheres of daily life in most countries. Email operates across computer networks, primarily the Internet, and also local area networks. Today's email systems are based on a store-and-forward model. Email servers accept, forward, deliver, and store messages. Neither the users nor their computers are required to be online simultaneously; they need to connect, typically to a mail server or a webmail interface to send or receive messages or download it. Originally a text-only ASCII communications medium, Internet email was extended by MIME to carry text in expanded character sets and multimedia content such as images. International email, with internationalized email addresses using UTF-8, is standardized but not widely adopted.",
+                "pageid": 9738
+              },
+              {
+                "title": "Protocol Wars",
+                "url": "https://en.wikipedia.org/wiki/Protocol_Wars",
+                "extract": "The Protocol Wars were a long-running debate in computer science that occurred from the 1970s to the 1990s, when engineers, organizations and nations became polarized over the issue of which communication protocol would result in the best and most robust networks. This culminated in the Internet\u2013OSI Standards War in the 1980s and early 1990s, which was ultimately \"won\" by the Internet protocol suite (TCP/IP) by the mid-1990s when it became the dominant protocol suite through rapid adoption of the Internet. In the late 1960s and early 1970s, the pioneers of packet switching technology built computer networks providing data communication, that is the ability to transfer data between points or nodes. As more of these networks emerged in the mid to late 1970s, the debate about communication protocols became a \"battle for access standards\". An international collaboration between several national postal, telegraph and telephone (PTT) providers and commercial operators led to the X.25 standard in 1976, which was adopted on public data networks providing global coverage. Separately, proprietary data communication protocols emerged, most notably IBM's Systems Network Architecture in 1974 and Digital Equipment Corporation's DECnet in 1975. The United States Department of Defense (DoD) developed TCP/IP during the 1970s in collaboration with universities and researchers in the US, UK, and France. [...]",
+                "pageid": 63033632
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.64
+          },
+          "rendered": "[1] ARPANET\nThe Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency (now DARPA) of the United States Department of Defense. Building on the ideas of J. C. R. Licklider, Bob Taylor initiated the ARPANET project in 1966 to enable resource sharing between remote computers. Taylor appointed Larry Roberts as program manager. Roberts made the key decisions about the request for proposal to build the network. He incorporated Donald Davies' concepts and designs for packet switching, and sought input from Paul Baran. In 1969, ARPA awarded the contract to build the Interface Message Processors (IMPs) for the network to Bolt Beranek & Newman (BBN). The design was led by Bob Kahn who developed the first protocol for the network. Roberts engaged Leonard Kleinrock at UCLA to develop mathematical methods for analyzing the packet network technology. The first computers were connected in 1969 and the Network Control Program was implemented in 1970, development of which was led by Steve Crocker at UCLA and other graduate students, including Jon Postel. The network was declared operational in 1971. Further software development enabled remote login and file transfer, which was used to provide an early form of email. [...]\n\n[2] History of the Internet\nThe Internet originated in the efforts of scientists and engineers to build and interconnect computer networks. The Internet Protocol Suite, the set of rules used to communicate between networks and devices on the Internet, arose from research and development in the United States and involved international collaboration, particularly with researchers in the United Kingdom and France. Computer science was an emerging discipline in the late 1950s that began to consider time-sharing between computer users, and later, the possibility of achieving this over wide area networks. J. C. R. Licklider articulated the idea of a universal network at the Information Processing Techniques Office (IPTO) of the United States Department of Defense (DoD) Advanced Research Projects Agency (ARPA). Independently, Paul Baran at the RAND Corporation proposed a distributed network based on data in message blocks in the early 1960s, and Donald Davies conceived of packet switching in 1965 at the National Physical Laboratory (NPL), proposing a national commercial data network in the United Kingdom. ARPA awarded contracts in 1969 for the development of the ARPANET project, directed by Robert Taylor and managed by Lawrence Roberts. ARPANET adopted the packet switching technology proposed by Davies and sought input from Baran. The network of Interface Message Processors (IMPs) was built by a team at Bolt, Beranek, and Newman, with the design and specification led by Bob Kahn. [...]\n\n[3] Private message\nIn computer networking, a private message (PM), or direct message (DM), refers to a private communication, often text-based, sent or received by a user of a private communication channel on any given platform. Unlike public posts, PMs are only viewable by the participants. Long a function present on IRCs and Internet forums, private channels for PMs have also been prevalent features on instant messaging (IM) and on social media networks. It may be either synchronous (e.g. on an IM) or asynchronous (e.g. on an Internet forum). The term private message (PM) originated as a feature on internet forums, while the term direct message (DM) originated as a feature on Twitter. Due to the popularity of the latter service, DM has since been appropriated by other platforms, such as Instagram, and is often genericized in popular usage.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 917,
+      "output_tokens": 76,
+      "cache_read_tokens": 0,
+      "latency_s": 1.5113595830043778
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Let me search more specifically for the first ARPANET message.",
+      "tool_calls": [
+        {
+          "query": "first ARPANET message 1969 UCLA Stanford",
+          "raw": {
+            "query": "first ARPANET message 1969 UCLA Stanford",
+            "results": [
+              {
+                "title": "ARPANET",
+                "url": "https://en.wikipedia.org/wiki/ARPANET",
+                "extract": "The Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency (now DARPA) of the United States Department of Defense. Building on the ideas of J. C. R. Licklider, Bob Taylor initiated the ARPANET project in 1966 to enable resource sharing between remote computers. Taylor appointed Larry Roberts as program manager. Roberts made the key decisions about the request for proposal to build the network. He incorporated Donald Davies' concepts and designs for packet switching, and sought input from Paul Baran. In 1969, ARPA awarded the contract to build the Interface Message Processors (IMPs) for the network to Bolt Beranek & Newman (BBN). The design was led by Bob Kahn who developed the first protocol for the network. Roberts engaged Leonard Kleinrock at UCLA to develop mathematical methods for analyzing the packet network technology. The first computers were connected in 1969 and the Network Control Program was implemented in 1970, development of which was led by Steve Crocker at UCLA and other graduate students, including Jon Postel. The network was declared operational in 1971. Further software development enabled remote login and file transfer, which was used to provide an early form of email. [...]",
+                "pageid": 253111
+              },
+              {
+                "title": "Interface Message Processor",
+                "url": "https://en.wikipedia.org/wiki/Interface_Message_Processor",
+                "extract": "The Interface Message Processor (IMP) was the packet switching node used to interconnect participant networks to the ARPANET from the late 1960s to 1989. It was the first generation of gateways, which are known today as routers. An IMP was a ruggedized Honeywell DDP-516 minicomputer with special-purpose interfaces and software. In later years the IMPs were made from the non-ruggedized Honeywell 316 which could handle two-thirds of the communication traffic at approximately one-half the cost. An IMP requires the connection to a host computer via a special bit-serial interface, defined in BBN Report 1822. The IMP software and the ARPA network communications protocol running on the IMPs was discussed in RFC 1, the first of a series of standardization documents published by what later became the Internet Engineering Task Force (IETF).",
+                "pageid": 2290843
+              },
+              {
+                "title": "Leonard Kleinrock",
+                "url": "https://en.wikipedia.org/wiki/Leonard_Kleinrock",
+                "extract": "Leonard Kleinrock (born June 13, 1934) is an American computer scientist and Internet pioneer. He is Distinguished Professor Emeritus of Computer Science at UCLA's Henry Samueli School of Engineering and Applied Science. Kleinrock made several important contributions to the field of computer science, in particular to the mathematical foundations of data communication in computer networking. He has received numerous prestigious awards. In the early 1960s, Kleinrock pioneered the application of queueing theory to model delays in message switching networks in his Ph.D. thesis, published as a book in 1964. In the late 1960s and 1970s, he played an influential role in the development of the ARPANET. In the 1970s, he applied queueing theory to model and measure the performance of packet switching networks and published several of the standard works on the subject. He supervised graduate students who worked on the communication protocols for the ARPANET including students whose later work on internetworking and the Internet protocol suite led to the networking technology employed in the Internet. His theoretical work on hierarchical routing in the late 1970s with student Farouk Kamoun remains critical to the operation of the Internet today.",
+                "pageid": 464164
+              },
+              {
+                "title": "October 1969",
+                "url": "https://en.wikipedia.org/wiki/October_1969",
+                "extract": "The following events occurred in October 1969:",
+                "pageid": 59360453
+              },
+              {
+                "title": "Request for Comments",
+                "url": "https://en.wikipedia.org/wiki/Request_for_Comments",
+                "extract": "A Request for Comments (RFC) is a publication in a series from the principal technical development and standards-setting bodies for the Internet, most prominently the Internet Engineering Task Force (IETF). An RFC is authored by individuals or groups of engineers and computer scientists in the form of a memorandum describing methods, behaviors, research, or innovations applicable to the working of the Internet and Internet-connected systems. It is submitted either for peer review or to convey new concepts, information, or, occasionally, engineering humor. The IETF adopts some of the proposals published as RFCs as Internet Standards. However, many RFCs are informational or experimental in nature and are not standards. The RFC system was invented by Steve Crocker in 1969 to help record unofficial notes on the development of ARPANET. RFCs have since become official documents of Internet specifications, communications protocols, procedures, and events. According to Crocker, the documents \"shape the Internet's inner workings and have played a significant role in its success,\" but are not widely known outside the community. Outside of the Internet community, other documents also called requests for comments have been published, as in U.S. Federal government work, such as the National Highway Traffic Safety Administration, as well as various other places such as Rust and RedoxOS.",
+                "pageid": 25540
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.499
+          },
+          "rendered": "[1] ARPANET\nThe Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency (now DARPA) of the United States Department of Defense. Building on the ideas of J. C. R. Licklider, Bob Taylor initiated the ARPANET project in 1966 to enable resource sharing between remote computers. Taylor appointed Larry Roberts as program manager. Roberts made the key decisions about the request for proposal to build the network. He incorporated Donald Davies' concepts and designs for packet switching, and sought input from Paul Baran. In 1969, ARPA awarded the contract to build the Interface Message Processors (IMPs) for the network to Bolt Beranek & Newman (BBN). The design was led by Bob Kahn who developed the first protocol for the network. Roberts engaged Leonard Kleinrock at UCLA to develop mathematical methods for analyzing the packet network technology. The first computers were connected in 1969 and the Network Control Program was implemented in 1970, development of which was led by Steve Crocker at UCLA and other graduate students, including Jon Postel. The network was declared operational in 1971. Further software development enabled remote login and file transfer, which was used to provide an early form of email. [...]\n\n[2] Interface Message Processor\nThe Interface Message Processor (IMP) was the packet switching node used to interconnect participant networks to the ARPANET from the late 1960s to 1989. It was the first generation of gateways, which are known today as routers. An IMP was a ruggedized Honeywell DDP-516 minicomputer with special-purpose interfaces and software. In later years the IMPs were made from the non-ruggedized Honeywell 316 which could handle two-thirds of the communication traffic at approximately one-half the cost. An IMP requires the connection to a host computer via a special bit-serial interface, defined in BBN Report 1822. The IMP software and the ARPA network communications protocol running on the IMPs was discussed in RFC 1, the first of a series of standardization documents published by what later became the Internet Engineering Task Force (IETF).\n\n[3] Leonard Kleinrock\nLeonard Kleinrock (born June 13, 1934) is an American computer scientist and Internet pioneer. He is Distinguished Professor Emeritus of Computer Science at UCLA's Henry Samueli School of Engineering and Applied Science. Kleinrock made several important contributions to the field of computer science, in particular to the mathematical foundations of data communication in computer networking. He has received numerous prestigious awards. In the early 1960s, Kleinrock pioneered the application of queueing theory to model delays in message switching networks in his Ph.D. thesis, published as a book in 1964. In the late 1960s and 1970s, he played an influential role in the development of the ARPANET. In the 1970s, he applied queueing theory to model and measure the performance of packet switching networks and published several of the standard works on the subject. He supervised graduate students who worked on the communication protocols for the ARPANET including students whose later work on internetworking and the Internet protocol suite led to the networking technology employed in the Internet. His theoretical work on hierarchical routing in the late 1970s with student Farouk Kamoun remains critical to the operation of the Internet today.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1831,
+      "output_tokens": 79,
+      "cache_read_tokens": 0,
+      "latency_s": 1.0196516669820994
+    },
+    {
+      "index": 2,
+      "thinking": null,
+      "text": "Let me try a more specific search for the first message content.",
+      "tool_calls": [
+        {
+          "query": "\"LOGIN\" first message ARPANET October 1969",
+          "raw": {
+            "query": "\"LOGIN\" first message ARPANET October 1969",
+            "results": [
+              {
+                "title": "ARPANET",
+                "url": "https://en.wikipedia.org/wiki/ARPANET",
+                "extract": "The Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency (now DARPA) of the United States Department of Defense. Building on the ideas of J. C. R. Licklider, Bob Taylor initiated the ARPANET project in 1966 to enable resource sharing between remote computers. Taylor appointed Larry Roberts as program manager. Roberts made the key decisions about the request for proposal to build the network. He incorporated Donald Davies' concepts and designs for packet switching, and sought input from Paul Baran. In 1969, ARPA awarded the contract to build the Interface Message Processors (IMPs) for the network to Bolt Beranek & Newman (BBN). The design was led by Bob Kahn who developed the first protocol for the network. Roberts engaged Leonard Kleinrock at UCLA to develop mathematical methods for analyzing the packet network technology. The first computers were connected in 1969 and the Network Control Program was implemented in 1970, development of which was led by Steve Crocker at UCLA and other graduate students, including Jon Postel. The network was declared operational in 1971. Further software development enabled remote login and file transfer, which was used to provide an early form of email. [...]",
+                "pageid": 253111
+              },
+              {
+                "title": "Interface Message Processor",
+                "url": "https://en.wikipedia.org/wiki/Interface_Message_Processor",
+                "extract": "The Interface Message Processor (IMP) was the packet switching node used to interconnect participant networks to the ARPANET from the late 1960s to 1989. It was the first generation of gateways, which are known today as routers. An IMP was a ruggedized Honeywell DDP-516 minicomputer with special-purpose interfaces and software. In later years the IMPs were made from the non-ruggedized Honeywell 316 which could handle two-thirds of the communication traffic at approximately one-half the cost. An IMP requires the connection to a host computer via a special bit-serial interface, defined in BBN Report 1822. The IMP software and the ARPA network communications protocol running on the IMPs was discussed in RFC 1, the first of a series of standardization documents published by what later became the Internet Engineering Task Force (IETF).",
+                "pageid": 2290843
+              },
+              {
+                "title": "Leonard Kleinrock",
+                "url": "https://en.wikipedia.org/wiki/Leonard_Kleinrock",
+                "extract": "Leonard Kleinrock (born June 13, 1934) is an American computer scientist and Internet pioneer. He is Distinguished Professor Emeritus of Computer Science at UCLA's Henry Samueli School of Engineering and Applied Science. Kleinrock made several important contributions to the field of computer science, in particular to the mathematical foundations of data communication in computer networking. He has received numerous prestigious awards. In the early 1960s, Kleinrock pioneered the application of queueing theory to model delays in message switching networks in his Ph.D. thesis, published as a book in 1964. In the late 1960s and 1970s, he played an influential role in the development of the ARPANET. In the 1970s, he applied queueing theory to model and measure the performance of packet switching networks and published several of the standard works on the subject. He supervised graduate students who worked on the communication protocols for the ARPANET including students whose later work on internetworking and the Internet protocol suite led to the networking technology employed in the Internet. His theoretical work on hierarchical routing in the late 1970s with student Farouk Kamoun remains critical to the operation of the Internet today.",
+                "pageid": 464164
+              },
+              {
+                "title": "Internet protocol suite",
+                "url": "https://en.wikipedia.org/wiki/Internet_protocol_suite",
+                "extract": "The Internet protocol suite, commonly known as TCP/IP, is a framework for organizing the communication protocols used in the Internet and similar computer networks according to functional criteria. The foundational protocols in the suite are the Transmission Control Protocol (TCP), the User Datagram Protocol (UDP), and the Internet Protocol (IP). Early versions of this networking model were known as the Department of Defense (DoD) Internet Architecture Model because the research and development were funded by the Defense Advanced Research Projects Agency (DARPA) of the United States Department of Defense. The Internet protocol suite provides end-to-end data communication specifying how data should be packetized, addressed, transmitted, routed, and received. This functionality is organized into four abstraction layers, which classify all related protocols according to each protocol's scope of networking. An implementation of the layers for a particular application forms a protocol stack. From lowest to highest, the layers are the link layer, containing communication methods for data that remains within a single network segment (link); the internet layer, providing internetworking between independent networks; the transport layer, handling host-to-host communication; and the application layer, providing process-to-process data exchange for applications. [...]",
+                "pageid": 15476
+              },
+              {
+                "title": "RTX BBN Technologies",
+                "url": "https://en.wikipedia.org/wiki/RTX_BBN_Technologies",
+                "extract": "RTX BBN Technologies (commonly BBN, from its original name of Bolt, Beranek and Newman) is an American research and development company based in Cambridge, Massachusetts. In 1966 the Franklin Institute awarded the firm the Frank P. Brown Medal, in 1999 BBN received the IEEE Corporate Innovation Recognition, and on 1 February 2013 BBN was awarded the National Medal of Technology and Innovation, the highest honors that the U.S. government bestows upon scientists, engineers and inventors, by President Barack Obama. It became a wholly owned subsidiary of Raytheon in 2009.",
+                "pageid": 252539
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.402
+          },
+          "rendered": "[1] ARPANET\nThe Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency (now DARPA) of the United States Department of Defense. Building on the ideas of J. C. R. Licklider, Bob Taylor initiated the ARPANET project in 1966 to enable resource sharing between remote computers. Taylor appointed Larry Roberts as program manager. Roberts made the key decisions about the request for proposal to build the network. He incorporated Donald Davies' concepts and designs for packet switching, and sought input from Paul Baran. In 1969, ARPA awarded the contract to build the Interface Message Processors (IMPs) for the network to Bolt Beranek & Newman (BBN). The design was led by Bob Kahn who developed the first protocol for the network. Roberts engaged Leonard Kleinrock at UCLA to develop mathematical methods for analyzing the packet network technology. The first computers were connected in 1969 and the Network Control Program was implemented in 1970, development of which was led by Steve Crocker at UCLA and other graduate students, including Jon Postel. The network was declared operational in 1971. Further software development enabled remote login and file transfer, which was used to provide an early form of email. [...]\n\n[2] Interface Message Processor\nThe Interface Message Processor (IMP) was the packet switching node used to interconnect participant networks to the ARPANET from the late 1960s to 1989. It was the first generation of gateways, which are known today as routers. An IMP was a ruggedized Honeywell DDP-516 minicomputer with special-purpose interfaces and software. In later years the IMPs were made from the non-ruggedized Honeywell 316 which could handle two-thirds of the communication traffic at approximately one-half the cost. An IMP requires the connection to a host computer via a special bit-serial interface, defined in BBN Report 1822. The IMP software and the ARPA network communications protocol running on the IMPs was discussed in RFC 1, the first of a series of standardization documents published by what later became the Internet Engineering Task Force (IETF).\n\n[3] Leonard Kleinrock\nLeonard Kleinrock (born June 13, 1934) is an American computer scientist and Internet pioneer. He is Distinguished Professor Emeritus of Computer Science at UCLA's Henry Samueli School of Engineering and Applied Science. Kleinrock made several important contributions to the field of computer science, in particular to the mathematical foundations of data communication in computer networking. He has received numerous prestigious awards. In the early 1960s, Kleinrock pioneered the application of queueing theory to model delays in message switching networks in his Ph.D. thesis, published as a book in 1964. In the late 1960s and 1970s, he played an influential role in the development of the ARPANET. In the 1970s, he applied queueing theory to model and measure the performance of packet switching networks and published several of the standard works on the subject. He supervised graduate students who worked on the communication protocols for the ARPANET including students whose later work on internetworking and the Internet protocol suite led to the networking technology employed in the Internet. His theoretical work on hierarchical routing in the late 1970s with student Farouk Kamoun remains critical to the operation of the Internet today.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 2720,
+      "output_tokens": 79,
+      "cache_read_tokens": 0,
+      "latency_s": 0.8564826249494217
+    },
+    {
+      "index": 3,
+      "thinking": null,
+      "text": "Based on my search results, I found information about the early ARPANET but the Wikipedia articles don't provide specific details about the exact content of the first message sent. The search results confirm that:\n\n- The first computers were connected in 1969\n- The Network Control Program was implemented in 1970\n- Remote login and file transfer capabilities were later enabled on ARPANET\n\nHowever, the Wikipedia articles I found don't specify what the actual first message was or its exact wording. To properly answer this question, I would need to find a more detailed Wikipedia article about the specific first message transmission, but my searches haven't returned that level of detail. I can tell you that early ARPANET communication involved the development of protocols and network control programs, but the exact content of the first message sent is not covered in the Wikipedia search results I obtained.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 3609,
+      "output_tokens": 181,
+      "cache_read_tokens": 0,
+      "latency_s": 2.551145291014109
+    }
+  ]
+}

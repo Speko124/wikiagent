@@ -1,0 +1,106 @@
+{
+  "question": "who led the great sioux uprising in 1862",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "The Great Sioux Uprising in 1862 was led by **Little Crow**, a Dakota leader. This conflict is also known as the Dakota War of 1862 or Little Crow's War. It began on August 18, 1862, when Little Crow led the attack on the Lower Sioux Agency and white settlements along the Minnesota River valley in southwest Minnesota, as the Dakota faced starvation and displacement.",
+  "error": null,
+  "latency_s": 3.303,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "Great Sioux Uprising 1862"
+    ],
+    "shown_titles": [
+      "Dakota War of 1862",
+      "Lower Sioux Agency",
+      "Attack at the Lower Sioux Agency"
+    ],
+    "retrieved_titles": [
+      "Dakota War of 1862",
+      "Lower Sioux Agency",
+      "Attack at the Lower Sioux Agency",
+      "Forest City Stockade",
+      "Mankato (Mdewakanton)"
+    ],
+    "usage": {
+      "input_tokens": 2669,
+      "output_tokens": 157,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Great Sioux Uprising 1862",
+          "raw": {
+            "query": "Great Sioux Uprising 1862",
+            "results": [
+              {
+                "title": "Dakota War of 1862",
+                "url": "https://en.wikipedia.org/wiki/Dakota_War_of_1862",
+                "extract": "The Dakota War of 1862, also known as the U.S.-Dakota War of 1862, the Sioux Uprising, the Dakota Uprising, the Sioux Outbreak of 1862, the Dakota Conflict, or Little Crow's War, was an armed conflict between the United States and several eastern bands of Dakota collectively known as the Santee Sioux. It began on August 18, 1862, when the Dakota, who were facing starvation and displacement, attacked the Lower Sioux Agency and white settlements along the Minnesota River valley in southwest Minnesota. The war lasted for five weeks and resulted in the deaths of hundreds of settlers and the displacement of thousands more. In the aftermath, the Dakota people were exiled from their homelands, forcibly sent to reservations in the Dakotas and Nebraska, and the State of Minnesota confiscated and sold all their remaining land in the state. Thirty-eight Dakota men were subsequently hanged for crimes committed during the conflict in the largest mass execution in US history. All four bands of eastern Dakota had been pressured into ceding large tracts of land to the United States in a series of treaties and were reluctantly moved to a reservation strip twenty miles wide, centered on the Minnesota River. There, they were encouraged by U.S. Indian agents to become farmers rather than continue their hunting traditions. A crop failure in 1861, followed by a harsh winter along with poor hunting due to depletion of wild game, led to starvation and severe hardship for the eastern Dakota. [...]",
+                "pageid": 9096304
+              },
+              {
+                "title": "Lower Sioux Agency",
+                "url": "https://en.wikipedia.org/wiki/Lower_Sioux_Agency",
+                "extract": "The Lower Sioux Agency, or Redwood Agency, was the federal administrative center for the Lower Sioux Indian Reservation in what became Redwood County, Minnesota, United States. It was the site of the Battle of Lower Sioux Agency on August 18, 1862, the first organized battle of the Dakota War of 1862. Today it is a historic site managed by the Lower Sioux Community in partnership with the Minnesota Historical Society. In February 2021, ownership of half of the site was transferred from the historical society to the Lower Sioux Community. The site contains an interpretive center, self-guided trails, and a restored 1861 stone warehouse that is listed on the National Register of Historic Places.",
+                "pageid": 1891073
+              },
+              {
+                "title": "Attack at the Lower Sioux Agency",
+                "url": "https://en.wikipedia.org/wiki/Attack_at_the_Lower_Sioux_Agency",
+                "extract": "The Attack at the Lower Sioux Agency was the first organized attack led by Dakota leader Little Crow in Minnesota on August 18, 1862, and is considered the initial engagement of the Dakota War of 1862. It resulted in 13 settler deaths, and seven more killed while fleeing the agency for Fort Ridgely. Tensions had run high in the weeks leading up to the attack. Many eastern Dakota were angered by the refusal of traders to extend credit during a summer of starvation and hardship, and the failure of the United States Indian agents to deliver annuity payments as required by treaty. The initial attack on the Lower Sioux Agency by a faction of the eastern Dakota focused on the four trading stores, which they proceeded to raid for flour, pork, clothing, whiskey, guns, and ammunition. The attack at the Lower Agency was followed by the Battle of Redwood Ferry. Violence soon spread to isolated farms and settlements in Brown and Renville Counties, with an estimated 200 settlers killed and another 200 captured. Some settlers' lives were saved after they were warned by the Dakota to flee.",
+                "pageid": 8471369
+              },
+              {
+                "title": "Forest City Stockade",
+                "url": "https://en.wikipedia.org/wiki/Forest_City_Stockade",
+                "extract": "The Forest City Stockade was built in central Minnesota to defend settlers in the area from Indian attacks. It became famous during the Dakota War of 1862, when it was besieged by the Dakota as part of Little Crow's attack on Forest City. In the 21st century, the rebuilt stockade functions as a tourist attraction and memorial to the battle. Visitors to the site can visit a rebuilt stockade and see volunteers in 19th-century dress illustrate period life and activities. A threshing bee takes place across the road in August. The site of the stockade is between Litchfield and Forest City near Minnesota State Highway 24.",
+                "pageid": 4151280
+              },
+              {
+                "title": "Mankato (Mdewakanton)",
+                "url": "https://en.wikipedia.org/wiki/Mankato_(Mdewakanton)",
+                "extract": "Mankato (Dakota: Makato; c. 1822 \u2013 September 23, 1862) sometimes referred to as Chief Mankato was a Mdewakanton Dakota sub-chief who was instrumental in the signing of the 1858 Dakota Treaty along with other Dakota leaders, including Little Crow. Mankato was later involved in the Dakota War of 1862 where he was killed in action at the Battle of Wood Lake.",
+                "pageid": 81365327
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Dakota War of 1862\nThe Dakota War of 1862, also known as the U.S.-Dakota War of 1862, the Sioux Uprising, the Dakota Uprising, the Sioux Outbreak of 1862, the Dakota Conflict, or Little Crow's War, was an armed conflict between the United States and several eastern bands of Dakota collectively known as the Santee Sioux. It began on August 18, 1862, when the Dakota, who were facing starvation and displacement, attacked the Lower Sioux Agency and white settlements along the Minnesota River valley in southwest Minnesota. The war lasted for five weeks and resulted in the deaths of hundreds of settlers and the displacement of thousands more. In the aftermath, the Dakota people were exiled from their homelands, forcibly sent to reservations in the Dakotas and Nebraska, and the State of Minnesota confiscated and sold all their remaining land in the state. Thirty-eight Dakota men were subsequently hanged for crimes committed during the conflict in the largest mass execution in US history. All four bands of eastern Dakota had been pressured into ceding large tracts of land to the United States in a series of treaties and were reluctantly moved to a reservation strip twenty miles wide, centered on the Minnesota River. There, they were encouraged by U.S. Indian agents to become farmers rather than continue their hunting traditions. A crop failure in 1861, followed by a harsh winter along with poor hunting due to depletion of wild game, led to starvation and severe hardship for the eastern Dakota. [...]\n\n[2] Lower Sioux Agency\nThe Lower Sioux Agency, or Redwood Agency, was the federal administrative center for the Lower Sioux Indian Reservation in what became Redwood County, Minnesota, United States. It was the site of the Battle of Lower Sioux Agency on August 18, 1862, the first organized battle of the Dakota War of 1862. Today it is a historic site managed by the Lower Sioux Community in partnership with the Minnesota Historical Society. In February 2021, ownership of half of the site was transferred from the historical society to the Lower Sioux Community. The site contains an interpretive center, self-guided trails, and a restored 1861 stone warehouse that is listed on the National Register of Historic Places.\n\n[3] Attack at the Lower Sioux Agency\nThe Attack at the Lower Sioux Agency was the first organized attack led by Dakota leader Little Crow in Minnesota on August 18, 1862, and is considered the initial engagement of the Dakota War of 1862. It resulted in 13 settler deaths, and seven more killed while fleeing the agency for Fort Ridgely. Tensions had run high in the weeks leading up to the attack. Many eastern Dakota were angered by the refusal of traders to extend credit during a summer of starvation and hardship, and the failure of the United States Indian agents to deliver annuity payments as required by treaty. The initial attack on the Lower Sioux Agency by a faction of the eastern Dakota focused on the four trading stores, which they proceeded to raid for flour, pork, clothing, whiskey, guns, and ammunition. The attack at the Lower Agency was followed by the Battle of Redwood Ferry. Violence soon spread to isolated farms and settlements in Brown and Renville Counties, with an estimated 200 settlers killed and another 200 captured. Some settlers' lives were saved after they were warned by the Dakota to flee.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 918,
+      "output_tokens": 62,
+      "cache_read_tokens": 0,
+      "latency_s": 2.2105554579757154
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "The Great Sioux Uprising in 1862 was led by **Little Crow**, a Dakota leader. This conflict is also known as the Dakota War of 1862 or Little Crow's War. It began on August 18, 1862, when Little Crow led the attack on the Lower Sioux Agency and white settlements along the Minnesota River valley in southwest Minnesota, as the Dakota faced starvation and displacement.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1751,
+      "output_tokens": 95,
+      "cache_read_tokens": 0,
+      "latency_s": 1.0922061250312254
+    }
+  ]
+}

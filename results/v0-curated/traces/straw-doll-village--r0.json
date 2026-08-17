@@ -1,0 +1,106 @@
+{
+  "question": "Which Japanese village is known for having more life-size straw dolls than residents?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on the search results, the village is **Nagoro** (also known as Nagoro Doll Village), located in the Iya Valley in Miyoshi, Tokushima Prefecture on the island of Shikoku in Japan.\n\nAccording to the Wikipedia article \"Nagoro,\" the village is known for its large number of realistic life-size dolls positioned throughout it. Tsukimi Ayano, a resident who returned to the village in the early 2000s, has created more than 400 dolls (with about 350 currently in the village), while the actual human population has dramatically declined to just 25 residents as of January 2026. This means there are far more life-size straw dolls than residents in the village, making it a notable tourist attraction.",
+  "error": null,
+  "latency_s": 3.653,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "Japanese village straw dolls"
+    ],
+    "shown_titles": [
+      "Japanese dolls",
+      "Nagoro",
+      "Doll"
+    ],
+    "retrieved_titles": [
+      "Japanese dolls",
+      "Nagoro",
+      "Doll",
+      "Straw hat",
+      "Japanese festivals"
+    ],
+    "usage": {
+      "input_tokens": 2641,
+      "output_tokens": 251,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I'll search for information about this Japanese village with straw dolls.",
+      "tool_calls": [
+        {
+          "query": "Japanese village straw dolls",
+          "raw": {
+            "query": "Japanese village straw dolls",
+            "results": [
+              {
+                "title": "Japanese dolls",
+                "url": "https://en.wikipedia.org/wiki/Japanese_dolls",
+                "extract": "Japanese dolls (\u4eba\u5f62, ningy\u014d; lit. 'human form') are one of the traditional Japanese crafts. There are various types of traditional dolls, some representing children and babies, some the imperial court, warriors and heroes, fairy-tale characters, gods and (rarely) demons, and also people of the daily life of Japanese cities. Many have a long tradition and are still made today for household shrines, formal gift-giving, or for festival celebrations such as Hinamatsuri, the doll festival, or Kodomo no Hi, Children's Day. Some are manufactured as a local craft, to be purchased by pilgrims as a souvenir of a temple visit or some other trip.",
+                "pageid": 494839
+              },
+              {
+                "title": "Nagoro",
+                "url": "https://en.wikipedia.org/wiki/Nagoro",
+                "extract": "Nagoro (Japanese: \u540d\u9803), now known as Nagoro Doll Village (\u540d\u9803\u304b\u304b\u3057\u306e\u91cc, Nagoro Kakashi-no-sato; lit. 'Nagaro Scarecrow village'), is a village in the Iya Valley in the city of Miyoshi, Tokushima Prefecture in the island of Shikoku in Japan. It is known for the large number of realistic dolls positioned throughout the village, which have made it a tourist attraction. The village is located on Route 439 in the Iya Valley, in a remote mountainous area of in Higashiiyasugeoi-ch\u014d, Miyoshi, Tokushima. It formerly had about 300 inhabitants, but the decline in Japan's population has caused that to fall to 35 by January 2015, 30 as of August 2016, , 27 by September 2019, and 25 by January 2026. In the early 2000s, Tsukimi Ayano, whose family left the area when she was a child, moved back to Nagoro to look after her father, and made a doll in his likeness that she placed in a field. She has since made more than 400, including replacements, and about 350 are in the village. Many are also likenesses of residents or former residents, while others are invented people. Soon, others followed in Ayano's footsteps. The village school, which closed in 2012, includes a large number of dolls; in one classroom, two children are self-portraits by the last two students to study there, who dressed them in their own clothes. [...]",
+                "pageid": 51470754
+              },
+              {
+                "title": "Doll",
+                "url": "https://en.wikipedia.org/wiki/Doll",
+                "extract": "A doll is a model typically of a human or humanoid character, often used as a toy for children. Dolls have also been used in traditional religious rituals throughout the world. Traditional dolls made of materials such as clay and wood are found in the Americas, Asia, Africa and Europe. The earliest documented dolls go back to the ancient civilizations of Egypt, Greece, and Rome. They have been made as crude, rudimentary playthings as well as elaborate art. Modern doll manufacturing has its roots in Germany, from the 15th century. With industrialization and new materials such as porcelain and plastic, dolls were increasingly mass-produced. During the 20th century, dolls became increasingly popular as collectibles.",
+                "pageid": 166622
+              },
+              {
+                "title": "Straw hat",
+                "url": "https://en.wikipedia.org/wiki/Straw_hat",
+                "extract": "A straw hat is a wide-brimmed hat that is woven out of straw or straw-like synthetic materials. Straw hats are a type of sun hat designed to shade the head and face from direct sunlight, but are also used in fashion as a decorative element or a uniform.",
+                "pageid": 553696
+              },
+              {
+                "title": "Japanese festivals",
+                "url": "https://en.wikipedia.org/wiki/Japanese_festivals",
+                "extract": "Japanese festivals, or matsuri (Japanese: \u796d\u308a), are traditional festive occasions often celebrated with dance and music in Japan. The origin of the word matsuri is related to the kami (\u795e, Shinto deities); there are theories that the word matsuri is derived from matsu (\u5f85\u3064) meaning \"to wait (for the kami to descend)\", tatematsuru (\u732e\u308b) meaning \"to make offerings to the kami\", and matsurau (\u5949\u3046) meaning \"to obey the kami\". The theory that it is derived from matsurau is the most popular. It is estimated that there are between 100,000 and 300,000 festivals across Japan, generating an annual economic impact of 530 billion yen as of 2019. As of 2024, 33 of these festivals have been registered as UNESCO Intangible Cultural Heritage Lists as \"Yama, Hoko, Yatai, float festivals in Japan\". Various folk dances, costume processions, kagura, dengaku, bugaku, and noh performed at festivals are also registered as UNESCO Intangible Cultural Heritage Lists. For example, 41 folk dances including bon odori from various regions of Japan are registered as \"Furyu-odori\" and 10 costume processions including namahage are registered as \"Raih\u014d-shin\". Japanese festivals reflect the unique religious beliefs of the Japanese people, who worship onry\u014d (\u6028\u970a, vengeful spirits) and violent kami, based on the background of Japan's frequent natural disasters. [...]",
+                "pageid": 147705
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Japanese dolls\nJapanese dolls (\u4eba\u5f62, ningy\u014d; lit. 'human form') are one of the traditional Japanese crafts. There are various types of traditional dolls, some representing children and babies, some the imperial court, warriors and heroes, fairy-tale characters, gods and (rarely) demons, and also people of the daily life of Japanese cities. Many have a long tradition and are still made today for household shrines, formal gift-giving, or for festival celebrations such as Hinamatsuri, the doll festival, or Kodomo no Hi, Children's Day. Some are manufactured as a local craft, to be purchased by pilgrims as a souvenir of a temple visit or some other trip.\n\n[2] Nagoro\nNagoro (Japanese: \u540d\u9803), now known as Nagoro Doll Village (\u540d\u9803\u304b\u304b\u3057\u306e\u91cc, Nagoro Kakashi-no-sato; lit. 'Nagaro Scarecrow village'), is a village in the Iya Valley in the city of Miyoshi, Tokushima Prefecture in the island of Shikoku in Japan. It is known for the large number of realistic dolls positioned throughout the village, which have made it a tourist attraction. The village is located on Route 439 in the Iya Valley, in a remote mountainous area of in Higashiiyasugeoi-ch\u014d, Miyoshi, Tokushima. It formerly had about 300 inhabitants, but the decline in Japan's population has caused that to fall to 35 by January 2015, 30 as of August 2016, , 27 by September 2019, and 25 by January 2026. In the early 2000s, Tsukimi Ayano, whose family left the area when she was a child, moved back to Nagoro to look after her father, and made a doll in his likeness that she placed in a field. She has since made more than 400, including replacements, and about 350 are in the village. Many are also likenesses of residents or former residents, while others are invented people. Soon, others followed in Ayano's footsteps. The village school, which closed in 2012, includes a large number of dolls; in one classroom, two children are self-portraits by the last two students to study there, who dressed them in their own clothes. [...]\n\n[3] Doll\nA doll is a model typically of a human or humanoid character, often used as a toy for children. Dolls have also been used in traditional religious rituals throughout the world. Traditional dolls made of materials such as clay and wood are found in the Americas, Asia, Africa and Europe. The earliest documented dolls go back to the ancient civilizations of Egypt, Greece, and Rome. They have been made as crude, rudimentary playthings as well as elaborate art. Modern doll manufacturing has its roots in Germany, from the 15th century. With industrialization and new materials such as porcelain and plastic, dolls were increasingly mass-produced. During the 20th century, dolls became increasingly popular as collectibles.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 925,
+      "output_tokens": 74,
+      "cache_read_tokens": 0,
+      "latency_s": 0.830876707972493
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Based on the search results, the village is **Nagoro** (also known as Nagoro Doll Village), located in the Iya Valley in Miyoshi, Tokushima Prefecture on the island of Shikoku in Japan.\n\nAccording to the Wikipedia article \"Nagoro,\" the village is known for its large number of realistic life-size dolls positioned throughout it. Tsukimi Ayano, a resident who returned to the village in the early 2000s, has created more than 400 dolls (with about 350 currently in the village), while the actual human population has dramatically declined to just 25 residents as of January 2026. This means there are far more life-size straw dolls than residents in the village, making it a notable tourist attraction.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1716,
+      "output_tokens": 177,
+      "cache_read_tokens": 0,
+      "latency_s": 2.821185999957379
+    }
+  ]
+}

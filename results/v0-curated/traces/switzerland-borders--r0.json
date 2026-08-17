@@ -1,0 +1,106 @@
+{
+  "question": "Which countries border Switzerland?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "According to the Wikipedia article on Switzerland, the countries that border Switzerland are:\n\n1. **Germany** (to the north)\n2. **France** (to the west)\n3. **Austria** (to the east)\n4. **Liechtenstein** (to the east)\n5. **Italy** (to the south)",
+  "error": null,
+  "latency_s": 2.23,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "Switzerland"
+    ],
+    "shown_titles": [
+      "Switzerland",
+      "Swiss",
+      "Languages of Switzerland"
+    ],
+    "retrieved_titles": [
+      "Switzerland",
+      "Swiss",
+      "Languages of Switzerland",
+      "Economy of Switzerland",
+      "Flag of Switzerland"
+    ],
+    "usage": {
+      "input_tokens": 2542,
+      "output_tokens": 130,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Switzerland",
+          "raw": {
+            "query": "Switzerland",
+            "results": [
+              {
+                "title": "Switzerland",
+                "url": "https://en.wikipedia.org/wiki/Switzerland",
+                "extract": "Switzerland, officially the Swiss Confederation, is a landlocked country located at the intersection of Central, Western, and Southern Europe. It is bordered by Germany to the north, France to the west, Austria and Liechtenstein to the east, and Italy to the south. Switzerland is geographically divided among the Swiss Alps, the Swiss Plateau, and the Jura Mountains; the Alps cover most of the country's territory, whereas the majority of its 9 million people are concentrated on the plateau, which hosts many of the largest cities and economic centres, including Zurich, Geneva, Basel, Bern, Lausanne, Winterthur, and Lucerne. Switzerland is a federal republic composed of 26 cantons, with Bern serving as the federal city and the seat of the national government. The country encompasses four principal linguistic and cultural regions\u2014German, French, Italian, and Romansh\u2014reflecting a long-standing tradition of multilingualism and cultural pluralism. Swiss national identity nonetheless remains fairly cohesive, rooted in a shared historical background, common values such as federalism and direct democracy, and Alpine symbolism. Swiss nationhood transcends language, ethnicity, and religion, leading to Switzerland being described as a Willensnation (\"nation of volition\") rather than a conventional nation state. [...]",
+                "pageid": 26748
+              },
+              {
+                "title": "Swiss",
+                "url": "https://en.wikipedia.org/wiki/Swiss",
+                "extract": "Swiss most commonly refers to: the adjectival form of Switzerland Swiss people Swiss may also refer to:",
+                "pageid": 1251655
+              },
+              {
+                "title": "Languages of Switzerland",
+                "url": "https://en.wikipedia.org/wiki/Languages_of_Switzerland",
+                "extract": "The four national languages of Switzerland are German, French, Italian, and Romansh. German, French, and Italian maintain equal status as official languages at the national level within the federal administration of the Swiss Confederation, while Romansh is used in dealings with people who speak it. Latin is occasionally used in some formal contexts, particularly to denote the country (Confoederatio Helvetica). In 2020, 62.3% of the population of Switzerland were native speakers of German (either Swiss or Standard German) at home; 22.8% French (mostly Swiss French, but including some Franco-Proven\u00e7al dialects); 8% Italian (mostly Swiss Italian, but including Lombard); and 0.5% Romansh. The German region (Deutschschweiz) is roughly in the east, north, and centre; the French part (la Romandie) in the west; and the Italian area (Svizzera italiana) in the south. There remains a small Romansh-speaking native population in Grisons in the east. The cantons of Fribourg, Bern, and Valais are officially bilingual; Grisons is officially trilingual. English is widely spoken as a second language across Switzerland, and many Anglophone migrants live in Switzerland. It is often used as a lingua franca as Switzerland has four official languages. Because of this, English is often used in advertisements in Switzerland, and many businesses and companies in Switzerland, even if they only operate domestically, have names that use English words.",
+                "pageid": 27470
+              },
+              {
+                "title": "Economy of Switzerland",
+                "url": "https://en.wikipedia.org/wiki/Economy_of_Switzerland",
+                "extract": "Switzerland has a highly developed free-market economy. The Swiss economy has ranked first in the world since 2015 on the Global Innovation Index and third in the 2020 Global Competitiveness Report. According to United Nations data for 2016, it is the third richest landlocked country in the world after Liechtenstein and Luxembourg. Together with the latter and Norway, they are the only three countries in the world with a nominal GDP per capita above US$90,000 that are neither island nations nor ministates. Among OECD nations, Switzerland holds the 3rd-largest GDP per capita. Switzerland has a highly efficient and strong social security system; social expenditure stood at roughly 24.1% of GDP.",
+                "pageid": 27465
+              },
+              {
+                "title": "Flag of Switzerland",
+                "url": "https://en.wikipedia.org/wiki/Flag_of_Switzerland",
+                "extract": "The national flag of Switzerland displays a white Greek cross in the centre of a red field. The white cross is known as the Swiss cross or the federal cross. Its arms are rectangular, with a ratio of height to width of 7:6 for the vertical arms and 6:7 for the horizontal arms. The size of the cross in relation to the field was set in 2017 as 5:8. The Swiss flag is square, instead of the rectangular shape typical for national flags. The white cross has been used as the field sign (attached to the clothing of combatants and to the cantonal war flags in the form of strips of linen) of the Old Swiss Confederacy since its formation in the late 13th or early 14th century. Its symbolism was described by the Swiss Federal Council in 1889 as representing \"at the same the Christian cross symbol and the field sign of the Old Confederacy\". As a national ensign, it was first used during the Napoleonic Wars by general Niklaus Franz von Bachmann, and as regimental flag of all cantonal troops from 1841. The federal coat of arms (eidgen\u00f6ssisches Wappen) was defined in 1815 for the Restored Confederacy as the white-on-red Swiss cross in a heraldic shield. The current design was used together with a cross composed of five squares until 1889, when its dimensions were officially set. [...]",
+                "pageid": 318209
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Switzerland\nSwitzerland, officially the Swiss Confederation, is a landlocked country located at the intersection of Central, Western, and Southern Europe. It is bordered by Germany to the north, France to the west, Austria and Liechtenstein to the east, and Italy to the south. Switzerland is geographically divided among the Swiss Alps, the Swiss Plateau, and the Jura Mountains; the Alps cover most of the country's territory, whereas the majority of its 9 million people are concentrated on the plateau, which hosts many of the largest cities and economic centres, including Zurich, Geneva, Basel, Bern, Lausanne, Winterthur, and Lucerne. Switzerland is a federal republic composed of 26 cantons, with Bern serving as the federal city and the seat of the national government. The country encompasses four principal linguistic and cultural regions\u2014German, French, Italian, and Romansh\u2014reflecting a long-standing tradition of multilingualism and cultural pluralism. Swiss national identity nonetheless remains fairly cohesive, rooted in a shared historical background, common values such as federalism and direct democracy, and Alpine symbolism. Swiss nationhood transcends language, ethnicity, and religion, leading to Switzerland being described as a Willensnation (\"nation of volition\") rather than a conventional nation state. [...]\n\n[2] Swiss\nSwiss most commonly refers to: the adjectival form of Switzerland Swiss people Swiss may also refer to:\n\n[3] Languages of Switzerland\nThe four national languages of Switzerland are German, French, Italian, and Romansh. German, French, and Italian maintain equal status as official languages at the national level within the federal administration of the Swiss Confederation, while Romansh is used in dealings with people who speak it. Latin is occasionally used in some formal contexts, particularly to denote the country (Confoederatio Helvetica). In 2020, 62.3% of the population of Switzerland were native speakers of German (either Swiss or Standard German) at home; 22.8% French (mostly Swiss French, but including some Franco-Proven\u00e7al dialects); 8% Italian (mostly Swiss Italian, but including Lombard); and 0.5% Romansh. The German region (Deutschschweiz) is roughly in the east, north, and centre; the French part (la Romandie) in the west; and the Italian area (Svizzera italiana) in the south. There remains a small Romansh-speaking native population in Grisons in the east. The cantons of Fribourg, Bern, and Valais are officially bilingual; Grisons is officially trilingual. English is widely spoken as a second language across Switzerland, and many Anglophone migrants live in Switzerland. It is often used as a lingua franca as Switzerland has four official languages. Because of this, English is often used in advertisements in Switzerland, and many businesses and companies in Switzerland, even if they only operate domestically, have names that use English words.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 912,
+      "output_tokens": 54,
+      "cache_read_tokens": 0,
+      "latency_s": 0.9904300420312211
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "According to the Wikipedia article on Switzerland, the countries that border Switzerland are:\n\n1. **Germany** (to the north)\n2. **France** (to the west)\n3. **Austria** (to the east)\n4. **Liechtenstein** (to the east)\n5. **Italy** (to the south)",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1630,
+      "output_tokens": 76,
+      "cache_read_tokens": 0,
+      "latency_s": 1.2378493750002235
+    }
+  ]
+}

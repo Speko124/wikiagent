@@ -50,9 +50,14 @@ def _metrics(rows: list[dict]) -> dict:
         if (r.get("judge") or {}).get("correctness", {}).get("verdict")
         in ("correct", "incorrect")
     ]
+    # Only rows the matcher actually scored can disagree with the judge.
+    # `bool(None)` is False, so an unscorable abstention case would otherwise
+    # read as "matcher said wrong, judge said right" on every single run - the
+    # None-is-not-False rule, violated in the one place it was being reported.
     clashes = [
         r for r in judged
-        if (r["judge"]["correctness"]["verdict"] == "correct") != bool(r["answer_match"])
+        if r.get("answer_match") is not None
+        and (r["judge"]["correctness"]["verdict"] == "correct") != r["answer_match"]
     ]
     return {
         "runs": len(rows),
@@ -97,6 +102,57 @@ def _cross_tab(rows: list[dict]) -> dict[str, int]:
             else "evidence unused" if e else "neither"
         ] += 1
     return cells
+
+
+FUNNEL_STAGES = (
+    "correct, grounded",
+    "correct, evidence not checkable",
+    "5 grounding: answered from memory",
+    "4 synthesis: had the evidence, answered wrong",
+    "3 evidence: right article, fact not in the retrieved text",
+    "2 retrieval: the answer-bearing article never surfaced",
+    "1 query: did not search at all",
+    "not scorable (abstention cases)",
+)
+
+
+def funnel(rows: list[dict]) -> dict[str, int]:
+    """Attribute each run to a funnel stage, from exact signals only.
+
+    Iteration 0 needed a human to read 31 traces to produce this. It is now
+    three booleans, which is what makes it repeatable every sweep instead of
+    once per phase.
+
+    `gold_shown` earns its keep here and nowhere else: it is what separates
+    "the right article never came back" (stage 2) from "it came back and the
+    fact wasn't in the part we fetched" (stage 3) — the distinction the whole
+    read pass turned on, and the two have completely different fixes.
+    """
+    out = dict.fromkeys(FUNNEL_STAGES, 0)
+    for r in rows:
+        if r.get("error"):
+            continue
+        answer, evidence = r.get("answer_match"), r.get("evidence_match")
+        if answer is None:
+            out["not scorable (abstention cases)"] += 1
+        elif answer and evidence:
+            out["correct, grounded"] += 1
+        elif answer and evidence is None:
+            # No evidence spec exists for this case - turing-nobel's evidence
+            # is an absence. Unknown grounding, NOT ungrounded: calling it
+            # "from memory" would invent a failure out of a missing check.
+            out["correct, evidence not checkable"] += 1
+        elif answer:
+            out["5 grounding: answered from memory"] += 1
+        elif evidence:
+            out["4 synthesis: had the evidence, answered wrong"] += 1
+        elif not r.get("searched"):
+            out["1 query: did not search at all"] += 1
+        elif r.get("gold_shown"):
+            out["3 evidence: right article, fact not in the retrieved text"] += 1
+        else:
+            out["2 retrieval: the answer-bearing article never surfaced"] += 1
+    return out
 
 
 def _buckets(rows: list[dict]) -> list[tuple[str, int, int]]:
@@ -166,6 +222,15 @@ def compare(curated_dir, holdout_dir=None) -> str:
     for cell, meaning in meanings.items():
         h = hld["_cross"][cell] if hld else "—"
         out.append(f"| {cell} | {meaning} | {cur['_cross'][cell]} | {h} |")
+    out += [""]
+
+    out += ["## Funnel", "",
+            "Computed from `answer_match`, `evidence_match` and `searched` — the "
+            "same attribution the read pass needed a human to make.", "",
+            "| Stage | Curated | Holdout |", "|---|---|---|"]
+    cur_f, hld_f = funnel(cur_rows), funnel(hld_rows) if hld_rows else {}
+    for stage in FUNNEL_STAGES:
+        out.append(f"| {stage} | {cur_f[stage]} | {hld_f.get(stage, '—')} |")
     out += [""]
 
     # --- curated only, by case ---

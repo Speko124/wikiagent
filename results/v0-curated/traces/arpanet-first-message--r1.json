@@ -1,0 +1,159 @@
+{
+  "question": "What was the first message sent over the internet?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on the search results, the first message sent over the internet was an **email** sent in 1971 by **Ray Tomlinson** between two computers on the ARPANET. According to the \"History of email\" article, Tomlinson sent the first mail message between two computers on the ARPANET and introduced the now-familiar address syntax with the '@' symbol designating the user's system address.",
+  "error": null,
+  "latency_s": 3.317,
+  "summary": {
+    "searched": true,
+    "n_searches": 2,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "first message internet",
+      "ARPANET first transmission"
+    ],
+    "shown_titles": [
+      "Internet Control Message Protocol",
+      "Message transfer agent",
+      "Internet Message Access Protocol",
+      "ARPANET",
+      "SATNET",
+      "History of email"
+    ],
+    "retrieved_titles": [
+      "Internet Control Message Protocol",
+      "Message transfer agent",
+      "Internet Message Access Protocol",
+      "Internet forum",
+      "Email",
+      "ARPANET",
+      "SATNET",
+      "History of email",
+      "Transmission line",
+      "Internet"
+    ],
+    "usage": {
+      "input_tokens": 3210,
+      "output_tokens": 191,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "first message internet",
+          "raw": {
+            "query": "first message internet",
+            "results": [
+              {
+                "title": "Internet Control Message Protocol",
+                "url": "https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol",
+                "extract": "The Internet Control Message Protocol (ICMP) is a supporting protocol in the Internet protocol suite. It is used by network devices, including routers, to send error messages and operational information indicating success or failure when communicating with another IP address. For example, an error is indicated when a requested service is not available or that a host or router could not be reached. ICMP differs from transport protocols such as TCP and UDP in that it is not typically used to exchange data between systems, nor is it regularly employed by end-user network applications (with the exception of some diagnostic tools like ping and traceroute). A separate Internet Control Message Protocol (called ICMPv6) is used with IPv6.",
+                "pageid": 15107
+              },
+              {
+                "title": "Message transfer agent",
+                "url": "https://en.wikipedia.org/wiki/Message_transfer_agent",
+                "extract": "Within the Internet email system, a message transfer agent (MTA), mail transfer agent, or mail relay is software that transfers electronic mail messages from one computer to another using the Simple Mail Transfer Protocol. In some contexts, the alternative names mail server, mail exchanger, or MX host are used to describe an MTA. Messages exchanged across networks are passed between mail servers, including any attached data files (such as images, multimedia, or documents). These servers often keep mailboxes for email. Access to this email by end users is typically either by webmail or an email client.",
+                "pageid": 20624
+              },
+              {
+                "title": "Internet Message Access Protocol",
+                "url": "https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol",
+                "extract": "In computing, the Internet Message Access Protocol (IMAP) is an Internet standard protocol used by email clients to retrieve email messages from a mail server over a TCP/IP connection. IMAP is defined by RFC 9051. IMAP was designed with the goal of permitting complete management of an email box by multiple email clients; therefore, clients generally leave messages on the server until the user explicitly deletes them. An IMAP server typically listens on port number 143. IMAP over SSL/TLS (IMAPS) is assigned the port number 993. Virtually all modern e-mail clients and servers support IMAP, which along with the earlier POP3 (Post Office Protocol) are the two most prevalent standard protocols for email retrieval. Many webmail service providers such as Gmail and Outlook.com also support both IMAP and POP3.",
+                "pageid": 14837
+              },
+              {
+                "title": "Internet forum",
+                "url": "https://en.wikipedia.org/wiki/Internet_forum",
+                "extract": "An Internet forum, or message board, is an online discussion platform where people can hold conversations in the form of posted messages. They differ from chat rooms in that messages are often longer than one line of text, and are at least temporarily archived. Also, depending on the access level of a user or the forum set-up, a posted message might need to be approved by a moderator before it becomes publicly visible. The name comes from the forums of Ancient Rome. Forums have a specific set of jargon associated with them; for example, a single conversation is called a \"thread\" or \"topic\". A discussion forum is hierarchical or tree-like in structure; a forum can contain a number of sub-forums, each of which may have several topics. Depending on the forum's settings, users can be anonymous or have to register with the forum and then subsequently log in to post messages. On most forums, users do not have to log in to read existing messages.",
+                "pageid": 294813
+              },
+              {
+                "title": "Email",
+                "url": "https://en.wikipedia.org/wiki/Email",
+                "extract": "Electronic mail (usually shortened to email; alternatively hyphenated e-mail) is a method of transmitting and receiving digital messages using electronic devices over a computer network. It was conceived in the late\u201320th century as the digital version of, or counterpart to, mail (hence e- + mail). Email is a ubiquitous and very widely used communication medium; in current use, an email address (commonly local-part + @ + domain name) is often treated as a basic and necessary part of many processes in business, commerce, government, education, entertainment, and other spheres of daily life in most countries. Email operates across computer networks, primarily the Internet, and also local area networks. Today's email systems are based on a store-and-forward model. Email servers accept, forward, deliver, and store messages. Neither the users nor their computers are required to be online simultaneously; they need to connect, typically to a mail server or a webmail interface to send or receive messages or download it. Originally a text-only ASCII communications medium, Internet email was extended by MIME to carry text in expanded character sets and multimedia content such as images. International email, with internationalized email addresses using UTF-8, is standardized but not widely adopted.",
+                "pageid": 9738
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.565
+          },
+          "rendered": "[1] Internet Control Message Protocol\nThe Internet Control Message Protocol (ICMP) is a supporting protocol in the Internet protocol suite. It is used by network devices, including routers, to send error messages and operational information indicating success or failure when communicating with another IP address. For example, an error is indicated when a requested service is not available or that a host or router could not be reached. ICMP differs from transport protocols such as TCP and UDP in that it is not typically used to exchange data between systems, nor is it regularly employed by end-user network applications (with the exception of some diagnostic tools like ping and traceroute). A separate Internet Control Message Protocol (called ICMPv6) is used with IPv6.\n\n[2] Message transfer agent\nWithin the Internet email system, a message transfer agent (MTA), mail transfer agent, or mail relay is software that transfers electronic mail messages from one computer to another using the Simple Mail Transfer Protocol. In some contexts, the alternative names mail server, mail exchanger, or MX host are used to describe an MTA. Messages exchanged across networks are passed between mail servers, including any attached data files (such as images, multimedia, or documents). These servers often keep mailboxes for email. Access to this email by end users is typically either by webmail or an email client.\n\n[3] Internet Message Access Protocol\nIn computing, the Internet Message Access Protocol (IMAP) is an Internet standard protocol used by email clients to retrieve email messages from a mail server over a TCP/IP connection. IMAP is defined by RFC 9051. IMAP was designed with the goal of permitting complete management of an email box by multiple email clients; therefore, clients generally leave messages on the server until the user explicitly deletes them. An IMAP server typically listens on port number 143. IMAP over SSL/TLS (IMAPS) is assigned the port number 993. Virtually all modern e-mail clients and servers support IMAP, which along with the earlier POP3 (Post Office Protocol) are the two most prevalent standard protocols for email retrieval. Many webmail service providers such as Gmail and Outlook.com also support both IMAP and POP3.",
+          "top_k": 3
+        },
+        {
+          "query": "ARPANET first transmission",
+          "raw": {
+            "query": "ARPANET first transmission",
+            "results": [
+              {
+                "title": "ARPANET",
+                "url": "https://en.wikipedia.org/wiki/ARPANET",
+                "extract": "The Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency (now DARPA) of the United States Department of Defense. Building on the ideas of J. C. R. Licklider, Bob Taylor initiated the ARPANET project in 1966 to enable resource sharing between remote computers. Taylor appointed Larry Roberts as program manager. Roberts made the key decisions about the request for proposal to build the network. He incorporated Donald Davies' concepts and designs for packet switching, and sought input from Paul Baran. In 1969, ARPA awarded the contract to build the Interface Message Processors (IMPs) for the network to Bolt Beranek & Newman (BBN). The design was led by Bob Kahn who developed the first protocol for the network. Roberts engaged Leonard Kleinrock at UCLA to develop mathematical methods for analyzing the packet network technology. The first computers were connected in 1969 and the Network Control Program was implemented in 1970, development of which was led by Steve Crocker at UCLA and other graduate students, including Jon Postel. The network was declared operational in 1971. Further software development enabled remote login and file transfer, which was used to provide an early form of email. [...]",
+                "pageid": 253111
+              },
+              {
+                "title": "SATNET",
+                "url": "https://en.wikipedia.org/wiki/SATNET",
+                "extract": "SATNET, also known as the Atlantic Packet Satellite Network, was an early satellite network that formed an initial segment of the Internet. It was implemented by BBN Technologies under the direction of ARPA. The first heterogeneous computer network was implemented in 1973, connecting the ARPANET to University College London. This evolved into SATNET. The first Transmission Control Program demonstration, linking SATNET, the ARPANET, and PRNET took place on November 22, 1977.",
+                "pageid": 60775433
+              },
+              {
+                "title": "History of email",
+                "url": "https://en.wikipedia.org/wiki/History_of_email",
+                "extract": "The history of email entails an evolving set of technologies and standards that culminated in the email systems in use today. Computer-based messaging between users of the same system became possible following the advent of time-sharing in the early 1960s, with a notable implementation by MIT's CTSS project in 1965. Informal methods of using shared files to pass messages were soon expanded into the first mail systems. Most developers of early mainframes and minicomputers developed similar, but generally incompatible, mail applications. Over time, a complex web of gateways and routing systems linked many of them. Some systems also supported a form of instant messaging, where sender and receiver needed to be online simultaneously. In 1971, Ray Tomlinson sent the first mail message between two computers on the ARPANET, introducing the now-familiar address syntax with the '@' symbol designating the user's system address. Over a series of RFCs, conventions were refined for sending mail messages over the File Transfer Protocol. Several other email networks developed in the 1970s and expanded subsequently. Proprietary electronic mail systems began to emerge in the 1970s and early 1980s. IBM developed a primitive in-house solution for office automation over the period 1970\u20131972, and replaced it with OFS (Office System), providing mail transfer between individuals, in 1974. [...]",
+                "pageid": 53829635
+              },
+              {
+                "title": "Transmission line",
+                "url": "https://en.wikipedia.org/wiki/Transmission_line",
+                "extract": "In electrical engineering, a transmission line is a specialized cable or other structure designed to conduct electromagnetic waves in a contained manner. The term applies when the conductors are long enough that the wave nature of the transmission must be taken into account. This applies especially to radio-frequency engineering because the short wavelengths mean that wave phenomena arise over very short distances (this can be as short as millimetres depending on frequency). However, the theory of transmission lines was historically developed to explain phenomena on very long telegraph lines, especially submarine telegraph cables. Transmission lines are used for purposes such as connecting radio transmitters and receivers with their antennas (they are then called feed lines or feeders), distributing cable television signals, trunklines routing calls between telephone switching centres, computer network connections and high speed computer data buses. RF engineers commonly use short pieces of transmission line, usually in the form of printed planar transmission lines, arranged in certain patterns to build circuits such as filters. These circuits, known as distributed-element circuits, are an alternative to traditional circuits using discrete capacitors and inductors.",
+                "pageid": 41811
+              },
+              {
+                "title": "Internet",
+                "url": "https://en.wikipedia.org/wiki/Internet",
+                "extract": "The Internet (or internet) is the global system of interconnected computer networks that uses the Internet protocol suite (TCP/IP) to communicate between networks and devices. It is a network of networks that comprises private, public, academic, business, and government networks of local to global scope, linked by electronic, wireless, and optical networking technologies. The Internet carries a vast range of information services and resources, such as the interlinked hypertext documents and applications of the World Wide Web (WWW), electronic mail, discussion groups, internet telephony, streaming media and file sharing. Most traditional communication media, including telephone, radio, television, paper mail, newspapers, and print publishing, have been transformed by the Internet, giving rise to new media such as email, online music, digital newspapers, news aggregators, and audio and video streaming websites. The Internet has enabled and accelerated new forms of personal interaction through instant messaging, Internet forums, and social networking services. Online shopping has also grown to occupy a significant market across industries, enabling firms to extend brick and mortar presences to serve larger markets. Business-to-business and financial services on the Internet affect supply chains across entire industries. [...]",
+                "pageid": 14539
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.529
+          },
+          "rendered": "[1] ARPANET\nThe Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency (now DARPA) of the United States Department of Defense. Building on the ideas of J. C. R. Licklider, Bob Taylor initiated the ARPANET project in 1966 to enable resource sharing between remote computers. Taylor appointed Larry Roberts as program manager. Roberts made the key decisions about the request for proposal to build the network. He incorporated Donald Davies' concepts and designs for packet switching, and sought input from Paul Baran. In 1969, ARPA awarded the contract to build the Interface Message Processors (IMPs) for the network to Bolt Beranek & Newman (BBN). The design was led by Bob Kahn who developed the first protocol for the network. Roberts engaged Leonard Kleinrock at UCLA to develop mathematical methods for analyzing the packet network technology. The first computers were connected in 1969 and the Network Control Program was implemented in 1970, development of which was led by Steve Crocker at UCLA and other graduate students, including Jon Postel. The network was declared operational in 1971. Further software development enabled remote login and file transfer, which was used to provide an early form of email. [...]\n\n[2] SATNET\nSATNET, also known as the Atlantic Packet Satellite Network, was an early satellite network that formed an initial segment of the Internet. It was implemented by BBN Technologies under the direction of ARPA. The first heterogeneous computer network was implemented in 1973, connecting the ARPANET to University College London. This evolved into SATNET. The first Transmission Control Program demonstration, linking SATNET, the ARPANET, and PRNET took place on November 22, 1977.\n\n[3] History of email\nThe history of email entails an evolving set of technologies and standards that culminated in the email systems in use today. Computer-based messaging between users of the same system became possible following the advent of time-sharing in the early 1960s, with a notable implementation by MIT's CTSS project in 1965. Informal methods of using shared files to pass messages were soon expanded into the first mail systems. Most developers of early mainframes and minicomputers developed similar, but generally incompatible, mail applications. Over time, a complex web of gateways and routing systems linked many of them. Some systems also supported a form of instant messaging, where sender and receiver needed to be online simultaneously. In 1971, Ray Tomlinson sent the first mail message between two computers on the ARPANET, introducing the now-familiar address syntax with the '@' symbol designating the user's system address. Over a series of RFCs, conventions were refined for sending mail messages over the File Transfer Protocol. Several other email networks developed in the 1970s and expanded subsequently. Proprietary electronic mail systems began to emerge in the 1970s and early 1980s. IBM developed a primitive in-house solution for office automation over the period 1970\u20131972, and replaced it with OFS (Office System), providing mail transfer between individuals, in 1974. [...]",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 917,
+      "output_tokens": 97,
+      "cache_read_tokens": 0,
+      "latency_s": 1.0367598329903558
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Based on the search results, the first message sent over the internet was an **email** sent in 1971 by **Ray Tomlinson** between two computers on the ARPANET. According to the \"History of email\" article, Tomlinson sent the first mail message between two computers on the ARPANET and introduced the now-familiar address syntax with the '@' symbol designating the user's system address.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 2293,
+      "output_tokens": 94,
+      "cache_read_tokens": 0,
+      "latency_s": 1.1826196670299396
+    }
+  ]
+}

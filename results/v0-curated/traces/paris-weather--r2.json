@@ -1,0 +1,38 @@
+{
+  "question": "What's the weather in Paris right now?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "I don't have access to real-time weather data. I can only search Wikipedia for factual information about topics, people, places, and events.\n\nTo check the current weather in Paris, you would need to use a weather service like:\n- Weather.com\n- Weather.gov\n- Google Weather\n- Your local weather app\n- AccuWeather\n\nHowever, if you'd like to know about Paris itself\u2014its geography, climate patterns, history, or other factual information\u2014I'd be happy to help with that!",
+  "error": null,
+  "latency_s": 2.117,
+  "summary": {
+    "searched": false,
+    "n_searches": 0,
+    "n_turns": 1,
+    "cache_hits": 0,
+    "queries": [],
+    "shown_titles": [],
+    "retrieved_titles": [],
+    "usage": {
+      "input_tokens": 916,
+      "output_tokens": 115,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I don't have access to real-time weather data. I can only search Wikipedia for factual information about topics, people, places, and events.\n\nTo check the current weather in Paris, you would need to use a weather service like:\n- Weather.com\n- Weather.gov\n- Google Weather\n- Your local weather app\n- AccuWeather\n\nHowever, if you'd like to know about Paris itself\u2014its geography, climate patterns, history, or other factual information\u2014I'd be happy to help with that!",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 916,
+      "output_tokens": 115,
+      "cache_read_tokens": 0,
+      "latency_s": 2.117238833976444
+    }
+  ]
+}

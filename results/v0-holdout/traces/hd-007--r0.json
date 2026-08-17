@@ -1,0 +1,106 @@
+{
+  "question": "who wrote are you that somebody by aaliyah",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "According to the Wikipedia article \"Are You That Somebody?\", the song was **written by Static Major and Timbaland**. Timbaland also produced the song and performed a guest rap on it. The song is from the Dr. Dolittle soundtrack (1998).",
+  "error": null,
+  "latency_s": 1.968,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "Are You That Somebody Aaliyah"
+    ],
+    "shown_titles": [
+      "Are You That Somebody?",
+      "Aaliyah",
+      "Somebody (Latto song)"
+    ],
+    "retrieved_titles": [
+      "Are You That Somebody?",
+      "Aaliyah",
+      "Somebody (Latto song)",
+      "List of songs recorded by Aaliyah",
+      "Aaliyah (album)"
+    ],
+    "usage": {
+      "input_tokens": 2743,
+      "output_tokens": 144,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I'll search for information about the Aaliyah song \"Are You That Somebody\".",
+      "tool_calls": [
+        {
+          "query": "Are You That Somebody Aaliyah",
+          "raw": {
+            "query": "Are You That Somebody Aaliyah",
+            "results": [
+              {
+                "title": "Are You That Somebody?",
+                "url": "https://en.wikipedia.org/wiki/Are_You_That_Somebody%3F",
+                "extract": "\"Are You That Somebody?\" is a song by American singer Aaliyah from the Dr. Dolittle soundtrack (1998). It was written by Static Major and Timbaland, with the latter producing it, in addition to performing a guest rap. It was sent to urban contemporary radio stations in the United States on May 26, 1998, by Blackground Records and Atlantic Records. Musically, it is an R&B, pop, and avant-funk song with hip-hop influences. Its production also incorporates other instrumentals such as staccato guitars, beatboxing, and drum and bass. Lyrically, it is about the narrator (Aaliyah) keeping an intimate relationship a secret due to her celebrity status. Upon its release, the song received critical acclaim from music critics, with them praising its off-beat innovative production. In 1999, Aaliyah earned a Grammy Award nomination for Best Female R&B Vocal Performance for the song. Initially, it was ineligible to chart on the Billboard Hot 100, mainly because it was an airplay single not commercially released to retail stores. In December 1998, Billboard changed its policy to allow airplay-only songs to chart on the Hot 100, and the song eventually peaked at number 21. Internationally, the song achieved even greater commercial success, peaking at number one in New Zealand and number three in the Netherlands. It also peaked at number 11 in Canada and the United Kingdom. An accompanying music video for \"Are You That Somebody?\" was directed by Mark Gerard. [...]",
+                "pageid": 6616658
+              },
+              {
+                "title": "Aaliyah",
+                "url": "https://en.wikipedia.org/wiki/Aaliyah",
+                "extract": "Aaliyah Dana Haughton ( ah-LEE-\u0259; January 16, 1979 \u2013 August 25, 2001) was an American singer, actress, dancer, and model. Known as the \"Princess of R&B\" and \"Queen of Urban Pop\", she is credited with helping to redefine contemporary R&B, pop, and hip hop. Her accolades include three American Music Awards and two MTV VMAs, along with five Grammy Award nominations. Born in Brooklyn and raised in Detroit, Aaliyah first gained recognition at the age of 10, when she appeared on the television show Star Search and performed in concert alongside Gladys Knight. At the age of 12, she signed with Jive Records and her uncle Barry Hankerson's Blackground Records. Hankerson introduced her to R. Kelly, who became her mentor, as well as lead songwriter and producer of her debut album, Age Ain't Nothing but a Number (1994). The album sold three million copies in the US and was certified double Platinum by the Recording Industry Association of America (RIAA). Her first single, \"Back & Forth\", rose to number five on the Billboard Hot 100. After allegations of an illegal marriage with Kelly, she ended her contract with Jive and signed with Atlantic Records. Aaliyah worked with record producers Timbaland and Missy Elliott for her second album, One in a Million (1996), which sold three million copies in the US and more than eight million copies worldwide. She made her acting debut in the action film Romeo Must Die. [...]",
+                "pageid": 2144
+              },
+              {
+                "title": "Somebody (Latto song)",
+                "url": "https://en.wikipedia.org/wiki/Somebody_(Latto_song)",
+                "extract": "\"Somebody\" is a single by American rapper Latto, released on May 16, 2025, as the lead single from her fourth studio album, Big Mama (2026). The lyrics interpolate \"Are You That Somebody?\" by Aaliyah and it was produced by Pooh Beatz, Go Grizzly, London Jae, Bryan Yepes, Rex Kudo, BassKid and Bren.",
+                "pageid": 80115090
+              },
+              {
+                "title": "List of songs recorded by Aaliyah",
+                "url": "https://en.wikipedia.org/wiki/List_of_songs_recorded_by_Aaliyah",
+                "extract": "This is an alphabetical list of officially released songs by the late R&B singer Aaliyah (1979\u20132001).",
+                "pageid": 26380333
+              },
+              {
+                "title": "Aaliyah (album)",
+                "url": "https://en.wikipedia.org/wiki/Aaliyah_(album)",
+                "extract": "Aaliyah is the third and final studio album by the American singer Aaliyah. It was released on July 7, 2001, by Blackground Records and Virgin Records. Because of its packaging design, it is also known as \"The Red Album\". Aaliyah started to work on the album in 1998, but rescheduled its recording around her developing film career. She resumed recording in 2000 at Sing Sing Studios in Australia, where she shot her role for the 2002 film Queen of the Damned during the day and recorded songs at night. Additional recording took place at Manhattan Center and Sony Music Studios in New York and Westlake Recording Studios in Los Angeles, among other locations. Through her recording contract with Blackground, the singer worked primarily with the record label's in-house crew of writers and producers, including Bud'da, J. Dub, Rapture, and Eric Seats, as well as longtime collaborator Timbaland. Aaliyah is described in critical commentaries as an album of R&B, neo soul, and dance-pop, while drawing on an array of other genres such as funk, hip-hop, alternative rock, electronica, and Latin music. The album's producers incorporated synthesizer melodies, fragmented beats, distorted guitar, and eccentrically manipulated vocals and song structures, while much of the lyrics were written by singer-songwriter Static Major, who shared a close friendship and strong rapport with Aaliyah. The resulting songs deal with the complexities of romantic love and different stages in a relationship. [...]",
+                "pageid": 1127874
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Are You That Somebody?\n\"Are You That Somebody?\" is a song by American singer Aaliyah from the Dr. Dolittle soundtrack (1998). It was written by Static Major and Timbaland, with the latter producing it, in addition to performing a guest rap. It was sent to urban contemporary radio stations in the United States on May 26, 1998, by Blackground Records and Atlantic Records. Musically, it is an R&B, pop, and avant-funk song with hip-hop influences. Its production also incorporates other instrumentals such as staccato guitars, beatboxing, and drum and bass. Lyrically, it is about the narrator (Aaliyah) keeping an intimate relationship a secret due to her celebrity status. Upon its release, the song received critical acclaim from music critics, with them praising its off-beat innovative production. In 1999, Aaliyah earned a Grammy Award nomination for Best Female R&B Vocal Performance for the song. Initially, it was ineligible to chart on the Billboard Hot 100, mainly because it was an airplay single not commercially released to retail stores. In December 1998, Billboard changed its policy to allow airplay-only songs to chart on the Hot 100, and the song eventually peaked at number 21. Internationally, the song achieved even greater commercial success, peaking at number one in New Zealand and number three in the Netherlands. It also peaked at number 11 in Canada and the United Kingdom. An accompanying music video for \"Are You That Somebody?\" was directed by Mark Gerard. [...]\n\n[2] Aaliyah\nAaliyah Dana Haughton ( ah-LEE-\u0259; January 16, 1979 \u2013 August 25, 2001) was an American singer, actress, dancer, and model. Known as the \"Princess of R&B\" and \"Queen of Urban Pop\", she is credited with helping to redefine contemporary R&B, pop, and hip hop. Her accolades include three American Music Awards and two MTV VMAs, along with five Grammy Award nominations. Born in Brooklyn and raised in Detroit, Aaliyah first gained recognition at the age of 10, when she appeared on the television show Star Search and performed in concert alongside Gladys Knight. At the age of 12, she signed with Jive Records and her uncle Barry Hankerson's Blackground Records. Hankerson introduced her to R. Kelly, who became her mentor, as well as lead songwriter and producer of her debut album, Age Ain't Nothing but a Number (1994). The album sold three million copies in the US and was certified double Platinum by the Recording Industry Association of America (RIAA). Her first single, \"Back & Forth\", rose to number five on the Billboard Hot 100. After allegations of an illegal marriage with Kelly, she ended her contract with Jive and signed with Atlantic Records. Aaliyah worked with record producers Timbaland and Missy Elliott for her second album, One in a Million (1996), which sold three million copies in the US and more than eight million copies worldwide. She made her acting debut in the action film Romeo Must Die. [...]\n\n[3] Somebody (Latto song)\n\"Somebody\" is a single by American rapper Latto, released on May 16, 2025, as the lead single from her fourth studio album, Big Mama (2026). The lyrics interpolate \"Are You That Somebody?\" by Aaliyah and it was produced by Pooh Beatz, Go Grizzly, London Jae, Bryan Yepes, Rex Kudo, BassKid and Bren.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 917,
+      "output_tokens": 81,
+      "cache_read_tokens": 0,
+      "latency_s": 0.8837416659807786
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "According to the Wikipedia article \"Are You That Somebody?\", the song was **written by Static Major and Timbaland**. Timbaland also produced the song and performed a guest rap on it. The song is from the Dr. Dolittle soundtrack (1998).",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1826,
+      "output_tokens": 63,
+      "cache_read_tokens": 0,
+      "latency_s": 1.0827362920390442
+    }
+  ]
+}

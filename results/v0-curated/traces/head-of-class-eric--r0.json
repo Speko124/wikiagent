@@ -1,0 +1,296 @@
+{
+  "question": "who played eric in head of the class",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "I'm not finding specific information about an \"Eric\" character in the Head of the Class Wikipedia articles. The search results are showing me the main information about the show but not detailed cast lists for each character. Based on what Wikipedia provides, I cannot definitively answer who played Eric in Head of the Class. \n\nWould you like me to search for a different aspect of the show, or do you have any other details about the character Eric that might help narrow down the search?",
+  "error": null,
+  "latency_s": 18.259,
+  "summary": {
+    "searched": true,
+    "n_searches": 4,
+    "n_turns": 5,
+    "cache_hits": 0,
+    "queries": [
+      "Head of the Class TV series Eric",
+      "Head of the Class cast members",
+      "Samuel \"Chip\" Testa Head of the Class",
+      "\"Head of the Class\" 1986 television characters"
+    ],
+    "shown_titles": [
+      "Head of the Class",
+      "Snowpiercer (TV series)",
+      "The Head (1994 TV series)",
+      "List of MythBusters cast members",
+      "Anthony Head",
+      "William Finn",
+      "New York Giants",
+      "List of Internet phenomena",
+      "Head of the Class (2021 TV series)",
+      "Howard Hesseman"
+    ],
+    "retrieved_titles": [
+      "Head of the Class",
+      "Snowpiercer (TV series)",
+      "The Head (1994 TV series)",
+      "The Last Ship (TV series)",
+      "Eric Christian Olsen",
+      "List of MythBusters cast members",
+      "Anthony Head",
+      "Head of the Class (2021 TV series)",
+      "List of Bridgerton characters",
+      "William Finn",
+      "New York Giants",
+      "List of Internet phenomena",
+      "History of advertising",
+      "List of Roseanne episodes",
+      "Howard Hesseman",
+      "Khrystyne Haje",
+      "Rain Pryor"
+    ],
+    "usage": {
+      "input_tokens": 12004,
+      "output_tokens": 453,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Head of the Class TV series Eric",
+          "raw": {
+            "query": "Head of the Class TV series Eric",
+            "results": [
+              {
+                "title": "Head of the Class",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class",
+                "extract": "Head of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.",
+                "pageid": 1026760
+              },
+              {
+                "title": "Snowpiercer (TV series)",
+                "url": "https://en.wikipedia.org/wiki/Snowpiercer_(TV_series)",
+                "extract": "Snowpiercer is an American post-apocalyptic dystopian thriller television series that premiered on May 17, 2020, on TNT. It is based on both the 2013 film of the same name, directed by Bong Joon-ho, and the 1982 French graphic novel Le Transperceneige by Jacques Lob, Benjamin Legrand and Jean-Marc Rochette, from which the film was adapted. The series follows the passengers of the Snowpiercer, a gigantic, perpetually moving train that circles the globe carrying the remnants of humanity seven years after the world becomes a frozen wasteland. The series questions class warfare, social injustice and the politics of survival. Jennifer Connelly and Daveed Diggs star alongside Mickey Sumner, Alison Wright, Iddo Goldberg, Susan Park, Katie McGuinness, Sam Otto, Sheila Vand, Mike O'Malley, Annalise Basso, Jaylin Fletcher, Lena Hall and Roberto Urbina. Steven Ogg, Rowan Blanchard and Sean Bean joined the main cast in the second season, both Chelsea Harris and Archie Panjabi joined the main cast in the third season and both Clark Gregg and Michael Aronov joined the main cast in the fourth season. While in development at TNT for over three years, the series faced numerous production issues and delays arising from creative differences between the series' producers and the network. [...]",
+                "pageid": 58726223
+              },
+              {
+                "title": "The Head (1994 TV series)",
+                "url": "https://en.wikipedia.org/wiki/The_Head_(1994_TV_series)",
+                "extract": "The Head is an American adult animated science-fiction television series created by Eric Fogel for MTV. It originated as a science-fiction mini-series that aired under the MTV's Oddities label between 1994 and 1996, and was followed by The Maxx. The series was released on DVD on December 15, 2009.",
+                "pageid": 2418678
+              },
+              {
+                "title": "The Last Ship (TV series)",
+                "url": "https://en.wikipedia.org/wiki/The_Last_Ship_(TV_series)",
+                "extract": "The Last Ship is an American action drama television series, loosely based on the 1988 novel by William Brinkley. The series premiered on TNT on June 22, 2014, and concluded after five seasons on November 11, 2018.",
+                "pageid": 42026999
+              },
+              {
+                "title": "Eric Christian Olsen",
+                "url": "https://en.wikipedia.org/wiki/Eric_Christian_Olsen",
+                "extract": "Eric Christian Olsen (born May 31, 1977) is an American actor. He is known for his portrayals of Investigator Marty Deeks on the CBS television series NCIS: Los Angeles, Austin in the film Not Another Teen Movie, Lloyd Christmas in Dumb and Dumberer: When Harry Met Lloyd and as producer/executive producer on the 2024 reboot of Matlock.",
+                "pageid": 3316772
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.498
+          },
+          "rendered": "[1] Head of the Class\nHead of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.\n\n[2] Snowpiercer (TV series)\nSnowpiercer is an American post-apocalyptic dystopian thriller television series that premiered on May 17, 2020, on TNT. It is based on both the 2013 film of the same name, directed by Bong Joon-ho, and the 1982 French graphic novel Le Transperceneige by Jacques Lob, Benjamin Legrand and Jean-Marc Rochette, from which the film was adapted. The series follows the passengers of the Snowpiercer, a gigantic, perpetually moving train that circles the globe carrying the remnants of humanity seven years after the world becomes a frozen wasteland. The series questions class warfare, social injustice and the politics of survival. Jennifer Connelly and Daveed Diggs star alongside Mickey Sumner, Alison Wright, Iddo Goldberg, Susan Park, Katie McGuinness, Sam Otto, Sheila Vand, Mike O'Malley, Annalise Basso, Jaylin Fletcher, Lena Hall and Roberto Urbina. Steven Ogg, Rowan Blanchard and Sean Bean joined the main cast in the second season, both Chelsea Harris and Archie Panjabi joined the main cast in the third season and both Clark Gregg and Michael Aronov joined the main cast in the fourth season. While in development at TNT for over three years, the series faced numerous production issues and delays arising from creative differences between the series' producers and the network. [...]\n\n[3] The Head (1994 TV series)\nThe Head is an American adult animated science-fiction television series created by Eric Fogel for MTV. It originated as a science-fiction mini-series that aired under the MTV's Oddities label between 1994 and 1996, and was followed by The Maxx. The series was released on DVD on December 15, 2009.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 915,
+      "output_tokens": 60,
+      "cache_read_tokens": 0,
+      "latency_s": 1.1244056660216302
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "I can see information about \"Head of the Class,\" but the search results don't list the specific character Eric or the actor who played him. Let me search more specifically for the cast of Head of the Class.",
+      "tool_calls": [
+        {
+          "query": "Head of the Class cast members",
+          "raw": {
+            "query": "Head of the Class cast members",
+            "results": [
+              {
+                "title": "Head of the Class",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class",
+                "extract": "Head of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.",
+                "pageid": 1026760
+              },
+              {
+                "title": "List of MythBusters cast members",
+                "url": "https://en.wikipedia.org/wiki/List_of_MythBusters_cast_members",
+                "extract": "This is a list of cast members of the television series MythBusters on the Discovery Channel. In addition to the core cast members, the MythBusters team includes several honorary MythBusters, and some recurring guests.",
+                "pageid": 4987674
+              },
+              {
+                "title": "Anthony Head",
+                "url": "https://en.wikipedia.org/wiki/Anthony_Head",
+                "extract": "Anthony Stewart Head (20 February 1954 \u2013 1 June 2026) was an English actor and singer. Primarily a performer in musical theatre, he rose to fame in the United Kingdom in the 1980s following his role in the Gold Blend couple television advertisements for Nescaf\u00e9, which led to major roles in several television series. Head was best known for his role as Rupert Giles in Buffy the Vampire Slayer (1997\u20132003), as well as the prime minister in Little Britain (2003\u20132006), Uther Pendragon in Merlin (2008\u20132012), and Rupert Mannion in Ted Lasso (2020\u20132023). He was also known for his distinctive baritone voice, in advertising and voice roles such as Herc Shipwright in BBC Radio 4's Cabin Pressure (2011\u20132014). His film career included roles in Persuasion (2007), Ghost Rider: Spirit of Vengeance, The Iron Lady (both 2011), and Percy Jackson: Sea of Monsters (2013).",
+                "pageid": 18940639
+              },
+              {
+                "title": "Head of the Class (2021 TV series)",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class_(2021_TV_series)",
+                "extract": "Head of the Class is an American sitcom developed by Amy Pocha and Seth Cohen that was released on the streaming service HBO Max on November 4, 2021. It is based on Rich Eustis and Michael Elias' series of the same name that ran from 1986 to 1991. In December 2021, the series was canceled after one season. In December 2022, the series was removed from HBO Max.",
+                "pageid": 66131798
+              },
+              {
+                "title": "List of Bridgerton characters",
+                "url": "https://en.wikipedia.org/wiki/List_of_Bridgerton_characters",
+                "extract": "Bridgerton is a period drama television series created by Chris Van Dusen and produced by Shondaland for Netflix. It is based on the Regency romance literary series by Julia Quinn set in London's ton during the season, when debutantes are presented at court.",
+                "pageid": 70283542
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.679
+          },
+          "rendered": "[1] Head of the Class\nHead of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.\n\n[2] List of MythBusters cast members\nThis is a list of cast members of the television series MythBusters on the Discovery Channel. In addition to the core cast members, the MythBusters team includes several honorary MythBusters, and some recurring guests.\n\n[3] Anthony Head\nAnthony Stewart Head (20 February 1954 \u2013 1 June 2026) was an English actor and singer. Primarily a performer in musical theatre, he rose to fame in the United Kingdom in the 1980s following his role in the Gold Blend couple television advertisements for Nescaf\u00e9, which led to major roles in several television series. Head was best known for his role as Rupert Giles in Buffy the Vampire Slayer (1997\u20132003), as well as the prime minister in Little Britain (2003\u20132006), Uther Pendragon in Merlin (2008\u20132012), and Rupert Mannion in Ted Lasso (2020\u20132023). He was also known for his distinctive baritone voice, in advertising and voice roles such as Herc Shipwright in BBC Radio 4's Cabin Pressure (2011\u20132014). His film career included roles in Persuasion (2007), Ghost Rider: Spirit of Vengeance, The Iron Lady (both 2011), and Percy Jackson: Sea of Monsters (2013).",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1664,
+      "output_tokens": 102,
+      "cache_read_tokens": 0,
+      "latency_s": 11.117774082988035
+    },
+    {
+      "index": 2,
+      "thinking": null,
+      "text": "The Wikipedia article for \"Head of the Class\" doesn't appear to have detailed cast information in its opening section. Let me try searching for \"Eric Forman\" or other specific character names from the show.",
+      "tool_calls": [
+        {
+          "query": "Samuel \"Chip\" Testa Head of the Class",
+          "raw": {
+            "query": "Samuel \"Chip\" Testa Head of the Class",
+            "results": [
+              {
+                "title": "William Finn",
+                "url": "https://en.wikipedia.org/wiki/William_Finn",
+                "extract": "William Alan Finn (February 28, 1952 \u2013 April 7, 2025) was an American composer, lyricist, and book writer for musical theatre. He was best known for Falsettos (1992), for which he won the Tony Awards for Best Original Score and Best Book of a Musical (the latter shared with James Lapine); A New Brain (1998), a semi-autobiographical musical drawn from his own medical crisis; and The 25th Annual Putnam County Spelling Bee (2005), which received six Tony nominations and won two, for Best Book and Best Featured Actor. Although Falsettos is often described as his Broadway debut, Finn had first reached Broadway three years earlier as lyricist for the short-lived Dangerous Games (1989). Over his career Finn also received a Guggenheim Fellowship, two Los Angeles Drama Critics Circle Awards, and two Outer Critics Circle Awards, for Falsettoland (1991) and A New Brain (1999), and in 2024 was inducted into the American Theater Hall of Fame. Finn's work frequently drew on his own life as a gay, Jewish man, and on themes of family, illness, and loss. He was a longtime faculty member of New York University's Graduate Musical Theatre Writing Program, serving as an adjunct assistant professor there from 1999 to 2019, and, from 2006, artistic head of the Musical Theatre Lab at the Barrington Stage Company in Pittsfield, Massachusetts, where he mentored a generation of younger musical theatre writers.",
+                "pageid": 517475
+              },
+              {
+                "title": "New York Giants",
+                "url": "https://en.wikipedia.org/wiki/New_York_Giants",
+                "extract": "The New York Giants are a professional American football team based in the New York metropolitan area. The Giants compete in the National Football League (NFL) as a member of the National Football Conference (NFC) East division. The team plays its home games at MetLife Stadium (which it shares with the New York Jets) at the Meadowlands Sports Complex in East Rutherford, New Jersey, five miles (eight kilometers) west of New York City. The Giants are headquartered and practice at the Quest Diagnostics Training Center, also in the Meadowlands. The Giants were one of five teams that joined the NFL in 1925, and they are the only one of that group still existing, as well as the league's longest-established team in the Northeastern United States. The team ranks third among all NFL franchises with eight NFL championship titles: four in the pre-Super Bowl era (1927, 1934, 1938, 1956) and four since the advent of the Super Bowl (XXI [1986], XXV [1990], XLII [2007], and XLVI [2011]), along with more championship appearances than any other team, with 19 overall appearances. Their championship tally is surpassed only by the Green Bay Packers (13) and the Chicago Bears (9). Throughout their history, the Giants have featured 29 Hall of Fame players, including NFL Most Valuable Player (MVP) award winners Mel Hein, Frank Gifford, Y. A. Tittle, and Lawrence Taylor. [...]",
+                "pageid": 21757
+              },
+              {
+                "title": "List of Internet phenomena",
+                "url": "https://en.wikipedia.org/wiki/List_of_Internet_phenomena",
+                "extract": "Internet phenomena are social and cultural phenomena specific to the Internet, such as Internet memes, which include popular catchphrases, images, viral videos, and jokes. When such fads and sensations occur online, they tend to grow rapidly and become more widespread because the instant communication facilitates word of mouth transmission. This list focuses on the Internet phenomena which are accessible regardless of local internet regulations.",
+                "pageid": 597727
+              },
+              {
+                "title": "History of advertising",
+                "url": "https://en.wikipedia.org/wiki/History_of_advertising",
+                "extract": "The history of advertising can be traced to ancient civilizations. It became a major force in capitalist economies in the mid-19th century, based primarily on newspapers and magazines. In the 20th century, advertising grew rapidly with new technologies such as direct mail, radio, television, the internet, and mobile devices. Between 1919 and 2007 advertising averaged 2.2 percent of Gross Domestic Product in the United States.",
+                "pageid": 41241080
+              },
+              {
+                "title": "List of Roseanne episodes",
+                "url": "https://en.wikipedia.org/wiki/List_of_Roseanne_episodes",
+                "extract": "Roseanne is an American television sitcom created by Matt Williams that originally aired on ABC from October 18, 1988, to May 20, 1997, with a revival season that premiered in 2018. Lauded for its realistic portrayal of the average American family, the series stars Roseanne Barr, and revolves around the Conners, an Illinois working-class family. In the ninth season, Roseanne and her family win the lottery and associate with \"high society\". On May 16, 2017, it was announced ABC would produce a tenth season revival of the series, set to air as a mid-season replacement in 2018, with the original cast returning. The tenth season debuted on March 27, 2018. On March 30, 2018, the series was renewed for an eleventh season of 13 episodes by ABC. However, ABC reversed its decision and canceled the series on May 29, 2018, when Barr was fired from the show after she posted a controversial tweet about former Obama-administration Senior Advisor Valerie Jarrett. As of May 22, 2018, 231 episodes of Roseanne have aired, concluding the tenth season. On June 21, 2018, the show was revived as a spin-off entitled The Conners, which has the same cast as Roseanne after her character dies of an opioid overdose. The show premiered on October 16, 2018, and aired all of its episodes on ABC, with the final episode airing on April 23, 2025.",
+                "pageid": 9431806
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.342
+          },
+          "rendered": "[1] William Finn\nWilliam Alan Finn (February 28, 1952 \u2013 April 7, 2025) was an American composer, lyricist, and book writer for musical theatre. He was best known for Falsettos (1992), for which he won the Tony Awards for Best Original Score and Best Book of a Musical (the latter shared with James Lapine); A New Brain (1998), a semi-autobiographical musical drawn from his own medical crisis; and The 25th Annual Putnam County Spelling Bee (2005), which received six Tony nominations and won two, for Best Book and Best Featured Actor. Although Falsettos is often described as his Broadway debut, Finn had first reached Broadway three years earlier as lyricist for the short-lived Dangerous Games (1989). Over his career Finn also received a Guggenheim Fellowship, two Los Angeles Drama Critics Circle Awards, and two Outer Critics Circle Awards, for Falsettoland (1991) and A New Brain (1999), and in 2024 was inducted into the American Theater Hall of Fame. Finn's work frequently drew on his own life as a gay, Jewish man, and on themes of family, illness, and loss. He was a longtime faculty member of New York University's Graduate Musical Theatre Writing Program, serving as an adjunct assistant professor there from 1999 to 2019, and, from 2006, artistic head of the Musical Theatre Lab at the Barrington Stage Company in Pittsfield, Massachusetts, where he mentored a generation of younger musical theatre writers.\n\n[2] New York Giants\nThe New York Giants are a professional American football team based in the New York metropolitan area. The Giants compete in the National Football League (NFL) as a member of the National Football Conference (NFC) East division. The team plays its home games at MetLife Stadium (which it shares with the New York Jets) at the Meadowlands Sports Complex in East Rutherford, New Jersey, five miles (eight kilometers) west of New York City. The Giants are headquartered and practice at the Quest Diagnostics Training Center, also in the Meadowlands. The Giants were one of five teams that joined the NFL in 1925, and they are the only one of that group still existing, as well as the league's longest-established team in the Northeastern United States. The team ranks third among all NFL franchises with eight NFL championship titles: four in the pre-Super Bowl era (1927, 1934, 1938, 1956) and four since the advent of the Super Bowl (XXI [1986], XXV [1990], XLII [2007], and XLVI [2011]), along with more championship appearances than any other team, with 19 overall appearances. Their championship tally is surpassed only by the Green Bay Packers (13) and the Chicago Bears (9). Throughout their history, the Giants have featured 29 Hall of Fame players, including NFL Most Valuable Player (MVP) award winners Mel Hein, Frank Gifford, Y. A. Tittle, and Lawrence Taylor. [...]\n\n[3] List of Internet phenomena\nInternet phenomena are social and cultural phenomena specific to the Internet, such as Internet memes, which include popular catchphrases, images, viral videos, and jokes. When such fads and sensations occur online, they tend to grow rapidly and become more widespread because the instant communication facilitates word of mouth transmission. This list focuses on the Internet phenomena which are accessible regardless of local internet regulations.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 2338,
+      "output_tokens": 108,
+      "cache_read_tokens": 0,
+      "latency_s": 1.5701594590209424
+    },
+    {
+      "index": 3,
+      "thinking": null,
+      "text": "Let me try a different approach and search for common character names from Head of the Class.",
+      "tool_calls": [
+        {
+          "query": "\"Head of the Class\" 1986 television characters",
+          "raw": {
+            "query": "\"Head of the Class\" 1986 television characters",
+            "results": [
+              {
+                "title": "Head of the Class",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class",
+                "extract": "Head of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.",
+                "pageid": 1026760
+              },
+              {
+                "title": "Head of the Class (2021 TV series)",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class_(2021_TV_series)",
+                "extract": "Head of the Class is an American sitcom developed by Amy Pocha and Seth Cohen that was released on the streaming service HBO Max on November 4, 2021. It is based on Rich Eustis and Michael Elias' series of the same name that ran from 1986 to 1991. In December 2021, the series was canceled after one season. In December 2022, the series was removed from HBO Max.",
+                "pageid": 66131798
+              },
+              {
+                "title": "Howard Hesseman",
+                "url": "https://en.wikipedia.org/wiki/Howard_Hesseman",
+                "extract": "Howard Hesseman (February 27, 1940 \u2013 January 29, 2022) was an American actor known for his television roles as burned-out disc jockey Dr. Johnny Fever on WKRP in Cincinnati (for which he earned two Emmy nominations for Outstanding Supporting Actor in a Comedy Series) and the lead role of history teacher Charlie Moore on Head of the Class. He appeared regularly on television and in film from the 1970s to 2010s, with his other noteworthy roles including Sam Royer (the husband of lead character Ann Romano) in the last two seasons of One Day at a Time and a supporting role as Captain Pete Lassard in the film Police Academy 2: Their First Assignment (1985).",
+                "pageid": 827991
+              },
+              {
+                "title": "Khrystyne Haje",
+                "url": "https://en.wikipedia.org/wiki/Khrystyne_Haje",
+                "extract": "Khrystyne Kamil Haje ( krist-EEN HOZH; born December 21, 1968) is an American actress and businessperson. She is known for her role as Simone Foster in the sitcom series Head of the Class. After the series ended in 1991, she continued acting in both television and films. Haje was named as one of the \"50 Most Beautiful People\" in People magazine's first edition of that list in 1990.",
+                "pageid": 2380961
+              },
+              {
+                "title": "Rain Pryor",
+                "url": "https://en.wikipedia.org/wiki/Rain_Pryor",
+                "extract": "Rain Pryor (born July 16, 1968) is an American actress. Her television credits include sitcoms Head of the Class and Rude Awakening. She is the daughter of comedian Richard Pryor.",
+                "pageid": 2228189
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.347
+          },
+          "rendered": "[1] Head of the Class\nHead of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.\n\n[2] Head of the Class (2021 TV series)\nHead of the Class is an American sitcom developed by Amy Pocha and Seth Cohen that was released on the streaming service HBO Max on November 4, 2021. It is based on Rich Eustis and Michael Elias' series of the same name that ran from 1986 to 1991. In December 2021, the series was canceled after one season. In December 2022, the series was removed from HBO Max.\n\n[3] Howard Hesseman\nHoward Hesseman (February 27, 1940 \u2013 January 29, 2022) was an American actor known for his television roles as burned-out disc jockey Dr. Johnny Fever on WKRP in Cincinnati (for which he earned two Emmy nominations for Outstanding Supporting Actor in a Comedy Series) and the lead role of history teacher Charlie Moore on Head of the Class. He appeared regularly on television and in film from the 1970s to 2010s, with his other noteworthy roles including Sam Royer (the husband of lead character Ann Romano) in the last two seasons of One Day at a Time and a supporting role as Captain Pete Lassard in the film Police Academy 2: Their First Assignment (1985).",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 3234,
+      "output_tokens": 83,
+      "cache_read_tokens": 0,
+      "latency_s": 0.9049361670040525
+    },
+    {
+      "index": 4,
+      "thinking": null,
+      "text": "I'm not finding specific information about an \"Eric\" character in the Head of the Class Wikipedia articles. The search results are showing me the main information about the show but not detailed cast lists for each character. Based on what Wikipedia provides, I cannot definitively answer who played Eric in Head of the Class. \n\nWould you like me to search for a different aspect of the show, or do you have any other details about the character Eric that might help narrow down the search?",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 3853,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "latency_s": 1.6682450420339592
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "question": "Which Japanese village is known for having more life-size straw dolls than residents?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "The village is **Nagoro** (now known as Nagoro Doll Village), located in the Iya Valley in Tokushima Prefecture on the island of Shikoku, Japan.\n\nAccording to the Wikipedia article \"Nagoro,\" the village has about 350 life-size realistic dolls positioned throughout it, while the human population had declined to just 25 residents by January 2026. The dolls were primarily created by Tsukimi Ayano starting in the early 2000s after she moved back to the village to care for her father. She has made more than 400 dolls in total, with many being likenesses of residents or former residents.",
+  "error": null,
+  "latency_s": 3.972,
+  "summary": {
+    "searched": true,
+    "n_searches": 2,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "Japanese village straw dolls residents",
+      "Nagoro village straw dolls"
+    ],
+    "shown_titles": [
+      "Nagoro",
+      "Cremation in Japan",
+      "Fukushima Prefecture",
+      "Scarecrow",
+      "Iya Valley"
+    ],
+    "retrieved_titles": [
+      "Nagoro",
+      "Cremation in Japan",
+      "Fukushima Prefecture",
+      "One Piece season 20",
+      "List of Hell Girl episodes",
+      "Scarecrow",
+      "Iya Valley"
+    ],
+    "usage": {
+      "input_tokens": 3558,
+      "output_tokens": 256,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Japanese village straw dolls residents",
+          "raw": {
+            "query": "Japanese village straw dolls residents",
+            "results": [
+              {
+                "title": "Nagoro",
+                "url": "https://en.wikipedia.org/wiki/Nagoro",
+                "extract": "Nagoro (Japanese: \u540d\u9803), now known as Nagoro Doll Village (\u540d\u9803\u304b\u304b\u3057\u306e\u91cc, Nagoro Kakashi-no-sato; lit. 'Nagaro Scarecrow village'), is a village in the Iya Valley in the city of Miyoshi, Tokushima Prefecture in the island of Shikoku in Japan. It is known for the large number of realistic dolls positioned throughout the village, which have made it a tourist attraction. The village is located on Route 439 in the Iya Valley, in a remote mountainous area of in Higashiiyasugeoi-ch\u014d, Miyoshi, Tokushima. It formerly had about 300 inhabitants, but the decline in Japan's population has caused that to fall to 35 by January 2015, 30 as of August 2016, , 27 by September 2019, and 25 by January 2026. In the early 2000s, Tsukimi Ayano, whose family left the area when she was a child, moved back to Nagoro to look after her father, and made a doll in his likeness that she placed in a field. She has since made more than 400, including replacements, and about 350 are in the village. Many are also likenesses of residents or former residents, while others are invented people. Soon, others followed in Ayano's footsteps. The village school, which closed in 2012, includes a large number of dolls; in one classroom, two children are self-portraits by the last two students to study there, who dressed them in their own clothes. [...]",
+                "pageid": 51470754
+              },
+              {
+                "title": "Cremation in Japan",
+                "url": "https://en.wikipedia.org/wiki/Cremation_in_Japan",
+                "extract": "Cremation in Japan was originally practiced by monks seeking to emulate the cremation of the Buddha. Virtually all deceased are now cremated in Japan \u2013 as of 2012, it had the highest cremation rate in the world of over 99.9%. The Meiji government attempted to ban the practice in the 19th century, but the ban was only in effect for less than two years.",
+                "pageid": 60611549
+              },
+              {
+                "title": "Fukushima Prefecture",
+                "url": "https://en.wikipedia.org/wiki/Fukushima_Prefecture",
+                "extract": "Fukushima Prefecture (\u798f\u5cf6\u770c, Fukushima-ken; pronounced [\u0278\u026f\u0325.k\u026f\ua71c.\u0255i.ma, -k\u026f.\u0255i.ma\ua71c.ke\u0274]) is a prefecture of Japan located in the T\u014dhoku region of Honshu. Fukushima Prefecture has a population of 1,771,100 (as of 1 July 2023) and has a geographic area of 13,783.90 square kilometres (5,321.99 sq mi). Fukushima Prefecture borders Miyagi Prefecture and Yamagata Prefecture to the north, Niigata Prefecture to the west, Gunma Prefecture to the southwest, and Tochigi Prefecture and Ibaraki Prefecture to the south. Fukushima is the capital and as of the 2023 population census, Iwaki is the largest city with K\u014driyama following closely behind, with other major cities including Aizuwakamatsu, and Sukagawa. Fukushima Prefecture is located on Japan's eastern Pacific coast at the southernmost part of the T\u014dhoku region, and is home to Lake Inawashiro, the fourth-largest lake in Japan. Fukushima Prefecture is the third-largest prefecture of Japan (after Hokkaido and Iwate Prefecture) and divided by mountain ranges into the three regions of Aizu, Nakad\u014dri, and Hamad\u014dri.",
+                "pageid": 211914
+              },
+              {
+                "title": "One Piece season 20",
+                "url": "https://en.wikipedia.org/wiki/One_Piece_season_20",
+                "extract": "The twentieth season of the One Piece anime television series is produced by Toei Animation and directed by Tatsuya Nagamine, Satoshi It\u014d and Yasunori Koyama. The season was broadcast in Japan on Fuji Television from July 7, 2019, to December 17, 2023. On April 19, 2020, Toei Animation announced that the series would be delayed due to the ongoing COVID-19 pandemic. They later scheduled the series' return for June 28, 2020, resuming from episode 930. On March 10, 2022, it was announced that the series would be delayed until further notice due to a security breach in Toei Animation's network on March 6, 2022. On April 5, 2022, it was announced that the series would return on April 17, 2022, with the airing of episode 1014. Like the rest of the series, this season follows the adventures of Monkey D. Luffy and his Straw Hat Pirates. The main story arc, called \"Wano Country\", adapts material from the rest of the 90th volume to the beginning of the 105th volume of the manga by Eiichiro Oda. It deals with the alliance between the pirates, samurai, minks and ninja to liberate Wano Country from the corrupt shogun Kurozumi Orochi, who has allied with the Beast Pirates led by one of the Four Emperors, Kaido. Episodes 895 and 896 contain an original story arc, \"Cidre Guild\" which ties into the film One Piece: Stampede. Episode 907 is an adaptation of Oda's one-shot manga Romance Dawn, which features \"the story of a Luffy slightly different from the one in One Piece\". [...]",
+                "pageid": 60374823
+              },
+              {
+                "title": "List of Hell Girl episodes",
+                "url": "https://en.wikipedia.org/wiki/List_of_Hell_Girl_episodes",
+                "extract": "Hell Girl is a Japanese anime series produced by Studio Deen in three seasons between 2005 and 2009, with a fourth season airing in 2017. The plot follows a girl named Ai Enma, also known as the Jigoku Sh\u014djo or Hell Girl, and her group of followers as they carry out her duty of striking contracts that involve ferrying hated souls to Hell. The first season, titled Hell Girl (\u5730\u7344\u5c11\u5973, Jigoku Sh\u014djo), was directed by Takahiro \u014cmori and written by Hiroshi Watanabe. This season revolves around investigations by Hajime Shibatao and Tsugumi Shibata into Ai Enma's secrets. It premiered across Japan on Kids Station on October 4, 2005, and episode 26 aired on April 4, 2006. The second season, titled Hell Girl: Two Mirrors (\u5730\u7344\u5c11\u5973 \u4e8c\u7c60, Jigoku Sh\u014djo Futakomori), was also directed by Takahiro \u014cmori and written by Hiroshi Watanabe. This season details the past of each of Ai's followers and the story of a boy named Takuma Kurebayashi. It aired across Japan from October 7, 2006 to April 7, 2007 on Animax and spanned 26 episodes. The third season, titled Jigoku Sh\u014djo Mitsuganae (\u5730\u7344\u5c11\u5973 \u4e09\u9f0e, lit. Hell Girl: Three Vessels), was directed by Hiroshi Watanabe and written by Ken'ichi Kanemaki. The third season revolved around Ai's possession of a middle school student, named Yuzuki Mikage and Yuzuki's past. It aired across Japan from October 10, 2008 to April 4, 2009 on Tokyo MX spanning 26 episodes. [...]",
+                "pageid": 14357871
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Nagoro\nNagoro (Japanese: \u540d\u9803), now known as Nagoro Doll Village (\u540d\u9803\u304b\u304b\u3057\u306e\u91cc, Nagoro Kakashi-no-sato; lit. 'Nagaro Scarecrow village'), is a village in the Iya Valley in the city of Miyoshi, Tokushima Prefecture in the island of Shikoku in Japan. It is known for the large number of realistic dolls positioned throughout the village, which have made it a tourist attraction. The village is located on Route 439 in the Iya Valley, in a remote mountainous area of in Higashiiyasugeoi-ch\u014d, Miyoshi, Tokushima. It formerly had about 300 inhabitants, but the decline in Japan's population has caused that to fall to 35 by January 2015, 30 as of August 2016, , 27 by September 2019, and 25 by January 2026. In the early 2000s, Tsukimi Ayano, whose family left the area when she was a child, moved back to Nagoro to look after her father, and made a doll in his likeness that she placed in a field. She has since made more than 400, including replacements, and about 350 are in the village. Many are also likenesses of residents or former residents, while others are invented people. Soon, others followed in Ayano's footsteps. The village school, which closed in 2012, includes a large number of dolls; in one classroom, two children are self-portraits by the last two students to study there, who dressed them in their own clothes. [...]\n\n[2] Cremation in Japan\nCremation in Japan was originally practiced by monks seeking to emulate the cremation of the Buddha. Virtually all deceased are now cremated in Japan \u2013 as of 2012, it had the highest cremation rate in the world of over 99.9%. The Meiji government attempted to ban the practice in the 19th century, but the ban was only in effect for less than two years.\n\n[3] Fukushima Prefecture\nFukushima Prefecture (\u798f\u5cf6\u770c, Fukushima-ken; pronounced [\u0278\u026f\u0325.k\u026f\ua71c.\u0255i.ma, -k\u026f.\u0255i.ma\ua71c.ke\u0274]) is a prefecture of Japan located in the T\u014dhoku region of Honshu. Fukushima Prefecture has a population of 1,771,100 (as of 1 July 2023) and has a geographic area of 13,783.90 square kilometres (5,321.99 sq mi). Fukushima Prefecture borders Miyagi Prefecture and Yamagata Prefecture to the north, Niigata Prefecture to the west, Gunma Prefecture to the southwest, and Tochigi Prefecture and Ibaraki Prefecture to the south. Fukushima is the capital and as of the 2023 population census, Iwaki is the largest city with K\u014driyama following closely behind, with other major cities including Aizuwakamatsu, and Sukagawa. Fukushima Prefecture is located on Japan's eastern Pacific coast at the southernmost part of the T\u014dhoku region, and is home to Lake Inawashiro, the fourth-largest lake in Japan. Fukushima Prefecture is the third-largest prefecture of Japan (after Hokkaido and Iwate Prefecture) and divided by mountain ranges into the three regions of Aizu, Nakad\u014dri, and Hamad\u014dri.",
+          "top_k": 3
+        },
+        {
+          "query": "Nagoro village straw dolls",
+          "raw": {
+            "query": "Nagoro village straw dolls",
+            "results": [
+              {
+                "title": "Nagoro",
+                "url": "https://en.wikipedia.org/wiki/Nagoro",
+                "extract": "Nagoro (Japanese: \u540d\u9803), now known as Nagoro Doll Village (\u540d\u9803\u304b\u304b\u3057\u306e\u91cc, Nagoro Kakashi-no-sato; lit. 'Nagaro Scarecrow village'), is a village in the Iya Valley in the city of Miyoshi, Tokushima Prefecture in the island of Shikoku in Japan. It is known for the large number of realistic dolls positioned throughout the village, which have made it a tourist attraction. The village is located on Route 439 in the Iya Valley, in a remote mountainous area of in Higashiiyasugeoi-ch\u014d, Miyoshi, Tokushima. It formerly had about 300 inhabitants, but the decline in Japan's population has caused that to fall to 35 by January 2015, 30 as of August 2016, , 27 by September 2019, and 25 by January 2026. In the early 2000s, Tsukimi Ayano, whose family left the area when she was a child, moved back to Nagoro to look after her father, and made a doll in his likeness that she placed in a field. She has since made more than 400, including replacements, and about 350 are in the village. Many are also likenesses of residents or former residents, while others are invented people. Soon, others followed in Ayano's footsteps. The village school, which closed in 2012, includes a large number of dolls; in one classroom, two children are self-portraits by the last two students to study there, who dressed them in their own clothes. [...]",
+                "pageid": 51470754
+              },
+              {
+                "title": "Scarecrow",
+                "url": "https://en.wikipedia.org/wiki/Scarecrow",
+                "extract": "A scarecrow is a decoy or mannequin that is often in the shape of a human. Scarecrows are usually dressed in old clothes and placed in open fields to discourage birds from disturbing and feeding on recently cast seed and growing crops. Scarecrows are used around the world by farmers, and are a notable symbol of farms and the countryside in popular culture.",
+                "pageid": 19637796
+              },
+              {
+                "title": "Iya Valley",
+                "url": "https://en.wikipedia.org/wiki/Iya_Valley",
+                "extract": "The Iya Valley (\u7956\u8c37 Iya) region in Tokushima Prefecture, Japan is a scenic area known for its mountain valleys, thatched roof farmhouses and historic Vine Bridges. Although access has improved in recent years, the Iya Valley and the inner parts of Shikoku have historically been remote and difficult to enter. Members of the Taira clan (aka Heike clan) were said to have entered the area after losing the Genpei War to the Minamoto clan in the late 12th century. The Iya Valley has become an increasingly popular tourist destination for its natural environment and as one of the last few vestiges of old Japan. While the western part of the valley (Nishi-Iya) has good road access and tourist accommodations, the eastern part (Higashi-Iya (\u6771\u7956\u8c37) or Oku-Iya (\u5965\u7956\u8c37)) has lesser access routes. Several Vine Bridges continue to span the valley and have become a tourist attraction.",
+                "pageid": 6341515
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.61
+          },
+          "rendered": "[1] Nagoro\nNagoro (Japanese: \u540d\u9803), now known as Nagoro Doll Village (\u540d\u9803\u304b\u304b\u3057\u306e\u91cc, Nagoro Kakashi-no-sato; lit. 'Nagaro Scarecrow village'), is a village in the Iya Valley in the city of Miyoshi, Tokushima Prefecture in the island of Shikoku in Japan. It is known for the large number of realistic dolls positioned throughout the village, which have made it a tourist attraction. The village is located on Route 439 in the Iya Valley, in a remote mountainous area of in Higashiiyasugeoi-ch\u014d, Miyoshi, Tokushima. It formerly had about 300 inhabitants, but the decline in Japan's population has caused that to fall to 35 by January 2015, 30 as of August 2016, , 27 by September 2019, and 25 by January 2026. In the early 2000s, Tsukimi Ayano, whose family left the area when she was a child, moved back to Nagoro to look after her father, and made a doll in his likeness that she placed in a field. She has since made more than 400, including replacements, and about 350 are in the village. Many are also likenesses of residents or former residents, while others are invented people. Soon, others followed in Ayano's footsteps. The village school, which closed in 2012, includes a large number of dolls; in one classroom, two children are self-portraits by the last two students to study there, who dressed them in their own clothes. [...]\n\n[2] Scarecrow\nA scarecrow is a decoy or mannequin that is often in the shape of a human. Scarecrows are usually dressed in old clothes and placed in open fields to discourage birds from disturbing and feeding on recently cast seed and growing crops. Scarecrows are used around the world by farmers, and are a notable symbol of farms and the countryside in popular culture.\n\n[3] Iya Valley\nThe Iya Valley (\u7956\u8c37 Iya) region in Tokushima Prefecture, Japan is a scenic area known for its mountain valleys, thatched roof farmhouses and historic Vine Bridges. Although access has improved in recent years, the Iya Valley and the inner parts of Shikoku have historically been remote and difficult to enter. Members of the Taira clan (aka Heike clan) were said to have entered the area after losing the Genpei War to the Minamoto clan in the late 12th century. The Iya Valley has become an increasingly popular tourist destination for its natural environment and as one of the last few vestiges of old Japan. While the western part of the valley (Nishi-Iya) has good road access and tourist accommodations, the eastern part (Higashi-Iya (\u6771\u7956\u8c37) or Oku-Iya (\u5965\u7956\u8c37)) has lesser access routes. Several Vine Bridges continue to span the valley and have become a tourist attraction.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 925,
+      "output_tokens": 103,
+      "cache_read_tokens": 0,
+      "latency_s": 1.1822927920147777
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "The village is **Nagoro** (now known as Nagoro Doll Village), located in the Iya Valley in Tokushima Prefecture on the island of Shikoku, Japan.\n\nAccording to the Wikipedia article \"Nagoro,\" the village has about 350 life-size realistic dolls positioned throughout it, while the human population had declined to just 25 residents by January 2026. The dolls were primarily created by Tsukimi Ayano starting in the early 2000s after she moved back to the village to care for her father. She has made more than 400 dolls in total, with many being likenesses of residents or former residents.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 2633,
+      "output_tokens": 153,
+      "cache_read_tokens": 0,
+      "latency_s": 2.176902584033087
+    }
+  ]
+}
