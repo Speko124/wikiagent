@@ -1,11 +1,11 @@
-{"run_id": "rosetta-year#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "tosca-nationality#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "opera-house-seats#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "lovelace-breakfast#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "einstein-nobel-premise#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "tesla-origin#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "eiffel-height#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "turing-nobel#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "straw-doll-village#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "paris-weather#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "switzerland-borders#0", "verdict": "", "stage": "", "note": ""}
+{"run_id": "rosetta-year#0", "verdict": "correct", "stage": "", "note": "Exact title cited. 2 of 3 slots wasted on software/disambiguation pages."}
+{"run_id": "tosca-nationality#0", "verdict": "correct", "stage": "", "note": "Bridge worked as designed: two searches, both hops grounded."}
+{"run_id": "opera-house-seats#0", "verdict": "correct", "stage": "", "note": "CASE DEFECT: 2,679 is in the Sydney Symphony Orchestra intro, so the fact was reachable. Verified only the Sydney Opera House intro when writing it. Not a deep-fact test."}
+{"run_id": "lovelace-breakfast#0", "verdict": "incorrect", "stage": "process: answered without searching", "note": "0 searches. Right conclusion, wrong process - and it says 'While I could search...', so it knew. Reproduces the demo failure under a prompt that says to search first."}
+{"run_id": "einstein-nobel-premise#0", "verdict": "correct", "stage": "", "note": "Premise rejected, fully grounded incl. the presentation-speech quote. gold_shown=False is an instrument artifact: answered from 'List of awards and honors received by Albert Einstein'."}
+{"run_id": "tesla-origin#0", "verdict": "correct", "stage": "", "note": "Named the ambiguity and answered both readings. 'Austro-Hungarian' is Wikipedia's own wording, not a model error."}
+{"run_id": "eiffel-height#0", "verdict": "correct", "stage": "", "note": "Searched despite certainly knowing the answer - the must-search case passes."}
+{"run_id": "turing-nobel#0", "verdict": "correct", "stage": "", "note": "Framed as 'no mention that he received one' rather than asserting a negative. Correct epistemics."}
+{"run_id": "straw-doll-village#0", "verdict": "correct", "stage": "", "note": "Built the query from a description with no entity name. Every detail grounded."}
+{"run_id": "paris-weather#0", "verdict": "correct", "stage": "", "note": "0 searches, correctly - the no-search-needed pole of the pair."}
+{"run_id": "switzerland-borders#0", "verdict": "correct", "stage": "attribution", "note": "All five countries correct and grounded, but credits one article for facts drawn from three. gold_shown=False is an instrument artifact."}

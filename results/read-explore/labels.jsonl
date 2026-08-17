@@ -1,20 +1,20 @@
-{"run_id": "nq-001#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-002#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-003#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-004#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-005#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-006#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-007#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-008#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-009#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-010#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-011#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-012#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-013#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-014#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-015#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-016#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-017#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-018#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-019#0", "verdict": "", "stage": "", "note": ""}
-{"run_id": "nq-020#0", "verdict": "", "stage": "", "note": ""}
+{"run_id": "nq-001#0", "verdict": "incorrect", "stage": "evidence: intro-only", "note": "Brian Robbins is in the article body, not the intro. 5 searches, 6 turns - worst thrash in the set."}
+{"run_id": "nq-002#0", "verdict": "correct", "stage": "", "note": "Disambiguated song from band."}
+{"run_id": "nq-003#0", "verdict": "correct", "stage": "ambiguity not flagged", "note": "Correct for the 2006 film; silently picked it over the 1967 one."}
+{"run_id": "nq-004#0", "verdict": "incorrect", "stage": "evidence: intro-only", "note": "Raleigh Studios is in the body. Abstained honestly."}
+{"run_id": "nq-005#0", "verdict": "correct", "stage": "", "note": ""}
+{"run_id": "nq-006#0", "verdict": "correct", "stage": "", "note": ""}
+{"run_id": "nq-007#0", "verdict": "incorrect", "stage": "evidence: intro-only", "note": "Golshifteh Farahani is in the body cast list. Abstained honestly and asked to clarify."}
+{"run_id": "nq-008#0", "verdict": "correct", "stage": "underspecified question", "note": "'Live' is vague; gave the territory and flagged that no HQ appears in the intro."}
+{"run_id": "nq-009#0", "verdict": "correct", "stage": "", "note": ""}
+{"run_id": "nq-010#0", "verdict": "incorrect", "stage": "evidence: intro-only", "note": "Win count is in the body. NQ's reference (121) is itself stale."}
+{"run_id": "nq-011#0", "verdict": "incorrect", "stage": "retrieval: no such article", "note": "Not an intro problem - the song has no Wikipedia article. Offered a near-match clearly labelled as not matching. Best available behaviour."}
+{"run_id": "nq-012#0", "verdict": "correct", "stage": "", "note": "Two noise results shown (2035 Women's WC, 2026 knockout stage)."}
+{"run_id": "nq-013#0", "verdict": "correct", "stage": "", "note": ""}
+{"run_id": "nq-014#0", "verdict": "correct", "stage": "unsupported superlative", "note": "'Mars' is defensible and grounded, but reached by checking only Venus and Mars - a superlative answered from a subset. NQ reference (Kepler-438b) is wrong."}
+{"run_id": "nq-015#0", "verdict": "correct", "stage": "ambiguity not flagged", "note": "Paige O'Hara is arguably MORE right than NQ's 'Emma Watson' - the question says 'voice'. Did not flag 1991 vs 2017."}
+{"run_id": "nq-016#0", "verdict": "correct", "stage": "", "note": "Silently corrected the spelling Christina -> Cristina."}
+{"run_id": "nq-017#0", "verdict": "incorrect", "stage": "evidence: intro-only", "note": "Duncan's Toy Chest is in the body."}
+{"run_id": "nq-018#0", "verdict": "correct", "stage": "", "note": ""}
+{"run_id": "nq-019#0", "verdict": "correct", "stage": "confirmation-driven retrieval", "note": "Drifted from 'Fertile Crescent' to 'oil Middle East' - formed a hypothesis, then searched to confirm it. Answer defensible; NQ's 'water' is dubious."}
+{"run_id": "nq-020#0", "verdict": "correct", "stage": "", "note": "Lin-Manuel Miranda is right; NQ's reference names the alternates."}
