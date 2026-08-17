@@ -145,6 +145,34 @@ class Trace:
             "turns": [asdict(t) for t in self.turns],
         }
 
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "Trace":
+        """Rebuild a Trace from its JSON form.
+
+        Exists so a grader fix can be applied to sweeps already paid for. The
+        derived views (`shown_titles`, `n_searches`, usage) are all computed
+        from the stored turns, so nothing has to be persisted twice.
+        """
+        trace = cls(
+            question=data["question"],
+            model=data["model"],
+            prompt_version=data["prompt_version"],
+            effort=data.get("effort"),
+            tools_enabled=data.get("tools_enabled", True),
+            top_k=data.get("top_k", 3),
+            answer=data.get("answer", ""),
+            error=data.get("error"),
+            latency_s=data.get("latency_s", 0.0),
+        )
+        for raw_turn in data.get("turns", []):
+            calls = [ToolCall(**c) for c in raw_turn.get("tool_calls", [])]
+            trace.turns.append(Turn(**{**raw_turn, "tool_calls": calls}))
+        return trace
+
+    @classmethod
+    def load(cls, path: str | Path) -> "Trace":
+        return cls.from_dict(json.loads(Path(path).read_text()))
+
     def save(self, path: str | Path) -> Path:
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)

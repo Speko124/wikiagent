@@ -15,6 +15,7 @@ import pytest
 import anthropic
 from conftest import Response, StubClient, Usage, text, thinking, tool_use
 from wikiagent import agent, wikipedia
+from wikiagent.trace import Trace
 
 
 @pytest.fixture(autouse=True)
@@ -287,3 +288,25 @@ def test_trace_serializes_and_saves(tmp_path):
     assert path.exists()
     import json
     assert json.loads(path.read_text())["answer"] == "Done."
+
+
+# --- round-tripping ---------------------------------------------------------
+
+def test_a_trace_survives_a_round_trip_through_json():
+    """Grader bugs shouldn't cost a re-run. Traces hold everything the graders
+    read, so a fixed grader can be applied to sweeps already paid for - but
+    only if the trace reloads without losing anything."""
+    client = search_then_answer()
+    original = agent.ask("q", model=HAIKU, top_k=2, client=client)
+    restored = Trace.from_dict(original.to_dict())
+
+    assert restored.answer == original.answer
+    assert restored.question == original.question
+    assert restored.shown_titles == original.shown_titles
+    assert restored.retrieved_titles == original.retrieved_titles
+    assert restored.n_searches == original.n_searches
+    assert restored.usage == original.usage
+    # `rendered` is what evidence matching reads; losing it would silently
+    # turn every evidence check into a miss.
+    assert [c.rendered for t in restored.turns for c in t.tool_calls] == \
+           [c.rendered for t in original.turns for c in t.tool_calls]

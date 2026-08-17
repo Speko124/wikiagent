@@ -194,3 +194,41 @@ def test_unscorable_runs_cannot_disagree_with_the_judge():
     text = report.compare(write.__wrapped__ if False else None, None) if False else None
     m = report._metrics(rows)
     assert m["_clashes"] == []
+
+
+# --- the None-is-not-False sweep --------------------------------------------
+
+def test_no_metric_counts_an_unmeasured_signal_as_a_failure(tmp_path):
+    """Three bugs in one sitting were this same mistake: `bool(None)` is False,
+    so a signal that was never computed reads as a signal that failed. This
+    asserts the whole surface at once rather than one metric at a time.
+
+    Would have caught: the funnel calling unknown-grounding 'answered from
+    memory', the report manufacturing 8 judge disagreements out of abstention
+    cases, and evidence requiring every requirement inside one tool call.
+    """
+    blank = row("c1", answer_match=None, evidence_match=None,
+                answer_completeness=None, gold_shown=None,
+                judge={"correctness": {"verdict": "correct", "why": "declined"}})
+    m = report._metrics([blank])
+
+    # Nothing unmeasured may land in a rate's numerator or denominator.
+    assert m["correct"] == "n/a"
+    assert m["evidence_found"] == "n/a"
+    assert m["completeness"] == "n/a"
+    assert m["_clashes"] == []
+    # Nor in any funnel stage that names a failure.
+    f = report.funnel([blank])
+    assert f["not scorable (abstention cases)"] == 1
+    assert sum(v for k, v in f.items() if k[0].isdigit()) == 0
+
+
+def test_a_partially_measured_row_only_counts_where_it_was_measured(tmp_path):
+    """The subtler half: a row with a real answer signal and an absent evidence
+    signal belongs in the correctness rate and nowhere near the grounding one."""
+    partial = row("c1", answer_match=True, evidence_match=None,
+                  answer_completeness=1.0)
+    m = report._metrics([partial])
+    assert m["correct"] == "1/1 (100%)"
+    assert m["evidence_found"] == "n/a"
+    assert report.funnel([partial])["correct, evidence not checkable"] == 1

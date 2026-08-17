@@ -446,3 +446,14 @@ def test_holdout_is_part_of_the_config_so_resume_cannot_flip_it(tmp_path):
     run.sweep([case(1)], tmp_path, run.Config(repeats=1, holdout=True), ask=FakeAsk())
     with pytest.raises(ValueError, match="holdout"):
         run.sweep([case(1)], tmp_path, run.Config(repeats=1), ask=FakeAsk())
+
+
+def test_the_sweep_summary_also_refuses_to_count_unmeasured_signals(tmp_path):
+    """Same sweep applied to run.py's own summary, which has its own rate
+    arithmetic and would have drifted from report.py's otherwise."""
+    rows = [{"case_id": "c1", "gold_shown": None, "gold_fetched": None,
+             "error": None, "searched": True, "n_turns": 1, "input_tokens": 1,
+             "output_tokens": 1, "latency_s": 0.1, "cited_titles": []}]
+    text = run.summarize(rows, run.Config())
+    gold_line = next(ln for ln in text.splitlines() if "gold" in ln.lower())
+    assert "0/1" not in gold_line and "n/a" in gold_line

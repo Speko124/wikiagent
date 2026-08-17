@@ -6,7 +6,7 @@
 |---|---|---|
 | Runs | 54 | 30 |
 | Correct (deterministic) | 31/42 (74%) | 23/30 (77%) |
-| Evidence retrieved | 27/39 (69%) | 24/30 (80%) |
+| Evidence retrieved | 30/39 (77%) | 24/30 (80%) |
 | Answer completeness (mean) | 75% | 77% |
 | Searched at all | 51/54 (94%) | 30/30 (100%) |
 | Searches per run | 1.5 | 1.2 |
@@ -21,8 +21,8 @@
 
 | Cell | Meaning | Curated | Holdout |
 |---|---|---|---|
-| grounded | right, and the evidence was there | 25 | 23 |
-| from memory | **right without the evidence — not grounded** | 3 | 0 |
+| grounded | right, and the evidence was there | 28 | 23 |
+| from memory | **right without the evidence — not grounded** | 0 | 0 |
 | evidence unused | **had the evidence, still wrong** | 2 | 1 |
 | neither | never had the evidence | 9 | 6 |
 
@@ -32,9 +32,9 @@ Computed from `answer_match`, `evidence_match` and `searched` — the same attri
 
 | Stage | Curated | Holdout |
 |---|---|---|
-| correct, grounded | 25 | 23 |
+| correct, grounded | 28 | 23 |
 | correct, evidence not checkable | 3 | 0 |
-| 5 grounding: answered from memory | 3 | 0 |
+| 5 grounding: answered from memory | 0 | 0 |
 | 4 synthesis: had the evidence, answered wrong | 2 | 1 |
 | 3 evidence: right article, fact not in the retrieved text | 9 | 3 |
 | 2 retrieval: the answer-bearing article never surfaced | 0 | 3 |

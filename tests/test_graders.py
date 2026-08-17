@@ -253,3 +253,26 @@ def test_grade_emits_no_semantic_judgement(monkeypatch):
     assert not any(
         k in g for k in ("correct", "faithful", "posture", "fabricated_citation")
     )
+
+
+def test_evidence_accumulates_across_searches(monkeypatch):
+    """A multi-hop question gathers evidence in separate searches by design.
+    Requiring every requirement inside one call marked bologna-oxford-older as
+    'answered from memory' in the V0 baseline, when the answer plainly quoted
+    both dates from two searches."""
+    monkeypatch.setattr(
+        wikipedia, "_fetch",
+        lambda query, fetch_k, timeout: [
+            wikipedia.Article(f"T-{query}", "u", f"founded in {query}", 0)
+        ],
+    )
+    t = agent.ask("q", model="claude-haiku-4-5", top_k=3, client=StubClient([
+        Response([tool_use("1088", id="t1")], stop_reason="tool_use"),
+        Response([tool_use("1096", id="t2")], stop_reason="tool_use"),
+        Response([text("Bologna is older.")]),
+    ]))
+    case = Case(id="c", question="q", expected="e", dimensions=["f"],
+                evidence_contains=[["1088"], ["1096"]])
+    g = graders.grade(case, t)
+    assert g["evidence_match"] is True
+    assert g["evidence_found_at_search"] == 1  # complete only after the second

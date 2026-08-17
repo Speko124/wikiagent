@@ -127,10 +127,17 @@ def grade(case: Case, trace: Trace) -> dict:
     calls = [c for turn in trace.turns for c in turn.tool_calls]
     evidence_match, evidence_at, evidence_in = None, None, []
     if case.evidence_contains:
+        # Accumulated ACROSS calls, not within one. A multi-hop question
+        # gathers its evidence in separate searches by design - "which is
+        # older, Bologna or Oxford" searches each university once - so
+        # requiring every requirement in a single call marks a perfect
+        # retrieval as a miss and blames it on grounding.
+        outstanding = list(case.evidence_contains)
         evidence_match = False
         for i, call in enumerate(calls):
-            ok, _ = matches(case.evidence_contains, call.rendered)
-            if ok:
+            outstanding = [g for g in outstanding if not matches([g], call.rendered)[0]]
+            if not outstanding:
+                # The search at which the evidence became complete.
                 evidence_match, evidence_at = True, i
                 evidence_in = call.shown_titles
                 break
