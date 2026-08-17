@@ -24,6 +24,43 @@ def _norm(title: str) -> str:
     return " ".join(title.split()).casefold()
 
 
+def _normalise(text: str) -> str:
+    """Fold the differences that are the matcher's problem, not the agent's.
+
+    Two real ones, both found by measuring against hand labels rather than
+    guessed: thousands separators ("2,679" vs "2679"), and non-breaking spaces,
+    which Natural Questions uses inside dates — `June\xa09,\xa02017` never
+    matches a plainly typed `June 9, 2017`.
+    """
+    text = " ".join((text or "").split())  # folds \xa0 and friends
+    return re.sub(r"(?<=\d),(?=\d)", "", text).casefold()
+
+
+def matches(spec: list[list[str]], text: str) -> tuple[bool | None, float | None]:
+    """Score an AND-of-ORs spec against text.
+
+    Returns `(satisfied, fraction)`. The fraction is the completeness signal —
+    a partial list presented as a complete one is invisible to the boolean.
+
+    An empty spec returns `(None, None)`: unscorable, never a free pass.
+    Counting it as satisfied would inflate correctness with cases that were
+    never checked.
+    """
+    if not spec:
+        return None, None
+    hay = _normalise(text or "")
+    hits = 0
+    for group in spec:
+        for option in group:
+            needle = _normalise(option)
+            # Word boundaries, or "no" matches inside "Nobel" and every
+            # negative-answer case scores itself correct.
+            if re.search(rf"(?<!\w){re.escape(needle)}(?!\w)", hay):
+                hits += 1
+                break
+    return hits == len(spec), hits / len(spec)
+
+
 def _find_cited_titles(answer: str, candidates: list[str]) -> list[str]:
     """Which retrieved article titles the agent names in its prose.
 
@@ -71,6 +108,26 @@ def grade(case: Case, trace: Trace) -> dict:
 
     cited = _find_cited_titles(trace.answer, shown)
     usage = trace.usage
+
+    # Correctness, deterministically, for cases with a checkable answer.
+    answer_match, answer_completeness = matches(case.answer_contains, trace.answer)
+
+    # Retrieval quality: did the text that came back carry the evidence?
+    # Scored per tool call rather than over one concatenated blob, so we learn
+    # *which* search found it and how many were spent getting there. Over 22K
+    # characters of concatenated results, a short string also matches by
+    # accident far too easily.
+    calls = [c for turn in trace.turns for c in turn.tool_calls]
+    evidence_match, evidence_at, evidence_in = None, None, []
+    if case.evidence_contains:
+        evidence_match = False
+        for i, call in enumerate(calls):
+            ok, _ = matches(case.evidence_contains, call.rendered)
+            if ok:
+                evidence_match, evidence_at = True, i
+                evidence_in = call.shown_titles
+                break
+
     return {
         "case_id": case.id,
         "dimensions": case.dimensions,
@@ -78,7 +135,25 @@ def grade(case: Case, trace: Trace) -> dict:
         "searched": trace.searched,
         "n_searches": trace.n_searches,
         "queries": trace.queries,
-        # retrieval
+        # correctness and retrieval quality — the two exact signals. Crossing
+        # them is what separates "never had the evidence" from "had it and
+        # didn't use it" from "answered from memory", but that cross-tab is
+        # analysis, not a grader's job.
+        "answer_match": answer_match,
+        "answer_completeness": answer_completeness,
+        "evidence_match": evidence_match,
+        "evidence_found_at_search": evidence_at,
+        "evidence_found_in": evidence_in,
+        # retrieval — per search, because a flattened title list across five
+        # searches can't say which query produced what.
+        "searches": [
+            {"query": c.query, "shown": c.shown_titles,
+             "beyond_top_k": c.titles[len(c.shown_titles):]}
+            for c in calls
+        ],
+        # Weak article-level fallback, kept only for cases where no string
+        # spec can express the answer (aggregation over tables). Not the
+        # retrieval metric any more; `evidence_match` is.
         "gold_shown": gold_shown,
         "gold_fetched": gold_fetched,
         "shown_titles": shown,

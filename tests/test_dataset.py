@@ -69,15 +69,48 @@ def test_the_holdout_shares_no_rows_with_the_tuning_set():
 
 # --- core -------------------------------------------------------------------
 
-def test_core_covers_one_case_per_mode(core):
+def test_core_covers_every_mode_the_read_pass_found(core):
+    """A superset check, not equality: adding a mode should not require
+    editing a test, but silently *losing* one must fail."""
     modes = {d for c in core for d in c.dimensions}
-    expected = {
-        "factual", "single-hop", "multi-hop", "bridge", "deep-fact",
-        "abstention", "unanswerable", "false-premise", "ambiguous-entity",
-        "must-search", "negative-existence", "query-formulation", "obscure",
-        "no-search-needed", "completeness", "list",
+    required = {
+        # anchors for behaviour that works today
+        "factual", "must-search", "no-search-needed", "multi-hop", "bridge",
+        "ambiguous-entity", "query-formulation", "false-premise",
+        "negative-existence", "completeness", "unanswerable",
+        # the dominant failure mode and its variants
+        "body-fact", "infobox-fact", "aggregation",
+        # modes the read pass surfaced
+        "memory-seeded-query", "persistence", "no-article",
+        "comparison", "query-reformulation", "false-premise-control",
     }
-    assert modes == expected
+    assert required <= modes, f"missing modes: {sorted(required - modes)}"
+
+
+def test_the_false_premise_case_has_its_matched_control(core):
+    """FalseQA's design. Without the control, an agent that rejects any
+    odd-sounding premise scores as a success on the false-premise case."""
+    dims = {d for c in core for d in c.dimensions}
+    assert ("false-premise" in dims) == ("false-premise-control" in dims)
+
+
+def test_extractive_cases_can_actually_be_scored(core):
+    """`extractive` claims the answer is a span in some article. A case
+    claiming it with no strings to check is mislabelled, and would sit in the
+    scorable denominator contributing nothing."""
+    for case in core:
+        if case.answer_kind == "extractive":
+            assert case.answer_contains, f"{case.id} is extractive but unscorable"
+            assert case.evidence_contains, f"{case.id} has no evidence spec"
+
+
+def test_unanswerable_cases_have_nothing_to_match(core):
+    """`none` means no answer exists. A spec here would score an abstention
+    against a string it should never contain."""
+    for case in core:
+        if case.answer_kind == "none":
+            assert not case.answer_contains
+            assert not case.evidence_contains
 
 
 def test_core_keeps_both_halves_of_the_tool_use_polarity(core):
@@ -92,7 +125,7 @@ def test_core_keeps_both_halves_of_the_tool_use_polarity(core):
 def test_core_cases_that_should_have_a_gold_article_have_one(core):
     """Retrieval recall is only computable where a gold article exists. These
     are the cases whose retrieval we intend to score."""
-    needs_gold = {"factual", "multi-hop", "deep-fact", "false-premise",
+    needs_gold = {"factual", "multi-hop", "false-premise", "body-fact",
                   "negative-existence", "query-formulation", "completeness"}
     for case in core:
         if needs_gold & set(case.dimensions):
@@ -104,7 +137,9 @@ def test_cases_without_a_gold_article_are_the_ones_that_cannot_have_one(core):
     by definition, and `gold_shown` is None for them rather than False."""
     for case in core:
         if not case.gold_articles:
-            assert {"unanswerable", "no-search-needed"} & set(case.dimensions)
+            assert {"unanswerable", "no-search-needed", "no-article"} & set(
+                case.dimensions
+            )
 
 
 def test_every_core_case_records_why_it_exists(core):

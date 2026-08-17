@@ -175,6 +175,70 @@ def test_grade_output_is_json_serializable(monkeypatch):
     json.dumps(graders.grade(CASE, fake_trace(monkeypatch, ["A"])))
 
 
+# --- answer and evidence matching -------------------------------------------
+
+def test_evidence_is_attributed_to_the_search_that_found_it(monkeypatch):
+    """Which search found it, not just whether some search did. Five searches
+    where the first would have done is a different problem from five searches
+    that were all needed."""
+    monkeypatch.setattr(
+        wikipedia, "_fetch",
+        lambda query, fetch_k, timeout: [
+            wikipedia.Article(f"T-{query}", "u", f"extract about {query}", 0)
+        ],
+    )
+    responses = [
+        Response([tool_use("alpha", id="t1")], stop_reason="tool_use"),
+        Response([tool_use("bravo", id="t2")], stop_reason="tool_use"),
+        Response([text("Answer.")]),
+    ]
+    t = agent.ask("q", model="claude-haiku-4-5", top_k=3,
+                  client=StubClient(responses))
+    case = Case(id="c", question="q", expected="e", dimensions=["f"],
+                evidence_contains=[["bravo"]])
+    g = graders.grade(case, t)
+    assert g["evidence_match"] is True
+    assert g["evidence_found_at_search"] == 1      # the second search, not the first
+    assert g["evidence_found_in"] == ["T-bravo"]
+
+
+def test_evidence_absent_from_every_search_is_a_miss(monkeypatch):
+    t = fake_trace(monkeypatch, ["A"])
+    case = Case(id="c", question="q", expected="e", dimensions=["f"],
+                evidence_contains=[["nowhere"]])
+    g = graders.grade(case, t)
+    assert g["evidence_match"] is False
+    assert g["evidence_found_at_search"] is None
+
+
+def test_answer_and_evidence_can_disagree(monkeypatch):
+    """The interesting cell: the evidence never came back, yet the answer is
+    right - meaning it came from memory, not from Wikipedia."""
+    t = fake_trace(monkeypatch, ["A"], answer="The answer is 1799.")
+    case = Case(id="c", question="q", expected="e", dimensions=["f"],
+                answer_contains=[["1799"]], evidence_contains=[["1799"]])
+    g = graders.grade(case, t)
+    assert g["answer_match"] is True
+    assert g["evidence_match"] is False
+
+
+def test_unscorable_cases_are_none_not_false(monkeypatch):
+    t = fake_trace(monkeypatch, ["A"])
+    g = graders.grade(NO_GOLD, t)
+    assert g["answer_match"] is None
+    assert g["evidence_match"] is None
+
+
+def test_searches_are_recorded_per_query(monkeypatch):
+    """A flattened title list across several searches can't say which query
+    produced what."""
+    t = fake_trace(monkeypatch, ["A", "B", "C", "D", "E"])
+    [search] = graders.grade(CASE, t)["searches"]
+    assert search["query"] == "q"
+    assert search["shown"] == ["A", "B", "C"]
+    assert search["beyond_top_k"] == ["D", "E"]
+
+
 def test_grade_emits_no_verdict(monkeypatch):
     """Graders emit signals; verdicts come later. Baking pass/fail in here would
     freeze the funnel into the harness."""

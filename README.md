@@ -12,7 +12,7 @@ Requires Python 3.11+ and an Anthropic API key.
 ```bash
 uv venv --python 3.11
 uv pip install -e .
-echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env   # or export it
+echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env
 ```
 
 The agent defaults to `claude-haiku-4-5`. `--effort` is rejected on Haiku with

@@ -121,6 +121,34 @@ Five is near the practical ceiling — every dimension needs its own alignment
 check against human labels, and unaligned dimensions produce confident noise.
 Corroboration and conciseness stay deterministic for exactly that reason.
 
+### Measured: where deterministic matching works, and where it doesn't
+
+Run over the 31 already-labelled runs, comparing the matcher's verdict to the
+hand labels. No extra labelling, no alignment run.
+
+| Spec source | Set | Agreement |
+|---|---|---|
+| Hand-authored variants | curated (8 scorable) | **8/8** |
+| Auto-derived from NQ reference | explore (20) | **11/20** |
+
+The 55% is diagnostic, not noise. Of the nine disagreements: one was a real
+matcher bug (Natural Questions stores dates with non-breaking spaces, so
+`June\xa09,\xa02017` never matched a plainly typed date — now fixed and
+tested); four were paraphrase or variant gaps (`Tughlaq`/`Tughluq`,
+`Sandra Miju Oh`/`Sandra Oh`, `2 Titles`/`two times`, `Dominion of Canada`/
+`Canadian North-West Territories`); and four were **references that are simply
+wrong**, where the agent was right and the dataset was not.
+
+**Conclusion, measured rather than argued:** deterministic correctness is
+trustworthy exactly where a human authored the accepted phrasings, and unusable
+where specs are derived automatically. So the curated set is scored
+deterministically, and the random sets are where a judge earns its keep.
+
+**Caveat on the 8/8.** Those specs were written *after* reading the baseline
+answers, so they are contaminated — I knew the phrasing I had to accept. The
+honest number will come from the ten new or rewritten cases at baseline, whose
+specs were authored before any run existed.
+
 ### Judge design
 
 * **Different model from the agent** (Sonnet 5 judging Haiku) — self-preference

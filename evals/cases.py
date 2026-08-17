@@ -19,14 +19,35 @@ REQUIRED = ("id", "question", "expected", "dimensions")
 ID_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
 
 
+ANSWER_KINDS = ("extractive", "derived", "none")
+
+
 @dataclass
 class Case:
     id: str
     question: str
     expected: str
     dimensions: list[str]
-    # Optional by necessity: unanswerable and false-premise cases have no gold
-    # article. Retrieval recall is reported over only the subset that has them.
+
+    # Checkable answer, as an AND of ORs: [["Italian", "from Italy"]] is one
+    # requirement with two acceptable phrasings; [["Germany"], ["France"]] is
+    # two requirements. One shape covers paraphrase tolerance and completeness.
+    answer_contains: list[list[str]] = field(default_factory=list)
+
+    # What retrieval had to surface, which is NOT always the answer. For a
+    # derived answer ("which is older, Bologna or Oxford?") the evidence is the
+    # two founding dates; the answer appears in no article. Keeping them apart
+    # is what stops a synthesis question being blamed on retrieval.
+    evidence_contains: list[list[str]] = field(default_factory=list)
+
+    # extractive: answer is a span that should appear in some article.
+    # derived:    answer is computed from evidence (compare, count, date maths).
+    # none:       no answer exists to check (unanswerable, no-search-needed).
+    answer_kind: str = "extractive"
+
+    # Demoted from "gold" to a non-exclusive hint. Facts are usually carried by
+    # several articles, and an answer corroborated by three is stronger, not
+    # differently sourced — a metric keyed to one predicted title can't say so.
     gold_articles: list[str] = field(default_factory=list)
     notes: str = ""
 
@@ -51,13 +72,37 @@ def _parse(raw: dict, where: str) -> Case:
     gold = raw.get("gold_articles") or []
     if not isinstance(gold, list):
         raise ValueError(f"{where}: 'gold_articles' must be a list")
+
+    kind = raw.get("answer_kind", "extractive")
+    if kind not in ANSWER_KINDS:
+        raise ValueError(
+            f"{where}: 'answer_kind' must be one of {', '.join(ANSWER_KINDS)}"
+        )
+
+    specs = {}
+    for key in ("answer_contains", "evidence_contains"):
+        spec = raw.get(key) or []
+        # ["Italian"] instead of [["Italian"]] would silently become seven
+        # single-character requirements and score everything as a miss.
+        if not isinstance(spec, list) or not all(
+            isinstance(group, list) and group and all(isinstance(s, str) for s in group)
+            for group in spec
+        ):
+            raise ValueError(
+                f"{where}: {key!r} must be a list of non-empty lists of strings, "
+                'e.g. [["Italian", "from Italy"]]'
+            )
+        specs[key] = [list(group) for group in spec]
+
     return Case(
         id=str(raw["id"]),
         question=raw["question"],
         expected=raw["expected"],
         dimensions=list(raw["dimensions"]),
+        answer_kind=kind,
         gold_articles=[str(g) for g in gold],
         notes=raw.get("notes", ""),
+        **specs,
     )
 
 
