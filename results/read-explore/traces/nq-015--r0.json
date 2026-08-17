@@ -1,0 +1,106 @@
+{
+  "question": "who plays the voice of belle in disney's beauty and the beast",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on the search results from the **Belle (Disney character)** article, **Paige O'Hara** is the voice of Belle in Disney's 1991 animated film *Beauty and the Beast*. She was cast for the role due to her Broadway experience and mature-sounding voice, after 500 actresses auditioned for the part.",
+  "error": null,
+  "latency_s": 3.303,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Beauty and the Beast Disney voice cast Belle"
+    ],
+    "shown_titles": [
+      "Belle (Disney character)",
+      "Beauty and the Beast (Disney song)",
+      "Beauty and the Beast: The Enchanted Christmas"
+    ],
+    "retrieved_titles": [
+      "Belle (Disney character)",
+      "Beauty and the Beast (Disney song)",
+      "Beauty and the Beast: The Enchanted Christmas",
+      "Beast (Disney character)",
+      "Beauty and the Beast (1991 soundtrack)"
+    ],
+    "usage": {
+      "input_tokens": 2687,
+      "output_tokens": 158,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I'll search for information about the voice of Belle in Disney's Beauty and the Beast.",
+      "tool_calls": [
+        {
+          "query": "Beauty and the Beast Disney voice cast Belle",
+          "raw": {
+            "query": "Beauty and the Beast Disney voice cast Belle",
+            "results": [
+              {
+                "title": "Belle (Disney character)",
+                "url": "https://en.wikipedia.org/wiki/Belle_(Disney_character)",
+                "extract": "Belle is a fictional character in Disney's Beauty and the Beast franchise. First appearing in the 1991 animated film, Belle is the book-loving daughter of an inventor who yearns for adventure and respite from her mundane village. When her father is imprisoned by a cold-hearted beast, Belle offers her own freedom in exchange for his. Despite his outward appearance, she gradually befriends the Beast, who learns kindness in return. The character was created by screenwriter Linda Woolverton, who Disney had hired to adapt the \"Beauty and the Beast\" fairy tale into an animated musical about a strong heroine. Influenced by the women's movement, Woolverton committed to writing Belle as a proactive and intelligent character to distinguish her from previous Disney heroines, particularly Ariel from The Little Mermaid (1989). Belle's supervising animators, James Baxter and Mark Henn, drew inspiration from various sources to design a beautiful yet believable heroine, specifically referencing European facial features, ballerinas, and several classical Hollywood actresses. 500 actresses auditioned for the role before Paige O'Hara was cast due to her Broadway experience and mature-sounding voice. Belle has received mostly positive reviews from film critics, who praised her bravery, intelligence, and independence. [...]",
+                "pageid": 4483446
+              },
+              {
+                "title": "Beauty and the Beast (Disney song)",
+                "url": "https://en.wikipedia.org/wiki/Beauty_and_the_Beast_(Disney_song)",
+                "extract": "\"Beauty and the Beast\" is a song written by lyricist Howard Ashman and composer Alan Menken for the Disney animated feature film Beauty and the Beast (1991). The film's theme song, the Broadway-inspired ballad was first recorded by British-American actress Angela Lansbury in her role as the voice of the character Mrs. Potts, and essentially describes the relationship between its two main characters Belle and the Beast, specifically how the couple has learned to accept their differences and in turn change each other for the better. Additionally, the song's lyrics imply that the feeling of love is as timeless and ageless as a \"tale as old as time\". Lansbury's rendition is heard during the famous ballroom sequence between Belle and the Beast, while a shortened chorale version plays in the closing scenes of the film, and the song's motif features frequently in other pieces of Menken's film score. Lansbury was initially hesitant to record \"Beauty and the Beast\" because she felt that it was not suitable for her aging singing voice, but ultimately completed the song in one take. \"Beauty and the Beast\" was subsequently recorded as a pop duet by Canadian singer Celine Dion and American singer Peabo Bryson, and released as the only single from the film's soundtrack on October 28, 1991. Disney first recruited solely Dion to record a radio-friendly version of it in order to promote the film. [...]",
+                "pageid": 3725773
+              },
+              {
+                "title": "Beauty and the Beast: The Enchanted Christmas",
+                "url": "https://en.wikipedia.org/wiki/Beauty_and_the_Beast:_The_Enchanted_Christmas",
+                "extract": "Beauty and the Beast: The Enchanted Christmas is a 1997 direct-to-video animated Christmas musical fantasy film produced by Walt Disney Television Animation and Disneytoon Studios, as a sequel to Disney's 1991 animated feature film Beauty and the Beast. The film was released by Walt Disney Home Video on November 11, 1997. While a frame story is set after the events of the original film, the main narrative is a flashback recounting Belle and the Beast's first Christmas together. The film sold 7.6 million VHS tapes in 1997.",
+                "pageid": 481293
+              },
+              {
+                "title": "Beast (Disney character)",
+                "url": "https://en.wikipedia.org/wiki/Beast_(Disney_character)",
+                "extract": "The Beast is a fictional character who appears in Walt Disney Animation Studios' animated film Beauty and the Beast (1991), as well as in the film's two direct-to-video followups Beauty and the Beast: The Enchanted Christmas and Belle's Magical World. Based on the character from the French fairy tale, the Beast was created by screenwriter Linda Woolverton and animated by Glen Keane. A pampered but dangerously grouchy prince transformed into a hideous beast as punishment for his cold-hearted and selfish ways, the Beast must, in order to return to his former self, earn the love of a beautiful young woman named Belle whom he imprisons in his castle. All this must be done before the last petal falls from the enchanted rose on his twenty-first birthday. In all animated film appearances, the Beast is voiced by American actor Robby Benson. The 1991 animated film was adapted into a Broadway musical in 1994, with the role being originated by American actor Terrence Mann. English actor Dan Stevens portrays a live-action version of the character in the 2017 adaptation of the 1991 film.",
+                "pageid": 6027555
+              },
+              {
+                "title": "Beauty and the Beast (1991 soundtrack)",
+                "url": "https://en.wikipedia.org/wiki/Beauty_and_the_Beast_(1991_soundtrack)",
+                "extract": "Beauty and the Beast: Original Motion Picture Soundtrack is the official soundtrack album to the 1991 Disney animated film Beauty and the Beast. Originally released on October 22, 1991, by Walt Disney Records, the album's first half \u2013 tracks 2 to 9 \u2013 generally contains the film's musical numbers, all of which were written by composer Alan Menken and lyricist Howard Ashman, while its latter half \u2013 tracks 10 to 14 \u2013 features its musical score, composed solely by Menken. While the majority of the album's content remains within the musical theatre genre, its songs have also been influenced by French, classical, pop and Broadway music. Credited to Various Artists, Beauty and the Beast: Original Motion Picture Soundtrack features performances by the film's main cast \u2013 Paige O'Hara, Richard White, Jesse Corti, Jerry Orbach, Angela Lansbury, Robby Benson and David Ogden Stiers \u2013 in order of appearance. Additionally, the album features recording artists Celine Dion and Peabo Bryson, who perform a pop rendition of the film's theme song of the same name, which simultaneously serves as the soundtrack's only single. [...]",
+                "pageid": 10374843
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.563
+          },
+          "rendered": "[1] Belle (Disney character)\nBelle is a fictional character in Disney's Beauty and the Beast franchise. First appearing in the 1991 animated film, Belle is the book-loving daughter of an inventor who yearns for adventure and respite from her mundane village. When her father is imprisoned by a cold-hearted beast, Belle offers her own freedom in exchange for his. Despite his outward appearance, she gradually befriends the Beast, who learns kindness in return. The character was created by screenwriter Linda Woolverton, who Disney had hired to adapt the \"Beauty and the Beast\" fairy tale into an animated musical about a strong heroine. Influenced by the women's movement, Woolverton committed to writing Belle as a proactive and intelligent character to distinguish her from previous Disney heroines, particularly Ariel from The Little Mermaid (1989). Belle's supervising animators, James Baxter and Mark Henn, drew inspiration from various sources to design a beautiful yet believable heroine, specifically referencing European facial features, ballerinas, and several classical Hollywood actresses. 500 actresses auditioned for the role before Paige O'Hara was cast due to her Broadway experience and mature-sounding voice. Belle has received mostly positive reviews from film critics, who praised her bravery, intelligence, and independence. [...]\n\n[2] Beauty and the Beast (Disney song)\n\"Beauty and the Beast\" is a song written by lyricist Howard Ashman and composer Alan Menken for the Disney animated feature film Beauty and the Beast (1991). The film's theme song, the Broadway-inspired ballad was first recorded by British-American actress Angela Lansbury in her role as the voice of the character Mrs. Potts, and essentially describes the relationship between its two main characters Belle and the Beast, specifically how the couple has learned to accept their differences and in turn change each other for the better. Additionally, the song's lyrics imply that the feeling of love is as timeless and ageless as a \"tale as old as time\". Lansbury's rendition is heard during the famous ballroom sequence between Belle and the Beast, while a shortened chorale version plays in the closing scenes of the film, and the song's motif features frequently in other pieces of Menken's film score. Lansbury was initially hesitant to record \"Beauty and the Beast\" because she felt that it was not suitable for her aging singing voice, but ultimately completed the song in one take. \"Beauty and the Beast\" was subsequently recorded as a pop duet by Canadian singer Celine Dion and American singer Peabo Bryson, and released as the only single from the film's soundtrack on October 28, 1991. Disney first recruited solely Dion to record a radio-friendly version of it in order to promote the film. [...]\n\n[3] Beauty and the Beast: The Enchanted Christmas\nBeauty and the Beast: The Enchanted Christmas is a 1997 direct-to-video animated Christmas musical fantasy film produced by Walt Disney Television Animation and Disneytoon Studios, as a sequel to Disney's 1991 animated feature film Beauty and the Beast. The film was released by Walt Disney Home Video on November 11, 1997. While a frame story is set after the events of the original film, the main narrative is a flashback recounting Belle and the Beast's first Christmas together. The film sold 7.6 million VHS tapes in 1997.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 920,
+      "output_tokens": 79,
+      "cache_read_tokens": 0,
+      "latency_s": 1.4614167920080945
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Based on the search results from the **Belle (Disney character)** article, **Paige O'Hara** is the voice of Belle in Disney's 1991 animated film *Beauty and the Beast*. She was cast for the role due to her Broadway experience and mature-sounding voice, after 500 actresses auditioned for the part.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1767,
+      "output_tokens": 79,
+      "cache_read_tokens": 0,
+      "latency_s": 1.2767055840231478
+    }
+  ]
+}

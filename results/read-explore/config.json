@@ -1,0 +1,11 @@
+{
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "use_tools": true,
+  "use_cache": true,
+  "top_k": 3,
+  "repeats": 1,
+  "judge_model": null,
+  "judge_version": null
+}

@@ -1,0 +1,286 @@
+{
+  "question": "which important resource used today is found in the southern part of the fertile crescent",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on the search results, **oil (petroleum)** is the important resource found in the southern part of the Fertile Crescent that is used today. \n\nThe southern part of the Fertile Crescent includes Iraq and the Persian Gulf region, which contain vast oil reserves. According to the Wikipedia article on the \"Rumaila oil field,\" southern Iraq has an estimated 143 billion barrels of oil reserves, with major oil fields like Rumaila being among the largest in the world. The region's oil resources have been historically significant and remain critically important to the global economy today.",
+  "error": null,
+  "latency_s": 8.101,
+  "summary": {
+    "searched": true,
+    "n_searches": 4,
+    "n_turns": 4,
+    "cache_hits": 0,
+    "queries": [
+      "Fertile Crescent southern part resources",
+      "Fertile Crescent geography resources",
+      "petroleum oil Middle East Persian Gulf resources",
+      "oil reserves Middle East Iraq Kuwait"
+    ],
+    "shown_titles": [
+      "Fertile Crescent",
+      "Tigris\u2013Euphrates river system",
+      "Cradle of civilization",
+      "Shia Crescent",
+      "Geography of the Arab world",
+      "Gulf Oil",
+      "Anglo-Persian Oil Company",
+      "Persian Gulf Residency",
+      "Kuwaiti oil fires",
+      "Rumaila oil field",
+      "Gulf War"
+    ],
+    "retrieved_titles": [
+      "Fertile Crescent",
+      "Tigris\u2013Euphrates river system",
+      "Cradle of civilization",
+      "Southern Levant",
+      "Einkorn",
+      "Shia Crescent",
+      "Geography of the Arab world",
+      "Geography of Kyrgyzstan",
+      "Gulf Oil",
+      "Anglo-Persian Oil Company",
+      "Persian Gulf Residency",
+      "Ministry of Energy (Saudi Arabia)",
+      "Bahrain Petroleum Company",
+      "Kuwaiti oil fires",
+      "Rumaila oil field",
+      "Gulf War",
+      "Kuwait",
+      "1990 oil price shock"
+    ],
+    "usage": {
+      "input_tokens": 10087,
+      "output_tokens": 424,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I'll search for information about resources found in the southern part of the Fertile Crescent.",
+      "tool_calls": [
+        {
+          "query": "Fertile Crescent southern part resources",
+          "raw": {
+            "query": "Fertile Crescent southern part resources",
+            "results": [
+              {
+                "title": "Fertile Crescent",
+                "url": "https://en.wikipedia.org/wiki/Fertile_Crescent",
+                "extract": "The Fertile Crescent (Arabic: \u0627\u0644\u0647\u0644\u0627\u0644 \u0627\u0644\u062e\u0635\u064a\u0628 al-hil\u0101l al-\u1e35a\u1e63\u012bb) is a crescent-shaped region in the Middle East, spanning modern-day Iraq, Israel, Jordan, Lebanon, Palestine, and Syria, together with northern Kuwait, south-eastern Turkey, and western Iran. Some authors also include Cyprus and northern Egypt. The Fertile Crescent is believed to be the first region where settled farming emerged as people started the process of clearance and modification of natural vegetation to grow newly domesticated plants as crops. Early human civilizations such as Sumer in Mesopotamia flourished as a result. Technological advances in the region include the development of agriculture and the use of irrigation, of writing, the wheel, and glass, most emerging first in Mesopotamia.",
+                "pageid": 39715
+              },
+              {
+                "title": "Tigris\u2013Euphrates river system",
+                "url": "https://en.wikipedia.org/wiki/Tigris%E2%80%93Euphrates_river_system",
+                "extract": "The Tigris\u2013Euphrates river system is a large river system in West Asia that flows into the Persian Gulf. Its primary rivers are the Tigris and Euphrates, along with smaller tributaries. From their sources and upper courses in the eastern Turkey, being Lake Hazar for the Tigris and Karasu along with the Murat River for the Euphrates, the two rivers descend through valleys and gorges to the uplands of Syria and northern Iraq and then to the alluvial plain of central Iraq. Other tributaries join the Tigris from sources in the Zagros Mountains to the east. The rivers flow in a south-easterly direction through the central plain and combine at Al-Qurnah to form the Shatt al-Arab and discharge into the Persian Gulf. The rivers and their tributaries drain an area of 879,790 square kilometres (339,690 sq mi), including almost the entire area of Iraq as well as portions of Turkey, Syria, Iran and Kuwait. The region has historical importance as part of the Fertile Crescent, where Mesopotamian civilization first emerged.",
+                "pageid": 209798
+              },
+              {
+                "title": "Cradle of civilization",
+                "url": "https://en.wikipedia.org/wiki/Cradle_of_civilization",
+                "extract": "The earliest human civilizations developed independently of each other and a cradle of civilization is a location and a culture from which one of them emerged. A civilization is any complex society characterized by the development of a state, social stratification, urbanization, and symbolic systems of communication beyond signed or spoken languages (namely, writing systems and graphic arts). Scholars generally acknowledge six cradles of civilization: Mesopotamia, Ancient Egypt, Ancient India and Ancient China are believed to be the earliest in Afro-Eurasia, while the Caral\u2013Supe civilization of coastal Peru and the Olmec civilization of Mexico are believed to be the earliest in the Americas. All of the cradles of civilization depended upon agriculture for sustenance (except possibly Caral\u2013Supe which may have depended initially on marine resources). All depended upon farmers producing an agricultural surplus to support the centralized government, political leaders, religious leaders, and public works of the urban centers of the early civilizations.",
+                "pageid": 710778
+              },
+              {
+                "title": "Southern Levant",
+                "url": "https://en.wikipedia.org/wiki/Southern_Levant",
+                "extract": "The Southern Levant is a geographical region in West Asia along the eastern coast of the Mediterranean Sea, a territory corresponding approximately to present-day Israel, Palestine, and Jordan; some definitions also include southern Lebanon, southern Syria, and the Sinai Peninsula. As a strictly geographical description, it is sometimes used by archaeologists and historians to avoid the religious and political connotations of other names for this area. Like much of Southwestern Asia, the Southern Levant is an arid region consisting mostly of desert and dry steppe, with a thin strip of wetter, temperate climate along the Mediterranean coast. Geographically it is dominated by the Jordan Valley, a section of the Great Rift Valley bisecting the region from north to south, and containing the Sea of Galilee, the Jordan River and the Dead Sea\u2014the lowest point on the Earth's land surface. The Litani River in southern Lebanon is commonly considered the dividing line between the Southern Levant and the Northern Levant. The Southern Levant has a long history and is one of the world's most intensively investigated areas by archaeologists. It is considered likely to be the first place that both early hominins and modern humans colonized outside of Africa. Consequently, it has a rich Stone Age archaeology, stretching back as early as 1.5 million years ago. With one of the earliest sites for urban settlements, it also corresponds to the western parts of the Fertile Crescent.",
+                "pageid": 292617
+              },
+              {
+                "title": "Einkorn",
+                "url": "https://en.wikipedia.org/wiki/Einkorn",
+                "extract": "Einkorn (from German Einkorn, literally \"single grain\") can refer to either a wild species of wheat (Triticum) or a domesticated form of wheat. The wild form is T. boeoticum (syn. T. m. subsp. boeoticum), and the domesticated form is T. monococcum (syn. T. m. subsp. monococcum). Einkorn is a diploid species (2n = 14 chromosomes) of hulled wheat, with tough glumes (husks) that tightly enclose the grains. The cultivated form is similar to the wild, except that the ear stays intact when ripe and the seeds are larger. The domestic form is known as petit \u00e9peautre in French, Einkorn in German, \"einkorn\" or \"littlespelt\" in English, piccolo farro in Italian and escanda menor in Spanish. The name refers to the fact that each spikelet contains only one grain. Einkorn was one of the first forms of wheat to be cultivated.",
+                "pageid": 57522
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.496
+          },
+          "rendered": "[1] Fertile Crescent\nThe Fertile Crescent (Arabic: \u0627\u0644\u0647\u0644\u0627\u0644 \u0627\u0644\u062e\u0635\u064a\u0628 al-hil\u0101l al-\u1e35a\u1e63\u012bb) is a crescent-shaped region in the Middle East, spanning modern-day Iraq, Israel, Jordan, Lebanon, Palestine, and Syria, together with northern Kuwait, south-eastern Turkey, and western Iran. Some authors also include Cyprus and northern Egypt. The Fertile Crescent is believed to be the first region where settled farming emerged as people started the process of clearance and modification of natural vegetation to grow newly domesticated plants as crops. Early human civilizations such as Sumer in Mesopotamia flourished as a result. Technological advances in the region include the development of agriculture and the use of irrigation, of writing, the wheel, and glass, most emerging first in Mesopotamia.\n\n[2] Tigris\u2013Euphrates river system\nThe Tigris\u2013Euphrates river system is a large river system in West Asia that flows into the Persian Gulf. Its primary rivers are the Tigris and Euphrates, along with smaller tributaries. From their sources and upper courses in the eastern Turkey, being Lake Hazar for the Tigris and Karasu along with the Murat River for the Euphrates, the two rivers descend through valleys and gorges to the uplands of Syria and northern Iraq and then to the alluvial plain of central Iraq. Other tributaries join the Tigris from sources in the Zagros Mountains to the east. The rivers flow in a south-easterly direction through the central plain and combine at Al-Qurnah to form the Shatt al-Arab and discharge into the Persian Gulf. The rivers and their tributaries drain an area of 879,790 square kilometres (339,690 sq mi), including almost the entire area of Iraq as well as portions of Turkey, Syria, Iran and Kuwait. The region has historical importance as part of the Fertile Crescent, where Mesopotamian civilization first emerged.\n\n[3] Cradle of civilization\nThe earliest human civilizations developed independently of each other and a cradle of civilization is a location and a culture from which one of them emerged. A civilization is any complex society characterized by the development of a state, social stratification, urbanization, and symbolic systems of communication beyond signed or spoken languages (namely, writing systems and graphic arts). Scholars generally acknowledge six cradles of civilization: Mesopotamia, Ancient Egypt, Ancient India and Ancient China are believed to be the earliest in Afro-Eurasia, while the Caral\u2013Supe civilization of coastal Peru and the Olmec civilization of Mexico are believed to be the earliest in the Americas. All of the cradles of civilization depended upon agriculture for sustenance (except possibly Caral\u2013Supe which may have depended initially on marine resources). All depended upon farmers producing an agricultural surplus to support the centralized government, political leaders, religious leaders, and public works of the urban centers of the early civilizations.",
+          "top_k": 3
+        },
+        {
+          "query": "Fertile Crescent geography resources",
+          "raw": {
+            "query": "Fertile Crescent geography resources",
+            "results": [
+              {
+                "title": "Fertile Crescent",
+                "url": "https://en.wikipedia.org/wiki/Fertile_Crescent",
+                "extract": "The Fertile Crescent (Arabic: \u0627\u0644\u0647\u0644\u0627\u0644 \u0627\u0644\u062e\u0635\u064a\u0628 al-hil\u0101l al-\u1e35a\u1e63\u012bb) is a crescent-shaped region in the Middle East, spanning modern-day Iraq, Israel, Jordan, Lebanon, Palestine, and Syria, together with northern Kuwait, south-eastern Turkey, and western Iran. Some authors also include Cyprus and northern Egypt. The Fertile Crescent is believed to be the first region where settled farming emerged as people started the process of clearance and modification of natural vegetation to grow newly domesticated plants as crops. Early human civilizations such as Sumer in Mesopotamia flourished as a result. Technological advances in the region include the development of agriculture and the use of irrigation, of writing, the wheel, and glass, most emerging first in Mesopotamia.",
+                "pageid": 39715
+              },
+              {
+                "title": "Shia Crescent",
+                "url": "https://en.wikipedia.org/wiki/Shia_Crescent",
+                "extract": "The Shia Crescent is the notionally crescent-shaped region of the West Asia where the majority population is Shia or where there is a strong Shia minority in the population. In recent years the term has been used in Western political discourse to identify areas under Iranian influence or control and soft power, as Iran has sought to unite all Shia Muslims under one banner. On the other hand, this concept shows the increasing political weight of Shia in Western Asia. Areas in the Shia Crescent include Lebanon, Syria (west Syria), Bahrain, Iraq (south Iraq), and Iran. In addition to the Twelver Shia, the term also included Ismaili, Zaydi in Yemen, Alawi groups in Syria and Alevi groups in Turkey. After the Assad regime was overthrown by the Sunni opposition on 8 December 2024, Syria was no longer dominated by Iran and its allies, and the remnants of the former regime launched sporadic insurgency in the western coastal areas.",
+                "pageid": 6764964
+              },
+              {
+                "title": "Geography of the Arab world",
+                "url": "https://en.wikipedia.org/wiki/Geography_of_the_Arab_world",
+                "extract": "The Arab world consists of 22 countries located in Western Asia, Northern Africa, the Maghreb, the Horn of Africa, and the Indian Ocean. It covers a combined area of 13 million km2. It extends from Morocco in the west, southward to the Comoros, eastward to Somalia, and northward to Iraq.",
+                "pageid": 12943290
+              },
+              {
+                "title": "Cradle of civilization",
+                "url": "https://en.wikipedia.org/wiki/Cradle_of_civilization",
+                "extract": "The earliest human civilizations developed independently of each other and a cradle of civilization is a location and a culture from which one of them emerged. A civilization is any complex society characterized by the development of a state, social stratification, urbanization, and symbolic systems of communication beyond signed or spoken languages (namely, writing systems and graphic arts). Scholars generally acknowledge six cradles of civilization: Mesopotamia, Ancient Egypt, Ancient India and Ancient China are believed to be the earliest in Afro-Eurasia, while the Caral\u2013Supe civilization of coastal Peru and the Olmec civilization of Mexico are believed to be the earliest in the Americas. All of the cradles of civilization depended upon agriculture for sustenance (except possibly Caral\u2013Supe which may have depended initially on marine resources). All depended upon farmers producing an agricultural surplus to support the centralized government, political leaders, religious leaders, and public works of the urban centers of the early civilizations.",
+                "pageid": 710778
+              },
+              {
+                "title": "Geography of Kyrgyzstan",
+                "url": "https://en.wikipedia.org/wiki/Geography_of_Kyrgyzstan",
+                "extract": "Kyrgyzstan is a landlocked nation in Central Asia, with an area of 199,951 km2 (77,202 mi2). The national territory extends about 900 km (560 mi) from east to west and 410 km (250 mi) from north to south. Kyrgyzstan is bordered on the east and southeast by China, on the north by Kazakhstan, on the west by Uzbekistan, and on the south by Tajikistan. The borders with Uzbekistan and Tajikistan in the Fergana Valley are rather complicated. One consequence of the Stalinist division of Central Asia into five republics is that many ethnic Kyrgyz people do not live in Kyrgyzstan. Three enclaves, legally part of the territory of Kyrgyzstan but geographically removed by several kilometers, have been established, two in Uzbekistan and one in Tajikistan. The terrain of Kyrgyzstan is dominated by the Tian Shan and Pamir mountain systems, which together occupy about 65% of national territory. The Alay range portion of the Tian Shan system dominates the southwestern crescent of the country, and, to the east, the main Tian Shan range runs along the boundary between southern Kyrgyzstan and China before extending farther east into China's Xinjiang Uygur Autonomous Region. Kyrgyzstan's average elevation is 2,750 m (9,020 ft), ranging from 7,439 m (24,406 ft) at Peak Jengish Chokusu to 394 m (1,293 ft) in the Fergana Valley near Osh. Almost 90% of the country lies more than 1,500 m (4,900 ft) above sea level.",
+                "pageid": 16696
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.484
+          },
+          "rendered": "[1] Fertile Crescent\nThe Fertile Crescent (Arabic: \u0627\u0644\u0647\u0644\u0627\u0644 \u0627\u0644\u062e\u0635\u064a\u0628 al-hil\u0101l al-\u1e35a\u1e63\u012bb) is a crescent-shaped region in the Middle East, spanning modern-day Iraq, Israel, Jordan, Lebanon, Palestine, and Syria, together with northern Kuwait, south-eastern Turkey, and western Iran. Some authors also include Cyprus and northern Egypt. The Fertile Crescent is believed to be the first region where settled farming emerged as people started the process of clearance and modification of natural vegetation to grow newly domesticated plants as crops. Early human civilizations such as Sumer in Mesopotamia flourished as a result. Technological advances in the region include the development of agriculture and the use of irrigation, of writing, the wheel, and glass, most emerging first in Mesopotamia.\n\n[2] Shia Crescent\nThe Shia Crescent is the notionally crescent-shaped region of the West Asia where the majority population is Shia or where there is a strong Shia minority in the population. In recent years the term has been used in Western political discourse to identify areas under Iranian influence or control and soft power, as Iran has sought to unite all Shia Muslims under one banner. On the other hand, this concept shows the increasing political weight of Shia in Western Asia. Areas in the Shia Crescent include Lebanon, Syria (west Syria), Bahrain, Iraq (south Iraq), and Iran. In addition to the Twelver Shia, the term also included Ismaili, Zaydi in Yemen, Alawi groups in Syria and Alevi groups in Turkey. After the Assad regime was overthrown by the Sunni opposition on 8 December 2024, Syria was no longer dominated by Iran and its allies, and the remnants of the former regime launched sporadic insurgency in the western coastal areas.\n\n[3] Geography of the Arab world\nThe Arab world consists of 22 countries located in Western Asia, Northern Africa, the Maghreb, the Horn of Africa, and the Indian Ocean. It covers a combined area of 13 million km2. It extends from Morocco in the west, southward to the Comoros, eastward to Somalia, and northward to Iraq.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 923,
+      "output_tokens": 123,
+      "cache_read_tokens": 0,
+      "latency_s": 1.0129801250295714
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Let me search more specifically for oil and petroleum in the Middle East/Persian Gulf region, which is in the southern part of the Fertile Crescent.",
+      "tool_calls": [
+        {
+          "query": "petroleum oil Middle East Persian Gulf resources",
+          "raw": {
+            "query": "petroleum oil Middle East Persian Gulf resources",
+            "results": [
+              {
+                "title": "Gulf Oil",
+                "url": "https://en.wikipedia.org/wiki/Gulf_Oil",
+                "extract": "Gulf Oil was a major American global oil company that was in business from 1901 to 1985. The eighth-largest American manufacturing company in 1941 and the ninth largest in 1979, Gulf Oil was one of the Seven Sisters oil companies. Prior to its merger with Standard Oil of California, Gulf was one of the chief instruments of the Mellon family fortune; both Gulf and Mellon Financial had their headquarters in Pittsburgh, Pennsylvania, with Gulf's headquarters, the Gulf Tower, being Pittsburgh's tallest building until the completion of the U.S. Steel Tower. Gulf Oil Corporation (GOC) ceased to exist as an independent company in 1985, when it merged with Standard Oil of California (SOCAL), with both rebranding as Chevron in the United States. Gulf Canada, Gulf's main Canadian subsidiary, was sold the same year with retail outlets to Ultramar and Petro-Canada and what became Gulf Canada Resources to Olympia & York. Other aspects of the Gulf brand name, and a number of the constituent business divisions of GOC, have continued to exist. In its present incarnation, it is a \"new economy\" business, employing very few people directly and its assets mainly in the form of intellectual property: brands, product specifications and scientific expertise. The rights to the brand in the United States are owned by Gulf Oil Limited Partnership (GOLC), which operates service stations and petroleum terminals; it is headquartered in Wellesley, Massachusetts. [...]",
+                "pageid": 59218
+              },
+              {
+                "title": "Anglo-Persian Oil Company",
+                "url": "https://en.wikipedia.org/wiki/Anglo-Persian_Oil_Company",
+                "extract": "The Anglo-Persian Oil Company (APOC; Persian: \u0634\u0631\u06a9\u062a \u0646\u0641\u062a \u0627\u06cc\u0631\u0627\u0646 \u0648 \u0627\u0646\u06af\u0644\u06cc\u0633) was a British company founded in 1909 following the discovery of a large oil field in Masjed Soleiman, Persia (Iran). The British government purchased 51% of the company in 1914, gaining a controlling number of shares, effectively nationalizing the company. It was the first company to extract petroleum from Iran. In 1935 APOC was renamed the Anglo-Iranian Oil Company (AIOC) when Reza Shah formally asked foreign countries to refer to Persia by its endonym Iran. In 1954, it was renamed again to The British Petroleum Company, one of the antecedents of the modern BP public limited company. The government of Mohammad Mosaddegh nationalized the company's local infrastructure assets and gave the new company the name National Iranian Oil Company.",
+                "pageid": 866367
+              },
+              {
+                "title": "Persian Gulf Residency",
+                "url": "https://en.wikipedia.org/wiki/Persian_Gulf_Residency",
+                "extract": "The Persian Gulf Residency was a subdivision of the British Empire from 1822 until 1971, whereby the United Kingdom maintained varying degrees of political and economic control over several states in the Persian Gulf, including what is today known as the United Arab Emirates (formerly called the \"Trucial States\") and at various times southern portions of Iran, Bahrain, Kuwait, Oman, and Qatar.",
+                "pageid": 4751227
+              },
+              {
+                "title": "Ministry of Energy (Saudi Arabia)",
+                "url": "https://en.wikipedia.org/wiki/Ministry_of_Energy_(Saudi_Arabia)",
+                "extract": "The Ministry of Energy (Arabic: \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u0637\u0627\u0642\u0629) is a government ministry in Saudi Arabia and part of the cabinet. It is responsible for developing and implementing policies concerning petroleum and related products. The Ministry of Energy is working to diversify the national energy mix used in electricity production, increasing the share of natural gas and renewable energy sources to approximately 50% by 2030 while reducing the use of liquid fuel. In August 2019, King Salman issued a royal decree and divided the Ministry of Petroleum and Mineral Resources into two: Ministry of Industry and Mineral Resources, and Ministry of Energy. While Khalid al-Falih still remained the energy minister, business executive Bandar Al-Khorayef was named as the minister of natural resources. However, on 8 September 2019, a royal decree was issued to appoint Abdulaziz bin Salman Al Saud as the energy minister. On 11 July 2026 he was appointed as Minister of Industry and Natural Resources in addition to his position as Minister of Energy.",
+                "pageid": 40545481
+              },
+              {
+                "title": "Bahrain Petroleum Company",
+                "url": "https://en.wikipedia.org/wiki/Bahrain_Petroleum_Company",
+                "extract": "The Bahrain Petroleum Company (BAPCO) is an integrated petroleum company that is the national oil company of Bahrain. It was founded in 1929 and discovered the first oil field in the Persian Gulf outside of Iran in 1932. Shipments of crude oil commenced in 1934 and in 1936 the first refinery in the Gulf outside of Iran was built. The founders were the American Standard Oil of California, which was soon joined by Texaco, operating under British rule. While Bahrain never was a high-volume crude oil producer, the American joint venture a few years later came into possession of the vast Saudi Arabian oil reserves, which are located on the mainland in the vicinity of Bahrain Island. Supplied from the mainland, the refinery though exceeded the capacity of the Bahrain oil field from its inception and was among the largest in the region. The Bahrein concession was the first of 3 concessions awarded exclusively to American interests in the Middle East and was followed by Aramco in Saudi Arabia and by the joint venture active in the Saudi Arabian\u2013Kuwaiti neutral zone.",
+                "pageid": 35241753
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.547
+          },
+          "rendered": "[1] Gulf Oil\nGulf Oil was a major American global oil company that was in business from 1901 to 1985. The eighth-largest American manufacturing company in 1941 and the ninth largest in 1979, Gulf Oil was one of the Seven Sisters oil companies. Prior to its merger with Standard Oil of California, Gulf was one of the chief instruments of the Mellon family fortune; both Gulf and Mellon Financial had their headquarters in Pittsburgh, Pennsylvania, with Gulf's headquarters, the Gulf Tower, being Pittsburgh's tallest building until the completion of the U.S. Steel Tower. Gulf Oil Corporation (GOC) ceased to exist as an independent company in 1985, when it merged with Standard Oil of California (SOCAL), with both rebranding as Chevron in the United States. Gulf Canada, Gulf's main Canadian subsidiary, was sold the same year with retail outlets to Ultramar and Petro-Canada and what became Gulf Canada Resources to Olympia & York. Other aspects of the Gulf brand name, and a number of the constituent business divisions of GOC, have continued to exist. In its present incarnation, it is a \"new economy\" business, employing very few people directly and its assets mainly in the form of intellectual property: brands, product specifications and scientific expertise. The rights to the brand in the United States are owned by Gulf Oil Limited Partnership (GOLC), which operates service stations and petroleum terminals; it is headquartered in Wellesley, Massachusetts. [...]\n\n[2] Anglo-Persian Oil Company\nThe Anglo-Persian Oil Company (APOC; Persian: \u0634\u0631\u06a9\u062a \u0646\u0641\u062a \u0627\u06cc\u0631\u0627\u0646 \u0648 \u0627\u0646\u06af\u0644\u06cc\u0633) was a British company founded in 1909 following the discovery of a large oil field in Masjed Soleiman, Persia (Iran). The British government purchased 51% of the company in 1914, gaining a controlling number of shares, effectively nationalizing the company. It was the first company to extract petroleum from Iran. In 1935 APOC was renamed the Anglo-Iranian Oil Company (AIOC) when Reza Shah formally asked foreign countries to refer to Persia by its endonym Iran. In 1954, it was renamed again to The British Petroleum Company, one of the antecedents of the modern BP public limited company. The government of Mohammad Mosaddegh nationalized the company's local infrastructure assets and gave the new company the name National Iranian Oil Company.\n\n[3] Persian Gulf Residency\nThe Persian Gulf Residency was a subdivision of the British Empire from 1822 until 1971, whereby the United Kingdom maintained varying degrees of political and economic control over several states in the Persian Gulf, including what is today known as the United Arab Emirates (formerly called the \"Trucial States\") and at various times southern portions of Iran, Bahrain, Kuwait, Oman, and Qatar.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 2265,
+      "output_tokens": 92,
+      "cache_read_tokens": 0,
+      "latency_s": 1.2649029580061324
+    },
+    {
+      "index": 2,
+      "thinking": null,
+      "text": "Let me search more directly for oil reserves in the Middle East and the southern Fertile Crescent region.",
+      "tool_calls": [
+        {
+          "query": "oil reserves Middle East Iraq Kuwait",
+          "raw": {
+            "query": "oil reserves Middle East Iraq Kuwait",
+            "results": [
+              {
+                "title": "Kuwaiti oil fires",
+                "url": "https://en.wikipedia.org/wiki/Kuwaiti_oil_fires",
+                "extract": "The Kuwaiti oil fires were caused by the Iraqi military setting fire to a reported 605 to 732 oil wells along with an unspecified number of oil-filled low-lying areas, such as oil lakes and fire trenches while retreating from Kuwait in 1991 due to the advances of US-led coalition forces in the Gulf War. The fires were started in January and February 1991, and the first oil well fires were extinguished in early April 1991, with the last well capped on November 6, 1991.",
+                "pageid": 17448
+              },
+              {
+                "title": "Rumaila oil field",
+                "url": "https://en.wikipedia.org/wiki/Rumaila_oil_field",
+                "extract": "The Rumaila oil field is a super-giant oil field located in southern Iraq, approximately 50km to the south west of Basra City. Discovered in 1953 by the Basrah Petroleum Company (BPC), an associate company of the Iraq Petroleum Company (IPC), the field is estimated to contain 17 billion barrels, which accounts for 12% of Iraq's oil reserves, estimated at 143 billion barrels. Rumaila is said to be the largest oilfield ever discovered in Iraq and one of the four largest oilfields in the world. Under Abdul-Karim Qasim, the oilfield was nationalised by the Iraqi government by Public Law No. 80 on 11 December 1961. Since then, this massive oil field has remained under Iraqi control. The assets and rights of IPC were nationalized by Saddam Hussein in 1972, and those of BPC in 1975. The dispute between Iraq and Kuwait over alleged slant-drilling in the field was one of the reasons for Iraq's invasion of Kuwait in 1990. After decades of under investment, due to sanctions by the west, by the early 2000s, the field was suffering not only from the natural base decline of its reservoirs, but also from ageing infrastructure and equipment, compromising production capacity, environmental protection and safety. The town of North Rumaila is called \"the cemetery\" by the locals. A local environmental scientist told the BBC in 2022 that cancer in the area was so rife it was \"like the flu\". [...]",
+                "pageid": 1282738
+              },
+              {
+                "title": "Gulf War",
+                "url": "https://en.wikipedia.org/wiki/Gulf_War",
+                "extract": "The Gulf War was an armed conflict between Iraq and a 42-country coalition led by the United States. The coalition's efforts were in two phases: Operation Desert Shield, which marked the military buildup from August 1990 to January 1991; and Operation Desert Storm, from the bombing campaign against Iraq on 17 January until the American-led liberation of Kuwait on 28 February. On 2 August 1990, Iraq, governed by Saddam Hussein, invaded neighboring Kuwait and occupied the country within two days. Iraq annexed Kuwait's territories, establishing Basra Governorate in the north and Kuwait Governorate in the south. The invasion of Kuwait was met with immediate international condemnation. The UN Security Council demanded Iraq's immediate withdrawal and imposed a total embargo on products from Iraq and Kuwait. A coalition began a military buildup in the Persian Gulf region. The broadest military alliance since World War II, its largest contributors were the US, Saudi Arabia, the United Kingdom, and Egypt. The Security Council issued an ultimatum to Iraq on 29 November 1990, expiring on 15 January 1991, to withdraw from Kuwait, with member-states thereafter empowered to use \"all necessary means\" to force withdrawal. On 17 January, the coalition began aerial and naval bombardment of Iraq and Kuwait, which continued for five weeks. Iraq fired missiles at Israel and at Saudi Arabia, but failed to split Muslim-majority countries from the coalition. [...]",
+                "pageid": 182000
+              },
+              {
+                "title": "Kuwait",
+                "url": "https://en.wikipedia.org/wiki/Kuwait",
+                "extract": "Kuwait, officially the State of Kuwait, is a country in West Asia. With a coastline of approximately 500 km (311 mi), it is situated at the head of the Persian Gulf in the northeastern edge of the Arabian Peninsula, bordering Iraq to the north and Saudi Arabia to the south. Kuwait is geographically the second closest Gulf country to mainland Iran (separated only by a small Iraqi coastline) after Iraq. The country is a small city-state; most of the population reside in the urban agglomeration of Kuwait City, the capital and largest city. As of 2024, Kuwait has a population of 4.82 million, of which 1.53 million are Kuwaiti citizens while the remaining 3.29 million are foreign nationals from over 100 countries. In 2024, Kuwait had the world's seventh largest number of foreign nationals as a percentage of the population, where its citizens make up fewer than 30% of the overall population. The territory of modern-day Kuwait has been inhabited by humans since antiquity, particularly due to its strategic location near the mouth of the Tigris and Euphrates rivers. In the early 18th century, the territory of modern-day Kuwait was under the jurisdiction of the Bani Khalid clan; then the territory became known as the Sheikdom of Kuwait in 1752 and a British protectorate in 1899. Prior to the discovery of oil reserves in 1938, the territory of modern-day Kuwait contained a regional trade port. [...]",
+                "pageid": 7515890
+              },
+              {
+                "title": "1990 oil price shock",
+                "url": "https://en.wikipedia.org/wiki/1990_oil_price_shock",
+                "extract": "The 1990 oil price shock occurred in response to the Iraqi invasion of Kuwait on August 2, 1990, Saddam Hussein's second invasion of a fellow OPEC member. Lasting only nine months, the price spike was less extreme and of shorter duration than the previous oil crises of 1973\u20131974 and 1979\u20131980, but the spike still contributed to the early 1990s recession in the United States. The average monthly price of oil rose from $17 per barrel in July to $36 per barrel in October. As the U.S.-led coalition experienced military success against Iraqi forces, concerns about long-term supply shortages eased and prices began to fall.",
+                "pageid": 1193842
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.881
+          },
+          "rendered": "[1] Kuwaiti oil fires\nThe Kuwaiti oil fires were caused by the Iraqi military setting fire to a reported 605 to 732 oil wells along with an unspecified number of oil-filled low-lying areas, such as oil lakes and fire trenches while retreating from Kuwait in 1991 due to the advances of US-led coalition forces in the Gulf War. The fires were started in January and February 1991, and the first oil well fires were extinguished in early April 1991, with the last well capped on November 6, 1991.\n\n[2] Rumaila oil field\nThe Rumaila oil field is a super-giant oil field located in southern Iraq, approximately 50km to the south west of Basra City. Discovered in 1953 by the Basrah Petroleum Company (BPC), an associate company of the Iraq Petroleum Company (IPC), the field is estimated to contain 17 billion barrels, which accounts for 12% of Iraq's oil reserves, estimated at 143 billion barrels. Rumaila is said to be the largest oilfield ever discovered in Iraq and one of the four largest oilfields in the world. Under Abdul-Karim Qasim, the oilfield was nationalised by the Iraqi government by Public Law No. 80 on 11 December 1961. Since then, this massive oil field has remained under Iraqi control. The assets and rights of IPC were nationalized by Saddam Hussein in 1972, and those of BPC in 1975. The dispute between Iraq and Kuwait over alleged slant-drilling in the field was one of the reasons for Iraq's invasion of Kuwait in 1990. After decades of under investment, due to sanctions by the west, by the early 2000s, the field was suffering not only from the natural base decline of its reservoirs, but also from ageing infrastructure and equipment, compromising production capacity, environmental protection and safety. The town of North Rumaila is called \"the cemetery\" by the locals. A local environmental scientist told the BBC in 2022 that cancer in the area was so rife it was \"like the flu\". [...]\n\n[3] Gulf War\nThe Gulf War was an armed conflict between Iraq and a 42-country coalition led by the United States. The coalition's efforts were in two phases: Operation Desert Shield, which marked the military buildup from August 1990 to January 1991; and Operation Desert Storm, from the bombing campaign against Iraq on 17 January until the American-led liberation of Kuwait on 28 February. On 2 August 1990, Iraq, governed by Saddam Hussein, invaded neighboring Kuwait and occupied the country within two days. Iraq annexed Kuwait's territories, establishing Basra Governorate in the north and Kuwait Governorate in the south. The invasion of Kuwait was met with immediate international condemnation. The UN Security Council demanded Iraq's immediate withdrawal and imposed a total embargo on products from Iraq and Kuwait. A coalition began a military buildup in the Persian Gulf region. The broadest military alliance since World War II, its largest contributors were the US, Saudi Arabia, the United Kingdom, and Egypt. The Security Council issued an ultimatum to Iraq on 29 November 1990, expiring on 15 January 1991, to withdraw from Kuwait, with member-states thereafter empowered to use \"all necessary means\" to force withdrawal. On 17 January, the coalition began aerial and naval bombardment of Iraq and Kuwait, which continued for five weeks. Iraq fired missiles at Israel and at Saudi Arabia, but failed to split Muslim-majority countries from the coalition. [...]",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 3000,
+      "output_tokens": 81,
+      "cache_read_tokens": 0,
+      "latency_s": 1.213731333031319
+    },
+    {
+      "index": 3,
+      "thinking": null,
+      "text": "Based on the search results, **oil (petroleum)** is the important resource found in the southern part of the Fertile Crescent that is used today. \n\nThe southern part of the Fertile Crescent includes Iraq and the Persian Gulf region, which contain vast oil reserves. According to the Wikipedia article on the \"Rumaila oil field,\" southern Iraq has an estimated 143 billion barrels of oil reserves, with major oil fields like Rumaila being among the largest in the world. The region's oil resources have been historically significant and remain critically important to the global economy today.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 3899,
+      "output_tokens": 128,
+      "cache_read_tokens": 0,
+      "latency_s": 2.195118833973538
+    }
+  ]
+}

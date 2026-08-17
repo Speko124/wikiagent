@@ -1,0 +1,106 @@
+{
+  "question": "who plays alexander hamilton in the original broadway cast",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on the Wikipedia article \"Hamilton (musical)\", **Lin-Manuel Miranda** plays Alexander Hamilton in the original Broadway cast. The article states that Miranda premiered the role off-Broadway at the Public Theater on February 17, 2015, and continued in the role when the musical transferred to the Richard Rodgers Theatre on Broadway on August 6, 2015.",
+  "error": null,
+  "latency_s": 2.97,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Hamilton musical Broadway cast"
+    ],
+    "shown_titles": [
+      "Hamilton (musical)",
+      "Hamilton (album)",
+      "Hamilton (2020 film)"
+    ],
+    "retrieved_titles": [
+      "Hamilton (musical)",
+      "Hamilton (album)",
+      "Hamilton (2020 film)",
+      "Lin-Manuel Miranda",
+      "List of the longest-running Broadway shows"
+    ],
+    "usage": {
+      "input_tokens": 2908,
+      "output_tokens": 136,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Hamilton musical Broadway cast",
+          "raw": {
+            "query": "Hamilton musical Broadway cast",
+            "results": [
+              {
+                "title": "Hamilton (musical)",
+                "url": "https://en.wikipedia.org/wiki/Hamilton_(musical)",
+                "extract": "Hamilton: An American Musical, known simply as Hamilton, is a sung-and-rapped-through biographical musical with music, lyrics, and a book by Lin-Manuel Miranda. Based on the 2004 biography Alexander Hamilton by Ron Chernow, the musical covers the life of American Founding Father Alexander Hamilton and his involvement in the American Revolution and the political history of the early United States. Composed from 2008 to 2015, the music draws heavily from hip hop, as well as R&B, pop, soul, and traditional-style show tunes. It casts non-white actors as the Founding Fathers of the United States and other historical figures. Miranda described Hamilton as about \"America then, as told by America now\". From its opening, Hamilton received near-universal acclaim. It premiered off-Broadway on February 17, 2015, at the Public Theater in Lower Manhattan, with Miranda playing the role of Alexander Hamilton, where its several-month engagement was sold out. The musical won eight Drama Desk Awards, including Outstanding Musical. It then transferred to the Richard Rodgers Theatre on Broadway, opening on August 6, 2015, where it received uniformly positive reviews and high box office sales. At the 70th Tony Awards, Hamilton received a record-breaking 16 nominations and won 11 awards, including Best Musical. It received the 2016 Pulitzer Prize for Drama. [...]",
+                "pageid": 45433681
+              },
+              {
+                "title": "Hamilton (album)",
+                "url": "https://en.wikipedia.org/wiki/Hamilton_(album)",
+                "extract": "Hamilton (Original Broadway Cast Recording) is the cast album to the 2015 musical Hamilton. The musical is based on the 2004 biography of Alexander Hamilton written by Ron Chernow, with music, lyrics, and book by Lin-Manuel Miranda. The recording features the original Broadway cast, which includes Miranda, Leslie Odom Jr., Phillipa Soo, Ren\u00e9e Elise Goldsberry, Christopher Jackson, Daveed Diggs, Anthony Ramos, Okieriete Onaodowan, Jasmine Cephas Jones, and Jonathan Groff, as well as ensemble members Jon Rua, Thayne Jasperson, Sydney James Harcourt, Ephraim Sykes, Ariana DeBose, and Sasha Hutchings. The recording achieved the largest first week sales for a digital cast album and is the highest-charting cast album since 1969. It was the highest-selling Broadway cast album of 2015 and peaked at number one on the Rap Albums chart, the first cast album to ever do so. After being certified Diamond by the RIAA in 2023, Hamilton became the best-selling cast album of all time. In 2025, the album was deemed \"culturally, historically, or aesthetically significant\" by the Library of Congress and selected for preservation in the National Recording Registry.",
+                "pageid": 49174736
+              },
+              {
+                "title": "Hamilton (2020 film)",
+                "url": "https://en.wikipedia.org/wiki/Hamilton_(2020_film)",
+                "extract": "Hamilton is a 2020 American musical historical drama film consisting of a live stage recording of the Broadway musical, which was inspired by the 2004 biography Alexander Hamilton by Ron Chernow. Co-produced by Walt Disney Pictures, 5000 Broadway Productions, RadicalMedia, Nevis Productions, and Old 320 Sycamore Pictures, it was filmed over three performances in 2016, directed by Thomas Kail, who co-produced it with Jeffrey Seller and Lin-Manuel Miranda. Miranda, who wrote the music, lyrics, and book, stars as Treasury Secretary/Founding Father Alexander Hamilton, along with the musical's original Broadway cast, including Leslie Odom Jr., Phillipa Soo, Christopher Jackson, Ren\u00e9e Elise Goldsberry, Daveed Diggs, Anthony Ramos, Jasmine Cephas Jones, Okieriete Onaodowan, and Jonathan Groff. Originally planned for theatrical release on October 15, 2021, Hamilton was impacted by the COVID-19 pandemic and was instead released worldwide by Walt Disney Studios Motion Pictures to stream on Disney+ on July 3, 2020. Acclaimed by critics for its visuals, performances, and direction, it became one of the most-streamed films of 2020. The film was named as one of the best films of 2020 by the American Film Institute, and was nominated for Best Motion Picture \u2013 Musical or Comedy and Best Actor in a Motion Picture \u2013 Musical or Comedy (Miranda) at the 78th Golden Globe Awards, while Daveed Diggs was nominated for SAG Award for Outstanding Male Actor in a Limited Series or Television Movie. [...]",
+                "pageid": 63015598
+              },
+              {
+                "title": "Lin-Manuel Miranda",
+                "url": "https://en.wikipedia.org/wiki/Lin-Manuel_Miranda",
+                "extract": "Lin-Manuel Miranda ( man-WELL; born January 16, 1980) is an American songwriter, actor, filmmaker, librettist, and producer. He created the Broadway musicals In the Heights and Hamilton, and the soundtracks for the animated films Moana, Vivo, and Encanto. He has received numerous accolades including a Pulitzer Prize for Drama, three Tony Awards, two Laurence Olivier Awards, two Emmy Awards, and five Grammy Awards, along with nominations for two Academy Awards. He received the Kennedy Center Honor in 2018. Miranda made his Broadway debut in 2008, writing the music and lyrics for and starring in the musical In the Heights, which won the Tony Award for Best Musical and Best Original Score and the Grammy Award for Best Musical Theater Album. It was later adapted as a 2021 film of the same name. Miranda returned to Broadway in 2015, writing the script, music, and lyrics, as well as starring in the musical Hamilton, which was praised by critics and became a popular culture phenomenon. Hamilton won the Pulitzer Prize and was nominated for a record 16 Tonys and won 11, including Miranda's first win for the Best Book of a Musical. The Hamilton cast recording spent 10 weeks atop Billboard's Top Rap Albums chart and became the eleventh-biggest album of the 2010s. A frequent collaborator of the Walt Disney Company, Miranda has written original songs for the studio. He gained two Oscar nominations for \"How Far I'll Go\" and \"Dos Oruguitas\" from Moana and Encanto, respectively. [...]",
+                "pageid": 13072534
+              },
+              {
+                "title": "List of the longest-running Broadway shows",
+                "url": "https://en.wikipedia.org/wiki/List_of_the_longest-running_Broadway_shows",
+                "extract": "This is a list of Broadway shows with 1,000 or more performances, sorted by number of performances. As of August 9, 2026, 12 shows currently running on Broadway have had at least 1,000 performances: the 1996 revival of Chicago, The Lion King, Wicked, The Book of Mormon, Aladdin, Hamilton, Harry Potter and the Cursed Child, Hadestown, Moulin Rouge!, Six, MJ the Musical, and & Juliet.",
+                "pageid": 16674268
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.537
+          },
+          "rendered": "[1] Hamilton (musical)\nHamilton: An American Musical, known simply as Hamilton, is a sung-and-rapped-through biographical musical with music, lyrics, and a book by Lin-Manuel Miranda. Based on the 2004 biography Alexander Hamilton by Ron Chernow, the musical covers the life of American Founding Father Alexander Hamilton and his involvement in the American Revolution and the political history of the early United States. Composed from 2008 to 2015, the music draws heavily from hip hop, as well as R&B, pop, soul, and traditional-style show tunes. It casts non-white actors as the Founding Fathers of the United States and other historical figures. Miranda described Hamilton as about \"America then, as told by America now\". From its opening, Hamilton received near-universal acclaim. It premiered off-Broadway on February 17, 2015, at the Public Theater in Lower Manhattan, with Miranda playing the role of Alexander Hamilton, where its several-month engagement was sold out. The musical won eight Drama Desk Awards, including Outstanding Musical. It then transferred to the Richard Rodgers Theatre on Broadway, opening on August 6, 2015, where it received uniformly positive reviews and high box office sales. At the 70th Tony Awards, Hamilton received a record-breaking 16 nominations and won 11 awards, including Best Musical. It received the 2016 Pulitzer Prize for Drama. [...]\n\n[2] Hamilton (album)\nHamilton (Original Broadway Cast Recording) is the cast album to the 2015 musical Hamilton. The musical is based on the 2004 biography of Alexander Hamilton written by Ron Chernow, with music, lyrics, and book by Lin-Manuel Miranda. The recording features the original Broadway cast, which includes Miranda, Leslie Odom Jr., Phillipa Soo, Ren\u00e9e Elise Goldsberry, Christopher Jackson, Daveed Diggs, Anthony Ramos, Okieriete Onaodowan, Jasmine Cephas Jones, and Jonathan Groff, as well as ensemble members Jon Rua, Thayne Jasperson, Sydney James Harcourt, Ephraim Sykes, Ariana DeBose, and Sasha Hutchings. The recording achieved the largest first week sales for a digital cast album and is the highest-charting cast album since 1969. It was the highest-selling Broadway cast album of 2015 and peaked at number one on the Rap Albums chart, the first cast album to ever do so. After being certified Diamond by the RIAA in 2023, Hamilton became the best-selling cast album of all time. In 2025, the album was deemed \"culturally, historically, or aesthetically significant\" by the Library of Congress and selected for preservation in the National Recording Registry.\n\n[3] Hamilton (2020 film)\nHamilton is a 2020 American musical historical drama film consisting of a live stage recording of the Broadway musical, which was inspired by the 2004 biography Alexander Hamilton by Ron Chernow. Co-produced by Walt Disney Pictures, 5000 Broadway Productions, RadicalMedia, Nevis Productions, and Old 320 Sycamore Pictures, it was filmed over three performances in 2016, directed by Thomas Kail, who co-produced it with Jeffrey Seller and Lin-Manuel Miranda. Miranda, who wrote the music, lyrics, and book, stars as Treasury Secretary/Founding Father Alexander Hamilton, along with the musical's original Broadway cast, including Leslie Odom Jr., Phillipa Soo, Christopher Jackson, Ren\u00e9e Elise Goldsberry, Daveed Diggs, Anthony Ramos, Jasmine Cephas Jones, Okieriete Onaodowan, and Jonathan Groff. Originally planned for theatrical release on October 15, 2021, Hamilton was impacted by the COVID-19 pandemic and was instead released worldwide by Walt Disney Studios Motion Pictures to stream on Disney+ on July 3, 2020. Acclaimed by critics for its visuals, performances, and direction, it became one of the most-streamed films of 2020. The film was named as one of the best films of 2020 by the American Film Institute, and was nominated for Best Motion Picture \u2013 Musical or Comedy and Best Actor in a Motion Picture \u2013 Musical or Comedy (Miranda) at the 78th Golden Globe Awards, while Daveed Diggs was nominated for SAG Award for Outstanding Male Actor in a Limited Series or Television Movie. [...]",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 916,
+      "output_tokens": 57,
+      "cache_read_tokens": 0,
+      "latency_s": 1.017269625037443
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Based on the Wikipedia article \"Hamilton (musical)\", **Lin-Manuel Miranda** plays Alexander Hamilton in the original Broadway cast. The article states that Miranda premiered the role off-Broadway at the Public Theater on February 17, 2015, and continued in the role when the musical transferred to the Richard Rodgers Theatre on Broadway on August 6, 2015.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1992,
+      "output_tokens": 79,
+      "cache_read_tokens": 0,
+      "latency_s": 1.4144392920425162
+    }
+  ]
+}

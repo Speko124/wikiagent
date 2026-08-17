@@ -1,0 +1,106 @@
+{
+  "question": "who played christina yang on grey's anatomy",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on the search results, **Sandra Oh** played Cristina Yang on Grey's Anatomy. This information comes from both the \"Grey's Anatomy season 2\" and \"Grey's Anatomy\" Wikipedia articles, which list Sandra Oh as part of the original cast who played the character Cristina Yang throughout the series.",
+  "error": null,
+  "latency_s": 2.428,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Christina Yang Grey's Anatomy"
+    ],
+    "shown_titles": [
+      "Grey's Anatomy season 2",
+      "Grey's Anatomy",
+      "List of Grey's Anatomy characters"
+    ],
+    "retrieved_titles": [
+      "Grey's Anatomy season 2",
+      "Grey's Anatomy",
+      "List of Grey's Anatomy characters",
+      "As We Know It",
+      "Going, Going, Gone (Grey's Anatomy)"
+    ],
+    "usage": {
+      "input_tokens": 2677,
+      "output_tokens": 130,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Christina Yang Grey's Anatomy",
+          "raw": {
+            "query": "Christina Yang Grey's Anatomy",
+            "results": [
+              {
+                "title": "Grey's Anatomy season 2",
+                "url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_season_2",
+                "extract": "The second season of the American television medical drama Grey's Anatomy commenced airing on the American Broadcasting Company (ABC) channel on September 25, 2005, and concluded on May 15, 2006. Shonda Rhimes was the series' showrunner and executive producer. Actors Ellen Pompeo, Sandra Oh, Katherine Heigl, Justin Chambers, and T. R. Knight reprised their roles as surgical interns Meredith Grey, Cristina Yang, Izzie Stevens, Alex Karev, and George O'Malley respectively. Previous main cast members Chandra Wilson, James Pickens Jr., Isaiah Washington and Patrick Dempsey also returned, while Kate Walsh, who began the season in a recurring capacity, was promoted to series-regular status. The season continued to focus on the surgical residency of five young interns as they try to balance the challenges of their competitive careers with difficulties in their personal lives. It was set in the fictional Seattle Grace Hospital, located in the city of Seattle, Washington. Whereas the first season put the emphasis mainly on the unexpected impact the surgical field has on the main characters, the second season provided a detailed perspective on the personal background of each character, focusing on the consequences that their decisions have on their careers. Throughout the season new storylines were introduced, including the love-triangle between Meredith Grey, Derek Shepherd, and Addison Montgomery, this being the main arc of the season. [...]",
+                "pageid": 4312717
+              },
+              {
+                "title": "Grey's Anatomy",
+                "url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy",
+                "extract": "Grey's Anatomy is an American medical drama television series focusing on the personal and professional lives of surgical interns, residents, and attendings at the fictional Seattle Grace Hospital (later renamed Seattle Grace Mercy West Hospital, and finally Grey Sloan Memorial Hospital). The series premiered on March 27, 2005, on ABC as a mid-season replacement and has been renewed annually for two decades. Its title is a mixture of the protagonist's surname and the name of the classic human anatomy textbook Gray's Anatomy. Writer Shonda Rhimes developed the pilot and served as showrunner, head writer, and executive producer until stepping down in 2015. Set in Seattle, Washington, the series is filmed primarily in Los Angeles, California, and Vancouver, British Columbia. The original cast consisted of nine star-billed actors: Ellen Pompeo, Sandra Oh, Katherine Heigl, Justin Chambers, T. R. Knight, Chandra Wilson, James Pickens Jr., Isaiah Washington, and Patrick Dempsey. For most of its run, the series revolves around Dr. Meredith Grey (Pompeo), chronicling her progression from surgical intern to fully-qualified doctor. The cast has undergone major changes throughout the series' run, with only three original members remaining by the 19th season \u2013 Pompeo, Wilson, and Pickens. Pompeo stepped back from the series in its 19th season, at which point the show shifted to more of an ensemble format. [...]",
+                "pageid": 1660277
+              },
+              {
+                "title": "List of Grey's Anatomy characters",
+                "url": "https://en.wikipedia.org/wiki/List_of_Grey%27s_Anatomy_characters",
+                "extract": "Grey's Anatomy is an American television medical drama series created by Shonda Rhimes and broadcast by ABC. The show features an ensemble cast of lead characters, along with multiple supporting cast members. During its first season, the show featured nine lead characters. Throughout subsequent seasons, many characters have been written out, either due to actors electing to depart the show or due to screenwriters altering character arcs. The following is a list of characters by role type who have appeared over the various seasons since the drama's premiere.",
+                "pageid": 5170095
+              },
+              {
+                "title": "As We Know It",
+                "url": "https://en.wikipedia.org/wiki/As_We_Know_It",
+                "extract": "\"As We Know It\" is the 17th episode of the second season of the American television medical drama Grey's Anatomy and the show's 26th episode overall. Written by series creator Shonda Rhimes and directed by co-executive producer Peter Horton, it originally aired on February 12, 2006, and is the second of a two-part story, following the first part, \"It's the End of the World\". Both episodes were named after the R.E.M. song \"It's the End of the World as We Know It (And I Feel Fine)\". On its original broadcast, it was watched by 25.42 million viewers, with both parts receiving positive reviews from television critics upon broadcast and its bomb storyline leaving a lasting impression on pop culture. The episode, along with its first part, earned Rhimes a nomination for the Primetime Emmy Award for Outstanding Writing for a Drama Series. Guest stars Christina Ricci and Kyle Chandler were both Emmy nominated for their performances in the categories Outstanding Guest Actress in a Drama Series and Outstanding Guest Actor in a Drama Series respectively.",
+                "pageid": 17459856
+              },
+              {
+                "title": "Going, Going, Gone (Grey's Anatomy)",
+                "url": "https://en.wikipedia.org/wiki/Going,_Going,_Gone_(Grey%27s_Anatomy)",
+                "extract": "\"Going, Going, Gone\" is the first episode of the ninth season of the American television medical drama Grey's Anatomy, and the show's 173rd episode overall. Written by Stacy McKee and directed by Rob Corn, the episode was originally broadcast on the American Broadcasting Company (ABC) in the United States on September 27, 2012. The initial airing was viewed by 11.73 million people and received a 4.4 Nielsen rating in the 18\u201349 demographic, registering the show as the week's highest rated television drama. Grey's Anatomy centers around a group of physicians struggling to balance their professional lives with their personal lives. In this episode, the doctors of Seattle Grace Mercy West Hospital cope with the physical and emotional reverberations of the aviation accident that took place in the season eight finale, while several surgical residents are promoted. Further storylines include Cristina Yang (Sandra Oh) relocating to a different hospital, and a group of new interns being intimidated by Meredith Grey (Ellen Pompeo). The episode saw the death of Mark Sloan (Eric Dane); the actor was let go due to budget cuts by the producers. Excessive spoilers were not released, in order to keep the fates of select characters unknown. However, multiple cast members leaked pictures from the set. Jason George returned in a guest capacity. Long-running cast member Camilla Luddington makes her first appearance as Jo Wilson in this episode. The episode received positive reviews from critics.",
+                "pageid": 37157224
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.443
+          },
+          "rendered": "[1] Grey's Anatomy season 2\nThe second season of the American television medical drama Grey's Anatomy commenced airing on the American Broadcasting Company (ABC) channel on September 25, 2005, and concluded on May 15, 2006. Shonda Rhimes was the series' showrunner and executive producer. Actors Ellen Pompeo, Sandra Oh, Katherine Heigl, Justin Chambers, and T. R. Knight reprised their roles as surgical interns Meredith Grey, Cristina Yang, Izzie Stevens, Alex Karev, and George O'Malley respectively. Previous main cast members Chandra Wilson, James Pickens Jr., Isaiah Washington and Patrick Dempsey also returned, while Kate Walsh, who began the season in a recurring capacity, was promoted to series-regular status. The season continued to focus on the surgical residency of five young interns as they try to balance the challenges of their competitive careers with difficulties in their personal lives. It was set in the fictional Seattle Grace Hospital, located in the city of Seattle, Washington. Whereas the first season put the emphasis mainly on the unexpected impact the surgical field has on the main characters, the second season provided a detailed perspective on the personal background of each character, focusing on the consequences that their decisions have on their careers. Throughout the season new storylines were introduced, including the love-triangle between Meredith Grey, Derek Shepherd, and Addison Montgomery, this being the main arc of the season. [...]\n\n[2] Grey's Anatomy\nGrey's Anatomy is an American medical drama television series focusing on the personal and professional lives of surgical interns, residents, and attendings at the fictional Seattle Grace Hospital (later renamed Seattle Grace Mercy West Hospital, and finally Grey Sloan Memorial Hospital). The series premiered on March 27, 2005, on ABC as a mid-season replacement and has been renewed annually for two decades. Its title is a mixture of the protagonist's surname and the name of the classic human anatomy textbook Gray's Anatomy. Writer Shonda Rhimes developed the pilot and served as showrunner, head writer, and executive producer until stepping down in 2015. Set in Seattle, Washington, the series is filmed primarily in Los Angeles, California, and Vancouver, British Columbia. The original cast consisted of nine star-billed actors: Ellen Pompeo, Sandra Oh, Katherine Heigl, Justin Chambers, T. R. Knight, Chandra Wilson, James Pickens Jr., Isaiah Washington, and Patrick Dempsey. For most of its run, the series revolves around Dr. Meredith Grey (Pompeo), chronicling her progression from surgical intern to fully-qualified doctor. The cast has undergone major changes throughout the series' run, with only three original members remaining by the 19th season \u2013 Pompeo, Wilson, and Pickens. Pompeo stepped back from the series in its 19th season, at which point the show shifted to more of an ensemble format. [...]\n\n[3] List of Grey's Anatomy characters\nGrey's Anatomy is an American television medical drama series created by Shonda Rhimes and broadcast by ABC. The show features an ensemble cast of lead characters, along with multiple supporting cast members. During its first season, the show featured nine lead characters. Throughout subsequent seasons, many characters have been written out, either due to actors electing to depart the show or due to screenwriters altering character arcs. The following is a list of characters by role type who have appeared over the various seasons since the drama's premiere.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 915,
+      "output_tokens": 59,
+      "cache_read_tokens": 0,
+      "latency_s": 0.8604809580137953
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Based on the search results, **Sandra Oh** played Cristina Yang on Grey's Anatomy. This information comes from both the \"Grey's Anatomy season 2\" and \"Grey's Anatomy\" Wikipedia articles, which list Sandra Oh as part of the original cast who played the character Cristina Yang throughout the series.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1762,
+      "output_tokens": 71,
+      "cache_read_tokens": 0,
+      "latency_s": 1.123466582968831
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "question": "How many seats does the Concert Hall at the Sydney Opera House have?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "According to the Wikipedia article on the Sydney Symphony Orchestra, the Concert Hall at the Sydney Opera House has a capacity of **2,679 seats**.",
+  "error": null,
+  "latency_s": 3.156,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Sydney Opera House Concert Hall"
+    ],
+    "shown_titles": [
+      "Sydney Opera House",
+      "Sydney Symphony Orchestra",
+      "Sydney Opera House Grand Organ"
+    ],
+    "retrieved_titles": [
+      "Sydney Opera House",
+      "Sydney Symphony Orchestra",
+      "Sydney Opera House Grand Organ",
+      "Nancye Hayes",
+      "Peter Hall (architect)"
+    ],
+    "usage": {
+      "input_tokens": 2767,
+      "output_tokens": 91,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Sydney Opera House Concert Hall",
+          "raw": {
+            "query": "Sydney Opera House Concert Hall",
+            "results": [
+              {
+                "title": "Sydney Opera House",
+                "url": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+                "extract": "The Sydney Opera House is a multi-venue performing arts centre in Sydney, New South Wales, Australia. Located on the foreshore of Sydney Harbour, it is widely regarded as one of the world's most famous and distinctive buildings, and a masterpiece of 20th-century architecture. Designed by Danish architect J\u00f8rn Utzon and completed by an Australian architectural team headed by Peter Hall, the building was formally opened by Queen Elizabeth II on 20 October 1973, 16 years after Utzon's 1957 selection as winner of an international design competition. The Government of New South Wales, led by the premier, Joseph Cahill, authorised work to begin in 1958 with Utzon directing construction. The government's decision to build Utzon's design is often overshadowed by circumstances that followed, including cost and scheduling overruns as well as the architect's ultimate resignation. The building and its surrounds occupy the whole of Bennelong Point on Sydney Harbour, between Sydney Cove and Farm Cove, adjacent to the Sydney central business district and the Royal Botanic Garden, and near to the Sydney Harbour Bridge. The building comprises multiple performance venues, which together host over 1,800 performances annually, attended by more than 1.4 million people. Performances are presented by numerous performing artists, with many resident companies such as Opera Australia, the Sydney Theatre Company and the Sydney Symphony Orchestra. [...]",
+                "pageid": 28222
+              },
+              {
+                "title": "Sydney Symphony Orchestra",
+                "url": "https://en.wikipedia.org/wiki/Sydney_Symphony_Orchestra",
+                "extract": "The Sydney Symphony Orchestra (SSO) is an Australian symphony orchestra based in Sydney. With roots going back to 1908, the orchestra was made a permanent professional orchestra on the formation of the Australian Broadcasting Commission in 1932. The orchestra has performed at the Sydney Opera House as its home concert hall, since the venue's opening in 1973. Simone Young is the orchestra's current chief conductor and the first female conductor in the post. The Sydney Symphony performs around 150 concerts a year to a combined annual audience of more than 350,000. The regular subscription concert series are mostly performed at the Sydney Opera House, but other venues around Sydney are used as well, including the City Recital Hall at Angel Place and the Sydney Town Hall. The Town Hall was the home of the orchestra until the opening of the Opera House in 1973. Since then, most concerts have been taking place in the Opera House's Concert Hall (capacity: 2,679 seats).",
+                "pageid": 358304
+              },
+              {
+                "title": "Sydney Opera House Grand Organ",
+                "url": "https://en.wikipedia.org/wiki/Sydney_Opera_House_Grand_Organ",
+                "extract": "The Sydney Opera House Grand Organ is the world's largest mechanical tracker-action pipe organ. It is located in the concert hall of Sydney Opera House in Sydney, Australia, and was designed by Ronald Sharp, who was assisted by Mark Fisher, Myk Fairhurst and Raymond Bridge. It is in six divisions, five manuals plus pedals, and is the largest tracker action organ ever built, with 131 speaking stops served by 200 ranks of pipes consisting of 10,244 pipes. It is a neo-baroque organ in style. The contract for the construction of the organ was awarded in 1969, during the construction of the Opera House, and the organ was completed in 1979, six years after the opening of the building. Since then the electronics have been updated, including a major refit in 2002, but the musical specification is unchanged from that developed by Sharp starting in 1967. In April 1994 the Sydney Opera House Trust awarded the contract for ongoing maintenance of the organ to Mark Fisher, one of the original staff of Ronald Sharp. In addition to its mechanical action, the organ can be played remotely by an electronic system, enabling it to be played from a remote console, or a performance or passage can be recorded by a system built into the keyboards and played back by the electronic action. This system is used by visiting organists to select the registration (the combination of stops) that they will use, enabling them to stand in different parts of the hall and hear the results. [...]",
+                "pageid": 1739411
+              },
+              {
+                "title": "Nancye Hayes",
+                "url": "https://en.wikipedia.org/wiki/Nancye_Hayes",
+                "extract": "Nancye Lee Bertles AM (n\u00e9e Hayes; born January 1943), billed under her maiden name as Nancye Hayes, is an Australian actress, dancer, singer and choreographer/director and narrator. She has been a leading figure in Australian musical theatre since the 1960s. Although her roles have been almost exclusively in theatre, she has briefly worked in television as a character actress, filling in for Judy Nunn on the soap opera Home and Away.",
+                "pageid": 47175348
+              },
+              {
+                "title": "Peter Hall (architect)",
+                "url": "https://en.wikipedia.org/wiki/Peter_Hall_(architect)",
+                "extract": "Peter Brian Hall (16 May 1931 \u2013 19 May 1995) was an Australian architect active in Sydney and elsewhere from the 1950s to the early 1990s. Schooled in the tenets of modernism his practice was also informed by a strong sense of the importance of function and context in design. During his early years Hall was the recipient of numerous education scholarships and bursaries, most notably a traineeship and then employment with the office of the New South Wales Government Architect, a source of highly creative architecture during the 1960s. However, Hall is best known for completing the Sydney Opera House after the resignation of its original architect, J\u00f8rn Utzon, in February 1966. At the age of 34, he was invited by the Government Architect to act as design architect in the newly formed consortium Hall Todd & Littlemore to resolve the issues which had led to Utzon's resignation, principally the design of all the interiors and the enclosing glass walls of the unfinished building. The Opera House opened in October 1973 and despite its subsequent success as Sydney's most popular performance venue, understanding of the work of Hall and his team has been coloured by the controversial circumstances of their appointment. For Hall, both personally and professionally, Utzon's legacy was a poisoned chalice \u2013 an unprecedented challenge to complete the building to a standard commensurate with its sublime exterior, but one that brought little recognition during his lifetime.",
+                "pageid": 68983387
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 1.147
+          },
+          "rendered": "[1] Sydney Opera House\nThe Sydney Opera House is a multi-venue performing arts centre in Sydney, New South Wales, Australia. Located on the foreshore of Sydney Harbour, it is widely regarded as one of the world's most famous and distinctive buildings, and a masterpiece of 20th-century architecture. Designed by Danish architect J\u00f8rn Utzon and completed by an Australian architectural team headed by Peter Hall, the building was formally opened by Queen Elizabeth II on 20 October 1973, 16 years after Utzon's 1957 selection as winner of an international design competition. The Government of New South Wales, led by the premier, Joseph Cahill, authorised work to begin in 1958 with Utzon directing construction. The government's decision to build Utzon's design is often overshadowed by circumstances that followed, including cost and scheduling overruns as well as the architect's ultimate resignation. The building and its surrounds occupy the whole of Bennelong Point on Sydney Harbour, between Sydney Cove and Farm Cove, adjacent to the Sydney central business district and the Royal Botanic Garden, and near to the Sydney Harbour Bridge. The building comprises multiple performance venues, which together host over 1,800 performances annually, attended by more than 1.4 million people. Performances are presented by numerous performing artists, with many resident companies such as Opera Australia, the Sydney Theatre Company and the Sydney Symphony Orchestra. [...]\n\n[2] Sydney Symphony Orchestra\nThe Sydney Symphony Orchestra (SSO) is an Australian symphony orchestra based in Sydney. With roots going back to 1908, the orchestra was made a permanent professional orchestra on the formation of the Australian Broadcasting Commission in 1932. The orchestra has performed at the Sydney Opera House as its home concert hall, since the venue's opening in 1973. Simone Young is the orchestra's current chief conductor and the first female conductor in the post. The Sydney Symphony performs around 150 concerts a year to a combined annual audience of more than 350,000. The regular subscription concert series are mostly performed at the Sydney Opera House, but other venues around Sydney are used as well, including the City Recital Hall at Angel Place and the Sydney Town Hall. The Town Hall was the home of the orchestra until the opening of the Opera House in 1973. Since then, most concerts have been taking place in the Opera House's Concert Hall (capacity: 2,679 seats).\n\n[3] Sydney Opera House Grand Organ\nThe Sydney Opera House Grand Organ is the world's largest mechanical tracker-action pipe organ. It is located in the concert hall of Sydney Opera House in Sydney, Australia, and was designed by Ronald Sharp, who was assisted by Mark Fisher, Myk Fairhurst and Raymond Bridge. It is in six divisions, five manuals plus pedals, and is the largest tracker action organ ever built, with 131 speaking stops served by 200 ranks of pipes consisting of 10,244 pipes. It is a neo-baroque organ in style. The contract for the construction of the organ was awarded in 1969, during the construction of the Opera House, and the organ was completed in 1979, six years after the opening of the building. Since then the electronics have been updated, including a major refit in 2002, but the musical specification is unchanged from that developed by Sharp starting in 1967. In April 1994 the Sydney Opera House Trust awarded the contract for ongoing maintenance of the organ to Mark Fisher, one of the original staff of Ronald Sharp. In addition to its mechanical action, the organ can be played remotely by an electronic system, enabling it to be played from a remote console, or a performance or passage can be recorded by a system built into the keyboards and played back by the electronic action. This system is used by visiting organists to select the registration (the combination of stops) that they will use, enabling them to stand in different parts of the hall and hear the results. [...]",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 921,
+      "output_tokens": 58,
+      "cache_read_tokens": 0,
+      "latency_s": 0.9383469590102322
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "According to the Wikipedia article on the Sydney Symphony Orchestra, the Concert Hall at the Sydney Opera House has a capacity of **2,679 seats**.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1846,
+      "output_tokens": 33,
+      "cache_read_tokens": 0,
+      "latency_s": 1.068229374999646
+    }
+  ]
+}

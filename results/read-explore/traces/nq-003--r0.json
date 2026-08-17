@@ -1,0 +1,106 @@
+{
+  "question": "who sang the theme tune for casino royale",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "The theme song for **Casino Royale** (2006) is **\"You Know My Name,\"** which was performed by **Chris Cornell**. According to the Wikipedia article \"You Know My Name,\" Cornell wrote and produced the song jointly with David Arnold, the film's composer. The film producers chose Cornell because they wanted a strong male singer, and the song was intended to serve as a replacement theme for the character reflecting Daniel Craig's grittier portrayal of James Bond.",
+  "error": null,
+  "latency_s": 2.738,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Casino Royale theme song"
+    ],
+    "shown_titles": [
+      "Casino Royale (2006 soundtrack)",
+      "You Know My Name",
+      "Casino Royale (1967 film)"
+    ],
+    "retrieved_titles": [
+      "Casino Royale (2006 soundtrack)",
+      "You Know My Name",
+      "Casino Royale (1967 film)",
+      "Casino Royale (1967 soundtrack)",
+      "Casino Royale (2006 film)"
+    ],
+    "usage": {
+      "input_tokens": 2718,
+      "output_tokens": 161,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Casino Royale theme song",
+          "raw": {
+            "query": "Casino Royale theme song",
+            "results": [
+              {
+                "title": "Casino Royale (2006 soundtrack)",
+                "url": "https://en.wikipedia.org/wiki/Casino_Royale_(2006_soundtrack)",
+                "extract": "Casino Royale: Original Motion Picture Soundtrack is the soundtrack album for the 2006 film Casino Royale. It was released by Sony Classical on 14 November 2006. The music was composed by David Arnold, and is Arnold's fourth soundtrack for the popular James Bond movie series. Frequent collaborator Nicholas Dodd orchestrated and conducted the score.",
+                "pageid": 8252096
+              },
+              {
+                "title": "You Know My Name",
+                "url": "https://en.wikipedia.org/wiki/You_Know_My_Name",
+                "extract": "\"You Know My Name\" is the theme song of the 2006 James Bond film Casino Royale, performed by American musician Chris Cornell, who wrote and produced it jointly with David Arnold, the film's composer. The track was leaked onto the internet on September 20, 2006, and later released as an official single on November 13, 2006 through Interscope Records. It was not included in the Casino Royale soundtrack, but appeared on Cornell's 2007 second solo album, Carry On. The film producers chose Cornell because they wanted a strong male singer. Cornell and Arnold tried to make the song a replacement theme for the character instead of the \"James Bond Theme\" reflecting the agent's inexperience in Casino Royale, as well as an introduction to Daniel Craig's grittier and more emotional portrayal of James Bond. It was a hit throughout Europe, reaching the top 10 in eight countries, including No. 7 on the UK Singles Chart. It sold 148,000 copies in 2006 in the UK, and has sold 323,000 digital copies and garnered 3.5 million streams in the U.S. as of 2017. Reviews of the song were positive; it won a Satellite Award for Best Original Song and a World Soundtrack Award for Best Original Song Written Directly for a Film and was nominated for a Grammy Award for Best Song Written for a Motion Picture, Television or Other Visual Media.",
+                "pageid": 7096161
+              },
+              {
+                "title": "Casino Royale (1967 film)",
+                "url": "https://en.wikipedia.org/wiki/Casino_Royale_(1967_film)",
+                "extract": "Casino Royale is a 1967 spy parody film originally distributed by Columbia Pictures. It is loosely based on the 1953 novel Casino Royale, the first novel in Ian Fleming's James Bond book series. The film stars David Niven as the \"original\" Bond, Sir James Bond 007. Forced out of retirement to investigate the deaths and disappearances of international spies, he soon battles the mysterious Dr. Noah and the ruthless counter-intelligence agency SMERSH, inspired by actual organizations in the USSR. The film's tagline: \"Casino Royale is too much... for one James Bond!\" refers to Bond's plan to mislead SMERSH in which six other agents are pretending to be \"James Bond\", namely, baccarat master Evelyn Tremble (Peter Sellers); millionaire spy Vesper Lynd (Ursula Andress); Bond's secretary Miss Moneypenny (Barbara Bouchet); Bond's daughter with Mata Hari, Mata Bond (Joanna Pettet); and British agents Cooper (Terence Cooper) and the Detainer (Daliah Lavi). Charles K. Feldman, the producer, had acquired the film rights in 1960 and had attempted to get Casino Royale made as an Eon Productions Bond film; however, Feldman and the producers of the Eon series, Albert R. Broccoli and Harry Saltzman, failed to come to terms. Believing that he could not compete with the Eon series, Feldman resolved to produce the film as a satire. The budget escalated as various directors and writers became involved in the production, and actors expressed dissatisfaction with the project. [...]",
+                "pageid": 2461592
+              },
+              {
+                "title": "Casino Royale (1967 soundtrack)",
+                "url": "https://en.wikipedia.org/wiki/Casino_Royale_(1967_soundtrack)",
+                "extract": "Casino Royale (1967): Original Motion Picture Soundtrack is the soundtrack to the 1967 film Casino Royale. The album was composed by Burt Bacharach, Herb Alpert & the Tijuana Brass and Dusty Springfield and was released by Colgems in 1967.",
+                "pageid": 8252560
+              },
+              {
+                "title": "Casino Royale (2006 film)",
+                "url": "https://en.wikipedia.org/wiki/Casino_Royale_(2006_film)",
+                "extract": "Casino Royale is a 2006 spy thriller film, the twenty-first in the James Bond series by Eon Productions, the third screen adaptation of Ian Fleming's 1953 novel of the same name, and the first to star Daniel Craig as the fictional MI6 agent James Bond. The second entry in the film series to be directed by Martin Campbell, Casino Royale's screenplay was written by Neal Purvis, Robert Wade and Paul Haggis; the film co-stars Eva Green, Mads Mikkelsen, Judi Dench and Jeffrey Wright. In the film, Bond is on a mission to bankrupt the terrorism financier Le Chiffre (Mikkelsen) in a high-stakes poker game at the Casino Royale in Montenegro. Following Die Another Day (2002), Eon decided to reboot the franchise, attempting to provide a realistic and darker exploration of a less experienced and more vulnerable Bond. Casting involved a widespread search for a new actor to succeed Pierce Brosnan as Bond; the choice of Craig, announced in October 2005, initially proved controversial. Principal photography took place in the Bahamas, Italy, the United Kingdom and the Czech Republic, with interior sets built at Pinewood Studios and Barrandov Studios, from January to July 2006. The film features primarily practical stuntwork as opposed to the computer-generated placements seen in other Bond films. [...]",
+                "pageid": 930379
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.499
+          },
+          "rendered": "[1] Casino Royale (2006 soundtrack)\nCasino Royale: Original Motion Picture Soundtrack is the soundtrack album for the 2006 film Casino Royale. It was released by Sony Classical on 14 November 2006. The music was composed by David Arnold, and is Arnold's fourth soundtrack for the popular James Bond movie series. Frequent collaborator Nicholas Dodd orchestrated and conducted the score.\n\n[2] You Know My Name\n\"You Know My Name\" is the theme song of the 2006 James Bond film Casino Royale, performed by American musician Chris Cornell, who wrote and produced it jointly with David Arnold, the film's composer. The track was leaked onto the internet on September 20, 2006, and later released as an official single on November 13, 2006 through Interscope Records. It was not included in the Casino Royale soundtrack, but appeared on Cornell's 2007 second solo album, Carry On. The film producers chose Cornell because they wanted a strong male singer. Cornell and Arnold tried to make the song a replacement theme for the character instead of the \"James Bond Theme\" reflecting the agent's inexperience in Casino Royale, as well as an introduction to Daniel Craig's grittier and more emotional portrayal of James Bond. It was a hit throughout Europe, reaching the top 10 in eight countries, including No. 7 on the UK Singles Chart. It sold 148,000 copies in 2006 in the UK, and has sold 323,000 digital copies and garnered 3.5 million streams in the U.S. as of 2017. Reviews of the song were positive; it won a Satellite Award for Best Original Song and a World Soundtrack Award for Best Original Song Written Directly for a Film and was nominated for a Grammy Award for Best Song Written for a Motion Picture, Television or Other Visual Media.\n\n[3] Casino Royale (1967 film)\nCasino Royale is a 1967 spy parody film originally distributed by Columbia Pictures. It is loosely based on the 1953 novel Casino Royale, the first novel in Ian Fleming's James Bond book series. The film stars David Niven as the \"original\" Bond, Sir James Bond 007. Forced out of retirement to investigate the deaths and disappearances of international spies, he soon battles the mysterious Dr. Noah and the ruthless counter-intelligence agency SMERSH, inspired by actual organizations in the USSR. The film's tagline: \"Casino Royale is too much... for one James Bond!\" refers to Bond's plan to mislead SMERSH in which six other agents are pretending to be \"James Bond\", namely, baccarat master Evelyn Tremble (Peter Sellers); millionaire spy Vesper Lynd (Ursula Andress); Bond's secretary Miss Moneypenny (Barbara Bouchet); Bond's daughter with Mata Hari, Mata Bond (Joanna Pettet); and British agents Cooper (Terence Cooper) and the Detainer (Daliah Lavi). Charles K. Feldman, the producer, had acquired the film rights in 1960 and had attempted to get Casino Royale made as an Eon Productions Bond film; however, Feldman and the producers of the Eon series, Albert R. Broccoli and Harry Saltzman, failed to come to terms. Believing that he could not compete with the Eon series, Feldman resolved to produce the film as a satire. The budget escalated as various directors and writers became involved in the production, and actors expressed dissatisfaction with the project. [...]",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 916,
+      "output_tokens": 59,
+      "cache_read_tokens": 0,
+      "latency_s": 1.03177283302648
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "The theme song for **Casino Royale** (2006) is **\"You Know My Name,\"** which was performed by **Chris Cornell**. According to the Wikipedia article \"You Know My Name,\" Cornell wrote and produced the song jointly with David Arnold, the film's composer. The film producers chose Cornell because they wanted a strong male singer, and the song was intended to serve as a replacement theme for the character reflecting Daniel Craig's grittier portrayal of James Bond.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1802,
+      "output_tokens": 102,
+      "cache_read_tokens": 0,
+      "latency_s": 1.2048946669674478
+    }
+  ]
+}

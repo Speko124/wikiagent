@@ -1,0 +1,106 @@
+{
+  "question": "when was mission san francisco de asis built",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "According to the Wikipedia article \"Mission San Francisco de As\u00eds,\" the mission was **founded on October 9, 1776**. The adobe chapel was later completed in 1791 and is the oldest intact structure in San Francisco. A basilica was constructed in 1918 to replace an earlier brick church that had been destroyed in the 1906 earthquake.",
+  "error": null,
+  "latency_s": 2.996,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Mission San Francisco de Asis"
+    ],
+    "shown_titles": [
+      "Mission San Francisco de As\u00eds",
+      "Mission District, San Francisco",
+      "Mission San Francisco Solano"
+    ],
+    "retrieved_titles": [
+      "Mission San Francisco de As\u00eds",
+      "Mission District, San Francisco",
+      "Mission San Francisco Solano",
+      "San Francisco de As\u00eds Mission Church",
+      "Mission San Rafael Arc\u00e1ngel"
+    ],
+    "usage": {
+      "input_tokens": 2422,
+      "output_tokens": 141,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Mission San Francisco de Asis",
+          "raw": {
+            "query": "Mission San Francisco de Asis",
+            "results": [
+              {
+                "title": "Mission San Francisco de As\u00eds",
+                "url": "https://en.wikipedia.org/wiki/Mission_San_Francisco_de_As%C3%ADs",
+                "extract": "The Mission San Francisco de As\u00eds (Spanish: Misi\u00f3n San Francisco de As\u00eds), also known as Mission Dolores, is a historic Catholic church complex in San Francisco, California. Operated by the Archdiocese of San Francisco, the complex was founded in the 18th century by Spanish Catholic missionaries. The mission contains two historic buildings: The Mission Dolores adobe chapel was completed in 1791. It is the oldest intact structure in San Francisco. The Mission Dolores Basilica was constructed in 1918. It was designated a minor basilica by Pope Pius XII in 1952. Located in the Mission District, the mission was founded on October 9, 1776, by Frs Francisco Pal\u00f3u and Pedro Benito Camb\u00f3n. The Franciscan Order sent the two priests to the then Spanish Province of Alta California to bring in Spanish settlers and evangelize the indigenous Ohlone people. The Ohlone provided most of the labor which built the adobe chapel. The early 20th-century Mission Dolores Basilica replaced a brick parish church built in 1876 that was destroyed in the San Francisco earthquake of 1906.",
+                "pageid": 60049
+              },
+              {
+                "title": "Mission District, San Francisco",
+                "url": "https://en.wikipedia.org/wiki/Mission_District,_San_Francisco",
+                "extract": "The Mission District (Spanish: Distrito de la Misi\u00f3n), commonly known as the Mission (Spanish: La Misi\u00f3n), is a neighborhood in San Francisco, California. One of the oldest neighborhoods in San Francisco, the Mission District's name is derived from Mission San Francisco de As\u00eds, built in 1776 by the Spanish. The Mission is historically one of the most notable centers of the city's Hispanic community.",
+                "pageid": 525516
+              },
+              {
+                "title": "Mission San Francisco Solano",
+                "url": "https://en.wikipedia.org/wiki/Mission_San_Francisco_Solano",
+                "extract": "Mission San Francisco Solano was the 21st, last, and northernmost mission in Alta California. It was named for Saint Francis Solanus. It was the only mission built in Alta California after Mexico gained independence from Spain. The mission was established in 1823 due to a collaborative effort between California governor Luis Arg\u00fcello and Franciscan friar Jos\u00e9 Altimira. It was closed and converted to a parish in 1834, having been smaller in number of converts and having had lower productivity and diversity of industries than the older California missions. The mission building is now part of the Sonoma State Historic Park and is located in the city of Sonoma, California.",
+                "pageid": 60084
+              },
+              {
+                "title": "San Francisco de As\u00eds Mission Church",
+                "url": "https://en.wikipedia.org/wiki/San_Francisco_de_As%C3%ADs_Mission_Church",
+                "extract": "San Francisco de As\u00eds Parish Church is an historic and architecturally significant Catholic church in Ranchos de Taos, New Mexico in the Archdiocese of Santa Fe. During the 18th century, it was the center of a small Spanish and Native American agricultural community. The current church was constructed between 1772 and 1816. San Francisco de As\u00eds is an example of a New Mexico Spanish Colonial Church, and is a popular subject for artists. It was designated a National Historic Landmark in 1970.",
+                "pageid": 18066863
+              },
+              {
+                "title": "Mission San Rafael Arc\u00e1ngel",
+                "url": "https://en.wikipedia.org/wiki/Mission_San_Rafael_Arc%C3%A1ngel",
+                "extract": "Mission San Rafael Arc\u00e1ngel (Spanish: La Misi\u00f3n del Glorios\u00edsimo Pr\u00edncipe San Rafael, Arc\u00e1ngel, lit. 'The Mission of the Most Glorious Prince, Archangel Saint Raphael') is a Spanish mission in San Rafael, California. The original mission was founded in 1817 as an asistencia of Mission San Francisco de As\u00eds to serve as a hospital to treat sick and injured indigenous people, making it Alta California's first sanitarium. The site's milder weather was believed to aid the rehabilitation of patients. It was not intended to be a stand-alone mission, but was granted full mission status in 1822 as it grew and prospered. The mission fell into severe disrepair by the 1860's, giving it the ignoble distinction as the \"most obliterated\" Spanish mission in California. A new parish church was built in 1861 and the mission ruins were entirely removed in 1870. The site was replaced by the Saint Raphael Parish complex, where the modern-day replica was built in 1949, in front of the modern Saint Raphael's Church.",
+                "pageid": 60082
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.865
+          },
+          "rendered": "[1] Mission San Francisco de As\u00eds\nThe Mission San Francisco de As\u00eds (Spanish: Misi\u00f3n San Francisco de As\u00eds), also known as Mission Dolores, is a historic Catholic church complex in San Francisco, California. Operated by the Archdiocese of San Francisco, the complex was founded in the 18th century by Spanish Catholic missionaries. The mission contains two historic buildings: The Mission Dolores adobe chapel was completed in 1791. It is the oldest intact structure in San Francisco. The Mission Dolores Basilica was constructed in 1918. It was designated a minor basilica by Pope Pius XII in 1952. Located in the Mission District, the mission was founded on October 9, 1776, by Frs Francisco Pal\u00f3u and Pedro Benito Camb\u00f3n. The Franciscan Order sent the two priests to the then Spanish Province of Alta California to bring in Spanish settlers and evangelize the indigenous Ohlone people. The Ohlone provided most of the labor which built the adobe chapel. The early 20th-century Mission Dolores Basilica replaced a brick parish church built in 1876 that was destroyed in the San Francisco earthquake of 1906.\n\n[2] Mission District, San Francisco\nThe Mission District (Spanish: Distrito de la Misi\u00f3n), commonly known as the Mission (Spanish: La Misi\u00f3n), is a neighborhood in San Francisco, California. One of the oldest neighborhoods in San Francisco, the Mission District's name is derived from Mission San Francisco de As\u00eds, built in 1776 by the Spanish. The Mission is historically one of the most notable centers of the city's Hispanic community.\n\n[3] Mission San Francisco Solano\nMission San Francisco Solano was the 21st, last, and northernmost mission in Alta California. It was named for Saint Francis Solanus. It was the only mission built in Alta California after Mexico gained independence from Spain. The mission was established in 1823 due to a collaborative effort between California governor Luis Arg\u00fcello and Franciscan friar Jos\u00e9 Altimira. It was closed and converted to a parish in 1834, having been smaller in number of converts and having had lower productivity and diversity of industries than the older California missions. The mission building is now part of the Sonoma State Historic Park and is located in the city of Sonoma, California.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 916,
+      "output_tokens": 60,
+      "cache_read_tokens": 0,
+      "latency_s": 0.9280465420451947
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "According to the Wikipedia article \"Mission San Francisco de As\u00eds,\" the mission was **founded on October 9, 1776**. The adobe chapel was later completed in 1791 and is the oldest intact structure in San Francisco. A basilica was constructed in 1918 to replace an earlier brick church that had been destroyed in the 1906 earthquake.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1506,
+      "output_tokens": 81,
+      "cache_read_tokens": 0,
+      "latency_s": 1.2009755410254002
+    }
+  ]
+}

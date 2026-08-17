@@ -1,0 +1,106 @@
+{
+  "question": "how many times french won the world cup",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "According to the Wikipedia article \"France national football team,\" **France has won the FIFA World Cup two times**.",
+  "error": null,
+  "latency_s": 3.252,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "France national football team FIFA World Cup"
+    ],
+    "shown_titles": [
+      "France national football team",
+      "2035 FIFA Women's World Cup",
+      "2026 FIFA World Cup knockout stage"
+    ],
+    "retrieved_titles": [
+      "France national football team",
+      "2035 FIFA Women's World Cup",
+      "2026 FIFA World Cup knockout stage",
+      "France women's national football team",
+      "France national under-17 football team"
+    ],
+    "usage": {
+      "input_tokens": 2611,
+      "output_tokens": 85,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "France national football team FIFA World Cup",
+          "raw": {
+            "query": "France national football team FIFA World Cup",
+            "results": [
+              {
+                "title": "France national football team",
+                "url": "https://en.wikipedia.org/wiki/France_national_football_team",
+                "extract": "The France national football team represents France in men's international football. It is overseen by the French Football Federation (FFF; F\u00e9d\u00e9ration fran\u00e7aise de football), the governing body for football in France. It is a member of UEFA in Europe and FIFA in global competitions. The team's colours and imagery reference two national symbols: the Flag of France and Gallic rooster (coq gaulois). The team is colloquially known as Les Bleus (The Blues). They play home matches at the Stade de France in Saint-Denis and train at Centre National du Football in Clairefontaine-en-Yvelines. Founded in 1904, the national team has won two FIFA World Cups, two UEFA European Championships, one CONMEBOL\u2013UEFA Cup of Champions, two FIFA Confederations Cups and one UEFA Nations League title. France was one of the four European teams that participated in the first World Cup in 1930. Twenty-eight years later, the team led by Raymond Kopa and Just Fontaine finished in third place at the 1958 World Cup. France experienced much of its success in three different eras: in the 1980s, the late 1990s to early 2000s, and the late 2010s to early 2020s. In the early to mid-1980s, under the leadership of the three-time Ballon d'Or winner Michel Platini, France won Euro 1984 (its first official title), a CONMEBOL\u2013UEFA Cup (1985), and reached two consecutive World Cup semi-finals (1982 and 1986). [...]",
+                "pageid": 250197
+              },
+              {
+                "title": "2035 FIFA Women's World Cup",
+                "url": "https://en.wikipedia.org/wiki/2035_FIFA_Women%27s_World_Cup",
+                "extract": "The 2035 FIFA Women's World Cup is scheduled to be the 12th edition of the FIFA Women's World Cup, the quadrennial international women's football championship contested by the national teams that represent the member associations of FIFA. The tournament will be hosted by England, Northern Ireland, Scotland and Wales, as they are the sole bidders. This will be the second tournament to feature 48 national teams. The tournament will be the first time England, Northern Ireland, Scotland, and Wales host the FIFA Women's World Cup, as well as the fourth FIFA Women's World Cup in Europe after Sweden in 1995, Germany in 2011, and France in 2019. England will also become the eighth country to host both the men's and women's World Cup, having hosted the former in 1966. It is also the first FIFA tournament to be held in Northern Ireland and Wales, and the second to be held in Scotland since 1989.",
+                "pageid": 79389922
+              },
+              {
+                "title": "2026 FIFA World Cup knockout stage",
+                "url": "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage",
+                "extract": "The knockout stage of the 2026 FIFA World Cup was the second and final stage of the competition, following the group stage. Played from June 28 to July 19, 2026, the knockout stage ended with the final, held at MetLife Stadium in East Rutherford, New Jersey. The top two teams from each of the twelve groups, along with the best eight third-place teams, advanced to the knockout stage to compete in a single-elimination tournament. There were 32 matches in the knockout stage, including a match for third place.",
+                "pageid": 81667005
+              },
+              {
+                "title": "France women's national football team",
+                "url": "https://en.wikipedia.org/wiki/France_women%27s_national_football_team",
+                "extract": "The France women's national football team (French: \u00c9quipe de France f\u00e9minine de football, sometimes shortened as F\u00e9minin A) represents France in international women's football. The team is directed by the French Football Federation (FFF). France competes as a member of UEFA in various international football tournaments such as the FIFA Women's World Cup, UEFA Women's Euro, the Summer Olympics, and the Algarve Cup. The France women's national team initially struggled on the international stage failing to qualify for three of the first FIFA Women's World Cups and the six straight UEFA European Championships before reaching the quarter-finals in the 1997 edition of the competition. However, since the beginning of the new millennium, France have become one of the most consistent teams in Europe, having qualified for their first-ever FIFA Women's World Cup in 2003 and reaching the quarter-finals in two of the three European Championships held since 2000. In 2011, France recorded a fourth-place finish at the 2011 FIFA Women's World Cup; its best finish overall at the competition. In the following year, the team captured the 2012 Cyprus Cup and the fourth place at Women's Olympic Football Tournament. Laurent Bonadei has been the team manager since August 2024. The current captain of the national team is defender Griedge Mbock Bathy.",
+                "pageid": 2009387
+              },
+              {
+                "title": "France national under-17 football team",
+                "url": "https://en.wikipedia.org/wiki/France_national_under-17_football_team",
+                "extract": "The France national under-17 football team is the national under-17 football team of France who will be playing in the UEFA European Championship this year controlled by the French Football Federation. The team competes in the annual UEFA European Under-17 Championship and the FIFA U-17 World Cup, which is held every two years. The under-17 team also participates in local and international friendly tournaments, such as the Montaigu Tournament.",
+                "pageid": 15790710
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.638
+          },
+          "rendered": "[1] France national football team\nThe France national football team represents France in men's international football. It is overseen by the French Football Federation (FFF; F\u00e9d\u00e9ration fran\u00e7aise de football), the governing body for football in France. It is a member of UEFA in Europe and FIFA in global competitions. The team's colours and imagery reference two national symbols: the Flag of France and Gallic rooster (coq gaulois). The team is colloquially known as Les Bleus (The Blues). They play home matches at the Stade de France in Saint-Denis and train at Centre National du Football in Clairefontaine-en-Yvelines. Founded in 1904, the national team has won two FIFA World Cups, two UEFA European Championships, one CONMEBOL\u2013UEFA Cup of Champions, two FIFA Confederations Cups and one UEFA Nations League title. France was one of the four European teams that participated in the first World Cup in 1930. Twenty-eight years later, the team led by Raymond Kopa and Just Fontaine finished in third place at the 1958 World Cup. France experienced much of its success in three different eras: in the 1980s, the late 1990s to early 2000s, and the late 2010s to early 2020s. In the early to mid-1980s, under the leadership of the three-time Ballon d'Or winner Michel Platini, France won Euro 1984 (its first official title), a CONMEBOL\u2013UEFA Cup (1985), and reached two consecutive World Cup semi-finals (1982 and 1986). [...]\n\n[2] 2035 FIFA Women's World Cup\nThe 2035 FIFA Women's World Cup is scheduled to be the 12th edition of the FIFA Women's World Cup, the quadrennial international women's football championship contested by the national teams that represent the member associations of FIFA. The tournament will be hosted by England, Northern Ireland, Scotland and Wales, as they are the sole bidders. This will be the second tournament to feature 48 national teams. The tournament will be the first time England, Northern Ireland, Scotland, and Wales host the FIFA Women's World Cup, as well as the fourth FIFA Women's World Cup in Europe after Sweden in 1995, Germany in 2011, and France in 2019. England will also become the eighth country to host both the men's and women's World Cup, having hosted the former in 1966. It is also the first FIFA tournament to be held in Northern Ireland and Wales, and the second to be held in Scotland since 1989.\n\n[3] 2026 FIFA World Cup knockout stage\nThe knockout stage of the 2026 FIFA World Cup was the second and final stage of the competition, following the group stage. Played from June 28 to July 19, 2026, the knockout stage ended with the final, held at MetLife Stadium in East Rutherford, New Jersey. The top two teams from each of the twelve groups, along with the best eight third-place teams, advanced to the knockout stage to compete in a single-elimination tournament. There were 32 matches in the knockout stage, including a match for third place.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 915,
+      "output_tokens": 60,
+      "cache_read_tokens": 0,
+      "latency_s": 1.3304115409846418
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "According to the Wikipedia article \"France national football team,\" **France has won the FIFA World Cup two times**.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1696,
+      "output_tokens": 25,
+      "cache_read_tokens": 0,
+      "latency_s": 1.281815166992601
+    }
+  ]
+}

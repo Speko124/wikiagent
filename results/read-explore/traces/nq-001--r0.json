@@ -1,0 +1,360 @@
+{
+  "question": "who played eric in head of the class",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "The Wikipedia search results are not providing detailed cast information for Head of the Class that would list a character named Eric. Based on my searches, I can only find information about Dan Frischman who played Arvid Engen on the show, but there's no mention of an Eric character in the opening sections of the Head of the Class article.\n\nI wasn't able to find information about a character named Eric in Head of the Class through Wikipedia. The search results show that Head of the Class ran from 1986 to 1991 on ABC and featured a group of gifted students, but the opening sections of the Wikipedia articles don't provide a complete cast list with all character names. If there is an Eric character on the show, it's not mentioned in the Wikipedia article summaries I found. You might need to check a more detailed source like IMDb for complete cast information.",
+  "error": null,
+  "latency_s": 11.92,
+  "summary": {
+    "searched": true,
+    "n_searches": 5,
+    "n_turns": 6,
+    "cache_hits": 0,
+    "queries": [
+      "Head of the Class television series",
+      "Head of the Class cast characters",
+      "Eric Foreman Head of the Class actor",
+      "Dan Frischman Head of the Class",
+      "\"Head of the Class\" Eric character"
+    ],
+    "shown_titles": [
+      "Head of the Class",
+      "Head of the Class (2021 TV series)",
+      "The Middle (TV series)",
+      "Saved by the Bell: The New Class",
+      "List of The Middle characters",
+      "List of House characters",
+      "List of That '70s and '90s Show characters",
+      "Eric Roberts filmography",
+      "Dan Frischman",
+      "List of Captain Planet episodes",
+      "Eric Laneuville",
+      "Invincible (comics)"
+    ],
+    "retrieved_titles": [
+      "Head of the Class",
+      "Head of the Class (2021 TV series)",
+      "The Middle (TV series)",
+      "Downton Abbey",
+      "List of Canadian animated television series",
+      "Saved by the Bell: The New Class",
+      "List of The Middle characters",
+      "Monarch of the Glen cast",
+      "Anthony Head",
+      "List of House characters",
+      "List of That '70s and '90s Show characters",
+      "Eric Roberts filmography",
+      "Dean Norris",
+      "Talk Soup",
+      "Dan Frischman",
+      "List of Captain Planet episodes",
+      "Night of the Creeps",
+      "List of Kenan & Kel characters",
+      "Eric Laneuville",
+      "Invincible (comics)",
+      "Eric Bruskotter",
+      "Stan Winston"
+    ],
+    "usage": {
+      "input_tokens": 14522,
+      "output_tokens": 639,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Head of the Class television series",
+          "raw": {
+            "query": "Head of the Class television series",
+            "results": [
+              {
+                "title": "Head of the Class",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class",
+                "extract": "Head of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.",
+                "pageid": 1026760
+              },
+              {
+                "title": "Head of the Class (2021 TV series)",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class_(2021_TV_series)",
+                "extract": "Head of the Class is an American sitcom developed by Amy Pocha and Seth Cohen that was released on the streaming service HBO Max on November 4, 2021. It is based on Rich Eustis and Michael Elias' series of the same name that ran from 1986 to 1991. In December 2021, the series was canceled after one season. In December 2022, the series was removed from HBO Max.",
+                "pageid": 66131798
+              },
+              {
+                "title": "The Middle (TV series)",
+                "url": "https://en.wikipedia.org/wiki/The_Middle_(TV_series)",
+                "extract": "The Middle is an American television sitcom that aired on ABC from September 30, 2009, to May 22, 2018. The series, set in the fictional town of Orson, Indiana, follows a lower middle class family living and facing the day-to-day struggles of home life, work and raising children. Starring Patricia Heaton and Neil Flynn, the series was created by former Roseanne and Murphy Brown writers Eileen Heisler and DeAnn Heline and produced by Warner Bros. Television and Blackie and Blondie Productions. It was praised by television critics and earned numerous award nominations, including a nomination for a Primetime Emmy Award in 2012.",
+                "pageid": 22824759
+              },
+              {
+                "title": "Downton Abbey",
+                "url": "https://en.wikipedia.org/wiki/Downton_Abbey",
+                "extract": "Downton Abbey is a British historical drama television series set in the early 20th century, created and co-written by Julian Fellowes. It first aired in the United Kingdom on ITV on 26 September 2010 and in the United States on PBS, which supported its production as part of its Masterpiece Classic anthology, on 9 January 2011. The show ran for fifty-two episodes across six series, including five Christmas specials. Set on the fictional Yorkshire country estate of Downton Abbey between 16 April 1912 and New Year's Eve 1925, the series depicts the lives of the aristocratic Crawley family and their domestic servants in the post-Edwardian era, navigating their lives amidst the British social hierarchy. Plot events include news of the sinking of the Titanic (first series); the outbreak of the First World War, the Spanish influenza pandemic and the Marconi scandal (second series); the Irish War of Independence leading to the formation of the Irish Free State (third series); the Teapot Dome scandal (fourth series); the British general election of 1923 and the Beer Hall Putsch (fifth series). The sixth and final series introduces the rise of the working class during the interwar period and hints at the eventual decline of the British aristocracy. Downton Abbey has been praised by television critics and received numerous accolades, including a Golden Globe Award for Best Miniseries or Television Film and a Primetime Emmy Award for Outstanding Miniseries or Movie. [...]",
+                "pageid": 28890581
+              },
+              {
+                "title": "List of Canadian animated television series",
+                "url": "https://en.wikipedia.org/wiki/List_of_Canadian_animated_television_series",
+                "extract": "The following is a list of animated television series originating from or animated in Canada.",
+                "pageid": 34865412
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.607
+          },
+          "rendered": "[1] Head of the Class\nHead of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.\n\n[2] Head of the Class (2021 TV series)\nHead of the Class is an American sitcom developed by Amy Pocha and Seth Cohen that was released on the streaming service HBO Max on November 4, 2021. It is based on Rich Eustis and Michael Elias' series of the same name that ran from 1986 to 1991. In December 2021, the series was canceled after one season. In December 2022, the series was removed from HBO Max.\n\n[3] The Middle (TV series)\nThe Middle is an American television sitcom that aired on ABC from September 30, 2009, to May 22, 2018. The series, set in the fictional town of Orson, Indiana, follows a lower middle class family living and facing the day-to-day struggles of home life, work and raising children. Starring Patricia Heaton and Neil Flynn, the series was created by former Roseanne and Murphy Brown writers Eileen Heisler and DeAnn Heline and produced by Warner Bros. Television and Blackie and Blondie Productions. It was praised by television critics and earned numerous award nominations, including a nomination for a Primetime Emmy Award in 2012.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 915,
+      "output_tokens": 59,
+      "cache_read_tokens": 0,
+      "latency_s": 1.0036851670010947
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "The search results give me information about Head of the Class but don't list the character Eric or who played him. Let me search more specifically for the cast.",
+      "tool_calls": [
+        {
+          "query": "Head of the Class cast characters",
+          "raw": {
+            "query": "Head of the Class cast characters",
+            "results": [
+              {
+                "title": "Head of the Class",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class",
+                "extract": "Head of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.",
+                "pageid": 1026760
+              },
+              {
+                "title": "Saved by the Bell: The New Class",
+                "url": "https://en.wikipedia.org/wiki/Saved_by_the_Bell:_The_New_Class",
+                "extract": "Saved by the Bell: The New Class is an American teen sitcom television series and spinoff of Saved by the Bell. The New Class premiered on September 11, 1993. The series ran for seven seasons on NBC as a part of the network's TNBC Saturday morning line-up, airing its final episode on January 8, 2000. At seven seasons, it was the longest-running incarnation of the franchise. The show had the same concept as the original series but featured a new group of students roaming the halls of the fictional Bayside High School. Mr. Belding, played by Dennis Haskins, remained as the in-show school's principal. Many of the stories were recycled plots of its parent series. The first-season cast included Robert Sutherland Telfer, Jonathan Angel, Isaac Lidsky, Natalia Cigliuti, Bianca Lawson, and Bonnie Russavage. Unlike the original series, which featured very few major cast changes throughout its run, The New Class regularly changed its core cast with Mr. Belding and Screech (from season 2 onward) being the only consistent characters.",
+                "pageid": 3407203
+              },
+              {
+                "title": "List of The Middle characters",
+                "url": "https://en.wikipedia.org/wiki/List_of_The_Middle_characters",
+                "extract": "The Middle is an American sitcom about a working-class family living in Indiana and facing the day-to-day struggles of home life, work, and raising children. The Middle originally aired from September 30, 2009, to May 22, 2018, on the ABC network. The ensemble cast includes Patricia Heaton, Neil Flynn, Charlie McDermott, Eden Sher, and Atticus Schaffer. The following is a list of characters, including the main cast and those who appear alongside the main cast in the series.",
+                "pageid": 49543428
+              },
+              {
+                "title": "Monarch of the Glen cast",
+                "url": "https://en.wikipedia.org/wiki/Monarch_of_the_Glen_cast",
+                "extract": "The Monarch of the Glen cast is a list of actors who portrayed characters in the BBC Scotland comedy drama, Monarch of the Glen. The show began in 2000 with Alastair Mackenzie as the lead character portraying Archie MacDonald, a young restaurateur who returns to his Highland home of Glenbogle to discover that he is the new Laird. Along with Mackenzie, television veterans Richard Briers and Susan Hampshire received star billing as Archie's eccentric parents, Hector and Molly. Lorraine Pilkington portrayed Archie's love interest, Katrina, who was the only other actor to receive star billing in season one. In season two, Dawn Steele, Alexander Morton and Hamish Clark were bumped up to star status having been supporting regulars in the first season. Briers and Pilkington left the show in season three, prompting Julian Fellowes to receive star billing having appeared as recurring guest in seasons one to four. In season five, Fellowes and Mackenzie left the show, with Lloyd Owen filling the void as Archie's estranged half-brother, Paul. Season six saw a big change in the cast with Steele and Clark leaving and season five regulars, Rae Hendrie and Martin Compston being promoted to star status. Simone Lahbib and Tom Baker also joined the series six cast as Paul's love interest and Hector's younger brother, respectively. Lahbib left the show the following season due to pregnancy and Kirsty Mitchell was brought in as Paul's new love interest. [...]",
+                "pageid": 1944576
+              },
+              {
+                "title": "Anthony Head",
+                "url": "https://en.wikipedia.org/wiki/Anthony_Head",
+                "extract": "Anthony Stewart Head (20 February 1954 \u2013 1 June 2026) was an English actor and singer. Primarily a performer in musical theatre, he rose to fame in the United Kingdom in the 1980s following his role in the Gold Blend couple television advertisements for Nescaf\u00e9, which led to major roles in several television series. Head was best known for his role as Rupert Giles in Buffy the Vampire Slayer (1997\u20132003), as well as the prime minister in Little Britain (2003\u20132006), Uther Pendragon in Merlin (2008\u20132012), and Rupert Mannion in Ted Lasso (2020\u20132023). He was also known for his distinctive baritone voice, in advertising and voice roles such as Herc Shipwright in BBC Radio 4's Cabin Pressure (2011\u20132014). His film career included roles in Persuasion (2007), Ghost Rider: Spirit of Vengeance, The Iron Lady (both 2011), and Percy Jackson: Sea of Monsters (2013).",
+                "pageid": 18940639
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.517
+          },
+          "rendered": "[1] Head of the Class\nHead of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.\n\n[2] Saved by the Bell: The New Class\nSaved by the Bell: The New Class is an American teen sitcom television series and spinoff of Saved by the Bell. The New Class premiered on September 11, 1993. The series ran for seven seasons on NBC as a part of the network's TNBC Saturday morning line-up, airing its final episode on January 8, 2000. At seven seasons, it was the longest-running incarnation of the franchise. The show had the same concept as the original series but featured a new group of students roaming the halls of the fictional Bayside High School. Mr. Belding, played by Dennis Haskins, remained as the in-show school's principal. Many of the stories were recycled plots of its parent series. The first-season cast included Robert Sutherland Telfer, Jonathan Angel, Isaac Lidsky, Natalia Cigliuti, Bianca Lawson, and Bonnie Russavage. Unlike the original series, which featured very few major cast changes throughout its run, The New Class regularly changed its core cast with Mr. Belding and Screech (from season 2 onward) being the only consistent characters.\n\n[3] List of The Middle characters\nThe Middle is an American sitcom about a working-class family living in Indiana and facing the day-to-day struggles of home life, work, and raising children. The Middle originally aired from September 30, 2009, to May 22, 2018, on the ABC network. The ensemble cast includes Patricia Heaton, Neil Flynn, Charlie McDermott, Eden Sher, and Atticus Schaffer. The following is a list of characters, including the main cast and those who appear alongside the main cast in the series.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1501,
+      "output_tokens": 91,
+      "cache_read_tokens": 0,
+      "latency_s": 1.397183082997799
+    },
+    {
+      "index": 2,
+      "thinking": null,
+      "text": "I'm not getting detailed cast information. Let me try searching for Eric Forman or other possible character names from Head of the Class.",
+      "tool_calls": [
+        {
+          "query": "Eric Foreman Head of the Class actor",
+          "raw": {
+            "query": "Eric Foreman Head of the Class actor",
+            "results": [
+              {
+                "title": "List of House characters",
+                "url": "https://en.wikipedia.org/wiki/List_of_House_characters",
+                "extract": "This page is a comprehensive list and description of the various characters who appear, from time to time, in the television series House. The list is divided episode-wise, as well as character-wise, and includes recurring characters, such as Rachel Taub, and Dominika, as well as characters who appear in only a few episodes, such as Juan Alvarez (House) and Steve McQueen (the rat).",
+                "pageid": 5322383
+              },
+              {
+                "title": "List of That '70s and '90s Show characters",
+                "url": "https://en.wikipedia.org/wiki/List_of_That_%2770s_and_%2790s_Show_characters",
+                "extract": "This is a list of characters appearing in the television series That '70s Show and That '90s Show.",
+                "pageid": 3441561
+              },
+              {
+                "title": "Eric Roberts filmography",
+                "url": "https://en.wikipedia.org/wiki/Eric_Roberts_filmography",
+                "extract": "Eric Roberts (born April 18, 1956) is an American actor. His career began with King of the Gypsies (1978), earning a Golden Globe Award nomination for Best Actor Debut. He earned both a Golden Globe and Academy Award nomination for his supporting role in Runaway Train (1985). Through the 1990s and 2000s, he maintained dramatic film and TV film roles while appearing in TV series. His TV work includes playing the Master in the 1996 Doctor Who TV movie, three seasons with the sitcom Less than Perfect and a recurring role on the NBC drama Heroes. His sisters Julia Roberts and Lisa Roberts Gillan, and daughter Emma Roberts, also have acting careers. As of March 6, 2026, Roberts is credited with appearances in 809 different released productions, making him one of the most prolific screen actors of all time.",
+                "pageid": 44417594
+              },
+              {
+                "title": "Dean Norris",
+                "url": "https://en.wikipedia.org/wiki/Dean_Norris",
+                "extract": "Dean Joseph Norris (born April 8, 1963) is an American actor. He is best known for playing Hank Schrader on the AMC series Breaking Bad (2008\u20132013). Throughout his career, he has amassed over 154 credits across film and television, including over 40 law enforcement roles.",
+                "pageid": 19165474
+              },
+              {
+                "title": "Talk Soup",
+                "url": "https://en.wikipedia.org/wiki/Talk_Soup",
+                "extract": "Talk Soup is a television show produced for cable network E! that debuted on January 7, 1991, and aired until May 2002. Talk Soup aired selected clips of the previous day's daily talk shows\u2014ranging from daytime entries like The Jerry Springer Show to celebrity interview shows like The Tonight Show\u2014surrounded by humorous commentary delivered by the host. Although Talk Soup poked fun at the talk shows, it also advertised the topics and guests of upcoming broadcasts. Despite this, several talk shows, including The Oprah Winfrey Show, refused to allow clips of their shows to be shown on the series. During its run, Talk Soup was nominated for five Daytime Emmy Awards, winning once in 1995 for Outstanding Special Class Program. A show based on it, The Soup, aired from 2004 to 2015. The show frequently poked fun at actors Randolph Mantooth and Mario Van Peebles. Also featured was a womanizing Argentine sock puppet named Se\u00f1or Sock that had bought several ThighMasters because he was madly in love with Suzanne Somers.",
+                "pageid": 426294
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.542
+          },
+          "rendered": "[1] List of House characters\nThis page is a comprehensive list and description of the various characters who appear, from time to time, in the television series House. The list is divided episode-wise, as well as character-wise, and includes recurring characters, such as Rachel Taub, and Dominika, as well as characters who appear in only a few episodes, such as Juan Alvarez (House) and Steve McQueen (the rat).\n\n[2] List of That '70s and '90s Show characters\nThis is a list of characters appearing in the television series That '70s Show and That '90s Show.\n\n[3] Eric Roberts filmography\nEric Roberts (born April 18, 1956) is an American actor. His career began with King of the Gypsies (1978), earning a Golden Globe Award nomination for Best Actor Debut. He earned both a Golden Globe and Academy Award nomination for his supporting role in Runaway Train (1985). Through the 1990s and 2000s, he maintained dramatic film and TV film roles while appearing in TV series. His TV work includes playing the Master in the 1996 Doctor Who TV movie, three seasons with the sitcom Less than Perfect and a recurring role on the NBC drama Heroes. His sisters Julia Roberts and Lisa Roberts Gillan, and daughter Emma Roberts, also have acting careers. As of March 6, 2026, Roberts is credited with appearances in 809 different released productions, making him one of the most prolific screen actors of all time.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 2240,
+      "output_tokens": 90,
+      "cache_read_tokens": 0,
+      "latency_s": 1.2713303749915212
+    },
+    {
+      "index": 3,
+      "thinking": null,
+      "text": "That didn't work either. Let me search for the specific actor names I might know from the show - perhaps trying \"Dan Frischman\" or searching more broadly for Head of the Class actors.",
+      "tool_calls": [
+        {
+          "query": "Dan Frischman Head of the Class",
+          "raw": {
+            "query": "Dan Frischman Head of the Class",
+            "results": [
+              {
+                "title": "Dan Frischman",
+                "url": "https://en.wikipedia.org/wiki/Dan_Frischman",
+                "extract": "Daniel Frischman (born April 23, 1959) is an American actor, comedian, writer, director, playwright and magician. He is best known for his roles as Chris Potter on the Nickelodeon sitcom Kenan & Kel and Arvid Engen on the ABC sitcom Head of the Class. He is noted for playing socially inept \"geeks\" and \"nerds\". Frischman is a member of The Magic Castle, who belongs to the Academy of Magic Arts in Hollywood.",
+                "pageid": 4637363
+              },
+              {
+                "title": "Head of the Class",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class",
+                "extract": "Head of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.",
+                "pageid": 1026760
+              },
+              {
+                "title": "List of Captain Planet episodes",
+                "url": "https://en.wikipedia.org/wiki/List_of_Captain_Planet_episodes",
+                "extract": "The following is a list of episodes from the Captain Planet and the Planeteers animated series. The show was the second longest-running cartoon series of the 1990s, with a total of 113 episodes.",
+                "pageid": 6972684
+              },
+              {
+                "title": "Night of the Creeps",
+                "url": "https://en.wikipedia.org/wiki/Night_of_the_Creeps",
+                "extract": "Night of the Creeps is a 1986 American science fiction horror comedy film written and directed by Fred Dekker in his feature directorial debut, starring Jason Lively, Jill Whitlow, and Tom Atkins. The film is an earnest attempt at a B movie and an homage to the genre. While the main plot of the film is related to zombies, the film also mixes in takes on slashers and alien invasion films. Night of the Creeps did not perform well at the box office, but it developed a cult following. In the film, a college student and his best friend steal a cadaver from a cryogenics lab, as part of an initiation rite in a local fraternity. The \"corpse\" is an undead body from the late 1950s, and is under the control of an extraterrestrial organism. Soon, several other people are infected with these alien slugs.",
+                "pageid": 2534857
+              },
+              {
+                "title": "List of Kenan & Kel characters",
+                "url": "https://en.wikipedia.org/wiki/List_of_Kenan_%26_Kel_characters",
+                "extract": "The following is a list of characters from the Nickelodeon sitcom, Kenan & Kel.",
+                "pageid": 17427220
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.943
+          },
+          "rendered": "[1] Dan Frischman\nDaniel Frischman (born April 23, 1959) is an American actor, comedian, writer, director, playwright and magician. He is best known for his roles as Chris Potter on the Nickelodeon sitcom Kenan & Kel and Arvid Engen on the ABC sitcom Head of the Class. He is noted for playing socially inept \"geeks\" and \"nerds\". Frischman is a member of The Magic Castle, who belongs to the Academy of Magic Arts in Hollywood.\n\n[2] Head of the Class\nHead of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.\n\n[3] List of Captain Planet episodes\nThe following is a list of episodes from the Captain Planet and the Planeteers animated series. The show was the second longest-running cartoon series of the 1990s, with a total of 113 episodes.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 2673,
+      "output_tokens": 103,
+      "cache_read_tokens": 0,
+      "latency_s": 1.3680217079818249
+    },
+    {
+      "index": 4,
+      "thinking": null,
+      "text": "I found information about Dan Frischman who played Arvid Engen on Head of the Class, but that doesn't mention Eric. Let me try searching for other cast members or the character name \"Eric\" more directly.",
+      "tool_calls": [
+        {
+          "query": "\"Head of the Class\" Eric character",
+          "raw": {
+            "query": "\"Head of the Class\" Eric character",
+            "results": [
+              {
+                "title": "Head of the Class",
+                "url": "https://en.wikipedia.org/wiki/Head_of_the_Class",
+                "extract": "Head of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.",
+                "pageid": 1026760
+              },
+              {
+                "title": "Eric Laneuville",
+                "url": "https://en.wikipedia.org/wiki/Eric_Laneuville",
+                "extract": "Eric Gerard Laneuville (born July 14, 1952) is an American television director, producer and actor. His first acting roles were in the science-fiction film The Omega Man (1971) with Charlton Heston, and the ABC television series Room 222 (1970\u20131973). His role as Luther Hawkins in the television series St. Elsewhere is his best known role. He also starred in A Force of One (1979) playing Charlie, the adopted son of Chuck Norris's character. Laneuville and Norris had previously appeared in an episode of Room 222. In more recent years, he frequently directs such one-hour dramas as Blue Bloods and NCIS: Los Angeles. He directed the Body of Proof episode \"Missing\". He also appeared in Love at First Bite.",
+                "pageid": 2448842
+              },
+              {
+                "title": "Invincible (comics)",
+                "url": "https://en.wikipedia.org/wiki/Invincible_(comics)",
+                "extract": "Invincible is an American comic book series written by Robert Kirkman and illustrated by Cory Walker and Ryan Ottley, and published by Image Comics. Set in the Image Universe, Invincible follows the coming of age of superhero Mark Grayson / Invincible, a half-Viltrumite and first-born son of Omni-Man, the most powerful superhero on Earth. The series began publication on January 22, 2003, before coming to a close on February 14, 2018, with 144 issues. Several spin-off series were released over its run: Brit, The Pact, Invincible Presents: Atom Eve & Rex Splode, and Guarding the Globe. An animated television adaptation began streaming on Amazon Prime Video on March 25, 2021, while an additional spin-off interquel, Invincible Universe: Battle Beast, began publication in 2025.",
+                "pageid": 67548319
+              },
+              {
+                "title": "Eric Bruskotter",
+                "url": "https://en.wikipedia.org/wiki/Eric_Bruskotter",
+                "extract": "Eric Bruskotter is an American actor. He is best known for his role as Cleveland Indians rookie catcher Rube Baker in Major League II and Major League: Back to the Minors as well as his role as Private Scott Baker in the TV series Tour of Duty.",
+                "pageid": 5863224
+              },
+              {
+                "title": "Stan Winston",
+                "url": "https://en.wikipedia.org/wiki/Stan_Winston",
+                "extract": "Stanley Winston (April 7, 1946 \u2013 June 15, 2008) was an American television and film special make-up effects artist, best known for his work in the Terminator series, the first three Jurassic Park films, Aliens, The Thing, the first two Predator films, Inspector Gadget, Iron Man, and Edward Scissorhands. He won four Academy Awards for his work. Winston, a frequent collaborator with directors James Cameron, Steven Spielberg and Tim Burton, owned several effects studios, including Stan Winston Digital. The established areas of expertise for Winston were in makeup, puppets and practical effects, but at the time of his death, he had expanded his studio to encompass digital effects as well.",
+                "pageid": 930853
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.38
+          },
+          "rendered": "[1] Head of the Class\nHead of the Class is an American sitcom television series that ran from 1986 to 1991 on the ABC television network. The series follows a group of gifted students in the Individualized Honors Program (IHP) at the fictional Millard Fillmore High School in Manhattan, and their history teacher Charlie Moore (Howard Hesseman). The program was ostensibly a vehicle for Hesseman, best known for his role as radio DJ Dr. Johnny Fever on the sitcom WKRP in Cincinnati (1978\u20131982). Hesseman left Head of the Class in 1990 and was replaced by Scottish comedian Billy Connolly as teacher Billy MacGregor for the final season. The series was created and executive produced by Richard Eustis and Michael Elias. Elias had previously worked as a substitute teacher in New York City while hoping to become an actor. A revival of the series was ordered and co-produced by Bill Lawrence's Doozer and Warner Horizon Scripted Television. It was released on HBO Max.\n\n[2] Eric Laneuville\nEric Gerard Laneuville (born July 14, 1952) is an American television director, producer and actor. His first acting roles were in the science-fiction film The Omega Man (1971) with Charlton Heston, and the ABC television series Room 222 (1970\u20131973). His role as Luther Hawkins in the television series St. Elsewhere is his best known role. He also starred in A Force of One (1979) playing Charlie, the adopted son of Chuck Norris's character. Laneuville and Norris had previously appeared in an episode of Room 222. In more recent years, he frequently directs such one-hour dramas as Blue Bloods and NCIS: Los Angeles. He directed the Body of Proof episode \"Missing\". He also appeared in Love at First Bite.\n\n[3] Invincible (comics)\nInvincible is an American comic book series written by Robert Kirkman and illustrated by Cory Walker and Ryan Ottley, and published by Image Comics. Set in the Image Universe, Invincible follows the coming of age of superhero Mark Grayson / Invincible, a half-Viltrumite and first-born son of Omni-Man, the most powerful superhero on Earth. The series began publication on January 22, 2003, before coming to a close on February 14, 2018, with 144 issues. Several spin-off series were released over its run: Brit, The Pact, Invincible Presents: Atom Eve & Rex Splode, and Guarding the Globe. An animated television adaptation began streaming on Amazon Prime Video on March 25, 2021, while an additional spin-off interquel, Invincible Universe: Battle Beast, began publication in 2025.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 3208,
+      "output_tokens": 109,
+      "cache_read_tokens": 0,
+      "latency_s": 1.306044250028208
+    },
+    {
+      "index": 5,
+      "thinking": null,
+      "text": "The Wikipedia search results are not providing detailed cast information for Head of the Class that would list a character named Eric. Based on my searches, I can only find information about Dan Frischman who played Arvid Engen on the show, but there's no mention of an Eric character in the opening sections of the Head of the Class article.\n\nI wasn't able to find information about a character named Eric in Head of the Class through Wikipedia. The search results show that Head of the Class ran from 1986 to 1991 on ABC and featured a group of gifted students, but the opening sections of the Wikipedia articles don't provide a complete cast list with all character names. If there is an Eric character on the show, it's not mentioned in the Wikipedia article summaries I found. You might need to check a more detailed source like IMDb for complete cast information.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 3985,
+      "output_tokens": 187,
+      "cache_read_tokens": 0,
+      "latency_s": 2.5753701670328155
+    }
+  ]
+}

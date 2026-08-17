@@ -1,0 +1,167 @@
+{
+  "question": "where is let's make a deal filmed 2018",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Unfortunately, the Wikipedia search results do not provide the specific filming location for Let's Make a Deal in 2018. The articles confirm that the current edition has aired on CBS since 2009 with Wayne Brady as host, but they don't include details about which studio or location the show was filmed in during 2018. You may need to check other sources for this specific information.",
+  "error": null,
+  "latency_s": 15.123,
+  "summary": {
+    "searched": true,
+    "n_searches": 2,
+    "n_turns": 3,
+    "cache_hits": 0,
+    "queries": [
+      "Let's Make a Deal filming location",
+      "Let's Make a Deal 2009 revival CBS studio"
+    ],
+    "shown_titles": [
+      "Let's Make a Deal",
+      "Let's Make It Legal",
+      "Wayne Brady",
+      "CBS Daytime"
+    ],
+    "retrieved_titles": [
+      "Let's Make a Deal",
+      "Let's Make It Legal",
+      "Wayne Brady",
+      "Wonder Man (TV series)",
+      "Bryna Productions",
+      "CBS Daytime",
+      "Monty Hall",
+      "List of American game shows"
+    ],
+    "usage": {
+      "input_tokens": 5119,
+      "output_tokens": 237,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Let's Make a Deal filming location",
+          "raw": {
+            "query": "Let's Make a Deal filming location",
+            "results": [
+              {
+                "title": "Let's Make a Deal",
+                "url": "https://en.wikipedia.org/wiki/Let%27s_Make_a_Deal",
+                "extract": "Let's Make a Deal (also known as LMAD) is an American television game show that originated in the United States in 1963 and has since been produced in many countries throughout the world. The program was created and produced by Stefan Hatos and Monty Hall, the latter serving as its host for nearly 30 years. The format of Let's Make a Deal involves selected members of the studio audience, referred to as \"traders\", making deals with the host. In most cases, a trader will be offered something of value and given a choice of whether to keep it or exchange it for a different item. The program's defining game mechanism is that at least one of the items is hidden from the trader until the choice has been made. Only after the items are revealed does the trader learn if they have chosen something of a higher or lower value than their starting item, or if they have received a comedic \"zonk\" prize with little or no value. When Let's Make a Deal first started, contestants wore suits and dresses, normal attire for the time. In short order, however, audience members began to dress in outrageous and unique costumes to increase their chances of being selected as a trader, and that has become a signature feature of the show. The current edition of Let's Make a Deal has aired on CBS since October 5, 2009, when it took over the spot on the network's daytime schedule vacated by the soap opera Guiding Light. [...]",
+                "pageid": 356928
+              },
+              {
+                "title": "Let's Make It Legal",
+                "url": "https://en.wikipedia.org/wiki/Let%27s_Make_It_Legal",
+                "extract": "Let's Make It Legal is a 1951 American romantic comedy film directed by Richard Sale and starring Claudette Colbert, Macdonald Carey, Zachary Scott, Barbara Bates, Marilyn Monroe, Robert Wagner, and Frank Cady. The film was produced by Robert Bassler from a screenplay by F. Hugh Herbert and I. A. L. Diamond, based on a story by Mortimer Braus entitled \"My Mother-in-Law, Miriam\".",
+                "pageid": 9652359
+              },
+              {
+                "title": "Wayne Brady",
+                "url": "https://en.wikipedia.org/wiki/Wayne_Brady",
+                "extract": "Wayne Alphonso Brady (born June 2, 1972) is an American comedian, actor, and singer. He is a regular cast member on the American version of the improvisational comedy television series Whose Line Is It Anyway? He was the host of the daytime talk show The Wayne Brady Show, the original host of Fox's Don't Forget the Lyrics!, and he has hosted Let's Make a Deal since its 2009 revival. Brady also performs musical theatre; he portrayed Lola/Simon in the Tony Award\u2013winning musical Kinky Boots on Broadway from November 2015 to March 2016. He\u2019s also appeared on Broadway in Chicago, The Wiz, and Moulin Rouge! The Musical. Brady played Aaron Burr in the Chicago production of Hamilton from January to April 2017. Brady has won five Emmy Awards. He won his first Emmy Award for his work on Whose Line Is It Anyway? in 2003, two more in the next year for The Wayne Brady Show, and two for Let's Make a Deal. He has also been nominated for two Grammy Awards: Best Traditional R&B Vocal Performance for his cover of the Sam Cooke song \"A Change Is Gonna Come,\" and Best Musical Theater Album for the soundtrack of The Wiz.",
+                "pageid": 524997
+              },
+              {
+                "title": "Wonder Man (TV series)",
+                "url": "https://en.wikipedia.org/wiki/Wonder_Man_(TV_series)",
+                "extract": "Wonder Man is an American television series created by Destin Daniel Cretton and Andrew Guest for the streaming service Disney+, based on the Marvel Comics character Simon Williams / Wonder Man. It is the 17th television series in the Marvel Cinematic Universe (MCU) from Marvel Studios and was produced under its Marvel Television label. Sharing continuity with the films of the MCU, the series follows actors Simon Williams and Trevor Slattery. Guest served as showrunner. Yahya Abdul-Mateen II stars as Simon Williams, alongside X Mayo, Zlatko Buri\u0107, Ben Kingsley (Slattery), Arian Moayed, Joe Pantoliano, Byron Bowers, and Josh Gad. In December 2021, Cretton signed an overall deal with Marvel Studios to create television series for Disney+, with a comedy series already in development at that point. Two different ideas about actors, one centered on Simon Williams and the other on Trevor Slattery, were combined into a single series which was reported as Wonder Man in June 2022, with Guest involved and Cretton directing episodes. Kingsley was set to return from previous MCU media in August and Abdul-Mateen joined the cast that October. Filming began in April 2023 on location in Los Angeles, with James Ponsoldt, Tiffany Johnson, and Stella Meghie also directing episodes. Production was shut down in May due to the 2023 Writers Guild of America strike, and resumed by early January 2024. Filming concluded that March and post-production ended around September. [...]",
+                "pageid": 69448405
+              },
+              {
+                "title": "Bryna Productions",
+                "url": "https://en.wikipedia.org/wiki/Bryna_Productions",
+                "extract": "Bryna Productions (later renamed The Bryna Company) is an American independent film and television production company established by actor Kirk Douglas in 1949. The company also produced a handful of films through its subsidiaries, Michael Productions, Joel Productions and Douglas and Lewis Productions, and outside the United States through Brynaprod. Other subsidiaries included Eric Productions, which produced stage plays, Peter Vincent Music, a music publishing company, Bryna International, a photographic service company, and Public Relations Consultants, which supervised the publicity of its early films. Douglas named the main company after his mother, Bryna Demsky Danielovitch (Bryna is pronounced Brina with a long i); its primary subsidiaries were named after his sons: Michael Douglas, Joel Douglas, Peter Douglas and Eric Douglas. In 1970, Bryna Productions was renamed The Bryna Company, when Douglas welcomed his children and second wife into the firm. Nevertheless, Michael, Joel and Peter, wanting to establish individual identities, went on to form their own independent film production companies. The company had some major film successes, including Paths of Glory, The Vikings, Spartacus, Seven Days in May, Seconds, Grand Prix, One Flew Over the Cuckoo's Nest, The Final Countdown, and Something Wicked This Way Comes. [...]",
+                "pageid": 36890459
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.857
+          },
+          "rendered": "[1] Let's Make a Deal\nLet's Make a Deal (also known as LMAD) is an American television game show that originated in the United States in 1963 and has since been produced in many countries throughout the world. The program was created and produced by Stefan Hatos and Monty Hall, the latter serving as its host for nearly 30 years. The format of Let's Make a Deal involves selected members of the studio audience, referred to as \"traders\", making deals with the host. In most cases, a trader will be offered something of value and given a choice of whether to keep it or exchange it for a different item. The program's defining game mechanism is that at least one of the items is hidden from the trader until the choice has been made. Only after the items are revealed does the trader learn if they have chosen something of a higher or lower value than their starting item, or if they have received a comedic \"zonk\" prize with little or no value. When Let's Make a Deal first started, contestants wore suits and dresses, normal attire for the time. In short order, however, audience members began to dress in outrageous and unique costumes to increase their chances of being selected as a trader, and that has become a signature feature of the show. The current edition of Let's Make a Deal has aired on CBS since October 5, 2009, when it took over the spot on the network's daytime schedule vacated by the soap opera Guiding Light. [...]\n\n[2] Let's Make It Legal\nLet's Make It Legal is a 1951 American romantic comedy film directed by Richard Sale and starring Claudette Colbert, Macdonald Carey, Zachary Scott, Barbara Bates, Marilyn Monroe, Robert Wagner, and Frank Cady. The film was produced by Robert Bassler from a screenplay by F. Hugh Herbert and I. A. L. Diamond, based on a story by Mortimer Braus entitled \"My Mother-in-Law, Miriam\".\n\n[3] Wayne Brady\nWayne Alphonso Brady (born June 2, 1972) is an American comedian, actor, and singer. He is a regular cast member on the American version of the improvisational comedy television series Whose Line Is It Anyway? He was the host of the daytime talk show The Wayne Brady Show, the original host of Fox's Don't Forget the Lyrics!, and he has hosted Let's Make a Deal since its 2009 revival. Brady also performs musical theatre; he portrayed Lola/Simon in the Tony Award\u2013winning musical Kinky Boots on Broadway from November 2015 to March 2016. He\u2019s also appeared on Broadway in Chicago, The Wiz, and Moulin Rouge! The Musical. Brady played Aaron Burr in the Chicago production of Hamilton from January to April 2017. Brady has won five Emmy Awards. He won his first Emmy Award for his work on Whose Line Is It Anyway? in 2003, two more in the next year for The Wayne Brady Show, and two for Let's Make a Deal. He has also been nominated for two Grammy Awards: Best Traditional R&B Vocal Performance for his cover of the Sam Cooke song \"A Change Is Gonna Come,\" and Best Musical Theater Album for the soundtrack of The Wiz.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 918,
+      "output_tokens": 60,
+      "cache_read_tokens": 0,
+      "latency_s": 0.8619637499796227
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "The search results don't specify the filming location for 2018. Let me search more specifically for the current version of the show's production details.",
+      "tool_calls": [
+        {
+          "query": "Let's Make a Deal 2009 revival CBS studio",
+          "raw": {
+            "query": "Let's Make a Deal 2009 revival CBS studio",
+            "results": [
+              {
+                "title": "Let's Make a Deal",
+                "url": "https://en.wikipedia.org/wiki/Let%27s_Make_a_Deal",
+                "extract": "Let's Make a Deal (also known as LMAD) is an American television game show that originated in the United States in 1963 and has since been produced in many countries throughout the world. The program was created and produced by Stefan Hatos and Monty Hall, the latter serving as its host for nearly 30 years. The format of Let's Make a Deal involves selected members of the studio audience, referred to as \"traders\", making deals with the host. In most cases, a trader will be offered something of value and given a choice of whether to keep it or exchange it for a different item. The program's defining game mechanism is that at least one of the items is hidden from the trader until the choice has been made. Only after the items are revealed does the trader learn if they have chosen something of a higher or lower value than their starting item, or if they have received a comedic \"zonk\" prize with little or no value. When Let's Make a Deal first started, contestants wore suits and dresses, normal attire for the time. In short order, however, audience members began to dress in outrageous and unique costumes to increase their chances of being selected as a trader, and that has become a signature feature of the show. The current edition of Let's Make a Deal has aired on CBS since October 5, 2009, when it took over the spot on the network's daytime schedule vacated by the soap opera Guiding Light. [...]",
+                "pageid": 356928
+              },
+              {
+                "title": "CBS Daytime",
+                "url": "https://en.wikipedia.org/wiki/CBS_Daytime",
+                "extract": "CBS Daytime is the division of the CBS television network that is responsible for the daytime television block programming on the network's late morning and early afternoon schedule. The block has historically encompassed soap operas and game shows.",
+                "pageid": 7861152
+              },
+              {
+                "title": "Wayne Brady",
+                "url": "https://en.wikipedia.org/wiki/Wayne_Brady",
+                "extract": "Wayne Alphonso Brady (born June 2, 1972) is an American comedian, actor, and singer. He is a regular cast member on the American version of the improvisational comedy television series Whose Line Is It Anyway? He was the host of the daytime talk show The Wayne Brady Show, the original host of Fox's Don't Forget the Lyrics!, and he has hosted Let's Make a Deal since its 2009 revival. Brady also performs musical theatre; he portrayed Lola/Simon in the Tony Award\u2013winning musical Kinky Boots on Broadway from November 2015 to March 2016. He\u2019s also appeared on Broadway in Chicago, The Wiz, and Moulin Rouge! The Musical. Brady played Aaron Burr in the Chicago production of Hamilton from January to April 2017. Brady has won five Emmy Awards. He won his first Emmy Award for his work on Whose Line Is It Anyway? in 2003, two more in the next year for The Wayne Brady Show, and two for Let's Make a Deal. He has also been nominated for two Grammy Awards: Best Traditional R&B Vocal Performance for his cover of the Sam Cooke song \"A Change Is Gonna Come,\" and Best Musical Theater Album for the soundtrack of The Wiz.",
+                "pageid": 524997
+              },
+              {
+                "title": "Monty Hall",
+                "url": "https://en.wikipedia.org/wiki/Monty_Hall",
+                "extract": "Monty Hall (born Monte Halparin; August 25, 1921 \u2013 September 30, 2017) was a Canadian-American radio and television show host who moved to the United States in 1955 to pursue a career in broadcasting. After working as a radio newsreader and sportscaster, Hall returned to television in the U.S., where his focus was now on hosting game shows. Starting in 1963, he was best known as the host, co-creator, and co-producer of Let's Make a Deal. A conundrum involving game theory and psychology was named after him: the Monty Hall problem. Behind the scenes, Hall also carried on an active life of philanthropy.",
+                "pageid": 342256
+              },
+              {
+                "title": "List of American game shows",
+                "url": "https://en.wikipedia.org/wiki/List_of_American_game_shows",
+                "extract": "The following is a list of game shows in the United States. Ongoing shows are in bold type.",
+                "pageid": 4386093
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.527
+          },
+          "rendered": "[1] Let's Make a Deal\nLet's Make a Deal (also known as LMAD) is an American television game show that originated in the United States in 1963 and has since been produced in many countries throughout the world. The program was created and produced by Stefan Hatos and Monty Hall, the latter serving as its host for nearly 30 years. The format of Let's Make a Deal involves selected members of the studio audience, referred to as \"traders\", making deals with the host. In most cases, a trader will be offered something of value and given a choice of whether to keep it or exchange it for a different item. The program's defining game mechanism is that at least one of the items is hidden from the trader until the choice has been made. Only after the items are revealed does the trader learn if they have chosen something of a higher or lower value than their starting item, or if they have received a comedic \"zonk\" prize with little or no value. When Let's Make a Deal first started, contestants wore suits and dresses, normal attire for the time. In short order, however, audience members began to dress in outrageous and unique costumes to increase their chances of being selected as a trader, and that has become a signature feature of the show. The current edition of Let's Make a Deal has aired on CBS since October 5, 2009, when it took over the spot on the network's daytime schedule vacated by the soap opera Guiding Light. [...]\n\n[2] CBS Daytime\nCBS Daytime is the division of the CBS television network that is responsible for the daytime television block programming on the network's late morning and early afternoon schedule. The block has historically encompassed soap operas and game shows.\n\n[3] Wayne Brady\nWayne Alphonso Brady (born June 2, 1972) is an American comedian, actor, and singer. He is a regular cast member on the American version of the improvisational comedy television series Whose Line Is It Anyway? He was the host of the daytime talk show The Wayne Brady Show, the original host of Fox's Don't Forget the Lyrics!, and he has hosted Let's Make a Deal since its 2009 revival. Brady also performs musical theatre; he portrayed Lola/Simon in the Tony Award\u2013winning musical Kinky Boots on Broadway from November 2015 to March 2016. He\u2019s also appeared on Broadway in Chicago, The Wiz, and Moulin Rouge! The Musical. Brady played Aaron Burr in the Chicago production of Hamilton from January to April 2017. Brady has won five Emmy Awards. He won his first Emmy Award for his work on Whose Line Is It Anyway? in 2003, two more in the next year for The Wayne Brady Show, and two for Let's Make a Deal. He has also been nominated for two Grammy Awards: Best Traditional R&B Vocal Performance for his cover of the Sam Cooke song \"A Change Is Gonna Come,\" and Best Musical Theater Album for the soundtrack of The Wiz.",
+          "top_k": 3
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1716,
+      "output_tokens": 95,
+      "cache_read_tokens": 0,
+      "latency_s": 1.766891208011657
+    },
+    {
+      "index": 2,
+      "thinking": null,
+      "text": "Unfortunately, the Wikipedia search results do not provide the specific filming location for Let's Make a Deal in 2018. The articles confirm that the current edition has aired on CBS since 2009 with Wayne Brady as host, but they don't include details about which studio or location the show was filmed in during 2018. You may need to check other sources for this specific information.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 2485,
+      "output_tokens": 82,
+      "cache_read_tokens": 0,
+      "latency_s": 11.10795675002737
+    }
+  ]
+}

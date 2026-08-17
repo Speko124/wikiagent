@@ -1,0 +1,38 @@
+{
+  "question": "What did Ada Lovelace eat for breakfast on her tenth birthday?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v0",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "I don't have access to information about what Ada Lovelace ate for breakfast on her tenth birthday. Such personal details about daily meals from centuries ago would not typically be documented in historical records or encyclopedias like Wikipedia.\n\nWhile I could search for biographical information about Ada Lovelace, the available historical sources would focus on her major life events, accomplishments, and documented biographical facts\u2014not specific meals she ate on particular days.\n\nIs there something else about Ada Lovelace's life or work that I could help you find information about?",
+  "error": null,
+  "latency_s": 1.844,
+  "summary": {
+    "searched": false,
+    "n_searches": 0,
+    "n_turns": 1,
+    "cache_hits": 0,
+    "queries": [],
+    "shown_titles": [],
+    "retrieved_titles": [],
+    "usage": {
+      "input_tokens": 922,
+      "output_tokens": 117,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I don't have access to information about what Ada Lovelace ate for breakfast on her tenth birthday. Such personal details about daily meals from centuries ago would not typically be documented in historical records or encyclopedias like Wikipedia.\n\nWhile I could search for biographical information about Ada Lovelace, the available historical sources would focus on her major life events, accomplishments, and documented biographical facts\u2014not specific meals she ate on particular days.\n\nIs there something else about Ada Lovelace's life or work that I could help you find information about?",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 922,
+      "output_tokens": 117,
+      "cache_read_tokens": 0,
+      "latency_s": 1.8436124580330215
+    }
+  ]
+}
