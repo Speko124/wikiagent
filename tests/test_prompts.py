@@ -98,14 +98,16 @@ def test_the_default_prompt_asks_for_exact_titles():
 # already been scored against silently makes those results uninterpretable —
 # the trace still says `v0`. Seeing this test fail is the reminder to add a new
 # version instead. If the change really is intended, update the digest here.
-FROZEN = {"v0": "1cd16256895d837f"}
+FROZEN = {"v0": "7bd4894e018a175b", "v1": "c243201bc72665bb"}
 
 
 @pytest.mark.parametrize("version,digest", sorted(FROZEN.items()))
 def test_frozen_versions_are_not_edited_in_place(version, digest):
     pset = prompts.get(version)
     actual = hashlib.sha256(
-        (pset.system + "\x00" + pset.tool_description).encode()
+        "\x00".join(
+            (pset.system, pset.tool_description, pset.fetch_description)
+        ).encode()
     ).hexdigest()[:16]
     assert actual == digest, (
         f"Prompt {version} changed. Results already scored against it can no "

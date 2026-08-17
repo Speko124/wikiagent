@@ -29,6 +29,11 @@ EXTRACT_CHARS = 1500
 # fills the gap from memory.
 TRUNCATION_MARKER = "[...]"
 
+# How much of a fetched article the model sees. Far larger than a search
+# result and far smaller than the longest articles: unbounded would blow the
+# context window on a single call and make cost per run unpredictable.
+ARTICLE_CHARS = 8_000
+
 # How many results the model sees. The one knob; `--top-k` on the CLI.
 DEFAULT_TOP_K = 3
 
@@ -92,10 +97,82 @@ class SearchResponse:
                 f'No Wikipedia articles matched "{self.query}". '
                 "Try different or broader search terms."
             )
+        if self.top_k == 1 and self.results[0].pageid == -1:
+            # A fetched article: one title, full text, no result numbering.
+            article = self.results[0]
+            return f"{article.title}\n{article.extract}"
         blocks = []
         for i, a in enumerate(self.shown, 1):
             blocks.append(f"[{i}] {a.title}\n{a.extract}")
         return "\n\n".join(blocks)
+
+
+def _fetch_full(title: str, timeout: float) -> tuple[str | None, str]:
+    """Full plaintext of one article. Returns `(resolved_title, text)`.
+
+    The resolved title is returned separately because redirects mean the
+    article you get may not be the title you asked for, and "did it open the
+    right article" is only answerable against the one it actually got.
+    """
+    headers = {"User-Agent": USER_AGENT}
+    with httpx.Client(timeout=timeout, headers=headers, follow_redirects=True) as client:
+        page = client.get(API_URL, params={
+            "action": "query", "prop": "extracts|info", "explaintext": 1,
+            "titles": title, "redirects": 1, "inprop": "url", "format": "json",
+        })
+        page.raise_for_status()
+        found = next(iter(page.json().get("query", {}).get("pages", {}).values()), {})
+    if "missing" in found or not found.get("extract"):
+        return None, ""
+    return found["title"], found["extract"]
+
+
+def fetch(
+    title: str,
+    cache_dir: Path | None = None,
+    use_cache: bool = True,
+    timeout: float = 20.0,
+) -> SearchResponse:
+    """Open one article and return its full text, bounded.
+
+    Returns a `SearchResponse` so the trace, the graders and the renderer all
+    keep one shape — a fetch is a retrieval that happened to return exactly one
+    article.
+    """
+    cache_dir = Path(cache_dir) if cache_dir else DEFAULT_CACHE_DIR
+    # `article:` prefix keeps this out of the search key space. Sharing one
+    # would let a cached search for X serve a fetch of X and hand back the
+    # intro when the body was asked for - the exact failure fetch exists to fix.
+    key = hashlib.sha256(f"article:{title.strip().lower()}".encode()).hexdigest()[:32]
+    path = cache_dir / f"{key}.json"
+
+    if use_cache and path.exists():
+        raw = json.loads(path.read_text())
+        return SearchResponse(
+            query=title, results=[Article(**a) for a in raw["results"]],
+            top_k=1, cache_hit=True, error=raw.get("error"),
+        )
+
+    started = time.monotonic()
+    try:
+        resolved, text = _fetch_full(title, timeout)
+        error = None if resolved else f"No Wikipedia article titled {title!r}."
+    except Exception as exc:  # network, HTTP, or malformed payload
+        resolved, text, error = None, "", f"{type(exc).__name__}: {exc}"
+
+    results = (
+        [Article(title=resolved,
+                 url=f"https://en.wikipedia.org/wiki/{resolved.replace(' ', '_')}",
+                 extract=_truncate(text, ARTICLE_CHARS), pageid=-1)]
+        if resolved else []
+    )
+    response = SearchResponse(query=title, results=results, top_k=1, error=error,
+                              latency_s=time.monotonic() - started)
+    # Errors are never cached - one blip must not poison this title forever.
+    if use_cache and error is None:
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(response.to_dict(), indent=2))
+    return response
 
 
 def _cache_path(query: str, fetch_k: int, cache_dir: Path) -> Path:

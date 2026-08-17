@@ -30,6 +30,7 @@ from .wikipedia import TRUNCATION_MARKER
 class PromptSet:
     system: str
     tool_description: str  # `{n}` is filled in with the result count
+    fetch_description: str = ""  # empty means the agent has search only
 
 
 # The baseline. Three properties are load-bearing and easy to lose in an edit:
@@ -81,7 +82,41 @@ assumption instead of answering as asked.""",
     ),
 )
 
-PROMPTS = {"v0": V0}
+# v1 adds `fetch_article`. The prompt delta is deliberately two lines: the
+# intervention is the tool, and a large prompt rewrite alongside it would make
+# the V0 -> V1 delta unattributable.
+#
+# The escalation rule is stated as a condition rather than an encouragement -
+# "the results name the right article but do not contain the answer" - because
+# the V0 failures were not a reluctance to search, they were an inability to
+# read further. An open invitation to fetch would buy latency and tokens on the
+# 28 runs that already work.
+V1 = PromptSet(
+    system=V0.system.replace(
+        """- If a search misses, try again with different wording, a broader topic, or a \
+related entity.""",
+        """- If a search misses, try again with different wording, a broader topic, or a \
+related entity.
+- If the results name the right article but its opening section does not \
+contain the answer, open that article with fetch_article rather than guessing \
+or giving up.""",
+    ),
+    tool_description=V0.tool_description,
+    fetch_description=(
+        "Read one Wikipedia article in full, given its exact title.\n\n"
+        "Use it when search returned the right article but the opening section "
+        "did not contain the answer — details like cast members, specific "
+        "figures and dates usually live further down. Titles must be copied "
+        "exactly from search results; this does not search, so a title it does "
+        "not recognise returns nothing.\n\n"
+        "Returns the article's prose only. **Infoboxes, sidebars and tables are "
+        "not included**, so data that appears only in those is unavailable by "
+        "any means. Very long articles are cut short, marked with "
+        f"{TRUNCATION_MARKER}."
+    ),
+)
+
+PROMPTS = {"v0": V0, "v1": V1}
 
 DEFAULT_VERSION = "v0"
 

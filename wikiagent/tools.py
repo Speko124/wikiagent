@@ -44,6 +44,41 @@ def schema(
     }
 
 
+FETCH_SCHEMA_TITLE = {
+    "type": "string",
+    "description": "Exact article title, copied from a search result.",
+}
+
+
+def fetch_schema(version: str = prompts.DEFAULT_VERSION) -> dict | None:
+    """The fetch tool, or None for prompt versions that don't have it.
+
+    Returning None rather than raising keeps `v0` runnable unchanged, which is
+    what makes the V0 baseline still reproducible after this landed.
+    """
+    description = prompts.get(version).fetch_description
+    if not description:
+        return None
+    return {
+        "name": "fetch_article",
+        "description": description,
+        "input_schema": {
+            "type": "object",
+            "properties": {"title": FETCH_SCHEMA_TITLE},
+            "required": ["title"],
+        },
+    }
+
+
+def all_schemas(
+    top_k: int = wikipedia.DEFAULT_TOP_K,
+    version: str = prompts.DEFAULT_VERSION,
+) -> list[dict]:
+    """Every tool this prompt version declares."""
+    fetch = fetch_schema(version)
+    return [schema(top_k, version)] + ([fetch] if fetch else [])
+
+
 def dispatch(
     name: str,
     tool_input: dict,
@@ -57,6 +92,16 @@ def dispatch(
     trace keeps every result — including the ones beyond top_k that the model
     never saw.
     """
+    if name == "fetch_article":
+        title = (tool_input or {}).get("title", "")
+        if not isinstance(title, str) or not title.strip():
+            return wikipedia.SearchResponse(
+                query="", top_k=1,
+                error="No title provided. Copy an exact title from a search result.",
+            )
+        return wikipedia.fetch(
+            title, cache_dir=cache_dir, use_cache=use_cache
+        )
     if name != "search_wikipedia":
         return wikipedia.SearchResponse(
             query="", top_k=top_k, error=f"Unknown tool: {name}"

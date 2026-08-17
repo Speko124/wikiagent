@@ -17,10 +17,11 @@ from typing import Any
 
 @dataclass
 class ToolCall:
-    query: str
+    query: str  # the search query, or the article title for a fetch
     raw: dict  # the full SearchResponse — every fetched result, not just shown
     rendered: str  # exactly what the model was shown
     top_k: int = 3  # how many of `raw` were rendered
+    tool: str = "search_wikipedia"  # which tool produced this
 
     @property
     def titles(self) -> list[str]:
@@ -96,7 +97,41 @@ class Trace:
 
     @property
     def n_searches(self) -> int:
-        return len(self.queries)
+        return sum(
+            1 for t in self.turns for c in t.tool_calls
+            if c.tool == "search_wikipedia"
+        )
+
+    @property
+    def n_fetches(self) -> int:
+        """Full-article reads. Separate from searches because they answer
+        different questions: whether the agent looked, and whether it looked
+        *deeper* when the first look was not enough."""
+        return sum(
+            1 for t in self.turns for c in t.tool_calls if c.tool == "fetch_article"
+        )
+
+    @property
+    def fetched_titles(self) -> list[str]:
+        seen: dict[str, None] = {}
+        for turn in self.turns:
+            for call in turn.tool_calls:
+                if call.tool == "fetch_article":
+                    seen.setdefault(call.query, None)
+        return list(seen)
+
+    @property
+    def escalated(self) -> bool:
+        """Did a fetch follow a search, rather than replace it?
+
+        Fetching after a search is the intended pattern - look, then look
+        deeper. Fetching with no search first means the agent guessed a title
+        from memory, which is the failure mode this tool could introduce.
+        """
+        order = [c.tool for t in self.turns for c in t.tool_calls]
+        return "fetch_article" in order and order.index("search_wikipedia") < order.index(
+            "fetch_article"
+        ) if "search_wikipedia" in order and "fetch_article" in order else False
 
     @property
     def n_turns(self) -> int:
@@ -135,6 +170,9 @@ class Trace:
             "summary": {
                 "searched": self.searched,
                 "n_searches": self.n_searches,
+                "n_fetches": self.n_fetches,
+                "fetched_titles": self.fetched_titles,
+                "escalated": self.escalated,
                 "n_turns": self.n_turns,
                 "cache_hits": self.cache_hits,
                 "queries": self.queries,

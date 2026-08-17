@@ -84,7 +84,7 @@ def ask(
             "family parameter and returns a 400 on older models."
         )
     if use_tools:
-        request["tools"] = [tools.schema(top_k, version=prompt_version)]
+        request["tools"] = tools.all_schemas(top_k, version=prompt_version)
 
     messages: list[dict] = [{"role": "user", "content": question}]
     started = time.monotonic()
@@ -140,7 +140,8 @@ def ask(
                         query=found.query,
                         raw=found.to_dict(),
                         rendered=rendered,
-                        top_k=top_k,
+                        top_k=found.top_k,
+                        tool=block.name,
                     )
                 )
                 results.append(
