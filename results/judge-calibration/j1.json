@@ -1,0 +1,445 @@
+{
+  "rubric": "j1",
+  "judge_model": "claude-sonnet-5",
+  "agent_model_being_judged": "claude-haiku-4-5",
+  "calibrated_against": "results/read-core + results/read-explore hand labels",
+  "correctness": {
+    "role": "auditor - never the headline number",
+    "decided_agreement": "23/24",
+    "unclear": 7,
+    "total": 31,
+    "note": "The single disagreement is lovelace-breakfast, where the human label was 'incorrect' on process grounds (0 searches) while the answer content was right. The judge grades content, so it is arguably correct and the human label was overloaded.",
+    "verdicts": {
+      "rosetta-year#0": {
+        "verdict": "correct",
+        "why": "The answer states 1799, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "tosca-nationality#0": {
+        "verdict": "correct",
+        "why": "Matches the reference answer that Tosca's composer, Giacomo Puccini, was Italian.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "opera-house-seats#0": {
+        "verdict": "correct",
+        "why": "The answer correctly states the Concert Hall's capacity as 2,679 seats, matching the reference figure.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "lovelace-breakfast#0": {
+        "verdict": "correct",
+        "why": "The answer correctly identifies that this information is unknowable/undocumented, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "einstein-nobel-premise#0": {
+        "verdict": "correct",
+        "why": "The answer correctly identifies the false premise and states the prize was for the photoelectric effect, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "tesla-origin#0": {
+        "verdict": "correct",
+        "why": "The answer correctly identifies the ambiguity and addresses both Nikola Tesla (Austro-Hungarian Empire, matching Smiljan's historical location) and Tesla, Inc. (American company).",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "eiffel-height#0": {
+        "verdict": "correct",
+        "why": "Matches the reference height of 330 m (1,083 ft).",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "turing-nobel#0": {
+        "verdict": "correct",
+        "why": "The answer correctly concludes Turing never received a Nobel Prize, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "straw-doll-village#0": {
+        "verdict": "correct",
+        "why": "The answer correctly identifies Nagoro in Iya Valley, Tokushima Prefecture, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "paris-weather#0": {
+        "verdict": "correct",
+        "why": "The answer correctly declines to answer, explaining it lacks real-time weather data, matching the reference's expected behavior.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "switzerland-borders#0": {
+        "verdict": "correct",
+        "why": "The answer lists all five correct bordering countries matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-001#0": {
+        "verdict": "unclear",
+        "why": "The answer declines to provide the information rather than giving an incorrect fact, so it should be treated as unclear rather than incorrect.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-002#0": {
+        "verdict": "correct",
+        "why": "Matches the reference answer exactly, crediting Vivian Stanshall and Neil Innes.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-003#0": {
+        "verdict": "correct",
+        "why": "The answer correctly identifies Chris Cornell as the singer, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-004#0": {
+        "verdict": "unclear",
+        "why": "The answer declines to provide the information, which counts as unclear rather than incorrect since it honestly reports not finding the answer.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-005#0": {
+        "verdict": "correct",
+        "why": "The answer correctly identifies Muhammad bin Tughlaq, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-006#0": {
+        "verdict": "correct",
+        "why": "George Springer is correctly identified as the 2017 World Series MVP, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-007#0": {
+        "verdict": "incorrect",
+        "why": "The answer fails to provide the correct information (Golshifteh Farahani played the witch Shansa) and instead asks for clarification, despite the information being available.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-008#0": {
+        "verdict": "unclear",
+        "why": "The reference \"Dominion of Canada\" is vague and the answer instead gives a more specific and plausible location (Canadian North-West Territories), making neither clearly right or wrong without more context.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-009#0": {
+        "verdict": "correct",
+        "why": "The answer correctly identifies the Union (North) as achieving a strategic victory at Antietam, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-010#0": {
+        "verdict": "unclear",
+        "why": "The answer declines to provide the specific win count, honestly reporting it couldn't find the information rather than giving incorrect data.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-011#0": {
+        "verdict": "incorrect",
+        "why": "The answer fails to identify Roger Miller as the writer and instead offers an unrelated song, declining to answer despite the information being available.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-012#0": {
+        "verdict": "correct",
+        "why": "The answer matches the reference of 2 World Cup titles for France.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-013#0": {
+        "verdict": "correct",
+        "why": "Matches the reference date of June 9, 2017.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-014#0": {
+        "verdict": "unclear",
+        "why": "The reference names an exoplanet (Kepler-438b) while the answer discusses solar system planets (Mars), reflecting an ambiguous question scope rather than a clear factual error.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-015#0": {
+        "verdict": "unclear",
+        "why": "Both answers are correct depending on version - Paige O'Hara voiced Belle in the 1991 animated film, while Emma Watson played Belle in the 2017 live-action film, so the question is ambiguous without specifying which version.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-016#0": {
+        "verdict": "correct",
+        "why": "Sandra Oh matches the reference's full name Sandra Miju Oh.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-017#0": {
+        "verdict": "incorrect",
+        "why": "The answer fails to provide the correct toy store name \"Duncan's Toy Chest,\" despite this being available information.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-018#0": {
+        "verdict": "correct",
+        "why": "The answer correctly states the founding date of October 9, 1776, matching the reference.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-019#0": {
+        "verdict": "unclear",
+        "why": "The reference says \"water\" but oil is also a defensible and commonly cited answer for resources in the southern Fertile Crescent (Iraq/Persian Gulf), so the question admits more than one reasonable answer.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-020#0": {
+        "verdict": "correct",
+        "why": "Lin-Manuel Miranda originated the role of Alexander Hamilton in the original Broadway cast, which is the well-known and correct answer, unlike the reference which lists later replacements.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      }
+    }
+  },
+  "ambiguity": {
+    "role": "owned dimension - determinism measured and failed",
+    "recall_on_ambiguous": "11/11",
+    "false_negatives": 0,
+    "precision": "11/17",
+    "overall_agreement": "23/29",
+    "note": "Recall is the metric that matters: at a 34% base rate a judge that always says 'unambiguous' scores 66% agreement. Of the 6 false positives, at least three are our labelling errors, not the judge's - most clearly nq-001, where two 'Head of the Class' series exist and both were returned by the search.",
+    "verdicts": {
+      "rosetta-year": {
+        "ambiguous": false,
+        "why": "The question clearly refers to the ancient artifact known as the Rosetta Stone, which has a well-documented discovery year (1799).",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "eiffel-height": {
+        "ambiguous": true,
+        "why": "Height could refer to the original structure height, the current height including antennas, or measurements taken at different times as antennas were added.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "tosca-nationality": {
+        "ambiguous": false,
+        "why": "The opera Tosca uniquely refers to Puccini's work, and his nationality (Italian) is unambiguous.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "tesla-origin": {
+        "ambiguous": true,
+        "why": "\"Tesla\" could mean Nikola Tesla (the inventor's birthplace/origin) or Tesla, Inc. (the company's founding location), leading to different answers.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "straw-doll-village": {
+        "ambiguous": false,
+        "why": "Only Nagoro is known for having more life-size straw scarecrow dolls than residents, so the question has a single clear answer.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "einstein-nobel-premise": {
+        "ambiguous": true,
+        "why": "The question presupposes a false premise\u2014Einstein actually won the Nobel Prize for the photoelectric effect, not relativity\u2014so it's unclear whether the asker wants an explanation of this common misconception, an explanation of why relativity was excluded, or the real reason he won the prize.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "turing-nobel": {
+        "ambiguous": false,
+        "why": "There is a single unambiguous factual answer: Alan Turing never received a Nobel Prize.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "switzerland-borders": {
+        "ambiguous": false,
+        "why": "This question has a single factual answer (France, Germany, Italy, Austria, Liechtenstein) with no reasonable alternative readings.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "paris-weather": {
+        "ambiguous": true,
+        "why": "Paris could refer to multiple cities (e.g., Paris, France or Paris, Texas), and \"right now\" is time-dependent and unanswerable without real-time data.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-001": {
+        "ambiguous": true,
+        "why": "There are two \"Head of the Class\" TV series (original 1986 series and 2021 reboot), each with a different character named Eric played by a different actor.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-002": {
+        "ambiguous": true,
+        "why": "The question could refer to the original song \"Death Cab for Cutie\" by the Bonzo Dog Doo-Dah Band (written by Neil Innes and Vivian Stanshall) or be mistakenly asking about the band Death Cab for Cutie itself, which took its name from that song.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-003": {
+        "ambiguous": true,
+        "why": "\"Casino Royale\" refers to either the 1967 film (theme performed by Herb Alpert & the Tijuana Brass, with Dusty Springfield singing \"The Look of Love\") or the 2006 film (theme song \"You Know My Name\" sung by Chris Cornell), leading to different answers.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-004": {
+        "ambiguous": false,
+        "why": "The question clearly asks about the filming location of the current Let's Make a Deal show (Wayne Brady version) in the year 2018, with a single reasonable reading.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-005": {
+        "ambiguous": false,
+        "why": "This refers unambiguously to Muhammad bin Tughluq, the well-known historical event of shifting the capital from Delhi to Daulatabad.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-006": {
+        "ambiguous": false,
+        "why": "The 2017 World Series MVP is a single well-defined award with one recipient, no alternate readings.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-007": {
+        "ambiguous": true,
+        "why": "The term \"witch\" could refer to multiple female characters with mystical/witch-like traits in the film, such as Shansa (the witch from Tortuga) or possibly other supernatural female characters, so it's unclear which character is meant.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-008": {
+        "ambiguous": true,
+        "why": "The question could refer to actual living quarters/forts of the historical North-West Mounted Police, or it could be confused with the 1940 film \"North West Mounted Police,\" and \"live\" itself is ambiguous between headquarters, barracks, or general territory of operation.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-009": {
+        "ambiguous": true,
+        "why": "The battle is often described as tactically inconclusive/a draw, but strategically a Union victory, so \"who won\" could reasonably be answered as North, South, or neither depending on which sense of victory is meant.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-010": {
+        "ambiguous": true,
+        "why": "\"He\" could refer to Bobby Flay himself (his win count on the show, or overall as chef) or the question could mean how many episodes/challengers have beaten him, and it's unclear whether it's about \"Beat Bobby Flay\" specifically or other shows like \"Throwdown!\"",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-011": {
+        "ambiguous": true,
+        "why": "It's unclear whether the question refers to the song 'All Alone Am I' (asking about its writer) or the album of the same name (which may involve different writers/performers), and the phrase 'or is it only me' could also indicate uncertainty about the exact title/entity being asked about.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-012": {
+        "ambiguous": true,
+        "why": "Could refer to the men's FIFA World Cup, women's FIFA World Cup, or another \"World Cup\" competition (e.g., rugby), each with different counts.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-013": {
+        "ambiguous": false,
+        "why": "The question clearly refers to the release date of Orange Is the New Black season 5, which has a single unambiguous premiere date.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-014": {
+        "ambiguous": true,
+        "why": "Depends on the metric used to compare \"similar temperature\" (e.g., average surface temperature, temperature range, or habitable zone conditions), which could favor Venus (similar in some models due to size/atmosphere) or Mars (similar in some measured temperature ranges), leading to different answers.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-015": {
+        "ambiguous": true,
+        "why": "Belle has been voiced by different actresses across various versions\u2014the 1991 animated film (Paige O'Hara), the animated Enchanted Christmas sequel/TV series, and other Disney media\u2014so \"Disney's Beauty and the Beast\" could refer to multiple productions with different voice actors.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-016": {
+        "ambiguous": false,
+        "why": "Only one actress, Sandra Oh, has ever played Cristina Yang on Grey's Anatomy, so there is a single clear answer.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-017": {
+        "ambiguous": false,
+        "why": "The question clearly refers to the toy store featured in Home Alone 2 (Duncan's Toy Chest), with only one reasonable reading.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-018": {
+        "ambiguous": true,
+        "why": "\"built\" could refer to the founding date of the mission (1776) or the completion date of the current standing church building (1791), which are different years.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-019": {
+        "ambiguous": true,
+        "why": "The \"important resource\" could refer to oil (as suggested by the oil-related articles found), water/rivers (Tigris-Euphrates), or fertile soil/agriculture, since the question doesn't specify which resource type it's asking about.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      },
+      "nq-020": {
+        "ambiguous": false,
+        "why": "The question specifically asks about the original Broadway cast of Hamilton, which uniquely identifies Lin-Manuel Miranda as the actor, leaving no reasonable alternative reading.",
+        "error": null,
+        "judge_model": "claude-sonnet-5",
+        "rubric": "j1"
+      }
+    }
+  }
+}
