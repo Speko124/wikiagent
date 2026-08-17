@@ -168,3 +168,93 @@ Stage weights are inverted from the Phase-2 guess.
 | 4 | Synthesis | 2 | Healthy |
 | 5 | Grounding | 0 | Clean |
 | 6 | Answer / posture | 4 | Honest but inconsistent |
+
+
+---
+
+## 7. V0 baseline (54 curated + 30 holdout runs, 3× each)
+
+The read pass above was hand-labelled over a different case set, so it is **not
+comparable** with what follows. From V0 onward the funnel is computed from
+exact signals and every later iteration is like-for-like.
+
+| Stage | Curated | Holdout |
+|---|---|---|
+| correct, grounded | 28 | 23 |
+| correct, evidence not checkable | 3 | 0 |
+| 5 grounding: answered from memory | **0** | **0** |
+| 4 synthesis: had the evidence, answered wrong | 2 | 1 |
+| **3 evidence: right article, fact not in the retrieved text** | **9** | **3** |
+| 2 retrieval: article never surfaced | 0 | 3 |
+| 1 query: did not search at all | 0 | 0 |
+| not scorable (abstention cases) | 12 | 0 |
+
+Correctness 74% curated / 77% holdout. **Zero ungrounded answers in 84 runs**,
+and **zero judge/matcher disagreements** across 62 judged runs.
+
+The holdout tracking the curated set within 3 points is the first evidence the
+hand-built set is not badly miscalibrated against real questions.
+
+### 7.1 Confirmed on data that was not used to find it
+
+Stage 3 is the largest failure bucket in **both** arms. The three systematic
+`0/3` curated cases are exactly the promoted body-fact ones —
+`head-of-class-eric`, `home-alone-toy-store`, `lets-make-a-deal-location`.
+
+### 7.2 New modes
+
+**Memory in the query, refusal in the answer.** `home-alone-toy-store` r0 and
+r1 searched `Duncan's Toy Store Home Alone 2` — the agent *recalled the
+answer*, searched to confirm it, failed (body-only fact), and then correctly
+declined to state it. The must-search discipline working exactly as designed
+and costing us a correct answer. It is also the strongest evidence for
+`fetch_article`: the agent already knows which article and which entity, and
+merely cannot open the page.
+
+**Self-disambiguating query.** `tesla-origin` is 2/3. The two passes searched
+`Tesla` and `Tesla inventor`; the failure searched `Tesla company` — the query
+resolved the ambiguity before the agent could notice there was one, so it
+answered only the corporate reading. Ambiguity handling is downstream of the
+agent's own query formulation, which no prompt line about "flagging ambiguity"
+would fix.
+
+**Reading drift across repeats.** `arpanet-first-message` is 2/3. The failing
+run answered "an email sent by Ray Tomlinson in 1971", citing *History of
+email* — a different but defensible reading of "first message sent over the
+internet". Flakiness here is ambiguity resolution varying run to run, not
+retrieval variance.
+
+**Partial-grounding drift.** `home-alone-toy-store` r2 answered *FAO Schwarz*,
+which really was a filming location for the film — true, retrieved, and not
+the answer to the question asked. Grounded and wrong at once, which the
+grounding signal alone cannot catch.
+
+### 7.3 Instrument defects found in this iteration
+
+Three, all the same class — `bool(None)` is `False`, so a signal that was never
+computed read as one that failed:
+
+1. The funnel counted "answer right, no evidence spec" as *answered from
+   memory*. `turing-nobel`'s evidence is an absence and has no spec; unknown
+   grounding is not ungrounded.
+2. The report counted every unscorable abstention run as a judge/matcher
+   disagreement. All 8 reported clashes were spurious; the real count is 0.
+3. Evidence matching required every requirement inside a **single** tool call,
+   while a multi-hop question gathers evidence across several by design. This
+   is what misreported `bologna-oxford-older` as answered from memory.
+
+All three would have produced confident wrong conclusions, and all three were
+caught by reading generated output rather than by a test. The suite now asserts
+the whole metric surface at once in both `report.py` and `run.py`.
+
+The baseline was re-graded from saved traces after the fix — 3 rows changed, no
+API calls. Without that, V1 would have shown a phantom grounding improvement at
+precisely the stage the fix targets.
+
+### 7.4 Open measurement gap
+
+**22% of curated runs (12 of 54) have no deterministic correctness signal** —
+the `answer_kind: "none"` abstention cases. They are judge-only. `fetch_article`
+is the change most likely to move exactly them: an agent that can open articles
+may stop abstaining where it should abstain. Worth an exact signal before the
+tool lands, not after.

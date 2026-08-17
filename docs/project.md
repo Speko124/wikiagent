@@ -4,7 +4,7 @@ Living document. Decisions land here as they're made; open questions stay
 visible until closed. Written to be self-contained — someone picking this up
 cold should need nothing but this file and the code.
 
-Last updated: 2026-08-16 (end of Phase 4 — eval set built, read pass running)
+Last updated: 2026-08-17 (V0 baseline measured; `fetch_article` is next)
 
 ---
 
@@ -448,7 +448,7 @@ summary would average a curated set against a random one and mean nothing.
 | 3 | Build eval harness | ✅ Cases → agent → graders → review + labels + traces; resumable |
 | 4 | Design & build eval set | ✅ 11 curated (one per mode) + 20 frozen random NQ; verified against live retrieval |
 | 5 | Run & manually debug | ✅ Read pass 31 runs, hand-labelled, taxonomy in `error-analysis.md`. Set rebuilt to 18 + 10 holdout; matcher and judge built and calibrated |
-| 6 | Iterate | ⬜ **Next.** V0 baseline 3× → add `fetch_article` → V1 → delta on curated *and* holdout |
+| 6 | Iterate | 🔄 V0 baseline measured (84 runs). Next: `fetch_article` → V1 → delta on curated *and* holdout |
 | — | Bonus, if time | No-tool control arm · safeguards cases · Haiku vs Sonnet baseline |
 
 Every phase follows TDD per `CLAUDE.md`: tests first, then implementation.
@@ -483,7 +483,8 @@ evals/
   graders.py      # deterministic signals only — no verdict, no semantics
   sample_nq.py    # named, seeded, frozen draws; holdout excludes explore rows
   judge.py        # ambiguity (owned) + correctness (audit), rubric-versioned
-  report.py       # cross-arm report; holdout reported as values only
+  report.py       # cross-arm report + computed funnel; holdout = values only
+  regrade.py      # re-grade a paid-for sweep from its traces, no API calls
   run.py          # sweep runner (see §3.10 for the output layout)
 results/          # one directory per sweep; committed as evidence
 docs/
@@ -500,7 +501,7 @@ DB, no orchestration layer. API key from `.env` or the environment.
 
 ## 6. Testing
 
-151 tests: 149 offline (stub Anthropic client, no key, no network) + 2 live-API
+226 tests: 224 offline (stub Anthropic client, no key, no network) + 2 live-API
 behind `WIKIAGENT_NETWORK=1`. The whole suite runs in under half a second, so
 there's never a reason to skip it.
 
@@ -513,6 +514,15 @@ graceful degradation (malformed input, refusals, runaway loops become recorded
 errors), sweep durability (resume, config pinning, failed runs not scored as
 retrieval misses), hand-label safety, and two frozen-artifact canaries (prompt
 `v0`, the random sample).
+
+**One bug class earned its own sweep.** Three separate defects this project
+were the same mistake: `bool(None)` is `False`, so a signal that was never
+computed reads as one that *failed*. It produced a phantom "answered from
+memory" count, eight fabricated judge disagreements, and a multi-hop retrieval
+scored as a miss. All three were caught by reading generated output rather than
+by a test, so the suite now asserts the whole metric surface at once — in both
+`report.py` and `run.py`, which have independent rate arithmetic and would
+otherwise drift apart.
 
 Verified by mutation — each of these was introduced deliberately and caught by
 exactly the test written for it: caching errors · letting the control arm
