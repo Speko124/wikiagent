@@ -107,19 +107,66 @@ its MISSes were correct grounded answers. `gold_articles` demotes to
 *reference articles*, a non-exclusive hint, and retrieval success is judged as
 "did the retrieved text support the answer".
 
-### Judged (categorical, no scales)
+### Judged — reassessed after the determinism work
 
-| Dimension | Values | Catches |
+The plan originally had five judged dimensions. Three were absorbed by exact
+computation and one was deferred, leaving one:
+
+| Originally judged | Now | Why |
 |---|---|---|
-| **Correctness** | `correct` · `incorrect` · `reference-disputed` | The third value is load-bearing at a 20% bad-reference rate — without it the judge books wins as losses |
-| **Disposition** | `answered` · `abstained-correctly` · `abstained-avoidably` · `answered-without-searching` | Replaces `posture`. The old dimension would have scored all five dominant failures as clean abstentions |
-| **Faithfulness** | `supported` · `contains-unsupported-claim` | Flat today. Kept because a full-page fetch multiplies context, which is exactly when misattribution begins |
-| **Ambiguity handling** | `flagged` · `silently-resolved` · `n/a` | 6b, currently inconsistent |
-| **Completeness** | `complete` · `partial` · `n/a` | List and superlative answers; catches 4a |
+| Correctness | **deterministic** | Hand-authored accepted phrasings: 8/8 against hand labels. Holdout specs authored too, so every set we run is scorable without a judge |
+| Disposition (abstained-correctly vs avoidably) | **deterministic** | Falls out of the `answer_match` × `evidence_match` cross-tab. "Had the evidence and didn't use it" versus "never had it" is two booleans, not a judgement |
+| Completeness | **deterministic** | The satisfied-fraction of an AND-of-ORs spec |
+| Faithfulness | **deferred** | 0 unsupported claims in 31 runs. Revisit when a full-page fetch multiplies context, which is when misattribution starts |
+| **Ambiguity** | **judged** | The only one where determinism was measured and failed |
 
-Five is near the practical ceiling — every dimension needs its own alignment
-check against human labels, and unaligned dimensions produce confident noise.
-Corroboration and conciseness stay deterministic for exactly that reason.
+So the judge earns exactly one dimension plus one audit role:
+
+**1. Ambiguity detection.** Disambiguation-page retrieval — the obvious exact
+proxy — fires on `rosetta-year` and `eiffel-height` (neither ambiguous), misses
+`tesla-origin`, `nq-003` and `nq-015` (all ambiguous), and returns nothing at
+all across 20 explore cases. Wrong in both directions, so this genuinely needs
+judgement.
+
+**2. Correctness auditing.** Not scoring — a second opinion whose disagreements
+with the string matcher flag candidates for human review. As an auditor it
+needs far less alignment than a scorer: it doesn't have to be right, only
+*differently wrong*. The deterministic score stays the headline number.
+
+### Judge configuration
+
+**Model: Claude Sonnet 5** — deliberately not Haiku 4.5, which is the agent.
+Same-model judging carries a documented self-preference bias, and the agent is
+the weaker model in exactly the judgement being asked for.
+
+**Cost is smaller than it looks.** Ambiguity is a property of the *question*,
+not of a run, so it is judged once per question rather than once per repeat:
+28 calls, not 84. Only "did this answer address the ambiguity" is per-run, and
+only for questions labelled ambiguous.
+
+**It can be validated before the baseline runs**, because it judges questions
+that already exist. No sweep required.
+
+### Alignment: recall, not agreement
+
+Base rate is 34% (curated 22%, explore 45%), so **a judge that always says
+"unambiguous" scores 66% agreement** — a false negative wearing a good score.
+
+The metric is therefore **recall on the ambiguous class**, which is exactly one
+minus the false-negative rate. Precision matters much less: a false positive
+costs a glance at a small flagged set, a false negative is invisible. The
+rubric is biased toward sensitivity accordingly — flag anything with more than
+one reasonable reading, then hand-filter.
+
+**Input separation removes the mechanism that produces false negatives.** If
+the judge sees the agent's answer while deciding whether the question was
+ambiguous, a cleanly-handled answer makes the question look unambiguous. So:
+"is this question ambiguous?" sees question + retrieved titles and never the
+answer; "did the answer address it?" is a separate call.
+
+**Limit worth stating:** 13 labelled positives gives a coarse recall estimate —
+enough to catch a badly broken judge (recall under ~50%), not enough to
+distinguish 85% from 95%.
 
 ### Measured: where deterministic matching works, and where it doesn't
 
