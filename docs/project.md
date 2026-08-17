@@ -243,15 +243,73 @@ score pass re-pays only for model calls.
 
 ### 3.8 Eval dataset
 
-Mostly hand-written with research, some borrowed. **Start at ~10 cases, grow to
-20–25** as failure modes come into view.
+**Two sets with opposite purposes.**
 
-Starting small is the point, not a compromise: 10 cases × 3 repeats = 30 runs is
+| | `core.jsonl` | `explore.jsonl` |
+|---|---|---|
+| Written by | hand, one case per mode | random draw, real user queries |
+| Source | us + benchmark taxonomies | Natural Questions (`nq_open`), CC BY-SA 3.0 |
+| Size | 11 | 20 |
+| Runs | 3× + flakiness buckets | once |
+| Purpose | test what we decided matters | find what we didn't think of |
+| `gold_articles` | yes, where one exists | none, deliberately |
+| Tagged | one dimension per mode | `explore` only |
+
+**Why a random set at all.** A hand-written set is stratified sampling from our
+own hypothesis space — it can only confirm the taxonomy that produced it. The
+random set is drawn from a distribution we don't control. Evidence it's a
+different distribution: AmbigQA found **over half of Natural Questions are
+ambiguous**; nobody hand-writes a set like that.
+
+The first five rows drawn showed it immediately — a query that isn't a question
+(`the first railway train in india ran in 1853 from mumbai to`), an
+ungrammatical one (`beat bobby flay how many times has he won`), present-tense
+questions with past answers, and multi-answer questions. Two of those modes
+were not in our taxonomy.
+
+**Sampling discipline** — the part that's easy to lose:
+- Fixed seed (`20260816`) and drawn row indices recorded in
+  `explore.provenance.json`.
+- **Every drawn row kept.** Dropping the awkward ones restores our taxonomy;
+  the boring ones give the base rate.
+- Questions stored verbatim — the missing capitals are the signal.
+- Frozen by a digest in `test_dataset.py`, because "nobody curated this" is
+  the set's entire value and is invisible in a later diff review.
+- Untagged beyond `explore`: the taxonomy comes *out* of reading these.
+
+**NQ reference answers are references, not ground truth** — the dataset is
+c.2018 and some answers are wrong (its "original Broadway cast" Hamilton answer
+names the alternate, not Lin-Manuel Miranda). The read pass judges against
+Wikipedia, not against the reference.
+
+**Cases are verified against real retrieval before being committed**, at zero
+model cost. This is not ceremony: the first deep-fact case asked for the step
+count of the Leaning Tower of Pisa on the assumption it wasn't in the intro —
+it is. Committed unverified, it would have looked like a synthesis failure
+whenever the agent answered correctly. It was replaced with the Sydney Opera
+House Concert Hall capacity, checked to be present in the article body and
+absent from the intro.
+
+**Deferred:** safeguards-flavoured cases (instructions embedded in retrieved
+text, over-refusal on encyclopedic-but-sensitive topics). Out of scope for the
+main functionality pass; a candidate for one run at the end if time allows.
+Also deferred: a matched control for the false-premise case (FalseQA's design),
+temporal-arithmetic joins.
+
+Starting small is the point, not a compromise: 11 cases × 3 repeats = 33 runs is
 one cheap loop through observe → categorise → fix → re-run, and cases written
 *after* seeing real failures are better targeted than cases written up front.
-The cost is statistical: at n=10 the headline rates are noise. So the summary is
+The cost is statistical: at n=11 the headline rates are noise. So the summary is
 read as **per-case buckets and traces**, never as a percentage moving by a few
 points. Aggregates only become meaningful nearer 25.
+
+**The core 11**, one per mode: single-hop factual (regression floor) ·
+multi-hop bridge · deep fact outside the intro · unanswerable · false premise ·
+term ambiguity (*Tesla* — company or person) · must-search (a fact the model
+certainly knows: does it search anyway?) · negative existence (*did Turing ever
+win a Nobel* — "not mentioned" ≠ "didn't happen") · query formulation with no
+entity name given · no-search-needed (live weather) · completeness (a
+five-country border list, where a partial answer reads as correct).
 
 Fields: `id` · `question` · `expected` · `gold_articles` (**optional**) ·
 `dimension` tags.
