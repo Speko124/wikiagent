@@ -15,14 +15,24 @@ from evals import report
 
 
 def row(case_id, **kw):
+    """A results row. Correctness is the judge's verdict, so unless a test
+    supplies one it is derived from `answer_match` — the guardrail and the
+    primary signal agreeing is the ordinary case."""
     base = dict(
         case_id=case_id, run_id=f"{case_id}#0", repeat=0, error=None,
         answer_match=True, evidence_match=True, answer_completeness=1.0,
         searched=True, n_searches=1, n_turns=2, cited_titles=["A"],
         answer="An answer.", input_tokens=100, output_tokens=50, latency_s=1.0,
-        question="q?", judge=None,
+        question="q?", answer_kind="extractive",
     )
-    return {**base, **kw}
+    merged = {**base, **kw}
+    if "judge" not in kw:
+        match = merged.get("answer_match")
+        merged["judge"] = (
+            None if match is None
+            else {"correctness": {"verdict": "correct" if match else "incorrect"}}
+        )
+    return merged
 
 
 def write(tmp_path, name, rows, holdout=False):
@@ -208,12 +218,12 @@ def test_no_metric_counts_an_unmeasured_signal_as_a_failure(tmp_path):
     cases, and evidence requiring every requirement inside one tool call.
     """
     blank = row("c1", answer_match=None, evidence_match=None,
-                answer_completeness=None, gold_shown=None,
-                judge={"correctness": {"verdict": "correct", "why": "declined"}})
+                answer_completeness=None, gold_shown=None, judge=None)
     m = report._metrics([blank])
 
     # Nothing unmeasured may land in a rate's numerator or denominator.
-    assert m["correct"] == "n/a"
+    assert m["correct"] == "n/a"            # no judge verdict
+    assert m["correct_contains"] == "n/a"   # no accepted phrasings
     assert m["evidence_found"] == "n/a"
     assert m["completeness"] == "n/a"
     assert m["_clashes"] == []
@@ -231,6 +241,7 @@ def test_a_partially_measured_row_only_counts_where_it_was_measured(tmp_path):
     m = report._metrics([partial])
     assert m["correct"] == "1/1 (100%)"
     assert m["evidence_found"] == "n/a"
+
     assert report.funnel([partial])["correct, evidence not checkable"] == 1
 
 
@@ -271,3 +282,31 @@ def test_pass_at_k_is_stricter_than_the_run_rate():
 def test_pass_at_k_ignores_unscorable_cases():
     assert report.pass_at_k([row("x", answer_match=None)]) == (0, 0, {
         "solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0})
+
+
+def test_declining_is_correct_only_where_the_case_has_no_answer_to_give():
+    """This is what finally closes the abstention gap. The same verdict means
+    opposite things depending on the case: on `paris-weather` declining is the
+    right answer, on `home-alone-toy-store` it is a failure to find one."""
+    declined = {"correctness": {"verdict": "declined", "why": "no answer given"}}
+    abstention = row("paris-weather", answer_match=None, answer_kind="none",
+                     judge=declined)
+    lookup = row("home-alone", answer_match=None, answer_kind="extractive",
+                 judge=declined)
+    assert report.judged_correct(abstention) is True
+    assert report.judged_correct(lookup) is False
+
+
+def test_an_unclear_verdict_is_excluded_from_correctness_not_counted_wrong():
+    unclear = row("c1", answer_match=True,
+                  judge={"correctness": {"verdict": "unclear", "why": "disputed"}})
+    assert report.judged_correct(unclear) is None
+    assert report._metrics([unclear])["correct"] == "n/a"
+
+
+def test_the_guardrail_disagreeing_with_the_judge_is_surfaced():
+    """Neither overrides the other. A disagreement means one of them is wrong
+    and a human should look - which is the entire reason to keep both."""
+    clash = row("c1", answer_match=True,
+                judge={"correctness": {"verdict": "incorrect", "why": "wrong entity"}})
+    assert len(report._metrics([clash])["_guardrail_clash"]) == 1

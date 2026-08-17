@@ -221,13 +221,14 @@ than judged.
 
 | Signal | What it is |
 |---|---|
-| `answer_match` | Correctness. Hand-authored accepted phrasings per case, as an AND of ORs |
+| `answer_match` | **Guardrail**, not the score — see below. Hand-authored accepted phrasings, as an AND of ORs |
 | `answer_completeness` | Fraction of requirements met — a partial list presented as complete scores below 1.0 |
 | `evidence_match` | Retrieval quality: did the text that came back carry the evidence, per tool call |
 | `evidence_found_at_search` | *Which* search found it — how many were wasted getting there |
 | `n_distinct_articles_cited` | Corroboration: an answer resting on three agreeing articles is stronger |
 | answer length · output tokens | Crispness, kept separate since a thinking model conflates them |
 | `n_searches` · turns · latency | Effort and distress signals — **not** retrieval quality |
+| `pass^k` | Cases correct on *every* repeat, bucketed solid / flaky / systematic. A per-run rate hides the shape: 50% could be one case that always works beside one that never does |
 | `cited ⊆ retrieved` | Citation integrity |
 
 **`answer_contains` and `evidence_contains` are separate fields.** For a derived
@@ -251,8 +252,27 @@ non-exclusive hint used only where no string spec can express the answer.
 
 | Dimension | Values | Role |
 |---|---|---|
+| Correctness | `correct` / `incorrect` / `declined` / `unclear` | **Primary.** See below — the roles were swapped on evidence |
 | Ambiguity | `ambiguous` / `unambiguous` | **Owned.** The only dimension where determinism was tried and measured to fail |
-| Correctness | `correct` / `incorrect` / `unclear` | **Audit only.** Disagreements with the matcher flag runs for review; the deterministic score stays the headline |
+
+**Correctness moved from the matcher to the judge, on evidence.** On the V0
+curated runs the deterministic matcher produced **three false passes** — an
+accepted phrasing matching text that did not answer the question, each one
+silent and confident. `arpanet-first-message` accepted `login`, satisfied by
+ARPANET's unrelated *"enabled remote login"*, on two runs whose answers said
+they could not find the answer. `tesla-origin` accepted `American`, satisfied
+by *"Serbian-American"*, on an answer that never mentions the company.
+
+The judge flagged all three. **That asymmetry is the argument**: the matcher
+fails by silently passing, the judge fails by abstaining. `answer_contains`
+stays as a guardrail and the two are reported side by side — a disagreement
+means one is wrong and a human should look. Neither overrides the other.
+
+**`declined` is what closed the abstention gap.** j1 folded every honest
+failure into `unclear`, so 22% of curated runs had no correctness signal at
+all. j2 makes declining its own verdict, scored **against the case**: on
+`paris-weather` declining is the right answer, on `home-alone-toy-store` it is
+a failure to find one. Denominator went from 42 of 54 runs to 52.
 
 Judge is Sonnet 5 (the agent is Haiku 4.5 — same-model judging carries a
 documented self-preference bias). Rubric `j1`, frozen and digest-tested exactly
@@ -264,7 +284,10 @@ unambiguous — the agent's competence erases the evidence it was needed. The
 ambiguity call cannot accept an answer, enforced on the signature. `expected` is
 withheld too: it often states the ambiguity outright.
 
-**Calibrated against hand labels, twice.** Correctness 23/24 decided verdicts.
+**Calibrated against hand labels, three times.** j2 correctness: **51/54
+exact agreement**, and — the property that matters — **zero runs where the
+judge said `correct` and the human said `incorrect`**. Labels are committed at
+`results/v0-curated/labels.jsonl` for review. j1 correctness 23/24 decided.
 Ambiguity **recall 19/19 across 47 questions**, precision ~70%. Recall is what
 matters most here — at a 34% base rate a judge that always says "unambiguous"
 scores 66% agreement — but all metrics are reported, since a low-precision

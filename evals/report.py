@@ -34,13 +34,44 @@ def _load(d: Path | None) -> tuple[list[dict], dict]:
     return rows, json.loads((d / "config.json").read_text())
 
 
+def judged_correct(row: dict) -> bool | None:
+    """Primary correctness: the judge's verdict, scored against the case.
+
+    The deterministic matcher is a guardrail rather than the score. On the V0
+    curated runs it produced three false passes — an accepted phrasing matching
+    text that did not answer the question — each of them silent and confident.
+    The judge flagged all three. Its failure mode is abstention, which is
+    visible; the matcher's is a false pass, which is not.
+
+    `declined` is scored against the case, and that is what finally closes the
+    abstention gap: on a case with no answer to give, declining IS the correct
+    answer. On any other case it is a failure to answer.
+    """
+    verdict = (row.get("judge") or {}).get("correctness", {}).get("verdict")
+    if verdict in (None, "unclear"):
+        return None          # excluded and surfaced, never silently a failure
+    if verdict == "correct":
+        return True
+    if verdict == "declined":
+        return row.get("answer_kind") == "none"
+    return False
+
+
 def _rate(hits: int, total: int) -> str:
     return f"{hits}/{total} ({hits / total:.0%})" if total else "n/a"
 
 
 def _metrics(rows: list[dict]) -> dict:
     ok = [r for r in rows if not r.get("error")]
+    judged_ok = [r for r in ok if judged_correct(r) is not None]
     scorable = [r for r in ok if r.get("answer_match") is not None]
+    # Where the guardrail and the primary signal disagree, one of them is
+    # wrong and a human should look. Both are reported; neither overrides.
+    guardrail_clash = [
+        r for r in ok
+        if judged_correct(r) is not None and r.get("answer_match") is not None
+        and judged_correct(r) != bool(r["answer_match"])
+    ]
     with_ev = [r for r in ok if r.get("evidence_match") is not None]
     completeness = [
         r["answer_completeness"] for r in ok if r.get("answer_completeness") is not None
@@ -73,7 +104,10 @@ def _metrics(rows: list[dict]) -> dict:
     return {
         "runs": len(rows),
         "errors": len(rows) - len(ok),
-        "correct": _rate(sum(1 for r in scorable if r["answer_match"]), len(scorable)),
+        "correct": _rate(sum(1 for r in judged_ok if judged_correct(r)), len(judged_ok)),
+        "correct_contains": _rate(
+            sum(1 for r in scorable if r["answer_match"]), len(scorable)),
+        "guardrail_clash": f"{len(guardrail_clash)}",
         "evidence_found": _rate(
             sum(1 for r in with_ev if r["evidence_match"]), len(with_ev)
         ),
@@ -95,6 +129,7 @@ def _metrics(rows: list[dict]) -> dict:
         "judge_hedged": f"{len(hedged)}",
         "_clashes": clashes,
         "_hedged": hedged,
+        "_guardrail_clash": guardrail_clash,
         "_cross": _cross_tab(ok),
     }
 
@@ -151,7 +186,7 @@ def funnel(rows: list[dict]) -> dict[str, int]:
     for r in rows:
         if r.get("error"):
             continue
-        answer, evidence = r.get("answer_match"), r.get("evidence_match")
+        answer, evidence = judged_correct(r), r.get("evidence_match")
         if answer is None:
             out["not scorable (abstention cases)"] += 1
         elif answer and evidence:
@@ -184,8 +219,9 @@ def pass_at_k(rows: list[dict]) -> tuple[int, int, dict[str, int]]:
     """
     by_case: dict[str, list[bool]] = {}
     for r in rows:
-        if r.get("answer_match") is not None and not r.get("error"):
-            by_case.setdefault(r["case_id"], []).append(bool(r["answer_match"]))
+        correct = judged_correct(r)
+        if correct is not None and not r.get("error"):
+            by_case.setdefault(r["case_id"], []).append(correct)
     buckets = {"solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0}
     for hits in by_case.values():
         buckets["solid (k/k)" if hits and all(hits)
@@ -197,8 +233,9 @@ def pass_at_k(rows: list[dict]) -> tuple[int, int, dict[str, int]]:
 def _buckets(rows: list[dict]) -> list[tuple[str, int, int]]:
     by_case: dict[str, list[bool]] = {}
     for r in rows:
-        if r.get("answer_match") is not None and not r.get("error"):
-            by_case.setdefault(r["case_id"], []).append(bool(r["answer_match"]))
+        correct = judged_correct(r)
+        if correct is not None and not r.get("error"):
+            by_case.setdefault(r["case_id"], []).append(correct)
     return sorted(
         ((c, sum(v), len(v)) for c, v in by_case.items()),
         key=lambda t: (t[1] / t[2], t[0]),
@@ -229,7 +266,9 @@ def compare(curated_dir, holdout_dir=None) -> str:
             ]
 
     rows_ = [
-        ("Correct (deterministic)", "correct"),
+        ("**Correct** (judge, primary)", "correct"),
+        ("Correct (contains, guardrail)", "correct_contains"),
+        ("Guardrail disagrees with judge", "guardrail_clash"),
         ("**pass^k** (correct on every repeat)", "pass_at_k"),
         ("  of which", "buckets"),
         ("Evidence retrieved", "evidence_found"),
