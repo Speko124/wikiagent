@@ -229,10 +229,10 @@ before touching the agent.
 
 **Two-stage protocol.** Repeats are for scoring, not for looking:
 
-1. **Read pass — 10 questions, 1 run each.** Purpose is error analysis, not
-   measurement: read every trace, open-code the failures into a taxonomy, fix
-   what's obviously broken. Repeating a run you're about to read by hand buys
-   nothing and costs 3×.
+1. **Read pass — 31 questions (11 core + 20 explore), 1 run each.** Purpose is
+   error analysis, not measurement: read `review.md` end to end, record verdicts
+   in `labels.jsonl`, open-code the failures into a taxonomy. Repeating a run
+   you're about to read by hand buys nothing and costs 3×.
 2. **Score pass — 3× per question**, bucketed `3/3` (solid) · `1-2/3` (flaky) ·
    `0/3` (systematic — prioritise). Gives both a variance floor and a
    prioritisation signal, and flakiness is itself a finding: a case that flips
@@ -319,12 +319,17 @@ have none by definition, and for those the retrieval stage inverts (success =
 confirming absence). Retrieval recall is reported over only the subset that has
 them, denominator stated. No inflated denominators.
 
-**No-tool control arm** (`--no-tools`): same cases, retrieval structurally
-impossible. Run once in Phase 4 as a *dataset* property check, distinct from the
-agent baseline. If the control scores near baseline, the dataset measures
-parametric memory and needs rewriting toward obscure/multi-hop/post-cutoff
-facts. Also exposes the interesting cell: **control passes, tool-on fails** —
-retrieval actively hurting by distraction.
+**No-tool control arm** (`--no-tools`) — **built, deferred to a bonus round.**
+Same cases with retrieval structurally impossible, as a *dataset* property
+check: if the control scores near the agent baseline, the set measures
+parametric memory rather than the system. It also exposes the interesting cell,
+control passes / tool-on fails — retrieval actively hurting by distraction.
+
+Deferred because the assignment is to improve *the agent*, and the control arm
+diagnoses the *dataset*. It answers "is this eval set worth anything?", not
+"where is the agent wrong?" — so it earns its cost only once the agent work is
+done. The flag, the structural guarantee that the arm cannot retrieve, and its
+tests all stay in place, so running it later is one command.
 
 ### 3.9 Harness durability
 
@@ -343,9 +348,44 @@ importantly — around never producing results that are quietly wrong:
 | Summary rebuilt from the file, not memory | A resumed sweep's summary covers the whole sweep |
 | Summary states "correctness not measured" | The dangerous summary is one that reads like a score |
 
-Usage: `python -m evals.run --cases evals/cases --repeats 3 [--no-tools]`.
-Output goes to `results/<ts>-<model>-<arm>/`; passing an existing `--out`
-resumes it.
+### 3.10 Where the output lives
+
+One directory per sweep, `results/<ts>-<set>-<model>-<prompt>/`. Passing an
+existing `--out` resumes into it.
+
+| File | For | Notes |
+|---|---|---|
+| `traces/<case>--r<n>.json` | full fidelity | every raw tool result, per-turn thinking, token counts. The source of truth |
+| `results.jsonl` | machine analysis | one row per run: deterministic signals + question + expected + full config |
+| `review.md` | **reading** | every run rendered top to bottom: question, expected, queries, titles shown, gold hit/miss, full answer, link to trace |
+| `labels.jsonl` | **bucketing** | one seeded row per run — `verdict`, `stage`, `note` — filled in by hand |
+| `summary.md` | at a glance | deterministic rates, per-case retrieval buckets, and an explicit "correctness not measured" |
+| `config.json` | provenance | what produced this directory |
+
+Three properties that matter more than they look:
+
+- **Rows carry their own question and expected answer.** A row you have to join
+  back to the case file by hand doesn't get read.
+- **Repeats of a case sit together** in `review.md`, so flakiness is visible
+  without cross-referencing anything.
+- **Hand labels are never overwritten.** Re-running a sweep reseeds only the
+  runs that have no label yet. Human judgement is the expensive artifact here,
+  and a reseed would erase an afternoon of it while leaving a perfectly
+  well-formed file behind.
+
+`stage` in `labels.jsonl` is **free text**, not an enum. The funnel is a
+hypothesis; a dropdown of our six stages would quietly become the answer.
+
+Usage:
+
+```bash
+python -m evals.run --cases evals/cases/core.jsonl    --repeats 1   # read pass
+python -m evals.run --cases evals/cases/explore.jsonl --repeats 1
+python -m evals.run --cases evals/cases/core.jsonl    --repeats 3   # score pass
+```
+
+The two sets are run into **separate directories on purpose** — a shared
+summary would average a curated set against a random one and mean nothing.
 
 ---
 
@@ -354,13 +394,14 @@ resumes it.
 | # | Phase | Status |
 |---|---|---|
 | 1 | Design the tool | ✅ Tool schema, result format, error/empty shapes, v0 prompt |
-| 2 | Build e2e | ✅ CLI works; cache works; 63 tests green |
-| 3 | Build eval harness | ✅ Cases → agent → graders → summary + traces; resumable; 120 tests green |
-| 4 | Design & build eval set | ⬜ **Next.** ~10 tagged cases → 20–25; no-tool control validates headroom |
-| 5 | Run & manually debug | ⬜ Open-code traces into a taxonomy; variance floor; validate judge |
+| 2 | Build e2e | ✅ CLI works; cache works; tests green |
+| 3 | Build eval harness | ✅ Cases → agent → graders → review + labels + traces; resumable |
+| 4 | Design & build eval set | ✅ 11 curated (one per mode) + 20 frozen random NQ; verified against live retrieval |
+| 5 | Run & manually debug | ⬜ **Next.** Read pass 1× → open-code `labels.jsonl` into a taxonomy → score pass 3× |
 | 6 | Iterate | ⬜ Scored changelog; per-case pass→fail diffs, not just aggregates |
+| — | Bonus, if time | No-tool control arm · safeguards cases · Haiku vs Sonnet baseline |
 
-Phase 3 follows TDD per `CLAUDE.md`: harness tests first, then implementation.
+Every phase follows TDD per `CLAUDE.md`: tests first, then implementation.
 
 ---
 
@@ -368,9 +409,9 @@ Phase 3 follows TDD per `CLAUDE.md`: harness tests first, then implementation.
 
 ```
 wikiagent/
-  wikipedia.py    # MediaWiki API + cache          (~200 lines)
+  wikipedia.py    # MediaWiki API + cache
   tools.py        # tool schema + dispatch
-  prompts.py      # system prompts, versioned      (v0 only so far)
+  prompts.py      # system prompt AND tool description, versioned together
   agent.py        # explicit tool-use loop, emits a Trace
   trace.py        # Trace object + derived views + JSON dump
   cli.py          # ask / demo / --verbose / .env loader
@@ -379,11 +420,19 @@ tests/
   test_wikipedia.py # truncation, cache keying, cache integrity, ranking, live API
   test_tools.py     # schema/description accuracy, dispatch error handling
   test_agent.py     # loop, API contracts, capability gating, control arm, trace
+  test_prompts.py   # version pins both surfaces; frozen-version canary
+  test_cases.py     # strict loading; duplicate and unsafe ids rejected
+  test_graders.py   # signals only — no verdict, no semantics
+  test_run.py       # resume, failure isolation, config pinning, label safety
+  test_dataset.py   # the committed set: mode coverage, frozen random sample
 evals/
-  cases/*.jsonl   # (Phase 4) strict loading; duplicate/unsafe ids rejected
+  cases/core.jsonl      # 11 curated, one per failure mode
+  cases/explore.jsonl   # 20 frozen random NQ questions (+ .provenance.json)
   cases.py        # Case + loader
   graders.py      # deterministic signals only — no verdict, no semantics
-  run.py          # sweep runner -> <out>/{config.json,results.jsonl,summary.md,traces/}
+  sample_nq.py    # one-shot frozen draw; kept for reproducibility
+  run.py          # sweep runner (see §3.10 for the output layout)
+results/          # one directory per sweep; committed as evidence
 docs/
   project.md      # this file
   error-analysis.md  # (Phase 5 output)
@@ -396,19 +445,26 @@ DB, no orchestration layer. API key from `.env` or the environment.
 
 ## 6. Testing
 
-63 tests: 61 offline (stub Anthropic client, no key, no network) + 2 live-API
-behind `WIKIAGENT_NETWORK=1`.
+151 tests: 149 offline (stub Anthropic client, no key, no network) + 2 live-API
+behind `WIKIAGENT_NETWORK=1`. The whole suite runs in under half a second, so
+there's never a reason to skip it.
 
 Selected around principle 2.6 — invariants whose failure would be **silent**:
-cache integrity (errors never cached; `top_k` changes reuse the cache), control-arm
-purity (structurally unable to retrieve, not merely not-asked), trace fidelity
-(`shown` vs `retrieved` stay distinct; usage sums correctly), API contracts
-(thinking echoed verbatim; all tool results in one user message), graceful
-degradation (malformed input, refusals, runaway loops become recorded errors).
+cache integrity (errors never cached; `top_k` changes reuse the cache),
+control-arm purity (structurally unable to retrieve, not merely not-asked),
+trace fidelity (`shown` vs `retrieved` stay distinct; usage sums correctly),
+API contracts (thinking echoed verbatim; all tool results in one user message),
+graceful degradation (malformed input, refusals, runaway loops become recorded
+errors), sweep durability (resume, config pinning, failed runs not scored as
+retrieval misses), hand-label safety, and two frozen-artifact canaries (prompt
+`v0`, the random sample).
 
-Verified by mutation: caching errors, letting the control arm dispatch, and
-splitting tool results across messages each fail exactly the test written for
-them.
+Verified by mutation — each of these was introduced deliberately and caught by
+exactly the test written for it: caching errors · letting the control arm
+dispatch · splitting tool results across messages · dropping the `None`
+override on a failed run · keeping errored rows on resume · skipping the config
+check · buffering result rows instead of appending · reseeding hand labels ·
+building `review.md` from memory instead of from the results file.
 
 ---
 
@@ -452,6 +508,9 @@ Three more candidate eval dimensions:
   searching*, from priors. Right answer, wrong process — and a prompt that
   abstains from priors will eventually abstain on something Wikipedia covers.
   Argues for scoring abstention and retrieval as separate signals.
+  **Reproduced under v1** during a harness smoke run: `n_searches = 0` on the
+  Ada Lovelace case. Still n=1, but it survived a prompt that explicitly says
+  to search first, so it's the first thing to look for in the read pass.
 
 ---
 
@@ -467,6 +526,9 @@ Three more candidate eval dimensions:
 - Does prompt v1 actually beat v0? Both are available and the sweep is
   resumable, so this is a cheap A/B once the case set exists — not an
   assumption baked into the baseline.
+- Does the explore set's pop-culture skew (13 of 20 are entertainment or sport)
+  exercise retrieval differently from the encyclopedic core set? — read pass
+  will show it, and it's a property of real queries, not a flaw in the draw.
 
 ---
 

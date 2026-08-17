@@ -217,6 +217,84 @@ def test_a_failed_run_is_retried_on_resume(tmp_path):
     assert rows[0]["error"] is None
 
 
+# --- artifacts for reading and bucketing ------------------------------------
+
+def test_rows_are_readable_without_the_case_file(tmp_path):
+    """A results row that doesn't carry its own question can't be reviewed
+    without joining it back to the case set by hand."""
+    run.sweep([case(1)], tmp_path, run.Config(repeats=1), ask=FakeAsk())
+    row = rows_of(tmp_path)[0]
+    assert row["question"] == "q1"
+    assert row["expected"] == "e"
+    assert "case_notes" in row
+
+
+def test_review_renders_every_run_for_a_human(tmp_path):
+    ask = FakeAsk()
+    run.sweep([case(1, gold=["Marie Curie"])], tmp_path, CONFIG, ask=ask)
+    text = (tmp_path / "review.md").read_text()
+    assert "c1#0" in text and "c1#1" in text
+    assert "q1" in text          # the question
+    assert "Answer." in text     # the answer, in full
+    assert "Marie Curie" in text  # what came back
+
+
+def test_review_shows_whether_the_gold_article_was_shown(tmp_path):
+    """The single most useful thing when triaging: did this fail upstream at
+    retrieval, or downstream with the right evidence in hand?"""
+    run.sweep([case(1, gold=["Nope"])], tmp_path, run.Config(repeats=1),
+              ask=FakeAsk())
+    assert "MISS" in (tmp_path / "review.md").read_text()
+
+
+def test_review_surfaces_errors(tmp_path):
+    run.sweep([case(1)], tmp_path, run.Config(repeats=1),
+              ask=FakeAsk(raise_on=["q1"]))
+    assert "boom" in (tmp_path / "review.md").read_text()
+
+
+def test_review_is_rebuilt_from_the_results_on_resume(tmp_path):
+    with pytest.raises(KeyboardInterrupt):
+        run.sweep([case(1), case(2)], tmp_path, CONFIG, ask=FakeAsk(hard_stop_after=2))
+    run.sweep([case(1), case(2)], tmp_path, CONFIG, ask=FakeAsk())
+    text = (tmp_path / "review.md").read_text()
+    assert all(f"c{c}#{r}" in text for c in (1, 2) for r in (0, 1))
+
+
+def test_labels_are_seeded_one_row_per_run(tmp_path):
+    """Hand-labelling is the read pass. Seeding the file means the reviewer
+    fills blanks instead of transcribing run ids."""
+    run.sweep([case(1)], tmp_path, CONFIG, ask=FakeAsk())
+    labels = [json.loads(ln) for ln in
+              (tmp_path / "labels.jsonl").read_text().splitlines() if ln.strip()]
+    assert [row["run_id"] for row in labels] == ["c1#0", "c1#1"]
+    assert all(row["verdict"] == "" and row["stage"] == "" for row in labels)
+
+
+def test_hand_written_labels_are_never_overwritten(tmp_path):
+    """The expensive artifact in this project is human judgement. A resumed
+    sweep that reseeded the file would silently erase an hour of it."""
+    run.sweep([case(1)], tmp_path, run.Config(repeats=1), ask=FakeAsk())
+    path = tmp_path / "labels.jsonl"
+    path.write_text(json.dumps(
+        {"run_id": "c1#0", "verdict": "incorrect", "stage": "evidence",
+         "note": "right article, fact not in intro"}) + "\n")
+
+    run.sweep([case(1), case(2)], tmp_path, run.Config(repeats=1), ask=FakeAsk())
+    labels = {json.loads(ln)["run_id"]: json.loads(ln)
+              for ln in path.read_text().splitlines() if ln.strip()}
+    assert labels["c1#0"]["verdict"] == "incorrect"
+    assert labels["c1#0"]["note"] == "right article, fact not in intro"
+    assert labels["c2#0"]["verdict"] == ""  # new run seeded blank
+
+
+def test_the_default_output_directory_names_the_case_set():
+    """Two sweeps over different sets must not land in directories that differ
+    only by a timestamp."""
+    out = run._default_out(run.Config(), "evals/cases/core.jsonl")
+    assert "core" in out.name
+
+
 # --- the judge seam ---------------------------------------------------------
 
 def test_rows_say_explicitly_that_no_judge_ran(tmp_path):

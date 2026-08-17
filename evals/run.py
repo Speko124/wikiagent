@@ -170,6 +170,11 @@ def sweep(
                 run_id=run_id,
                 repeat=repeat,
                 trace=trace_name,
+                # Carried on the row so it can be read on its own, without
+                # joining back to the case file by hand.
+                question=case.question,
+                expected=case.expected,
+                case_notes=case.notes,
                 config=frozen,
                 judge=judge(case, trace) if judge and row["error"] is None else None,
             )
@@ -180,7 +185,106 @@ def sweep(
 
     rows = [json.loads(ln) for ln in results_path.read_text().splitlines() if ln.strip()]
     (out_dir / "summary.md").write_text(summarize(rows, config))
+    (out_dir / "review.md").write_text(review(rows, config))
+    _seed_labels(out_dir / "labels.jsonl", rows)
     return out_dir
+
+
+# --- artifacts for reading and bucketing ------------------------------------
+
+
+def _seed_labels(path: Path, rows: list[dict]) -> None:
+    """Seed a blank label per run, preserving anything already written.
+
+    Hand labels are the expensive artifact in this project — a sweep that
+    reseeded the file would erase an afternoon of judgement in a millisecond,
+    and the file would still look perfectly well-formed afterwards.
+    """
+    existing: dict[str, dict] = {}
+    if path.exists():
+        for line in path.read_text().splitlines():
+            if line.strip():
+                label = json.loads(line)
+                existing[label["run_id"]] = label
+
+    with path.open("w") as fh:
+        for row in rows:
+            label = existing.get(
+                row["run_id"],
+                # `stage` is free text on purpose. The funnel is a hypothesis;
+                # a fixed set of options here would quietly become the answer.
+                {"run_id": row["run_id"], "verdict": "", "stage": "", "note": ""},
+            )
+            fh.write(json.dumps(label) + "\n")
+
+
+def _gold_flag(row: dict) -> str:
+    return {True: "gold SHOWN", False: "gold MISS", None: "no gold article"}[
+        row.get("gold_shown")
+    ]
+
+
+def review(rows: list[dict], config: Config) -> str:
+    """Every run rendered for a human to read top to bottom.
+
+    Built from `results.jsonl` rather than from the traces, so it covers a
+    resumed sweep in full. Repeats of a case sit together, which is what makes
+    flakiness visible without cross-referencing anything.
+    """
+    out = [
+        "# Review worksheet",
+        "",
+        f"`{config.model}` · prompt `{config.prompt_version}` · top_k "
+        f"{config.top_k} · {'tools on' if config.use_tools else 'NO TOOLS'} · "
+        f"{len(rows)} runs",
+        "",
+        "Read top to bottom and record verdicts in `labels.jsonl`. Full traces "
+        "(raw tool results, per-turn thinking) are under `traces/`.",
+        "",
+    ]
+    for row in rows:
+        out += [
+            "---",
+            "",
+            f"## `{row['run_id']}` — {', '.join(row.get('dimensions', []))}",
+            "",
+            f"**Q** {row.get('question', '')}",
+            "",
+            f"**Expected** {row.get('expected', '')}",
+            "",
+        ]
+        if row.get("case_notes"):
+            out += [f"*Why this case exists: {row['case_notes']}*", ""]
+        if row.get("error"):
+            out += [f"> **ERROR** {row['error']}", ""]
+        queries = row.get("queries") or []
+        out += [
+            f"**Searched** ({len(queries)}): "
+            + (" · ".join(f"`{q}`" for q in queries) or "*did not search*"),
+            "",
+            f"**Shown** ({_gold_flag(row)}): "
+            + (", ".join(row.get("shown_titles") or []) or "—"),
+            "",
+        ]
+        beyond = [
+            t for t in row.get("retrieved_titles") or []
+            if t not in (row.get("shown_titles") or [])
+        ]
+        if beyond:
+            out += [f"**Fetched but not shown** (top_k={config.top_k}): "
+                    + ", ".join(beyond), ""]
+        out += [
+            "**Answer**",
+            "",
+            "> " + (row.get("answer") or "*(none)*").replace("\n", "\n> "),
+            "",
+            f"*named: {', '.join(row.get('cited_titles') or []) or 'none'} · "
+            f"{row.get('n_turns')} turns · {row.get('input_tokens', 0):,} in / "
+            f"{row.get('output_tokens', 0):,} out · {row.get('latency_s')}s · "
+            f"[trace]({row.get('trace', '')})*",
+            "",
+        ]
+    return "\n".join(out)
 
 
 # --- summary ----------------------------------------------------------------
@@ -282,10 +386,13 @@ def _retrieval_by_case(gold_rows: list[dict]) -> list[str]:
 # --- CLI --------------------------------------------------------------------
 
 
-def _default_out(config: Config) -> Path:
+def _default_out(config: Config, cases_path: str) -> Path:
+    """Names the case set as well as the config — two sweeps over different
+    sets must not land in directories that differ only by a timestamp."""
     stamp = time.strftime("%Y%m%d-%H%M%S")
     arm = "notools" if not config.use_tools else config.prompt_version
-    return Path("results") / f"{stamp}-{config.model}-{arm}"
+    stem = Path(cases_path).stem or "cases"
+    return Path("results") / f"{stamp}-{stem}-{config.model}-{arm}"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -315,7 +422,7 @@ def main(argv: list[str] | None = None) -> int:
     loaded = cases_mod.load(args.cases)
     if args.limit:
         loaded = loaded[: args.limit]
-    out_dir = Path(args.out) if args.out else _default_out(config)
+    out_dir = Path(args.out) if args.out else _default_out(config, args.cases)
 
     total = len(loaded) * config.repeats
     state = {"n": 0}
