@@ -219,3 +219,31 @@ def flag_defects(verdict: dict, case: Case | None = None) -> list[str]:
         if case.answer_kind == "none":
             flags.append("suspect:unanswerable-case")
     return flags
+
+
+# --- sweep adapter ----------------------------------------------------------
+
+
+class SweepJudge:
+    """What the runner calls: both dimensions, one object.
+
+    Ambiguity is cached per question. It is a property of the question, not of
+    a run, so judging it once per repeat would triple the cost and invite three
+    different answers to the same question — which would then look like agent
+    variance.
+    """
+
+    model = JUDGE_MODEL
+    version = RUBRIC_VERSION
+
+    def __init__(self, client=None):
+        self._client = client
+        self._ambiguity: dict[str, dict] = {}
+
+    def __call__(self, case: Case, trace) -> dict:
+        verdict = correctness(case, trace.answer, client=self._client)
+        if case.id not in self._ambiguity:
+            amb = ambiguity(case, trace.shown_titles, client=self._client)
+            amb["flags"] = flag_defects(amb, case)
+            self._ambiguity[case.id] = amb
+        return {"correctness": verdict, "ambiguity": self._ambiguity[case.id]}

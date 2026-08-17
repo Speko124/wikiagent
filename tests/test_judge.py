@@ -197,3 +197,56 @@ def test_flagging_never_edits_the_verdict():
     before = dict(v)
     judge.flag_defects(v)
     assert v == before
+
+
+# --- the sweep adapter ------------------------------------------------------
+
+def test_the_sweep_judge_returns_both_dimensions():
+    client = StubClient([
+        Response([verdict_block(verdict="correct", why="ok")]),
+        Response([verdict_block(ambiguous=True, why="two readings")]),
+    ])
+    trace = type("T", (), {"answer": "a", "shown_titles": ["T1"]})()
+    out = judge.SweepJudge(client=client)(CASE, trace)
+    assert out["correctness"]["verdict"] == "correct"
+    assert out["ambiguity"]["ambiguous"] is True
+
+
+def test_ambiguity_is_judged_once_per_question_not_once_per_run():
+    """Ambiguity is a property of the question and does not vary across
+    repeats. Re-judging it every run would triple the cost and invite three
+    different answers to the same question."""
+    client = StubClient([
+        Response([verdict_block(verdict="correct", why="")]),
+        Response([verdict_block(ambiguous=True, why="two readings")]),
+        Response([verdict_block(verdict="correct", why="")]),
+    ], repeat_last=True)
+    trace = type("T", (), {"answer": "a", "shown_titles": ["T1"]})()
+    j = judge.SweepJudge(client=client)
+    j(CASE, trace)
+    j(CASE, trace)
+    # Identified by the tool schema, not by text: `case.expected` often
+    # contains the word "ambiguous" and would match every correctness call.
+    ambiguity_calls = [
+        c for c in client.calls
+        if "ambiguous" in c["tools"][0]["input_schema"]["properties"]
+    ]
+    assert len(ambiguity_calls) == 1
+
+
+def test_the_sweep_judge_carries_its_identity_for_the_runner():
+    """The runner reads these onto every row, so a results file can never be
+    mistaken for one judged by something else."""
+    j = judge.SweepJudge()
+    assert j.model == judge.JUDGE_MODEL
+    assert j.version == judge.RUBRIC_VERSION
+
+
+def test_defect_flags_ride_along_with_the_verdict():
+    client = StubClient([
+        Response([verdict_block(verdict="correct", why="")]),
+        Response([verdict_block(ambiguous=True, why="No Wikipedia article exists")]),
+    ])
+    trace = type("T", (), {"answer": "a", "shown_titles": []})()
+    out = judge.SweepJudge(client=client)(CASE, trace)
+    assert out["ambiguity"]["flags"] == ["suspect:undeterminable-not-ambiguous"]
