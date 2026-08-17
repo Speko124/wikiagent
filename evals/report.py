@@ -50,6 +50,16 @@ def _metrics(rows: list[dict]) -> dict:
         if (r.get("judge") or {}).get("correctness", {}).get("verdict")
         in ("correct", "incorrect")
     ]
+    # `unclear` is not a non-answer. "The judge would not commit and the matcher
+    # was confident" is the highest-value cell in this cross-tab: it is what
+    # flagged arpanet-first-message, where an accepted phrasing matched
+    # unrelated text and certified two failures as passes. Dropping these from
+    # the audit reported 0 disagreements while the audit was working.
+    hedged = [
+        r for r in ok
+        if (r.get("judge") or {}).get("correctness", {}).get("verdict") == "unclear"
+        and r.get("answer_match") is not None
+    ]
     # Only rows the matcher actually scored can disagree with the judge.
     # `bool(None)` is False, so an unscorable abstention case would otherwise
     # read as "matcher said wrong, judge said right" on every single run - the
@@ -79,7 +89,9 @@ def _metrics(rows: list[dict]) -> dict:
         "latency_s": f"{statistics.median([r['latency_s'] for r in ok]):.1f}"
         if ok else "n/a",
         "judge_clashes": f"{len(clashes)}/{len(judged)}" if judged else "n/a",
+        "judge_hedged": f"{len(hedged)}",
         "_clashes": clashes,
+        "_hedged": hedged,
         "_cross": _cross_tab(ok),
     }
 
@@ -200,6 +212,7 @@ def compare(curated_dir, holdout_dir=None) -> str:
         ("Output tokens", "output_tokens"),
         ("Latency (median s)", "latency_s"),
         ("Judge/matcher disagreements", "judge_clashes"),
+        ("Judge unclear, matcher confident", "judge_hedged"),
         ("Errors", "errors"),
     ]
     out += [
@@ -240,6 +253,20 @@ def compare(curated_dir, holdout_dir=None) -> str:
         out.append(f"| {case_id} | {hits}/{n} | {bucket} |")
     out += [""]
 
+    if cur["_hedged"]:
+        out += [
+            "## Judge declined, matcher was confident (curated)", "",
+            "The audit's most useful cell. A confident deterministic verdict "
+            "the judge would not endorse is where an accepted phrasing is "
+            "matching text that does not answer the question.", "",
+        ]
+        for r in cur["_hedged"]:
+            out.append(
+                f"- `{r['run_id']}` — matcher `{bool(r['answer_match'])}`, judge "
+                f"`unclear`: {r['judge']['correctness'].get('why', '')}"
+            )
+        out += [""]
+
     if cur["_clashes"]:
         out += [
             "## Judge/matcher disagreements (curated)", "",
@@ -268,8 +295,9 @@ def compare(curated_dir, holdout_dir=None) -> str:
             "arm exists to make has been made.",
             "",
             f"- {hld['runs']} runs, {hld['errors']} errors",
-            f"- judge/matcher disagreements: {hld['judge_clashes']} "
-            "(count only — the cases are not listed)",
+            f"- judge/matcher disagreements: {hld['judge_clashes']}; "
+            f"judge unclear while matcher confident: {hld['judge_hedged']} "
+            "(counts only — the cases are not listed)",
             "",
         ]
     return "\n".join(out)

@@ -276,3 +276,21 @@ def test_evidence_accumulates_across_searches(monkeypatch):
     g = graders.grade(case, t)
     assert g["evidence_match"] is True
     assert g["evidence_found_at_search"] == 1  # complete only after the second
+
+
+def test_a_nested_title_is_not_a_second_citation(monkeypatch):
+    """`\\bPenicillin\\b` matches inside "History of penicillin", so a title-level
+    check credits one mention twice. 8 of 54 V0 runs carried a phantom citation
+    this way, and the docstring claimed the opposite."""
+    t = fake_trace(monkeypatch, ["Penicillin", "History of penicillin"],
+                   answer="History of penicillin says it was 1928.")
+    assert graders.grade(NO_GOLD, t)["cited_titles"] == ["History of penicillin"]
+
+
+def test_a_genuine_mention_of_both_titles_still_counts_twice(monkeypatch):
+    """The other half. Dropping the short title whenever a longer one appears
+    anywhere would understate real corroboration."""
+    t = fake_trace(monkeypatch, ["Penicillin", "History of penicillin"],
+                   answer="Penicillin, and separately History of penicillin, agree.")
+    assert set(graders.grade(NO_GOLD, t)["cited_titles"]) == {
+        "Penicillin", "History of penicillin"}

@@ -77,10 +77,35 @@ def _find_cited_titles(answer: str, candidates: list[str]) -> list[str]:
     """
     if not answer:
         return []
+
+    # Spans first, because a short title matches *inside* a longer one:
+    # "\bPenicillin\b" is satisfied by "History of penicillin". Comparing
+    # spans keeps "Penicillin and History of penicillin" (two real citations)
+    # while dropping the phantom in "History of penicillin says..." - a title
+    # test alone gets one of those two cases wrong whichever way it is written.
+    spans = {
+        title: [
+            m.span()
+            for m in re.finditer(rf"\b{re.escape(title)}\b", answer, flags=re.IGNORECASE)
+        ]
+        for title in candidates
+    }
     found = []
-    for title in candidates:
-        if re.search(rf"\b{re.escape(title)}\b", answer, flags=re.IGNORECASE):
-            found.append(title)
+    for title, occurrences in spans.items():
+        if not occurrences:
+            continue
+        longer = [
+            span
+            for other, other_spans in spans.items()
+            if other != title and title.lower() in other.lower()
+            for span in other_spans
+        ]
+        if all(
+            any(big[0] <= mine[0] and mine[1] <= big[1] for big in longer)
+            for mine in occurrences
+        ) and longer:
+            continue
+        found.append(title)
     return found
 
 

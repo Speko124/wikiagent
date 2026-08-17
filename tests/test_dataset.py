@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -207,3 +208,42 @@ def test_provenance_matches_the_sample(explore):
     assert p["seed"] == 20260816
     assert len(p["row_indices"]) == len(explore) == p["n"]
     assert len(set(p["row_indices"])) == len(p["row_indices"])
+
+
+# --- spec quality -----------------------------------------------------------
+
+ABSTENTION = re.compile(
+    r"do(es)?n't (provide|say|specify|mention|contain)|not (provide|specified|"
+    r"mentioned|available|recorded)|couldn't find|could not find|no information|"
+    r"don't have access|not finding|unable to",
+    re.I,
+)
+
+
+def test_no_spec_can_be_satisfied_by_an_answer_that_reports_failure():
+    """The strongest available check on hand-authored phrasings, and it is
+    empirical rather than stylistic.
+
+    `arpanet-first-message` was scored correct on a run whose answer said "the
+    articles don't provide specific details about what the first message sent
+    was" - because the accepted phrasing was "login", and the agent had quoted
+    ARPANET's unrelated "enabled remote login". A spec a failure can satisfy is
+    not measuring the answer.
+
+    Runs over the committed V0 results, so it uses real answers rather than
+    invented ones.
+    """
+    results = Path(__file__).resolve().parent.parent / "results/v0-curated/results.jsonl"
+    if not results.exists():
+        pytest.skip("no baseline to audit yet")
+
+    offenders = []
+    for line in results.read_text().splitlines():
+        row = json.loads(line)
+        if row.get("answer_match") and ABSTENTION.search(row.get("answer") or ""):
+            offenders.append(row["run_id"])
+    assert not offenders, (
+        "scored correct while the answer reports failing to find it: "
+        f"{offenders} - the accepted phrasings for these cases match text that "
+        "does not answer the question"
+    )

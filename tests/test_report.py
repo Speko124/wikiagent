@@ -232,3 +232,23 @@ def test_a_partially_measured_row_only_counts_where_it_was_measured(tmp_path):
     assert m["correct"] == "1/1 (100%)"
     assert m["evidence_found"] == "n/a"
     assert report.funnel([partial])["correct, evidence not checkable"] == 1
+
+
+def test_an_unclear_judge_verdict_against_a_confident_matcher_is_surfaced(tmp_path):
+    """`unclear` is not a non-answer. This is the cell that caught
+    arpanet-first-message, where an accepted phrasing matched unrelated text
+    and certified two failures as passes - and the report was discarding it,
+    reporting 0 disagreements while the audit was working."""
+    cur = write(tmp_path, "cur", [row("suspect", answer_match=True,
+        judge={"correctness": {"verdict": "unclear", "why": "cannot confirm"}})])
+    text = report.compare(cur, None)
+    assert "suspect" in text
+    assert "cannot confirm" in text
+
+
+def test_holdout_hedged_verdicts_are_counted_not_named(tmp_path):
+    cur = write(tmp_path, "cur", [row("c1")])
+    hld = write(tmp_path, "hld", [row("hd-hedge", answer_match=True,
+        judge={"correctness": {"verdict": "unclear", "why": "leaky"}})], holdout=True)
+    text = report.compare(cur, hld)
+    assert "hd-hedge" not in text and "leaky" not in text
