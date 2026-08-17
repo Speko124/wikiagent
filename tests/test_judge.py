@@ -160,3 +160,40 @@ def test_every_verdict_records_the_rubric_it_came_from():
 def test_unknown_rubric_is_rejected():
     with pytest.raises(KeyError, match="j1"):
         judge.rubric("j99")
+
+
+# --- known-defect flagging --------------------------------------------------
+
+def test_the_known_category_error_is_flagged():
+    """j1 sometimes calls a question ambiguous because the *answer* can't be
+    determined. Flagged rather than fixed - a rubric edit would detach j1 from
+    the calibration that justifies trusting it."""
+    v = {"ambiguous": True, "why": "No Wikipedia article identifies this song."}
+    assert "suspect:undeterminable-not-ambiguous" in judge.flag_defects(v)
+
+
+def test_a_genuine_ambiguity_rationale_is_not_flagged():
+    v = {"ambiguous": True, "why": "Tesla could mean the company or the person."}
+    assert judge.flag_defects(v) == []
+
+
+def test_case_metadata_corroborates_the_flag():
+    v = {"ambiguous": True, "why": "two readings"}
+    c = Case(id="c", question="q", expected="e", dimensions=["false-premise"])
+    assert "suspect:false-premise-case" in judge.flag_defects(v, c)
+
+
+def test_unambiguous_verdicts_have_nothing_to_flag():
+    """A false positive is the only error this can catch; a 'no' verdict has
+    none to find."""
+    assert judge.flag_defects({"ambiguous": False, "why": "no source exists"}) == []
+
+
+def test_flagging_never_edits_the_verdict():
+    """Flag, don't override - the same rule the judge follows with the
+    deterministic matcher. An instrument that silently corrects another hides
+    the disagreement, which was the useful part."""
+    v = {"ambiguous": True, "why": "no source exists"}
+    before = dict(v)
+    judge.flag_defects(v)
+    assert v == before

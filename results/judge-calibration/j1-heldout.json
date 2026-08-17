@@ -254,5 +254,12 @@
         "The Lion King 1\u00bd"
       ]
     }
+  },
+  "known_rubric_defect_handling": {
+    "decision": "flagged, not fixed - j1 stays frozen and keeps its calibration",
+    "mechanism": "judge.flag_defects() annotates verdicts; never overrides them",
+    "validated_on": "all 19 ambiguous verdicts across both calibration passes",
+    "result": "catches both known-defect false positives, wrongly flags 0 true positives",
+    "effect_on_precision": "with flagged verdicts set aside for review, the 3 remaining held-out false positives are labelling disputes rather than rubric errors"
   }
 }

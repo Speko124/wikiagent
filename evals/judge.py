@@ -20,6 +20,7 @@ the answer, and a test enforces it.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 import anthropic
@@ -177,3 +178,44 @@ def ambiguity(case: Case, retrieved_titles: list[str], client=None) -> dict:
     out = _ask(rubric().ambiguity, content, tool, client)
     out.setdefault("ambiguous", None)
     return _stamp(out)
+
+
+# --- known defects of rubric j1 ---------------------------------------------
+
+# j1 conflates "the answer cannot be determined" with "the question has more
+# than one reading". Seen twice in calibration: einstein-nobel-premise (a false
+# premise) and am-i-all-alone-writer (no source exists). Both are real false
+# positives and both are the same category error.
+#
+# Flagged rather than fixed. Editing a calibrated rubric detaches it from the
+# calibration that describes it, and a new version would have to re-earn the
+# recall number that is the whole reason to trust this judge. Annotating costs
+# nothing and leaves j1's evidence intact.
+#
+# Validated on all 19 ambiguous verdicts from both calibration passes: catches
+# both known defects, wrongly flags none of the true positives.
+_DEFECT_LANGUAGE = re.compile(
+    r"no (wikipedia )?(article|source|clear source)|does not (exist|appear)|"
+    r"cannot be (determined|verified)|false premise|presuppos|no evidence",
+    re.I,
+)
+
+
+def flag_defects(verdict: dict, case: Case | None = None) -> list[str]:
+    """Annotate an ambiguity verdict with suspected j1 category errors.
+
+    Returns flags; never edits the verdict. Same rule as the judge not
+    overriding the deterministic matcher — an instrument that silently corrects
+    another instrument hides the disagreement that was the useful part.
+    """
+    if not verdict.get("ambiguous"):
+        return []
+    flags = []
+    if _DEFECT_LANGUAGE.search(verdict.get("why") or ""):
+        flags.append("suspect:undeterminable-not-ambiguous")
+    if case is not None:
+        if "false-premise" in case.dimensions:
+            flags.append("suspect:false-premise-case")
+        if case.answer_kind == "none":
+            flags.append("suspect:unanswerable-case")
+    return flags
