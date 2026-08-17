@@ -26,7 +26,7 @@ def test_get_returns_both_halves_of_the_prompt_surface():
 
 
 def test_unknown_version_names_the_known_ones():
-    with pytest.raises(KeyError, match="v1"):
+    with pytest.raises(KeyError, match="v0"):
         prompts.get("v99")
 
 
@@ -38,22 +38,30 @@ def test_every_description_still_states_the_result_count(version):
     assert "three" in tools.schema(3, version=version)["description"]
 
 
-def test_the_version_pins_the_tool_description_too():
+@pytest.fixture
+def other_version(monkeypatch):
+    """A second version, injected. Tests the pinning mechanism rather than
+    relying on two real versions happening to exist."""
+    other = prompts.PromptSet(system="OTHER SYSTEM", tool_description="OTHER {n} DESC")
+    monkeypatch.setitem(prompts.PROMPTS, "vX", other)
+    return other
+
+
+def test_the_version_pins_the_tool_description_too(other_version):
     """The reason both live in one version. If the tool description could
     change independently, `prompt_version` in a trace would be a half-truth and
-    two sweeps recorded as `v1` could have been run against different tools."""
-    v0 = tools.schema(version="v0")["description"]
-    v1 = tools.schema(version="v1")["description"]
-    assert v0 != v1
+    two sweeps recorded as `v0` could have been run against different tools."""
+    assert tools.schema(version="vX")["description"] != tools.schema()["description"]
+    assert "OTHER" in tools.schema(version="vX")["description"]
 
 
-def test_the_agent_sends_the_requested_version_of_both(stub):
+def test_the_agent_sends_the_requested_version_of_both(other_version):
     client = StubClient([Response([text("answer")])])
-    agent.ask("q", prompt_version="v0", client=client)
+    agent.ask("q", prompt_version="vX", client=client)
     sent = client.calls[0]
-    assert sent["system"] == prompts.get("v0").system
-    assert sent["tools"][0]["description"] == tools.schema(version="v0")["description"]
-    assert sent["system"] != prompts.get("v1").system
+    assert sent["system"] == other_version.system
+    assert sent["tools"][0]["description"] == tools.schema(version="vX")["description"]
+    assert sent["system"] != prompts.get().system
 
 
 def test_the_description_explains_the_marker_the_search_actually_emits():
@@ -90,7 +98,7 @@ def test_the_default_prompt_asks_for_exact_titles():
 # already been scored against silently makes those results uninterpretable —
 # the trace still says `v0`. Seeing this test fail is the reminder to add a new
 # version instead. If the change really is intended, update the digest here.
-FROZEN = {"v0": "ce4a837157ae3867"}
+FROZEN = {"v0": "1cd16256895d837f"}
 
 
 @pytest.mark.parametrize("version,digest", sorted(FROZEN.items()))

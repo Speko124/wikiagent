@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import pytest
 
-from wikiagent import tools, wikipedia
+from wikiagent import prompts, tools, wikipedia
 
 
 def test_schema_shape_is_valid():
@@ -27,7 +27,7 @@ def test_description_matches_the_number_actually_returned(top_k, phrase):
     assert f"{phrase} best-matching" in tools.schema(top_k)["description"]
 
 
-@pytest.mark.parametrize("version", ["v0", "v1"])
+@pytest.mark.parametrize("version", sorted(prompts.PROMPTS))
 def test_description_warns_that_only_intros_come_back(version):
     """The intro-only limitation is the single most important thing for the
     model to know — it's what should drive a re-query rather than a guess."""

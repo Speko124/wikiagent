@@ -9,8 +9,14 @@ while `prompt_version` in the trace still claimed they were comparable.
 Keep these short. Every line should be traceable to a failure we've seen, and
 short prompts leave room to hill-climb where the evals say it's needed.
 
-**Old versions are frozen.** Once a sweep has run against a version, editing it
-retroactively makes past results uninterpretable. Add a new version instead.
+**Versions that have been run are frozen.** Once a sweep is scored against a
+version, editing it retroactively makes those results uninterpretable — the
+trace still names the version. Add a new one instead; `test_prompts.py` holds a
+digest that fails if a frozen version moves.
+
+An earlier draft was never run against anything, so it was never a baseline.
+It's kept in `docs/prompt-archive.md` rather than here: an unrunnable version
+sitting in the version table is just clutter that invites someone to select it.
 """
 
 from __future__ import annotations
@@ -26,51 +32,20 @@ class PromptSet:
     tool_description: str  # `{n}` is filled in with the result count
 
 
+# The baseline. Three properties are load-bearing and easy to lose in an edit:
+#
+# 1. The **result count appears only in the tool description**, which is built
+#    from the real `top_k`. Stating it here too means `--top-k 5` ships a system
+#    prompt that says three.
+# 2. **Exact titles**, because `cited_titles` matches retrieved titles exactly.
+#    Paraphrase ("articles on penicillin discovery" for "Discovery of
+#    penicillin") makes the citation signal unreadable.
+# 3. The **truncation marker is explained**, so "the article doesn't say" and
+#    "the text stopped here" aren't the same observation to the model.
+#
+# Structure is three labelled blocks matching funnel stages, so a failure at a
+# stage points at one block to edit.
 V0 = PromptSet(
-    system="""You answer questions using Wikipedia.
-
-You have one tool, search_wikipedia, which returns the three best-matching \
-articles and the opening section of each.
-
-- Search before answering anything that depends on external facts.
-- If a search misses, try again with different wording, a broader topic, or a \
-related entity before giving up.
-- Answer from what the search results actually say. Do not fill gaps from \
-memory.
-- Name the article or articles you drew on, in the text of your answer.
-- If the results don't support an answer, say so plainly and say what you did \
-find. Don't guess.
-- If a question assumes something false, say what's wrong with the assumption \
-instead of answering as asked.
-
-Be direct and brief.""",
-    tool_description=(
-        "Search English Wikipedia and return the {n} best-matching articles, each "
-        "as its title followed by the opening section of that article.\n\n"
-        "Returns only the opening section, not the full article, so it answers "
-        "questions about a topic's main facts better than questions about narrow "
-        "details buried deep in an article.\n\n"
-        "Search terms work best as the name of the thing you are looking for — a "
-        "person, place, event, or concept — rather than as a full question. If a "
-        "search misses, try again with different or broader terms."
-    ),
-)
-
-# v1 fixes three defects in v0 rather than adding behaviour:
-#
-# 1. v0 hardcoded "three best-matching articles" while `top_k` is a knob, so
-#    `--top-k 5` made the system prompt lie. The count now lives only in the
-#    tool description, which is built from the actual value.
-# 2. v0 asked the model to "name the article" without saying how, and it
-#    paraphrased ("articles on penicillin discovery" for "Discovery of
-#    penicillin"). Exact titles make the citation signal mean something.
-# 3. Extracts are cut short and marked, but nothing told the model what the
-#    marker meant — so "not in the article" and "cut off" looked identical.
-#
-# The one behavioural addition is "one subject per search", which comes from
-# the one multi-hop failure observed in the demo: both articles were retrieved,
-# neither intro mentioned the other, and the answer was invented in the join.
-V1 = PromptSet(
     system="""You answer questions using English Wikipedia, through the \
 search_wikipedia tool.
 
@@ -106,9 +81,9 @@ assumption instead of answering as asked.""",
     ),
 )
 
-PROMPTS = {"v0": V0, "v1": V1}
+PROMPTS = {"v0": V0}
 
-DEFAULT_VERSION = "v1"
+DEFAULT_VERSION = "v0"
 
 
 def get(version: str = DEFAULT_VERSION) -> PromptSet:

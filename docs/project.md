@@ -4,7 +4,7 @@ Living document. Decisions land here as they're made; open questions stay
 visible until closed. Written to be self-contained — someone picking this up
 cold should need nothing but this file and the code.
 
-Last updated: 2026-08-15 (end of Phase 2)
+Last updated: 2026-08-16 (end of Phase 4 — eval set built, read pass running)
 
 ---
 
@@ -97,7 +97,7 @@ traces**, so debugging leans on tool calls and answers.
   we need per-turn visibility, and an explicit loop puts it in one place).
 - `MAX_TURNS = 10` is a guard, not a design parameter. Hitting it is recorded
   as an error so a runaway loop can't look like success.
-- **Abstention is a v0 prompt requirement**, measured in *both* directions —
+- **Abstention is a baseline prompt requirement**, measured in *both* directions —
   confabulation and over-abstention are both failures.
 - **Source attribution is split by who actually knows what:**
   - *What was searched and retrieved* → the harness knows this deterministically
@@ -125,18 +125,26 @@ beside the system prompt because they're one surface, and versioning them apart
 would let a tool-description edit silently invalidate a previous sweep while
 `prompt_version` in the trace still claimed the runs were comparable.
 
-**Old versions are frozen** — a hash canary in `test_prompts.py` fails if one is
-edited, because results scored against `v0` stop meaning anything if `v0` moves.
+**Versions that have been run are frozen** — a hash canary in `test_prompts.py`
+fails if one is edited, because results scored against `v0` stop meaning
+anything if `v0` moves.
 
-**v1 (default)** is a defect fix plus structure, not new behaviour:
+**`v0` is the baseline**, and it is the first version any eval has been scored
+against. An earlier draft was used for the Phase 2 demo and briefly carried the
+name `v0`; since nothing was ever measured against it, it was never a baseline.
+It now lives in `docs/prompt-archive.md` rather than in the version table — an
+unrunnable version in the table is clutter that invites someone to select it.
 
-1. v0 hardcoded "the three best-matching articles" while `top_k` is a knob, so
-   `--top-k 5` shipped a prompt that lied. The count now appears only in the
-   tool description, which is built from the real value.
-2. v0 said "name the article" without saying how, and the model paraphrased
-   (*"articles on penicillin discovery"* for *Discovery of penicillin*). v1 asks
-   for exact titles as shown — which is what makes `cited_titles` mean anything,
-   and it's why the deterministic fabrication check had to be dropped.
+The current baseline fixed three defects in that draft, all of which would have
+distorted *measurement* rather than merely producing worse answers:
+
+1. The draft hardcoded "the three best-matching articles" while `top_k` is a
+   knob, so `--top-k 5` would have shipped a prompt that lied. The count now
+   appears only in the tool description, which is built from the real value.
+2. It said "name the article" without saying how, and the model paraphrased
+   (*"articles on penicillin discovery"* for *Discovery of penicillin*). `v0`
+   asks for exact titles as shown — which is what makes `cited_titles` mean
+   anything, and why the deterministic fabrication check had to be dropped.
 3. Extracts are cut short and marked `[...]`, but nothing told the model what
    the marker meant, so *"the article doesn't say"* and *"the text stopped
    here"* looked identical — one leads to false abstention, the other to a
@@ -157,8 +165,8 @@ few-shot examples · explicit citation markers · guidance to issue parallel
 searches in one turn · retry guidance duplicated into the tool description ·
 telling the model it may ask for more results.
 
-v0 stays available (`--prompt v0`), so "is v1 actually better?" is a cheap
-first experiment rather than an assumption.
+The next version is written *after* the read pass, against observed failures —
+which is the point of keeping the baseline this short.
 
 ### 3.4 Rejected: running the agent through `claude -p`
 
@@ -393,7 +401,7 @@ summary would average a curated set against a random one and mean nothing.
 
 | # | Phase | Status |
 |---|---|---|
-| 1 | Design the tool | ✅ Tool schema, result format, error/empty shapes, v0 prompt |
+| 1 | Design the tool | ✅ Tool schema, result format, error/empty shapes, first prompt |
 | 2 | Build e2e | ✅ CLI works; cache works; tests green |
 | 3 | Build eval harness | ✅ Cases → agent → graders → review + labels + traces; resumable |
 | 4 | Design & build eval set | ✅ 11 curated (one per mode) + 20 frozen random NQ; verified against live retrieval |
@@ -434,7 +442,8 @@ evals/
   run.py          # sweep runner (see §3.10 for the output layout)
 results/          # one directory per sweep; committed as evidence
 docs/
-  project.md      # this file
+  project.md         # this file
+  prompt-archive.md  # replaced drafts, and why
   error-analysis.md  # (Phase 5 output)
 ```
 
@@ -468,7 +477,7 @@ building `review.md` from memory instead of from the results file.
 
 ---
 
-## 7. First observations (demo run, Haiku 4.5, prompt v0)
+## 7. First observations (demo run, Haiku 4.5, pre-baseline draft prompt)
 
 Five questions, one run each. **Anecdotes, not measurements** — n=1, no repeats,
 no judge. Recorded because they shape what the eval set must cover.
@@ -493,9 +502,10 @@ Exactly the failure the intro-only design was expected to produce, so the
 `fetch_article` question in §8 is now evidence-backed. **Not acting on it yet** —
 one case is no basis for a tool redesign; Phase 5 shows how often it occurs.
 
-**Spot-check after v1 (n=1 again, so no conclusions):** asked directly which
-Oxford college Dawkins attended, *both* v0 and v1 now abstain correctly, naming
-what they did find. So the invented join isn't reproducible on this phrasing —
+**Spot-check after the rewrite (n=1 again, so no conclusions):** asked directly
+which Oxford college Dawkins attended, *both* the draft and the baseline abstain
+correctly, naming what they did find. So the invented join isn't reproducible on
+this phrasing —
 which is itself the argument for repeats: a single run can't tell a fixed
 failure from a flaky one.
 
@@ -508,7 +518,7 @@ Three more candidate eval dimensions:
   searching*, from priors. Right answer, wrong process — and a prompt that
   abstains from priors will eventually abstain on something Wikipedia covers.
   Argues for scoring abstention and retrieval as separate signals.
-  **Reproduced under v1** during a harness smoke run: `n_searches = 0` on the
+  **Reproduced under the baseline prompt** during a harness smoke run: `n_searches = 0` on the
   Ada Lovelace case. Still n=1, but it survived a prompt that explicitly says
   to search first, so it's the first thing to look for in the read pass.
 
@@ -523,9 +533,6 @@ Three more candidate eval dimensions:
 - Haiku vs Sonnet 5 as the agent — decide from the paired baseline sweep (§3.2).
 - Is prose-mention source matching reliable enough, or are inline markers
   needed? — decide from Phase 5.
-- Does prompt v1 actually beat v0? Both are available and the sweep is
-  resumable, so this is a cheap A/B once the case set exists — not an
-  assumption baked into the baseline.
 - Does the explore set's pop-culture skew (13 of 20 are entertainment or sport)
   exercise retrieval differently from the encyclopedic core set? — read pass
   will show it, and it's a property of real queries, not a flaw in the draw.
