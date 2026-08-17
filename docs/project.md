@@ -212,28 +212,70 @@ relabelling, not rewriting the harness.
 
 ### 3.7 Eval measurement
 
-**Deterministic — no LLM:** did it search · number of calls · titles retrieved ·
-gold article retrieved · cited ⊆ retrieved · turns · tokens · latency
+**Rewritten after the read pass.** The original plan had five LLM-judged
+dimensions. Measuring what could be computed exactly collapsed it to one judged
+dimension plus one audit role. Full reasoning in `eval-plan.md`.
 
-**LLM-judged — categorical only, no numeric scales:**
+**Deterministic — no LLM.** Preferred wherever a signal can be computed rather
+than judged.
 
-| Dimension | Categories |
+| Signal | What it is |
 |---|---|
-| Correctness | `correct` / `incorrect` (binary) |
-| Posture | `confident` / `hedged` / `abstained` |
-| Faithfulness | `supported` / `contains unsupported claim` |
+| `answer_match` | Correctness. Hand-authored accepted phrasings per case, as an AND of ORs |
+| `answer_completeness` | Fraction of requirements met — a partial list presented as complete scores below 1.0 |
+| `evidence_match` | Retrieval quality: did the text that came back carry the evidence, per tool call |
+| `evidence_found_at_search` | *Which* search found it — how many were wasted getting there |
+| `n_distinct_articles_cited` | Corroboration: an answer resting on three agreeing articles is stronger |
+| answer length · output tokens | Crispness, kept separate since a thinking model conflates them |
+| `n_searches` · turns · latency | Effort and distress signals — **not** retrieval quality |
+| `cited ⊆ retrieved` | Citation integrity |
 
-Binary correctness over partial credit: partial credit invites judge drift, and
-genuinely borderline cases surface as flakiness across repeats instead.
+**`answer_contains` and `evidence_contains` are separate fields.** For a derived
+answer ("which is older, Bologna or Oxford?") the evidence is the two founding
+dates while the answer appears in no article, so retrieval gets credit for
+finding the evidence rather than being blamed for a synthesis question.
 
-> **Open — revisit after Phase 5 traces.** These three are a starting point.
-> The intent is to double down on *answer quality* and it's not yet clear these
-> capture it.
+**Crossing the two gives the funnel stage, deterministically:**
 
-**Judge validation is mandatory.** Rubric with per-category definitions and 1–2
-boundary examples, validated against hand labels on ~20 traces before any number
-is trusted. Judge-vs-human agreement reported. Poor agreement → fix the rubric
-before touching the agent.
+| | evidence found | not found |
+|---|---|---|
+| **answer right** | grounded | **answered from memory** |
+| **answer wrong** | **had it, didn't use it** | never had it |
+
+**`gold_shown` is retired.** It asked "did the article I predicted come back",
+which is the wrong question — facts are carried by many articles, and both of
+its misses were correct grounded answers. `gold_articles` demotes to a
+non-exclusive hint used only where no string spec can express the answer.
+
+**LLM-judged — one dimension, one audit role.**
+
+| Dimension | Values | Role |
+|---|---|---|
+| Ambiguity | `ambiguous` / `unambiguous` | **Owned.** The only dimension where determinism was tried and measured to fail |
+| Correctness | `correct` / `incorrect` / `unclear` | **Audit only.** Disagreements with the matcher flag runs for review; the deterministic score stays the headline |
+
+Judge is Sonnet 5 (the agent is Haiku 4.5 — same-model judging carries a
+documented self-preference bias). Rubric `j1`, frozen and digest-tested exactly
+like the agent prompts, because calibration numbers belong to a rubric version.
+
+**Two calls, not one.** If the judge sees the answer while deciding whether the
+*question* was ambiguous, a cleanly-handled answer makes the question look
+unambiguous — the agent's competence erases the evidence it was needed. The
+ambiguity call cannot accept an answer, enforced on the signature. `expected` is
+withheld too: it often states the ambiguity outright.
+
+**Calibrated against hand labels, twice.** Correctness 23/24 decided verdicts.
+Ambiguity **recall 19/19 across 47 questions**, precision ~70%. Recall is what
+matters most here — at a 34% base rate a judge that always says "unambiguous"
+scores 66% agreement — but all metrics are reported, since a low-precision
+detector still costs review time.
+
+**One known rubric defect, flagged rather than fixed:** `j1` conflates "the
+answer cannot be determined" with "the question has two readings". Annotated by
+`judge.flag_defects()`, validated to catch both known instances and to wrongly
+flag none of the true positives. Editing a calibrated rubric would detach it
+from its calibration, and a new version would have to re-earn the recall number
+that is the reason to trust it.
 
 **Two-stage protocol.** Repeats are for scoring, not for looking:
 
@@ -405,8 +447,8 @@ summary would average a curated set against a random one and mean nothing.
 | 2 | Build e2e | ✅ CLI works; cache works; tests green |
 | 3 | Build eval harness | ✅ Cases → agent → graders → review + labels + traces; resumable |
 | 4 | Design & build eval set | ✅ 11 curated (one per mode) + 20 frozen random NQ; verified against live retrieval |
-| 5 | Run & manually debug | ⬜ **Next.** Read pass 1× → open-code `labels.jsonl` into a taxonomy → score pass 3× |
-| 6 | Iterate | ⬜ Scored changelog; per-case pass→fail diffs, not just aggregates |
+| 5 | Run & manually debug | ✅ Read pass 31 runs, hand-labelled, taxonomy in `error-analysis.md`. Set rebuilt to 18 + 10 holdout; matcher and judge built and calibrated |
+| 6 | Iterate | ⬜ **Next.** V0 baseline 3× → add `fetch_article` → V1 → delta on curated *and* holdout |
 | — | Bonus, if time | No-tool control arm · safeguards cases · Haiku vs Sonnet baseline |
 
 Every phase follows TDD per `CLAUDE.md`: tests first, then implementation.
@@ -434,17 +476,21 @@ tests/
   test_run.py       # resume, failure isolation, config pinning, label safety
   test_dataset.py   # the committed set: mode coverage, frozen random sample
 evals/
-  cases/core.jsonl      # 11 curated, one per failure mode
-  cases/explore.jsonl   # 20 frozen random NQ questions (+ .provenance.json)
+  cases/core.jsonl      # 18 curated: 9 anchors, 1 redesigned, 5 promoted, 3 new
+  cases/explore.jsonl   # 20 frozen random NQ questions, read pass - now mined
+  cases/holdout.jsonl   # 10 frozen random NQ questions, disjoint from explore
   cases.py        # Case + loader
   graders.py      # deterministic signals only — no verdict, no semantics
-  sample_nq.py    # one-shot frozen draw; kept for reproducibility
+  sample_nq.py    # named, seeded, frozen draws; holdout excludes explore rows
+  judge.py        # ambiguity (owned) + correctness (audit), rubric-versioned
+  report.py       # cross-arm report; holdout reported as values only
   run.py          # sweep runner (see §3.10 for the output layout)
 results/          # one directory per sweep; committed as evidence
 docs/
   project.md         # this file
   prompt-archive.md  # replaced drafts, and why
-  error-analysis.md  # (Phase 5 output)
+  error-analysis.md  # read-pass taxonomy, converged from two manual passes
+  eval-plan.md       # final set, rubric, and what the judge is for
 ```
 
 Python 3.11 · `anthropic` + `httpx` · `uv` · `pytest`. No framework, no vector
@@ -526,13 +572,20 @@ Three more candidate eval dimensions:
 
 ## 8. Open questions
 
-- Are the three LLM-judged dimensions the right ones? (§3.7) — revisit after
-  Phase 5 traces.
-- Does intro-only retrieval starve deep-fact questions enough to justify
-  `fetch_article`? — evidence-backed by §7, decide from Phase 5 stage-3 rates.
+- ~~Are the three LLM-judged dimensions right?~~ **Closed.** Three of five
+  became deterministic, faithfulness is deferred (0 unsupported claims in 31
+  runs), and ambiguity is the only one a judge owns.
+- ~~Does intro-only retrieval justify `fetch_article`?~~ **Closed by the read
+  pass.** Five of six explore failures are the same defect: right article
+  retrieved, answer in the body. Bounded, though — a full-page read does
+  nothing for infobox-only data and only partly helps aggregation over tables.
 - Haiku vs Sonnet 5 as the agent — decide from the paired baseline sweep (§3.2).
-- Is prose-mention source matching reliable enough, or are inline markers
-  needed? — decide from Phase 5.
+- ~~Is prose-mention source matching reliable enough?~~ **Closed.** Zero
+  fabricated citations in 31 runs; every spot-checked claim was in the
+  retrieved text. Inline markers are unnecessary for now.
+- Does correcting the matcher's accepted phrasings overfit to answers already
+  seen? — the judge audit exists to answer this; disagreement rate is the
+  measurement.
 - Does the explore set's pop-culture skew (13 of 20 are entertainment or sport)
   exercise retrieval differently from the encyclopedic core set? — read pass
   will show it, and it's a property of real queries, not a flaw in the draw.
