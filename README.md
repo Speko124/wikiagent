@@ -54,7 +54,7 @@ Useful flags: `--prompt v0` (the pre-`fetch_article` baseline) · `--no-tools`
 ## Tests
 
 ```bash
-uv run pytest -q                       # 264 tests, no API key, no network, <1s
+uv run pytest -q                       # 272 tests, no API key, no network, <1s
 WIKIAGENT_NETWORK=1 uv run pytest -q   # + 4 live Wikipedia tests
 ```
 

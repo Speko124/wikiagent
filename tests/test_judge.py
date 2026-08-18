@@ -270,3 +270,11 @@ def test_declining_is_its_own_verdict_not_unclear():
     schema = client.calls[0]["tools"][0]["input_schema"]
     assert set(schema["properties"]["verdict"]["enum"]) == {
         "correct", "incorrect", "declined", "unclear"}
+
+
+def test_the_judge_is_documented_as_the_primary_correctness_signal():
+    """Docs drift out of sync with code silently. The judge/matcher roles were
+    swapped mid-project and stale comments still described the matcher as the
+    headline number, which is the sort of thing a reader trusts and acts on."""
+    assert "primary" in judge.correctness.__doc__.lower()
+    assert "never the headline" not in judge.__doc__.lower()

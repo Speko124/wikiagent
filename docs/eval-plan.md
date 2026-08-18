@@ -128,10 +128,15 @@ proxy — fires on `rosetta-year` and `eiffel-height` (neither ambiguous), misse
 all across 20 explore cases. Wrong in both directions, so this genuinely needs
 judgement.
 
-**2. Correctness auditing.** Not scoring — a second opinion whose disagreements
-with the string matcher flag candidates for human review. As an auditor it
-needs far less alignment than a scorer: it doesn't have to be right, only
-*differently wrong*. The deterministic score stays the headline number.
+**2. Correctness.** Started as an audit role and became the primary score, on
+evidence: the string matcher produced three silent false passes on 54 curated
+runs and the judge caught all three. The matcher is retained as a guardrail and
+both are reported. Their failure modes are opposite — the matcher passes things
+confidently, the judge abstains — so a disagreement means one of them is wrong
+and a human should look. Neither overrides the other.
+
+*(This section records the original reasoning; §3 of `project.md` and
+`judge.py` carry the final design.)*
 
 ### Judge configuration
 

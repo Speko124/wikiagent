@@ -343,8 +343,9 @@ def summarize(rows: list[dict], config: Config) -> str:
         )
         out += [
             f"- Searched at all: {_rate(sum(1 for r in ok if r['searched']), len(ok))}",
-            f"- Gold article shown to the model: {_rate(shown, len(gold))} "
-            "— denominator is runs whose case has a gold article",
+            f"- Reference article shown to the model: {_rate(shown, len(gold))} "
+            "— a weak proxy kept for cases with no checkable answer string; "
+            "`evidence_match` in the cross-arm report is the retrieval metric",
             f"- Gold fetched but past top_k (raising top_k would have helped): "
             f"{only_fetched}",
             f"- Named a retrieved article: "

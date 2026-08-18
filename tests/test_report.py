@@ -274,14 +274,20 @@ def test_pass_at_k_is_stricter_than_the_run_rate():
         row("never", answer_match=False), row("never", answer_match=False),
         row("coinflip", answer_match=True), row("coinflip", answer_match=False),
     ]
-    solid, n_cases, buckets = report.pass_at_k(rows)
+    solid, n_cases, buckets = report.pass_at_k(rows, repeats=2)
     assert (solid, n_cases) == (1, 3)          # only `always` passes every repeat
-    assert buckets == {"solid (k/k)": 1, "flaky": 1, "systematic (0/k)": 1}
+    assert buckets == {"solid (k/k)": 1, "flaky": 1, "systematic (0/k)": 1,
+                       "incomplete": 0}
 
 
-def test_pass_at_k_ignores_unscorable_cases():
-    assert report.pass_at_k([row("x", answer_match=None)]) == (0, 0, {
-        "solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0})
+def test_pass_at_k_ignores_cases_with_nothing_to_score():
+    """An abstention case with no judge verdict at all contributes to no
+    bucket - distinct from a case that was partly scored, which is
+    `incomplete`."""
+    solid, n_cases, buckets = report.pass_at_k(
+        [row("x", answer_match=None, judge=None)], repeats=1)
+    assert (solid, n_cases) == (0, 0)
+    assert sum(buckets.values()) == 0
 
 
 def test_declining_is_correct_only_where_the_case_has_no_answer_to_give():
@@ -338,3 +344,47 @@ def test_fetch_spread_separates_escalation_from_thrash():
     m = report._metrics(rows)
     assert m["fetch_spread"] == "0x1 · 1x1 · 2x1"
     assert "2 fetch: 9.0t" in m["turns_by_fetch"]
+
+
+# --- pass^k must be strict ---------------------------------------------------
+
+def test_an_unscored_run_cannot_count_toward_passing_every_repeat():
+    """pass^k claims the case was correct on *every* one of k repeats. A run
+    the judge would not score is not a demonstrated pass, and dropping it
+    silently shrinks k.
+
+    Live instance: `tesla-origin` at v0 was [correct, unclear, unclear] and was
+    reported as pass^3 solid on the strength of one run.
+    """
+    unclear = {"correctness": {"verdict": "unclear", "why": "disputed"}}
+    rows = [
+        row("c", answer_match=True),
+        row("c", answer_match=None, judge=unclear),
+        row("c", answer_match=None, judge=unclear),
+    ]
+    solid, n_cases, buckets = report.pass_at_k(rows, repeats=3)
+    assert solid == 0, "one scored run out of three is not pass^3"
+    assert buckets["incomplete"] == 1
+
+
+def test_a_case_correct_on_every_repeat_still_counts():
+    rows = [row("c", answer_match=True) for _ in range(3)]
+    solid, n_cases, buckets = report.pass_at_k(rows, repeats=3)
+    assert (solid, n_cases) == (1, 1)
+    assert buckets["solid (k/k)"] == 1
+
+
+def test_an_errored_run_also_blocks_a_solid_claim():
+    """An error says nothing about the agent, which is exactly why it cannot
+    be counted as a pass."""
+    rows = [row("c", answer_match=True), row("c", answer_match=True),
+            row("c", answer_match=None, error="boom", judge=None)]
+    solid, _, buckets = report.pass_at_k(rows, repeats=3)
+    assert solid == 0
+    assert buckets["incomplete"] == 1
+
+
+def test_all_scored_runs_wrong_is_systematic_not_incomplete():
+    rows = [row("c", answer_match=False) for _ in range(3)]
+    _, _, buckets = report.pass_at_k(rows, repeats=3)
+    assert buckets["systematic (0/k)"] == 1

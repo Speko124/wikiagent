@@ -61,7 +61,7 @@ def _rate(hits: int, total: int) -> str:
     return f"{hits}/{total} ({hits / total:.0%})" if total else "n/a"
 
 
-def _metrics(rows: list[dict]) -> dict:
+def _metrics(rows: list[dict], config: dict | None = None) -> dict:
     ok = [r for r in rows if not r.get("error")]
     judged_ok = [r for r in ok if judged_correct(r) is not None]
     scorable = [r for r in ok if r.get("answer_match") is not None]
@@ -76,7 +76,7 @@ def _metrics(rows: list[dict]) -> dict:
     completeness = [
         r["answer_completeness"] for r in ok if r.get("answer_completeness") is not None
     ]
-    solid, n_cases, buckets = pass_at_k(rows)
+    solid, n_cases, buckets = pass_at_k(rows, repeats=(config or {}).get('repeats'))
     judged = [
         r for r in ok
         if (r.get("judge") or {}).get("correctness", {}).get("verdict")
@@ -231,25 +231,43 @@ def funnel(rows: list[dict]) -> dict[str, int]:
     return out
 
 
-def pass_at_k(rows: list[dict]) -> tuple[int, int, dict[str, int]]:
-    """pass^k: cases correct on *every* repeat, not runs correct on average.
+def pass_at_k(rows: list[dict], repeats: int | None = None) -> tuple[int, int, dict]:
+    """pass^k: cases correct on *every* one of k repeats.
 
-    A per-run rate hides the shape. Two cases at 50% could be one case that
-    always works and one that never does, or two that flip a coin - and those
-    need completely different responses. pass^k collapses to the strict
-    reading, and the buckets say which kind of failure each case is.
+    A per-run rate hides the shape — 50% could be one case that always works
+    beside one that never does, or two that flip a coin, and those need
+    completely different responses.
+
+    **Strict about unscored runs.** A run the judge would not score (`unclear`)
+    or that errored is not a demonstrated pass, so it blocks a `solid` claim
+    rather than being dropped from the denominator. Dropping it silently
+    shrinks k: `tesla-origin` at v0 was [correct, unclear, unclear] and was
+    reported as passing every repeat on the strength of a single run.
     """
-    by_case: dict[str, list[bool]] = {}
-    for r in rows:
-        correct = judged_correct(r)
-        if correct is not None and not r.get("error"):
-            by_case.setdefault(r["case_id"], []).append(correct)
-    buckets = {"solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0}
-    for hits in by_case.values():
-        buckets["solid (k/k)" if hits and all(hits)
-                else "systematic (0/k)" if not any(hits)
-                else "flaky"] += 1
-    return buckets["solid (k/k)"], len(by_case), buckets
+    by_case: dict[str, list[bool | None]] = {}
+    for row in rows:
+        by_case.setdefault(row["case_id"], []).append(
+            None if row.get("error") else judged_correct(row)
+        )
+
+    buckets = {"solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0, "incomplete": 0}
+    solid = 0
+    for verdicts in by_case.values():
+        scored = [v for v in verdicts if v is not None]
+        expected = repeats or len(verdicts)
+        if not scored:
+            continue                       # nothing to say about this case
+        if len(scored) < expected:
+            buckets["incomplete"] += 1     # cannot claim k/k on fewer than k
+        elif all(scored):
+            buckets["solid (k/k)"] += 1
+            solid += 1
+        elif not any(scored):
+            buckets["systematic (0/k)"] += 1
+        else:
+            buckets["flaky"] += 1
+    scoreable = sum(1 for v in by_case.values() if any(x is not None for x in v))
+    return solid, scoreable, buckets
 
 
 def _buckets(rows: list[dict]) -> list[tuple[str, int, int]]:
@@ -267,7 +285,8 @@ def _buckets(rows: list[dict]) -> list[tuple[str, int, int]]:
 def compare(curated_dir, holdout_dir=None) -> str:
     cur_rows, cur_cfg = _load(curated_dir)
     hld_rows, hld_cfg = _load(holdout_dir)
-    cur, hld = _metrics(cur_rows), _metrics(hld_rows) if hld_rows else None
+    cur = _metrics(cur_rows, cur_cfg)
+    hld = _metrics(hld_rows, hld_cfg) if hld_rows else None
 
     out = [
         f"# Sweep report — prompt `{cur_cfg.get('prompt_version', '?')}`",
@@ -368,7 +387,7 @@ def compare(curated_dir, holdout_dir=None) -> str:
         out += [
             "## Judge/matcher disagreements (curated)", "",
             "Where the accepted phrasings may be overfitted, or the judge wrong. "
-            "Adjudicated by hand; the deterministic score stays the headline.", "",
+            "Adjudicated by hand — neither signal overrides the other.", "",
         ]
         for r in cur["_clashes"]:
             v = r["judge"]["correctness"]

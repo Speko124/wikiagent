@@ -5,11 +5,14 @@ deterministic proxy was tried and measured to fail: disambiguation-page
 retrieval fires on questions that aren't ambiguous and misses the ones that
 are.
 
-**Correctness** it only audits. The deterministic string matcher is the
-headline number; this is a second opinion whose *disagreements* mark runs for
-human review. An auditor needs far less alignment than a scorer — it doesn't
-have to be right, only differently wrong — and it is what stops hand-authored
-accepted phrasings from quietly overfitting to answers we've already seen.
+**Correctness** is the primary score, with the deterministic string matcher
+kept beside it as a guardrail. The roles started the other way round and were
+swapped on evidence: on 54 curated runs the matcher produced three silent false
+passes — an accepted phrasing matching text that did not answer the question —
+and the judge flagged all three. The failure modes are opposite, which is why
+both are reported: the matcher fails by passing something confidently, the
+judge fails by abstaining. Neither overrides the other, and a disagreement is
+surfaced for a human rather than resolved automatically.
 
 Two calls rather than one, because of a specific failure mode: if the judge
 sees the agent's answer while deciding whether the *question* was ambiguous, a
@@ -173,10 +176,11 @@ def _stamp(out: dict) -> dict:
 
 
 def correctness(case: Case, answer: str, client=None) -> dict:
-    """Second opinion on correctness. Never the headline number.
+    """Primary correctness signal, reported alongside the string matcher.
 
     Sees the question, the reference and the answer — deliberately not the
-    retrieved text, which would turn this into consistency-with-retrieval.
+    retrieved text, which would turn this into consistency-with-retrieval,
+    the question faithfulness asks.
     """
     content = (
         f"QUESTION\n{case.question}\n\n"

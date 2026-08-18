@@ -8,8 +8,8 @@
 | **Correct** (judge, primary) | 37/52 (71%) | 21/26 (81%) |
 | Correct (contains, guardrail) | 28/45 (62%) | 23/30 (77%) |
 | Guardrail disagrees with judge | 0 | 0 |
-| **pass^k** (correct on every repeat) | 13/18 (72%) | 7/9 (78%) |
-|   of which | 13 solid (k/k) · 0 flaky · 5 systematic (0/k) | 7 solid (k/k) · 0 flaky · 2 systematic (0/k) |
+| **pass^k** (correct on every repeat) | 12/18 (67%) | 7/9 (78%) |
+|   of which | 12 solid (k/k) · 0 flaky · 5 systematic (0/k) · 1 incomplete | 7 solid (k/k) · 0 flaky · 1 systematic (0/k) · 1 incomplete |
 | Evidence retrieved | 27/42 (64%) | 24/30 (80%) |
 | Answer completeness (mean) | 65% | 77% |
 | Searched at all | 51/54 (94%) | 30/30 (100%) |

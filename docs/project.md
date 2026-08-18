@@ -469,7 +469,7 @@ summary would average a curated set against a random one and mean nothing.
 | 1 | Design the tool | ✅ Tool schema, result format, error/empty shapes, first prompt |
 | 2 | Build e2e | ✅ CLI works; cache works; tests green |
 | 3 | Build eval harness | ✅ Cases → agent → graders → review + labels + traces; resumable |
-| 4 | Design & build eval set | ✅ 11 curated (one per mode) + 20 frozen random NQ; verified against live retrieval |
+| 4 | Design & build eval set | ✅ 18 curated + 20 frozen random NQ + 10 disjoint holdout; verified against live retrieval |
 | 5 | Run & manually debug | ✅ Read pass 31 runs, hand-labelled, taxonomy in `error-analysis.md`. Set rebuilt to 18 + 10 holdout; matcher and judge built and calibrated |
 | 6 | Iterate | 🔄 V0 baseline measured (84 runs). Next: `fetch_article` → V1 → delta on curated *and* holdout |
 | — | Bonus, if time | No-tool control arm · safeguards cases · Haiku vs Sonnet baseline |
@@ -524,7 +524,7 @@ DB, no orchestration layer. API key from `.env` or the environment.
 
 ## 6. Testing
 
-226 tests: 224 offline (stub Anthropic client, no key, no network) + 2 live-API
+272 tests: 270 offline (stub Anthropic client, no key, no network) + 2 live-API
 behind `WIKIAGENT_NETWORK=1`. The whole suite runs in under half a second, so
 there's never a reason to skip it.
 
