@@ -7,3 +7,9 @@ cache/
 .DS_Store
 misc-dont-read/
 .env
+
+# Conversation transcripts exported by the CLI (any date-stamped export)
+20*-*.txt
+
+# Anthropic's assignment brief - kept locally, not republished
+docs/assignment.md

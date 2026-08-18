@@ -17,7 +17,7 @@ Use failures to drive iteration: observe → categorize → fix → evaluate.
 
 # Additional docs and references
 More details are under `docs/`. Load them only when needed to avoid context bloat.
-- `assignment.md` — full assignment details
+- `assignment.md` — the assignment brief (kept locally; not published)
 - `reference.md` — prompt engineering and eval methodology references
 - `project.md` - this where the spec live and we keep it up to date with decision we take
 - Add docs references where needed like design doc / execution plan (some you might need to create)

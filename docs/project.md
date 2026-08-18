@@ -11,7 +11,7 @@ Last updated: 2026-08-17 (V0 baseline measured; `fetch_article` is next)
 ## 1. Goal
 
 Build a system that answers questions using Claude + Wikipedia, and an eval
-suite that measures how well it works. Assignment details in `assignment.md`;
+suite that measures how well it works. Assignment brief kept locally in `assignment.md` (not published);
 methodology pointers in `references.md`.
 
 Deliverables: runnable prototype, code, design rationale (video + doc).
