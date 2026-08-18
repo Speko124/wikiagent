@@ -126,6 +126,17 @@ def _metrics(rows: list[dict]) -> dict:
         "mean_fetches": (f"{statistics.mean([r.get('n_fetches', 0) for r in ok]):.2f}"
                          if ok else "n/a"),
         "failed_fetches": str(sum(r.get("failed_fetches", 0) for r in ok)),
+        # Distribution, not just the mean. One fetch is the intended
+        # escalation and costs exactly one turn; two means the agent is lost,
+        # and an average over 54 runs hides which of those is happening.
+        "fetch_spread": " · ".join(
+            f"{n}x{sum(1 for r in ok if r.get('n_fetches', 0) == n)}"
+            for n in sorted({r.get("n_fetches", 0) for r in ok})
+        ) or "n/a",
+        "turns_by_fetch": " · ".join(
+            f"{n} fetch: {statistics.mean([r['n_turns'] for r in ok if r.get('n_fetches', 0) == n]):.1f}t"
+            for n in sorted({r.get("n_fetches", 0) for r in ok})
+        ) or "n/a",
         "unescalated_fetches": str(sum(
             1 for r in ok if r.get("n_fetches") and not r.get("escalated"))),
         "corroboration": f"{statistics.mean([len(r['cited_titles']) for r in ok]):.1f}"
@@ -289,6 +300,8 @@ def compare(curated_dir, holdout_dir=None) -> str:
         ("Turns", "turns"),
         ("Runs that opened an article", "fetch_rate"),
         ("Fetches per run", "mean_fetches"),
+        ("Fetches per run (spread)", "fetch_spread"),
+        ("Turns by fetch count", "turns_by_fetch"),
         ("Failed fetches", "failed_fetches"),
         ("Fetches with no prior search", "unescalated_fetches"),
         ("Articles named per answer", "corroboration"),

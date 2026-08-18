@@ -1,0 +1,147 @@
+{
+  "question": "where is let's make a deal filmed 2018",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v1",
+  "prompt_digest": "c243201bc72665bb",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "The Wikipedia article doesn't provide specific information about the 2018 filming location. Based on what I found, the current version of Let's Make a Deal has been airing on CBS since 2009 with Wayne Brady as host, but the article doesn't specify where it was filmed in 2018.\n\nAccording to Wikipedia's \"Let's Make a Deal\" article, the show has been produced in various locations over its history, but the specific filming location for 2018 is not mentioned in the available Wikipedia content. To get this information, you might need to check other sources like IMDb or the official CBS website, as Wikipedia doesn't appear to have documented this particular detail.",
+  "error": null,
+  "latency_s": 4.357,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_fetches": 1,
+    "fetched_titles": [
+      "Let's Make a Deal"
+    ],
+    "escalated": true,
+    "n_turns": 3,
+    "cache_hits": 2,
+    "queries": [
+      "Let's Make a Deal filming location",
+      "Let's Make a Deal"
+    ],
+    "shown_titles": [
+      "Let's Make a Deal",
+      "Let's Make It Legal",
+      "Wayne Brady"
+    ],
+    "retrieved_titles": [
+      "Let's Make a Deal",
+      "Let's Make It Legal",
+      "Wayne Brady",
+      "Wonder Man (TV series)",
+      "Bryna Productions"
+    ],
+    "usage": {
+      "input_tokens": 7156,
+      "output_tokens": 310,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I'll search for information about where \"Let's Make a Deal\" was filmed in 2018.",
+      "tool_calls": [
+        {
+          "query": "Let's Make a Deal filming location",
+          "raw": {
+            "query": "Let's Make a Deal filming location",
+            "results": [
+              {
+                "title": "Let's Make a Deal",
+                "url": "https://en.wikipedia.org/wiki/Let%27s_Make_a_Deal",
+                "extract": "Let's Make a Deal (also known as LMAD) is an American television game show that originated in the United States in 1963 and has since been produced in many countries throughout the world. The program was created and produced by Stefan Hatos and Monty Hall, the latter serving as its host for nearly 30 years. The format of Let's Make a Deal involves selected members of the studio audience, referred to as \"traders\", making deals with the host. In most cases, a trader will be offered something of value and given a choice of whether to keep it or exchange it for a different item. The program's defining game mechanism is that at least one of the items is hidden from the trader until the choice has been made. Only after the items are revealed does the trader learn if they have chosen something of a higher or lower value than their starting item, or if they have received a comedic \"zonk\" prize with little or no value. When Let's Make a Deal first started, contestants wore suits and dresses, normal attire for the time. In short order, however, audience members began to dress in outrageous and unique costumes to increase their chances of being selected as a trader, and that has become a signature feature of the show. The current edition of Let's Make a Deal has aired on CBS since October 5, 2009, when it took over the spot on the network's daytime schedule vacated by the soap opera Guiding Light. [...]",
+                "pageid": 356928
+              },
+              {
+                "title": "Let's Make It Legal",
+                "url": "https://en.wikipedia.org/wiki/Let%27s_Make_It_Legal",
+                "extract": "Let's Make It Legal is a 1951 American romantic comedy film directed by Richard Sale and starring Claudette Colbert, Macdonald Carey, Zachary Scott, Barbara Bates, Marilyn Monroe, Robert Wagner, and Frank Cady. The film was produced by Robert Bassler from a screenplay by F. Hugh Herbert and I. A. L. Diamond, based on a story by Mortimer Braus entitled \"My Mother-in-Law, Miriam\".",
+                "pageid": 9652359
+              },
+              {
+                "title": "Wayne Brady",
+                "url": "https://en.wikipedia.org/wiki/Wayne_Brady",
+                "extract": "Wayne Alphonso Brady (born June 2, 1972) is an American comedian, actor, and singer. He is a regular cast member on the American version of the improvisational comedy television series Whose Line Is It Anyway? He was the host of the daytime talk show The Wayne Brady Show, the original host of Fox's Don't Forget the Lyrics!, and he has hosted Let's Make a Deal since its 2009 revival. Brady also performs musical theatre; he portrayed Lola/Simon in the Tony Award\u2013winning musical Kinky Boots on Broadway from November 2015 to March 2016. He\u2019s also appeared on Broadway in Chicago, The Wiz, and Moulin Rouge! The Musical. Brady played Aaron Burr in the Chicago production of Hamilton from January to April 2017. Brady has won five Emmy Awards. He won his first Emmy Award for his work on Whose Line Is It Anyway? in 2003, two more in the next year for The Wayne Brady Show, and two for Let's Make a Deal. He has also been nominated for two Grammy Awards: Best Traditional R&B Vocal Performance for his cover of the Sam Cooke song \"A Change Is Gonna Come,\" and Best Musical Theater Album for the soundtrack of The Wiz.",
+                "pageid": 524997
+              },
+              {
+                "title": "Wonder Man (TV series)",
+                "url": "https://en.wikipedia.org/wiki/Wonder_Man_(TV_series)",
+                "extract": "Wonder Man is an American television series created by Destin Daniel Cretton and Andrew Guest for the streaming service Disney+, based on the Marvel Comics character Simon Williams / Wonder Man. It is the 17th television series in the Marvel Cinematic Universe (MCU) from Marvel Studios and was produced under its Marvel Television label. Sharing continuity with the films of the MCU, the series follows actors Simon Williams and Trevor Slattery. Guest served as showrunner. Yahya Abdul-Mateen II stars as Simon Williams, alongside X Mayo, Zlatko Buri\u0107, Ben Kingsley (Slattery), Arian Moayed, Joe Pantoliano, Byron Bowers, and Josh Gad. In December 2021, Cretton signed an overall deal with Marvel Studios to create television series for Disney+, with a comedy series already in development at that point. Two different ideas about actors, one centered on Simon Williams and the other on Trevor Slattery, were combined into a single series which was reported as Wonder Man in June 2022, with Guest involved and Cretton directing episodes. Kingsley was set to return from previous MCU media in August and Abdul-Mateen joined the cast that October. Filming began in April 2023 on location in Los Angeles, with James Ponsoldt, Tiffany Johnson, and Stella Meghie also directing episodes. Production was shut down in May due to the 2023 Writers Guild of America strike, and resumed by early January 2024. Filming concluded that March and post-production ended around September. [...]",
+                "pageid": 69448405
+              },
+              {
+                "title": "Bryna Productions",
+                "url": "https://en.wikipedia.org/wiki/Bryna_Productions",
+                "extract": "Bryna Productions (later renamed The Bryna Company) is an American independent film and television production company established by actor Kirk Douglas in 1949. The company also produced a handful of films through its subsidiaries, Michael Productions, Joel Productions and Douglas and Lewis Productions, and outside the United States through Brynaprod. Other subsidiaries included Eric Productions, which produced stage plays, Peter Vincent Music, a music publishing company, Bryna International, a photographic service company, and Public Relations Consultants, which supervised the publicity of its early films. Douglas named the main company after his mother, Bryna Demsky Danielovitch (Bryna is pronounced Brina with a long i); its primary subsidiaries were named after his sons: Michael Douglas, Joel Douglas, Peter Douglas and Eric Douglas. In 1970, Bryna Productions was renamed The Bryna Company, when Douglas welcomed his children and second wife into the firm. Nevertheless, Michael, Joel and Peter, wanting to establish individual identities, went on to form their own independent film production companies. The company had some major film successes, including Paths of Glory, The Vikings, Spartacus, Seven Days in May, Seconds, Grand Prix, One Flew Over the Cuckoo's Nest, The Final Countdown, and Something Wicked This Way Comes. [...]",
+                "pageid": 36890459
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Let's Make a Deal (id 356928)\nLet's Make a Deal (also known as LMAD) is an American television game show that originated in the United States in 1963 and has since been produced in many countries throughout the world. The program was created and produced by Stefan Hatos and Monty Hall, the latter serving as its host for nearly 30 years. The format of Let's Make a Deal involves selected members of the studio audience, referred to as \"traders\", making deals with the host. In most cases, a trader will be offered something of value and given a choice of whether to keep it or exchange it for a different item. The program's defining game mechanism is that at least one of the items is hidden from the trader until the choice has been made. Only after the items are revealed does the trader learn if they have chosen something of a higher or lower value than their starting item, or if they have received a comedic \"zonk\" prize with little or no value. When Let's Make a Deal first started, contestants wore suits and dresses, normal attire for the time. In short order, however, audience members began to dress in outrageous and unique costumes to increase their chances of being selected as a trader, and that has become a signature feature of the show. The current edition of Let's Make a Deal has aired on CBS since October 5, 2009, when it took over the spot on the network's daytime schedule vacated by the soap opera Guiding Light. [...]\n\n[2] Let's Make It Legal (id 9652359)\nLet's Make It Legal is a 1951 American romantic comedy film directed by Richard Sale and starring Claudette Colbert, Macdonald Carey, Zachary Scott, Barbara Bates, Marilyn Monroe, Robert Wagner, and Frank Cady. The film was produced by Robert Bassler from a screenplay by F. Hugh Herbert and I. A. L. Diamond, based on a story by Mortimer Braus entitled \"My Mother-in-Law, Miriam\".\n\n[3] Wayne Brady (id 524997)\nWayne Alphonso Brady (born June 2, 1972) is an American comedian, actor, and singer. He is a regular cast member on the American version of the improvisational comedy television series Whose Line Is It Anyway? He was the host of the daytime talk show The Wayne Brady Show, the original host of Fox's Don't Forget the Lyrics!, and he has hosted Let's Make a Deal since its 2009 revival. Brady also performs musical theatre; he portrayed Lola/Simon in the Tony Award\u2013winning musical Kinky Boots on Broadway from November 2015 to March 2016. He\u2019s also appeared on Broadway in Chicago, The Wiz, and Moulin Rouge! The Musical. Brady played Aaron Burr in the Chicago production of Hamilton from January to April 2017. Brady has won five Emmy Awards. He won his first Emmy Award for his work on Whose Line Is It Anyway? in 2003, two more in the next year for The Wayne Brady Show, and two for Let's Make a Deal. He has also been nominated for two Grammy Awards: Best Traditional R&B Vocal Performance for his cover of the Sam Cooke song \"A Change Is Gonna Come,\" and Best Musical Theater Album for the soundtrack of The Wiz.",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1182,
+      "output_tokens": 81,
+      "cache_read_tokens": 0,
+      "latency_s": 1.1531884170253761
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Let me fetch the full article about Let's Make a Deal to find more specific information about the 2018 filming location.",
+      "tool_calls": [
+        {
+          "query": "Let's Make a Deal",
+          "raw": {
+            "query": "Let's Make a Deal",
+            "results": [
+              {
+                "title": "Let's Make a Deal",
+                "url": "https://en.wikipedia.org/wiki/Let's_Make_a_Deal",
+                "extract": "Let's Make a Deal (also known as LMAD) is an American television game show that originated in the United States in 1963 and has since been produced in many countries throughout the world. The program was created and produced by Stefan Hatos and Monty Hall, the latter serving as its host for nearly 30 years. The format of Let's Make a Deal involves selected members of the studio audience, referred to as \"traders\", making deals with the host. In most cases, a trader will be offered something of value and given a choice of whether to keep it or exchange it for a different item. The program's defining game mechanism is that at least one of the items is hidden from the trader until the choice has been made. Only after the items are revealed does the trader learn if they have chosen something of a higher or lower value than their starting item, or if they have received a comedic \"zonk\" prize with little or no value. When Let's Make a Deal first started, contestants wore suits and dresses, normal attire for the time. In short order, however, audience members began to dress in outrageous and unique costumes to increase their chances of being selected as a trader, and that has become a signature feature of the show. The current edition of Let's Make a Deal has aired on CBS since October 5, 2009, when it took over the spot on the network's daytime schedule vacated by the soap opera Guiding Light. Wayne Brady is the host of the current series, with Jonathan Mangum as his announcer/assistant. Tiffany Coyne is the current model, joining in 2010, with musician Cat Gray in 2011. The 15th season of the current version premiered on September 25, 2023, and six primetime episodes were filmed during the season. One is the show's Christmas primetime episode, and five more were broadcast in January and February 2024, between seasons of Survivor. The show is owned by Glass Entertainment Group (owned by Nancy Glass) following an August 2021 acquisition of Hatos-Hall assets, with Sharon Hall, a former Endemol Shine executive, as the consultant. As of January 2022, CAN'T STOP media has been in charge of the format's international distribution. == Broadcast history == Let's Make a Deal first aired on NBC on December 30, 1963, as part of its daytime schedule. After 1,257 episodes on NBC Daytime and 16 episodes on NBC Primetime, the show moved to ABC on December 30, 1968, where it remained until July 9, 1976; and on two occasions the show was given a weekly nighttime spot on those networks. The first syndicated edition of Let's Make a Deal premiered on August 30, 1971. Distributed by ABC Films, and then by its successor Worldvision Enterprises once the fin-syn rules were enacted, the series ran until 1977 and aired weekly. The show originally premiered at 2:00 pm Eastern (1:00 pm Central), replacing the game show People Will Talk. After 5 months, it was moved to 1:30 pm Eastern (12:30 pm Central), to make the show a runaway hit. The show had practically no trouble whatsoever against As the World Turns on CBS and mostly drama reruns on ABC. After the show moved to ABC, the show continues to be a hit and dominant at 1:30 pm, this time facing off against game shows on NBC. In 1975, the trouble came to an end, when former lead-out Days of Our Lives expanding to an hour, and started beating Deal, drawing away younger audiences. Also that year, ABC lured away Fred Silverman from CBS, and wanted to revamp the network's daytime image. During the week of December 1\u20138, 1975, the show went to an hour-long format, with the intention of making it permanent if successful. Although Deal continued to produce high ratings in the 1:30 pm slot, Silverman moved the show to noon, replacing Showoffs, thus putting it up against High Rollers and The Magnificent Marble Machine on NBC and The Young and the Restless on CBS at first, moving Rhyme and Reason to Deal's former timeslot and The Neighbors and later Break the Bank to Rhyme and Reason's former time slot. Silverman, ABC head of daytime programming Michael Brockman and other ABC executives were surprised, though when Deal actually beat The Magnificent Marble Machine in the ratings, the show actually failed to draw, a 30 share that NBC daytime executives required a show to have in order to stay on its daytime schedule. Marble went into reruns afterward due to the delay of the planned replacement The Fun Factory, and after the strike ended, NBC picked up The Fun Factory on June 14, 1976, which ran about even with Let's Make a Deal in the ratings, with The Fun Factory having perhaps a slight lead, due to its more traditional housewife target audience. However, Brockman and ABC president Silverman were not interested in seeing an aging show like Let's Make a Deal stand in the way of his plans for a more youthful image for ABC's daytime lineup, so he resolved to cancel the daytime series outright. On July 9, 1976, the show came to an end on daytime, on July 12, Hot Seat (a Heatter-Quigley series) took over the timeslot, but it did not last long as Deal had and the more successful Family Feud took over the 1:30 slot once owned for the past few years by Deal. The daytime run intended to come back with a new host, but never happened. The nighttime show continued in syndication, moved production to Las Vegas Hilton, but this too ended on May 21, 1977, and Hall moved on to host a short-lived NBC game It's Anybody Guess, but did not last long. A revival of the series based in Hall's native Canada was launched in 1980 and aired in syndication on American and Canadian stations for one season. This series was produced by Catalena Productions and distributed in America by Rhodes Productions, Catalena's partner company; Catalena was forced into bankruptcy by an unpaid Monty Hall in August 1981. In the fall of 1984, the series returned for a third run in syndication as The All-New Let's Make a Deal. Running for two seasons until 1986, this series was distributed by Telepictures. NBC revived Let's Make a Deal twice in 13 years. The first was a daytime series in 1990 that was the first to not be produced or hosted by Monty Hall. Instead, the show was a production of Ron Greenberg and Dick Clark, and featured Bob Hilton (best known for announcing other game shows) as host (although Hall would eventually return as guest host after Hilton's dismissal). A primetime edition was launched in 2003 but drew poor ratings and was canceled after three of its intended five episodes had aired. This version had reporter Billy Bush as host, and had a significantly larger budget. A partial remake called Big Deal, hosted by Mark DeCarlo, was broadcast on Fox in 1996. In 1998 and 1999, Buena Vista Television (now Disney\u2013ABC Domestic Television) was in talks with Stone-Stanley (the producers of Big Deal) to create a revival hosted by Gordon Elliott, but it was never picked up. The show was one of several used as part of the summer series Gameshow Marathon on CBS in 2006, hosted by Ricki Lake. The current edition of Let's Make a Deal premiered on October 5, 2009. Like the show it replaced, Guiding Light, CBS gives affiliates two options on when to air the game show. Some markets, particularly those in Eastern time such as flagship WCBS-TV, air Let's Make a Deal at 10:00 am to serve as the lead in to The Price Is Right. Others air the game show in the 3:00 pm Eastern slot where Guiding Light traditionally had aired, where as of 2025 it serves as the lead out program for the serial Beyond the Gates. [...]",
+                "pageid": 356928
+              }
+            ],
+            "top_k": 1,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Let's Make a Deal (id 356928)\nLet's Make a Deal (also known as LMAD) is an American television game show that originated in the United States in 1963 and has since been produced in many countries throughout the world. The program was created and produced by Stefan Hatos and Monty Hall, the latter serving as its host for nearly 30 years. The format of Let's Make a Deal involves selected members of the studio audience, referred to as \"traders\", making deals with the host. In most cases, a trader will be offered something of value and given a choice of whether to keep it or exchange it for a different item. The program's defining game mechanism is that at least one of the items is hidden from the trader until the choice has been made. Only after the items are revealed does the trader learn if they have chosen something of a higher or lower value than their starting item, or if they have received a comedic \"zonk\" prize with little or no value. When Let's Make a Deal first started, contestants wore suits and dresses, normal attire for the time. In short order, however, audience members began to dress in outrageous and unique costumes to increase their chances of being selected as a trader, and that has become a signature feature of the show. The current edition of Let's Make a Deal has aired on CBS since October 5, 2009, when it took over the spot on the network's daytime schedule vacated by the soap opera Guiding Light. Wayne Brady is the host of the current series, with Jonathan Mangum as his announcer/assistant. Tiffany Coyne is the current model, joining in 2010, with musician Cat Gray in 2011. The 15th season of the current version premiered on September 25, 2023, and six primetime episodes were filmed during the season. One is the show's Christmas primetime episode, and five more were broadcast in January and February 2024, between seasons of Survivor. The show is owned by Glass Entertainment Group (owned by Nancy Glass) following an August 2021 acquisition of Hatos-Hall assets, with Sharon Hall, a former Endemol Shine executive, as the consultant. As of January 2022, CAN'T STOP media has been in charge of the format's international distribution. == Broadcast history == Let's Make a Deal first aired on NBC on December 30, 1963, as part of its daytime schedule. After 1,257 episodes on NBC Daytime and 16 episodes on NBC Primetime, the show moved to ABC on December 30, 1968, where it remained until July 9, 1976; and on two occasions the show was given a weekly nighttime spot on those networks. The first syndicated edition of Let's Make a Deal premiered on August 30, 1971. Distributed by ABC Films, and then by its successor Worldvision Enterprises once the fin-syn rules were enacted, the series ran until 1977 and aired weekly. The show originally premiered at 2:00 pm Eastern (1:00 pm Central), replacing the game show People Will Talk. After 5 months, it was moved to 1:30 pm Eastern (12:30 pm Central), to make the show a runaway hit. The show had practically no trouble whatsoever against As the World Turns on CBS and mostly drama reruns on ABC. After the show moved to ABC, the show continues to be a hit and dominant at 1:30 pm, this time facing off against game shows on NBC. In 1975, the trouble came to an end, when former lead-out Days of Our Lives expanding to an hour, and started beating Deal, drawing away younger audiences. Also that year, ABC lured away Fred Silverman from CBS, and wanted to revamp the network's daytime image. During the week of December 1\u20138, 1975, the show went to an hour-long format, with the intention of making it permanent if successful. Although Deal continued to produce high ratings in the 1:30 pm slot, Silverman moved the show to noon, replacing Showoffs, thus putting it up against High Rollers and The Magnificent Marble Machine on NBC and The Young and the Restless on CBS at first, moving Rhyme and Reason to Deal's former timeslot and The Neighbors and later Break the Bank to Rhyme and Reason's former time slot. Silverman, ABC head of daytime programming Michael Brockman and other ABC executives were surprised, though when Deal actually beat The Magnificent Marble Machine in the ratings, the show actually failed to draw, a 30 share that NBC daytime executives required a show to have in order to stay on its daytime schedule. Marble went into reruns afterward due to the delay of the planned replacement The Fun Factory, and after the strike ended, NBC picked up The Fun Factory on June 14, 1976, which ran about even with Let's Make a Deal in the ratings, with The Fun Factory having perhaps a slight lead, due to its more traditional housewife target audience. However, Brockman and ABC president Silverman were not interested in seeing an aging show like Let's Make a Deal stand in the way of his plans for a more youthful image for ABC's daytime lineup, so he resolved to cancel the daytime series outright. On July 9, 1976, the show came to an end on daytime, on July 12, Hot Seat (a Heatter-Quigley series) took over the timeslot, but it did not last long as Deal had and the more successful Family Feud took over the 1:30 slot once owned for the past few years by Deal. The daytime run intended to come back with a new host, but never happened. The nighttime show continued in syndication, moved production to Las Vegas Hilton, but this too ended on May 21, 1977, and Hall moved on to host a short-lived NBC game It's Anybody Guess, but did not last long. A revival of the series based in Hall's native Canada was launched in 1980 and aired in syndication on American and Canadian stations for one season. This series was produced by Catalena Productions and distributed in America by Rhodes Productions, Catalena's partner company; Catalena was forced into bankruptcy by an unpaid Monty Hall in August 1981. In the fall of 1984, the series returned for a third run in syndication as The All-New Let's Make a Deal. Running for two seasons until 1986, this series was distributed by Telepictures. NBC revived Let's Make a Deal twice in 13 years. The first was a daytime series in 1990 that was the first to not be produced or hosted by Monty Hall. Instead, the show was a production of Ron Greenberg and Dick Clark, and featured Bob Hilton (best known for announcing other game shows) as host (although Hall would eventually return as guest host after Hilton's dismissal). A primetime edition was launched in 2003 but drew poor ratings and was canceled after three of its intended five episodes had aired. This version had reporter Billy Bush as host, and had a significantly larger budget. A partial remake called Big Deal, hosted by Mark DeCarlo, was broadcast on Fox in 1996. In 1998 and 1999, Buena Vista Television (now Disney\u2013ABC Domestic Television) was in talks with Stone-Stanley (the producers of Big Deal) to create a revival hosted by Gordon Elliott, but it was never picked up. The show was one of several used as part of the summer series Gameshow Marathon on CBS in 2006, hosted by Ricki Lake. The current edition of Let's Make a Deal premiered on October 5, 2009. Like the show it replaced, Guiding Light, CBS gives affiliates two options on when to air the game show. Some markets, particularly those in Eastern time such as flagship WCBS-TV, air Let's Make a Deal at 10:00 am to serve as the lead in to The Price Is Right. Others air the game show in the 3:00 pm Eastern slot where Guiding Light traditionally had aired, where as of 2025 it serves as the lead out program for the serial Beyond the Gates. [...]",
+          "top_k": 1,
+          "tool": "fetch_article"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 2020,
+      "output_tokens": 84,
+      "cache_read_tokens": 0,
+      "latency_s": 1.0823441660031676
+    },
+    {
+      "index": 2,
+      "thinking": null,
+      "text": "The Wikipedia article doesn't provide specific information about the 2018 filming location. Based on what I found, the current version of Let's Make a Deal has been airing on CBS since 2009 with Wayne Brady as host, but the article doesn't specify where it was filmed in 2018.\n\nAccording to Wikipedia's \"Let's Make a Deal\" article, the show has been produced in various locations over its history, but the specific filming location for 2018 is not mentioned in the available Wikipedia content. To get this information, you might need to check other sources like IMDb or the official CBS website, as Wikipedia doesn't appear to have documented this particular detail.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 3954,
+      "output_tokens": 145,
+      "cache_read_tokens": 0,
+      "latency_s": 2.120284000004176
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "question": "What's the weather in Paris right now?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v1",
+  "prompt_digest": "c243201bc72665bb",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "I don't have access to real-time weather data. My tools are limited to searching Wikipedia, which contains encyclopedic information rather than current weather conditions.\n\nTo check the weather in Paris right now, I'd recommend:\n- Weather.com\n- Weather.gov\n- Your local weather service\n- Google Weather\n- Your phone's built-in weather app\n\nThese sources provide up-to-date temperature, precipitation, and other current weather information.",
+  "error": null,
+  "latency_s": 1.51,
+  "summary": {
+    "searched": false,
+    "n_searches": 0,
+    "n_fetches": 0,
+    "fetched_titles": [],
+    "escalated": false,
+    "n_turns": 1,
+    "cache_hits": 0,
+    "queries": [],
+    "shown_titles": [],
+    "retrieved_titles": [],
+    "usage": {
+      "input_tokens": 1180,
+      "output_tokens": 98,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I don't have access to real-time weather data. My tools are limited to searching Wikipedia, which contains encyclopedic information rather than current weather conditions.\n\nTo check the weather in Paris right now, I'd recommend:\n- Weather.com\n- Weather.gov\n- Your local weather service\n- Google Weather\n- Your phone's built-in weather app\n\nThese sources provide up-to-date temperature, precipitation, and other current weather information.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1180,
+      "output_tokens": 98,
+      "cache_read_tokens": 0,
+      "latency_s": 1.509586833009962
+    }
+  ]
+}

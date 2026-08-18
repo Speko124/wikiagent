@@ -327,3 +327,14 @@ def test_fetch_use_is_reported_as_a_rate_not_only_a_total():
     m = report._metrics(rows)
     assert m["fetch_rate"] == "1/2 (50%)"
     assert m["unescalated_fetches"] == "0"
+
+
+def test_fetch_spread_separates_escalation_from_thrash():
+    """One fetch is the intended pattern and costs one extra turn; two means
+    the agent is lost. A mean over 54 runs cannot tell those apart - in V1 the
+    only two-fetch runs were the single case that hit the turn guard."""
+    rows = [row("a", n_fetches=0, n_turns=2), row("b", n_fetches=1, n_turns=3),
+            row("c", n_fetches=2, n_turns=9)]
+    m = report._metrics(rows)
+    assert m["fetch_spread"] == "0x1 · 1x1 · 2x1"
+    assert "2 fetch: 9.0t" in m["turns_by_fetch"]

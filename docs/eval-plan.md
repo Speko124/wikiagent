@@ -210,3 +210,69 @@ specs were authored before any run existed.
   agent.
 * Judge model and rubric version recorded in every row; changing either forces
   re-validation.
+
+---
+
+## 3. Backlog — candidate fixes, not decisions
+
+Ordered by the evidence behind them, not by appeal. Nothing here is scheduled;
+each needs a measurement before it earns a version.
+
+### B1. The 8,000-char fetch cap is the binding constraint
+
+Strongest evidence, and it displaced the tool's existence as the limiting
+factor. 6 of 9 distinct fetched articles in V1 hit the cap. Both remaining
+systematic failures trace to it or to what follows it:
+`lets-make-a-deal-location`'s answer sits at offset ~15,650 of a 44,579-char
+article — in the prose, past what we read.
+
+Options, cheapest first: raise the cap · fetch by section · **give the model a
+way to ask for more** (a `from_offset` argument, so paging is possible rather
+than the article being all-or-nothing).
+
+### B2. Absence claimed from truncated text
+
+The failure B1 produces. In V1, 8 runs asserted a fact was missing *from the
+article* when they had seen only the first 8,000 characters, never mentioning
+the cut. V0 was precise here ("the opening section"); V1 lost that precision
+because a truncated 8K article reads as complete.
+
+Two candidate fixes, and they are not exclusive: an answering rule that a fact
+cannot be called absent from text ending in `[...]`, and making the marker
+harder to miss than a four-character token the model has never once
+acknowledged — 0 of 54 runs in V0, and the same in V1.
+
+### B3. A summarizing sub-agent over the full article
+
+*Raised as a possibility, not yet evidenced.* Instead of returning raw article
+text to the agent, a second model call could read the whole article — no cap —
+and return the facts relevant to the question, or answer a targeted follow-up
+query against it.
+
+Why it is attractive: it removes the cap problem entirely rather than moving
+it, and it would fix `beat-bobby-flay-wins`, where the figure was on screen,
+untruncated, and the agent still declined — an extraction failure that a bigger
+cap does nothing for.
+
+Why it is not first: it adds a model call per fetch (cost and latency), it puts
+a second model between the agent and the evidence — which weakens grounding,
+the one dimension currently at zero fabrications across 138 runs — and the
+summarizer becomes a new component needing its own evaluation. B1 is a
+parameter change with direct evidence; this is an architecture change with an
+argument. **Measure B1 first, and if the remaining failures are extraction
+rather than reach, this becomes the leading candidate.**
+
+### B4. `top_k` as a lever
+
+Measured but small: 3 tool calls across V0 where the gold article was fetched
+and clipped by `top_k`, one of which decided an answer
+(`home-alone-toy-store--r2` adopted the rank-3 distractor while the right
+article sat at rank 4). Cheap to test since the over-fetch margin is already
+cached — no new retrieval needed.
+
+### B5. Prompt wording — generalise the fetch description
+
+The v1 description names "cast members, specific figures and dates", which may
+over-anchor. A generalised phrasing exists but was written after the V1 sweep,
+so it is unscored and belongs to a v2. Minimal on its own; bundle it with B1
+or B2 rather than spending a sweep on it alone.
