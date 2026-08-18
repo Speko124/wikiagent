@@ -214,4 +214,31 @@ whose answer does not exist in Wikipedia. Variance is concentrated: zero flips
 across 39 runs on cases with a reachable answer. An improvement smaller than
 about one whole case is not distinguishable from noise on this set.
 
-More: [docs/eval-plan.md](docs/eval-plan.md) · [docs/project.md](docs/project.md)
+## Guarantees worth knowing about
+
+- **Frozen artifacts.** Prompts, judge rubrics and the random question sets are
+  digest-tested. A calibrated rubric that gets edited detaches from the
+  calibration describing it, while every row still names it.
+- **The holdout cannot be read.** `--holdout` suppresses the review worksheet
+  and label file entirely, and the cross-arm report emits holdout aggregates
+  only — no case ids, no answers, no judge rationales. Enforced by tests, since
+  a holdout you have analysed is training data.
+- **Sweeps are resumable and failure-isolated**, errored runs are retried
+  rather than frozen in, and a resume refuses a changed config.
+- **Grader bugs cost a re-grade, not a re-run** — `evals/regrade.py` rebuilds
+  results from saved traces with no API calls, carrying paid-for judge verdicts
+  over untouched.
+
+---
+
+## Where to read more
+
+| Doc | What it holds |
+|---|---|
+| [design-rationale.md](docs/design-rationale.md) | **Start here.** Why every choice was made, and what three iterations found |
+| [error-analysis.md](docs/error-analysis.md) | The failure taxonomy, built from reading traces |
+| [eval-plan.md](docs/eval-plan.md) | Case set, rubric, and the backlog of candidate fixes |
+| [project.md](docs/project.md) | Living spec — every decision as it was taken |
+| [prompt-archive.md](docs/prompt-archive.md) | Replaced prompts and the defects that replaced them |
+| v1 / v1b / v2 trace reviews | Per-sweep analysis, including the ones that found bugs in the eval itself |
+
