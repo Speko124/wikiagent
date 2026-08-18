@@ -10,9 +10,18 @@ inside a single tool call, while a multi-hop question gathers its evidence
 across several by design. Without this, correcting that would have meant
 re-running and re-paying for 84 runs to fix a bug in our arithmetic.
 
-**Judge verdicts are carried over untouched**, never re-requested. They cost
-money, they are non-deterministic, and re-rolling them would silently change
-the judge/matcher agreement numbers that the audit depends on.
+**Judge verdicts are carried over untouched** when only grader code changed:
+they cost money, they are non-deterministic, and re-rolling them would move
+the judge/matcher agreement the audit depends on.
+
+**But a verdict is dropped when the reference it was judged against changed.**
+The judge is shown `question` and `expected`; if either is rewritten, the old
+verdict answers a question that is no longer being asked. Carrying it over
+looked harmless and produced a fabricated +3 improvement between two identical
+sweeps — the agent's answers and tool output were unchanged, only the reference
+had moved. That is the exact shape of silent corruption this harness exists to
+prevent, so a stale verdict is now dropped and the row is marked for
+re-judging.
 """
 
 from __future__ import annotations
@@ -42,13 +51,22 @@ def regrade(out_dir: str | Path, cases_path: str | Path) -> tuple[int, int]:
             continue
 
         fresh = graders.grade(case, Trace.load(trace_path))
-        # Everything the graders don't own is preserved verbatim — above all
-        # the judge verdict, which is paid for and non-deterministic.
+        # Everything the graders don't own is preserved verbatim, except a
+        # judge verdict whose reference has since been rewritten.
+        stale_judgement = (
+            row.get("judge") is not None
+            and (row.get("expected") != case.expected
+                 or row.get("question") != case.question)
+        )
         merged = {
             **fresh,
             **{k: row[k] for k in
-               ("run_id", "repeat", "trace", "question", "expected",
-                "case_notes", "config", "judge") if k in row},
+               ("run_id", "repeat", "trace", "config") if k in row},
+            "question": case.question,
+            "expected": case.expected,
+            "case_notes": case.notes,
+            "judge": None if stale_judgement else row.get("judge"),
+            "judge_stale": stale_judgement,
         }
         if merged != row:
             changed += 1

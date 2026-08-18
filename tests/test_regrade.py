@@ -86,3 +86,34 @@ def test_a_row_whose_case_no_longer_exists_is_left_alone(tmp_path):
     }) + "\n")
     regrade.regrade(tmp_path, cases)
     assert len(rows_of(tmp_path)) == 1
+
+
+def test_a_judge_verdict_is_dropped_when_its_reference_changed(tmp_path):
+    """The judge is shown `expected`. Rewriting it makes the old verdict an
+    answer to a question no longer being asked.
+
+    This produced a fabricated +3 between two identical V1 sweeps: the agent's
+    answers and tool output were byte-identical, only the reference had moved,
+    and carrying the verdicts over made it look like the model improved.
+    """
+    cases = build(tmp_path)
+    cases.write_text(json.dumps({
+        "id": "c1", "question": "q", "expected": "A DIFFERENT REFERENCE",
+        "dimensions": ["factual"], "answer_contains": [["1799"]],
+        "evidence_contains": [["1799"]],
+    }) + "\n")
+    regrade.regrade(tmp_path, cases)
+    row = rows_of(tmp_path)[0]
+    assert row["judge"] is None
+    assert row["judge_stale"] is True
+    assert row["expected"] == "A DIFFERENT REFERENCE"
+
+
+def test_a_verdict_survives_when_only_grader_code_changed(tmp_path):
+    """The other half. Re-rolling a paid, non-deterministic verdict for no
+    reason would move the judge/matcher agreement the audit depends on."""
+    cases = build(tmp_path)
+    regrade.regrade(tmp_path, cases)
+    row = rows_of(tmp_path)[0]
+    assert row["judge"]["correctness"]["why"] == "paid for"
+    assert row["judge_stale"] is False

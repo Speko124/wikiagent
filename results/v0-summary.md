@@ -17,6 +17,8 @@
 | Turns | 2.4 mean, 5 max | 2.2 mean, 4 max |
 | Runs that opened an article | 0/54 (0%) | 0/30 (0%) |
 | Fetches per run | 0.00 | 0.00 |
+| Fetches per run (spread) | 0x54 | 0x30 |
+| Turns by fetch count | 0 fetch: 2.4t | 0 fetch: 2.2t |
 | Failed fetches | 0 | 0 |
 | Fetches with no prior search | 0 | 0 |
 | Articles named per answer | 1.5 | 1.2 |

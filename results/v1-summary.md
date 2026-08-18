@@ -5,11 +5,11 @@
 | Metric | Curated | Holdout |
 |---|---|---|
 | Runs | 54 | 30 |
-| **Correct** (judge, primary) | 44/50 (88%) | 25/27 (93%) |
+| **Correct** (judge, primary) | 47/53 (89%) | 25/27 (93%) |
 | Correct (contains, guardrail) | 39/44 (89%) | 27/30 (90%) |
 | Guardrail disagrees with judge | 0 | 2 |
-| **pass^k** (correct on every repeat) | 14/17 (82%) | 9/10 (90%) |
-|   of which | 14 solid (k/k) · 1 flaky · 2 systematic (0/k) | 9 solid (k/k) · 0 flaky · 1 systematic (0/k) |
+| **pass^k** (correct on every repeat) | 15/18 (83%) | 9/10 (90%) |
+|   of which | 15 solid (k/k) · 1 flaky · 2 systematic (0/k) | 9 solid (k/k) · 0 flaky · 1 systematic (0/k) |
 | Evidence retrieved | 36/41 (88%) | 29/30 (97%) |
 | Answer completeness (mean) | 89% | 90% |
 | Searched at all | 50/53 (94%) | 30/30 (100%) |
@@ -17,14 +17,16 @@
 | Turns | 2.6 mean, 9 max | 2.7 mean, 10 max |
 | Runs that opened an article | 17/53 (32%) | 7/30 (23%) |
 | Fetches per run | 0.36 | 0.27 |
+| Fetches per run (spread) | 0x36 · 1x15 · 2x2 | 0x23 · 1x6 · 2x1 |
+| Turns by fetch count | 0 fetch: 2.1t · 1 fetch: 3.1t · 2 fetch: 9.0t | 0 fetch: 2.1t · 1 fetch: 3.7t · 2 fetch: 10.0t |
 | Failed fetches | 0 | 0 |
 | Fetches with no prior search | 0 | 0 |
 | Articles named per answer | 1.3 | 1.3 |
 | Answer length (chars) | 447 | 386 |
 | Output tokens | 234 | 240 |
 | Latency (median s) | 3.1 | 2.9 |
-| Judge/matcher disagreements | 0/37 | 1/25 |
-| Judge unclear, matcher confident | 3 | 3 |
+| Judge/matcher disagreements | 0/40 | 1/25 |
+| Judge unclear, matcher confident | 0 | 3 |
 | Errors | 1 | 0 |
 
 ## Answer × evidence
@@ -47,9 +49,9 @@ Computed from `answer_match`, `evidence_match` and `searched` — the same attri
 | 3 evidence: right article, fact not in the retrieved text | 5 | 0 |
 | 4 synthesis: had the evidence, answered wrong | 0 | 2 |
 | 5 grounding: answered from memory | 0 | 0 |
-| correct, grounded | 33 | 25 |
+| correct, grounded | 36 | 25 |
 | correct, evidence not checkable | 11 | 0 |
-| not scorable (abstention cases) | 3 | 3 |
+| not scorable (abstention cases) | 0 | 3 |
 
 ## Curated, by case
 
@@ -58,6 +60,7 @@ Computed from `answer_match`, `evidence_match` and `searched` — the same attri
 | arpanet-first-message | 0/2 | systematic |
 | lets-make-a-deal-location | 0/3 | systematic |
 | am-i-all-alone-writer | 2/3 | flaky |
+| beat-bobby-flay-wins | 3/3 | solid |
 | beethoven-premiere-attendance | 3/3 | solid |
 | bologna-oxford-older | 3/3 | solid |
 | eiffel-height | 3/3 | solid |
@@ -72,14 +75,6 @@ Computed from `answer_match`, `evidence_match` and `searched` — the same attri
 | tesla-origin | 3/3 | solid |
 | tosca-nationality | 3/3 | solid |
 | turing-nobel | 3/3 | solid |
-
-## Judge declined, matcher was confident (curated)
-
-The audit's most useful cell. A confident deterministic verdict the judge would not endorse is where an accepted phrasing is matching text that does not answer the question.
-
-- `beat-bobby-flay-wins#0` — matcher `True`, judge `unclear`: The reference states no figure is available without manual counting, while the answer provides a specific record; since it's uncertain if this figure is accurate or verifiable, this falls into a disputed/unclear category rather than a clear correctness judgment.
-- `beat-bobby-flay-wins#1` — matcher `True`, judge `unclear`: The reference indicates no single figure is stated, while the answer provides specific numbers not verifiable against the reference, making it impossible to confirm correctness.
-- `beat-bobby-flay-wins#2` — matcher `True`, judge `unclear`: The reference claims no figure exists, but the answer provides a specific sourced statistic (330-198 record) which may actually be accurate and answer the question, making this a case where the reference itself appears incomplete or outdated.
 
 ## Holdout
 
