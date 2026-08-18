@@ -184,6 +184,7 @@ to produce the same picture.
 | 5 · grounding — claimed what wasn't there | **0** | **0** | **0** | | **0** | **0** | **0** |
 | correct | 37 | 47 | 49 | | 21 | 25 | 26 |
 | not scorable (abstention cases) | 2 | 0 | 0 | | 4 | 3 | 2 |
+| **accuracy** | **71%** | **89%** | **91%** | | **81%** | **93%** | **93%** |
 
 Three things fall straight out of this table, and none are visible in an
 accuracy number:
@@ -266,6 +267,59 @@ questions, not more prompt.
 (71/81), v1 (89/93) and v2 (91/93), *including through a +18-point
 intervention*. Overfitting would show as that gap widening exactly when
 something was fixed. It didn't.
+
+
+### Every dimension, all three versions
+
+Reported in full rather than selectively, so improvements and degradations are
+equally visible. **Noise bar: ~3 runs (~6%) on the curated arm** — smaller
+movements are not results.
+
+| | v0 cur | v1 cur | v2 cur | | v0 hold | v1 hold | v2 hold |
+|---|---|---|---|---|---|---|---|
+| **Quality** | | | | | | | |
+| Correct (judge, primary) | 71% | **89%** | **91%** | | 81% | **93%** | **93%** |
+| Correct (contains, guardrail) | 62% | 89% | 91% | | 77% | 90% | 90% |
+| pass^3 | 13/18 | **15/18** | 15/18 | | 7/9 | **9/10** | 9/10 |
+| Completeness | 65% | **89%** | 91% | | 77% | **90%** | 90% |
+| **Retrieval** | | | | | | | |
+| Evidence retrieved | 64% | **88%** | 90% | | 80% | **97%** | **100%** |
+| Searched at all | 94% | 94% | 94% | | 100% | 100% | 100% |
+| Searches / run | 1.5 | 1.4 | 1.4 | | 1.2 | 1.4 | 1.3 |
+| Runs that opened an article | 0% | 32% | 37% | | 0% | 23% | 27% |
+| Fetches / run | 0 | 0.36 | 0.43 | | 0 | 0.27 | 0.37 |
+| Failed fetches | — | **0** | **0** | | — | **0** | **0** |
+| **Cost** | | | | | | | |
+| Turns (mean / max) | 2.4 / 5 | 2.6 / 10 | 2.7 / **8** | | 2.2 / 4 | 2.7 / 10 | 2.7 / **8** |
+| Output tokens | 223 | 234 | 251 | | 194 | 240 | 248 |
+| Answer length (chars) | 496 | 447 | 498 | | 399 | 386 | 411 |
+| Latency median (s) | 3.4 | 3.1 | 3.2 | | 3.1 | 2.9 | **2.4** |
+| **Instrument health** | | | | | | | |
+| Articles cited / answer | 1.5 | 1.3 | 1.3 | | 1.2 | 1.3 | 1.1 |
+| Judge/matcher disagreements | 0/31 | 0/40 | 1/41 | | 0/23 | 1/25 | 0/28 |
+| Judge unclear | 2 | 0 | 0 | | 4 | 3 | 2 |
+| Errors | 0 | 1 | **0** | | 0 | 0 | 0 |
+
+**What improved.** Quality and retrieval move together and clear the bar at
+v0→v1: correctness +18 curated / +12 held out, evidence retrieved +24 / +17,
+completeness +24 / +13. Held-out evidence retrieval reaches **100%** at v2 —
+every question's answer-bearing text was returned. Both correctness signals
+move in lockstep, which is worth more than either alone: they are computed
+independently and disagree on 1 of 41 runs.
+
+**What degraded, honestly.** Output tokens rose 223 → 251 (+13%) and answer
+length returned to the v0 level after dipping at v1 — the fetch tool makes
+answers slightly wordier. **Articles cited per answer fell 1.5 → 1.3**, and on
+the held-out arm 1.2 → 1.1: the agent leans on one deeply-read article where it
+used to name several, which is a small loss of corroboration and the one
+genuine regression here. Fetch usage climbed 32% → 37% for +2 correct runs, so
+the marginal fetch is buying less than the first ones did.
+
+**What stayed flat, and should have.** Search behaviour is unchanged across all
+three versions (94% searched, ~1.4 searches/run) — the intervention targeted
+retrieval *depth*, and it did not disturb retrieval *breadth*. Zero failed
+fetches and zero fetches without a preceding search, in every version, which is
+the check that the new tool never became a guessing mechanism.
 
 ---
 
