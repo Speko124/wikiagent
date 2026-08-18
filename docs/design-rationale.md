@@ -116,9 +116,11 @@ exactly:
 
 Plus corroboration (distinct articles cited), completeness (fraction of
 required facts), tool discipline, turns, tokens, latency — and **pass^k**,
-cases correct on *every* repeat, bucketed solid / flaky / systematic. A per-run
-rate hides the shape: 50% could be one case that always works beside one that
-never does.
+cases correct on *every* repeat, bucketed solid / flaky / systematic /
+incomplete. A per-run rate hides the shape: 50% could be one case that always
+works beside one that never does. It is **strict about unscored runs** — a
+repeat the judge would not score is not a demonstrated pass, so it blocks a
+`solid` claim rather than shrinking the denominator.
 
 **Judged, where determinism was measured to fail.** Two dimensions survived
 from five. *Ambiguity* is judged because the obvious deterministic proxy —
@@ -225,9 +227,9 @@ overclaimed.
 | Version | What changed | Curated | Holdout | pass^3 |
 |---|---|---|---|---|
 | *pre-baseline* | first draft; never scored | — | — | — |
-| **v0** | search only, intros, top-3 | 71% | 81% | 13/18 |
-| **v1** | **+ `fetch_article`** + 1 prompt line | **89%** | **93%** | 15/18 |
-| v1 repeat | identical, to measure variance | 89% | 92% | 16/18 |
+| **v0** | search only, intros, top-3 | 71% | 81% | 12/18 |
+| **v1** | **+ `fetch_article`** + 1 prompt line | **89%** | **93%** | **15/18** |
+| v1 repeat | identical, to measure variance | 89% | 92% | 15/18 |
 | **v2** | generalised escalation rule | **91%** | 93% | 15/18 |
 
 **Pre-baseline → v0** was defect repair, not tuning. The first draft hardcoded
@@ -280,7 +282,7 @@ movements are not results.
 | **Quality** | | | | | | | |
 | Correct (judge, primary) | 71% | **89%** | **91%** | | 81% | **93%** | **93%** |
 | Correct (contains, guardrail) | 62% | 89% | 91% | | 77% | 90% | 90% |
-| pass^3 | 13/18 | **15/18** | 15/18 | | 7/9 | **9/10** | 9/10 |
+| pass^3 | 12/18 | **15/18** | 15/18 | | 7/9 | **8/10** | 8/10 |
 | Completeness | 65% | **89%** | 91% | | 77% | **90%** | 90% |
 | **Retrieval** | | | | | | | |
 | Evidence retrieved | 64% | **88%** | 90% | | 80% | **97%** | **100%** |

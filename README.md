@@ -134,9 +134,10 @@ Three iterations. Each number below comes from a committed sweep in `results/`.
 | | Curated | Held out | pass^3 | Body-fact failures |
 |---|---|---|---|---|
 | **Pre-baseline** (never scored) | — | — | — | — |
-| **V0** search only | 71% | 81% | 13/18 | 12 |
+| **V0** search only | 71% | 81% | 12/18 | 15 |
 | **V1** + `fetch_article` | **89%** | **93%** | 15/18 | 5 |
-| **V1 repeat** (same prompt digest) | **89%** | 92% | 16/18 | 5 |
+| **V1 repeat** (same prompt digest) | **89%** | 92% | 15/18 | 5 |
+| **V2** generalised escalation | **91%** | **93%** | 15/18 | 4 |
 
 **The dominant failure was retrieval depth, and it was found by random
 questions rather than by the ones we wrote.** Of six failures in a 20-question
