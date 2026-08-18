@@ -1,0 +1,110 @@
+{
+  "question": "How tall is the Eiffel Tower?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v1",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "According to the Wikipedia article on the Eiffel Tower, **the tower is 330 metres (1,083 ft) tall**, about the same height as an 81-storey building, and it is the tallest structure in Paris.",
+  "error": null,
+  "latency_s": 2.537,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_fetches": 0,
+    "fetched_titles": [],
+    "escalated": false,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Eiffel Tower height"
+    ],
+    "shown_titles": [
+      "Eiffel Tower replicas and derivatives",
+      "Eiffel Tower",
+      "Eiffel Tower (Paris, Texas)"
+    ],
+    "retrieved_titles": [
+      "Eiffel Tower replicas and derivatives",
+      "Eiffel Tower",
+      "Eiffel Tower (Paris, Texas)",
+      "Gustave Eiffel",
+      "Eiffel Tower (Six Flags)"
+    ],
+    "usage": {
+      "input_tokens": 3093,
+      "output_tokens": 115,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Eiffel Tower height",
+          "raw": {
+            "query": "Eiffel Tower height",
+            "results": [
+              {
+                "title": "Eiffel Tower replicas and derivatives",
+                "url": "https://en.wikipedia.org/wiki/Eiffel_Tower_replicas_and_derivatives",
+                "extract": "As one of the most iconic and recognizable structures in the world, the Eiffel Tower, completed in 1889, has been the inspiration for the creation of over 50 similar towers around the world. Most are not exact replicas, though there are many that resemble it closely, while others look slightly different. The Eiffel Tower has also inspired other towers that are not close resembling replicas and therefore are not listed here, for example the Blackpool Tower.",
+                "pageid": 31655286
+              },
+              {
+                "title": "Eiffel Tower",
+                "url": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+                "extract": "The Eiffel Tower ( EYE-f\u0259l; French: Tour Eiffel [tu\u0281 \u025bf\u025bl] ) is a lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889. Locally nicknamed \"La dame de fer\" (French for \"Iron Lady\") for its use of wrought iron, it was constructed as the centrepiece of the 1889 World's Fair, and to crown the centennial anniversary of the French Revolution. Although initially criticised by some of France's leading artists and intellectuals for its design, it has since become a global cultural icon of France and one of the most recognisable structures in the world. The tower received 5,889,000 visitors in 2022. The Eiffel Tower is the most visited monument with an entrance fee in the world: 6.91 million people ascended it in 2015. It was designated a monument historique in 1964, and was named part of a UNESCO World Heritage Site (\"Paris, Banks of the Seine\") in 1991. The tower is 330 metres (1,083 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become by far the tallest human-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930. It was the first structure in the world to surpass both the 200-metre and 300-metre mark in height. [...]",
+                "pageid": 9232
+              },
+              {
+                "title": "Eiffel Tower (Paris, Texas)",
+                "url": "https://en.wikipedia.org/wiki/Eiffel_Tower_(Paris,_Texas)",
+                "extract": "Texas's Eiffel Tower is a landmark in the city of Paris, Texas. The tower was constructed in 1993. It is a rough scale model of the Eiffel Tower in Paris, France; at 65 ft (20 m) in height, it is roughly one-sixteenth of the height of the original. It is located adjacent to the Love Civic Center and the Red River Valley Veterans Memorial in the southeastern part of the city.",
+                "pageid": 50230910
+              },
+              {
+                "title": "Gustave Eiffel",
+                "url": "https://en.wikipedia.org/wiki/Gustave_Eiffel",
+                "extract": "Alexandre Gustave Eiffel ( EYE-f\u0259l, French: [al\u025bks\u0251\u0303d\u0281 \u0261ystav \u025bf\u025bl]; n\u00e9 Bonickhausen dit Eiffel; 15 December 1832 \u2013 27 December 1923) was a French civil engineer. A graduate of \u00c9cole Centrale des Arts et M\u00e9tiers, he made his name with various bridges for the French railway network, most famously the Garabit Viaduct. He is best known for the Eiffel Tower, designed by his company and built for the 1889 Universal Exposition in Paris, and his contribution to building the Statue of Liberty (Liberty Enlightening the World) in New York. After his retirement from engineering, Eiffel focused on research into meteorology and aerodynamics, making significant contributions in both fields.",
+                "pageid": 12232
+              },
+              {
+                "title": "Eiffel Tower (Six Flags)",
+                "url": "https://en.wikipedia.org/wiki/Eiffel_Tower_(Six_Flags)",
+                "extract": "The two Eiffel Towers in Six Flags parks\u2014one at Kings Dominion and one at Kings Island\u2014are replicas of the Eiffel Tower in Paris, France. They each opened with their respective park, the first at Kings Island in 1972 and the second at Kings Dominion in 1975.",
+                "pageid": 35392555
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.428
+          },
+          "rendered": "[1] Eiffel Tower replicas and derivatives (id 31655286)\nAs one of the most iconic and recognizable structures in the world, the Eiffel Tower, completed in 1889, has been the inspiration for the creation of over 50 similar towers around the world. Most are not exact replicas, though there are many that resemble it closely, while others look slightly different. The Eiffel Tower has also inspired other towers that are not close resembling replicas and therefore are not listed here, for example the Blackpool Tower.\n\n[2] Eiffel Tower (id 9232)\nThe Eiffel Tower ( EYE-f\u0259l; French: Tour Eiffel [tu\u0281 \u025bf\u025bl] ) is a lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889. Locally nicknamed \"La dame de fer\" (French for \"Iron Lady\") for its use of wrought iron, it was constructed as the centrepiece of the 1889 World's Fair, and to crown the centennial anniversary of the French Revolution. Although initially criticised by some of France's leading artists and intellectuals for its design, it has since become a global cultural icon of France and one of the most recognisable structures in the world. The tower received 5,889,000 visitors in 2022. The Eiffel Tower is the most visited monument with an entrance fee in the world: 6.91 million people ascended it in 2015. It was designated a monument historique in 1964, and was named part of a UNESCO World Heritage Site (\"Paris, Banks of the Seine\") in 1991. The tower is 330 metres (1,083 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become by far the tallest human-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930. It was the first structure in the world to surpass both the 200-metre and 300-metre mark in height. [...]\n\n[3] Eiffel Tower (Paris, Texas) (id 50230910)\nTexas's Eiffel Tower is a landmark in the city of Paris, Texas. The tower was constructed in 1993. It is a rough scale model of the Eiffel Tower in Paris, France; at 65 ft (20 m) in height, it is roughly one-sixteenth of the height of the original. It is located adjacent to the Love Civic Center and the Red River Valley Veterans Memorial in the southeastern part of the city.",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1181,
+      "output_tokens": 59,
+      "cache_read_tokens": 0,
+      "latency_s": 1.1554964589886367
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "According to the Wikipedia article on the Eiffel Tower, **the tower is 330 metres (1,083 ft) tall**, about the same height as an 81-storey building, and it is the tallest structure in Paris.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1912,
+      "output_tokens": 56,
+      "cache_read_tokens": 0,
+      "latency_s": 0.9500867499737069
+    }
+  ]
+}

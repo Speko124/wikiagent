@@ -1,0 +1,388 @@
+{
+  "question": "who was called the second founder of maratha kingdom",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v1",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on my searches, Wikipedia sources do not explicitly refer to anyone as the \"second founder\" of the Maratha Kingdom. The articles consistently identify **Shivaji** as the founder of the Maratha Kingdom (17th century), and **Bajirao I** (Baji Rao I) as the Peshwa who greatly expanded the Maratha Empire in the 18th century. The Maratha Empire \"expanded into a large realm in the 18th century under the leadership of Peshwa Bajirao I.\"\n\nWhile Bajirao I's role in expanding the Maratha Empire was extremely significant, Wikipedia does not use the specific title \"second founder\" for him or anyone else in the available articles. If this is a specific historical epithet used in certain sources or textbooks, it may not be covered in Wikipedia's opening sections.",
+  "error": null,
+  "latency_s": 15.316,
+  "summary": {
+    "searched": true,
+    "n_searches": 5,
+    "n_fetches": 1,
+    "fetched_titles": [
+      "Bajirao I"
+    ],
+    "escalated": true,
+    "n_turns": 7,
+    "cache_hits": 1,
+    "queries": [
+      "second founder Maratha kingdom",
+      "Bajirao I Peshwa second founder Maratha",
+      "Bajirao I",
+      "\"second founder\" Maratha kingdom",
+      "Balaji Vishwanath Peshwa Maratha",
+      "Shivaji founder Maratha kingdom"
+    ],
+    "shown_titles": [
+      "Maratha Empire",
+      "Mor\u00e8 (clan)",
+      "Soyarabai",
+      "Bajirao I",
+      "Peshwa",
+      "Bhat family",
+      "History of Maharashtra",
+      "History of India",
+      "Balaji Vishwanath",
+      "Balaji Baji Rao",
+      "Shivaji",
+      "Jijabai"
+    ],
+    "retrieved_titles": [
+      "Maratha Empire",
+      "Mor\u00e8 (clan)",
+      "Soyarabai",
+      "Maratha (caste)",
+      "Tarabai",
+      "Bajirao I",
+      "Peshwa",
+      "Bhat family",
+      "Ranoji Scindia",
+      "History of Maharashtra",
+      "History of India",
+      "Balaji Vishwanath",
+      "Balaji Baji Rao",
+      "Madhavrao I",
+      "Shivaji",
+      "Jijabai",
+      "Sai Bhonsale",
+      "Shivaji's forts"
+    ],
+    "usage": {
+      "input_tokens": 34387,
+      "output_tokens": 749,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I'll search for information about the second founder of the Maratha Kingdom.",
+      "tool_calls": [
+        {
+          "query": "second founder Maratha kingdom",
+          "raw": {
+            "query": "second founder Maratha kingdom",
+            "results": [
+              {
+                "title": "Maratha Empire",
+                "url": "https://en.wikipedia.org/wiki/Maratha_Empire",
+                "extract": "The Maratha Empire, also referred to as the Maratha Confederacy, was an early modern polity in the Indian subcontinent. For most of its existence, it comprised the realms of the Peshwa and four major independent Maratha states under the nominal leadership of the former and nominal loyalty to the Chhatrapatis who were successors of Shivaji. The Marathas were a Marathi-speaking warrior group from the western Deccan Plateau (present-day Maharashtra) that rose to prominence under leadership of Shivaji (17th century), who revolted against the Bijapur Sultanate and the Mughal Empire for establishing \"Hindavi Swarajya\" (lit. 'self-rule of Hindus'). The religious attitude of Emperor Aurangzeb estranged non-Muslims, and the Maratha insurgency came at a great cost for his men and treasury. The Maratha government also included warriors, administrators, and other nobles from other Marathi groups. Shivaji's monarchy, referred to as the Maratha Kingdom, expanded into a large realm in the 18th century under the leadership of Peshwa Bajirao I. Marathas from the time of Shahu I recognised the Mughal emperor as their nominal suzerain, similar to other contemporary Indian entities, though in practice, Mughal politics were largely controlled by the Marathas between 1737 and 1803. [...]",
+                "pageid": 349068
+              },
+              {
+                "title": "Mor\u00e8 (clan)",
+                "url": "https://en.wikipedia.org/wiki/Mor%C3%A8_(clan)",
+                "extract": "Mor\u00e8 is the name of a Maratha clan as well as a Mahar clan from the state of Maharashtra. Members of the More Maratha clan as well as the Mahar clan use the clan name as their surname. The totem associated with the clan is a peacock. Members of the Mahar clan worshipping the same Totem cannot intermarry. 'More' is also an exogamous clan in the Bhils of Maharashtra. According to Kosambi, the adoption of the title 'Chandrarav More' in the Marathas may have been inspired because of the admiration for Candragupta Maurya from the north and locals even to the south of Goa had knowledge of the \"petty 'Mauryans'\".",
+                "pageid": 21966594
+              },
+              {
+                "title": "Soyarabai",
+                "url": "https://en.wikipedia.org/wiki/Soyarabai",
+                "extract": "Soyarabai Bhosale (n\u00e9e Mohite; 1634\u20131681) was the second wife of Shivaji, the founder of the Maratha Kingdom in western India. She was the mother of Shivaji's second son, Rajaram. She was the younger sister of the Maratha army chief, Hambirrao Mohite.",
+                "pageid": 7681070
+              },
+              {
+                "title": "Maratha (caste)",
+                "url": "https://en.wikipedia.org/wiki/Maratha_(caste)",
+                "extract": "The Maratha caste is composed of 96 clans, originally formed in the earlier centuries from the amalgamation of families from the peasant (Kunbi), shepherd (Dhangar), blacksmith (Lohar), pastoral (Gavli), carpenter (Sutar), Bhandari, Thakar and Koli castes in Maharashtra. Many of them took to military service in the 16th century for the Deccan sultanates or the Mughals. Later in the 17th and 18th centuries, they served in the armies of the Maratha Kingdom, founded by Shivaji, a Maratha Kunbi by caste. Many Marathas were granted hereditary fiefs by the Sultanates, and Mughals for their service. According to the Maharashtrian historian B. R. Sunthankar, and scholars such as Rajendra Vora, the \"Marathas\" are a \"middle-peasantry\" caste which formed the bulk of the Maharashtrian society together with the other Kunbi peasant caste. Vora adds that the Marathas account for around 30 per cent of the total population of the state and dominate the power structure in Maharashtra because of their numerical strength, especially in the rural society. According to Jeremy Black, British historian at the University of Exeter, \"Maratha caste is a coalescence of peasants, shepherds, ironworkers, etc. as a result of serving in the military in the 17th and 18th century\". They are the dominant caste in rural areas and mainly constitute the landed peasantry. As of 2018, 80% of the members of the Maratha caste were farmers. [...]",
+                "pageid": 450395
+              },
+              {
+                "title": "Tarabai",
+                "url": "https://en.wikipedia.org/wiki/Tarabai",
+                "extract": "Maharani Tarabai Bhonsle (Marathi: [t\u032aa\u02d0\u027eaba\u02d0i; n\u00e9e Mohite; 1675 \u2013 9 December 1761) was the regent of the Maratha Empire from 1700 until 1708. She was the queen of Rajaram I, and daughter-in-law of the kingdom's founder Shivaji I. She is acclaimed for her role in keeping alive the resistance against Mughal rule in Konkan, and acting as the regent of the Maratha Kingdom during the minority of her son, Shivaji II. She defeated Mughal forces of Aurangzeb in several battles and expanded the Maratha Kingdom.",
+                "pageid": 3097143
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Maratha Empire (id 349068)\nThe Maratha Empire, also referred to as the Maratha Confederacy, was an early modern polity in the Indian subcontinent. For most of its existence, it comprised the realms of the Peshwa and four major independent Maratha states under the nominal leadership of the former and nominal loyalty to the Chhatrapatis who were successors of Shivaji. The Marathas were a Marathi-speaking warrior group from the western Deccan Plateau (present-day Maharashtra) that rose to prominence under leadership of Shivaji (17th century), who revolted against the Bijapur Sultanate and the Mughal Empire for establishing \"Hindavi Swarajya\" (lit. 'self-rule of Hindus'). The religious attitude of Emperor Aurangzeb estranged non-Muslims, and the Maratha insurgency came at a great cost for his men and treasury. The Maratha government also included warriors, administrators, and other nobles from other Marathi groups. Shivaji's monarchy, referred to as the Maratha Kingdom, expanded into a large realm in the 18th century under the leadership of Peshwa Bajirao I. Marathas from the time of Shahu I recognised the Mughal emperor as their nominal suzerain, similar to other contemporary Indian entities, though in practice, Mughal politics were largely controlled by the Marathas between 1737 and 1803. [...]\n\n[2] Mor\u00e8 (clan) (id 21966594)\nMor\u00e8 is the name of a Maratha clan as well as a Mahar clan from the state of Maharashtra. Members of the More Maratha clan as well as the Mahar clan use the clan name as their surname. The totem associated with the clan is a peacock. Members of the Mahar clan worshipping the same Totem cannot intermarry. 'More' is also an exogamous clan in the Bhils of Maharashtra. According to Kosambi, the adoption of the title 'Chandrarav More' in the Marathas may have been inspired because of the admiration for Candragupta Maurya from the north and locals even to the south of Goa had knowledge of the \"petty 'Mauryans'\".\n\n[3] Soyarabai (id 7681070)\nSoyarabai Bhosale (n\u00e9e Mohite; 1634\u20131681) was the second wife of Shivaji, the founder of the Maratha Kingdom in western India. She was the mother of Shivaji's second son, Rajaram. She was the younger sister of the Maratha army chief, Hambirrao Mohite.",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1181,
+      "output_tokens": 75,
+      "cache_read_tokens": 0,
+      "latency_s": 1.9706726250005886
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "The search mentions Shivaji as the founder, but not clearly who was called the \"second founder.\" Let me search more specifically for this.",
+      "tool_calls": [
+        {
+          "query": "Bajirao I Peshwa second founder Maratha",
+          "raw": {
+            "query": "Bajirao I Peshwa second founder Maratha",
+            "results": [
+              {
+                "title": "Bajirao I",
+                "url": "https://en.wikipedia.org/wiki/Bajirao_I",
+                "extract": "Bajirao I (born Visaji, Marathi: [\u02c8ba\u02d0d\u0291i\u027ea\u02d0\u028b b\u0259\u02c8l\u02d0a\u02d0\u026d\u0306]; 18 August 1700 \u2013 28 April 1740) was the 7th Peshwa of the Maratha Empire. In the Deccan region, the Nizam of Hyderabad emerged as a significant threat. Bajirao then led a campaign against the Nizam in which Nizam suffered a decisive defeat at Palkheda. This victory solidified the Marathas\u2019 authority in the Deccan region. In Bundelkhand, he rescued the Bundela ruler Chhatrasal from a Mughal siege, gaining independence for Bundelkhand. Gratefully, Chhatrasal granted Bajirao a jagir and his daughter's hand in marriage. In the 1730s, Bajirao asserted Maratha tax rights in Gujarat, defeating rebel Trimbak Rao Dabhade in 1731 at Battle of Dabhoi; he also engaged in a diplomatic mission to persuade Rajput courts for chauth payments. Further efforts to establish Maratha dominance saw him responsible for the Battle of Delhi (1737) which may be said to mark the pinnacle of his military career. He secured the important territory of Malwa after defeating the combined forces of Mughal-Nizam-Nawab of Awadh in Battle of Bhopal (1737). Bajirao's adventurous life has been picturized in Indian cinema and also featured in novels. Bajirao had two wives Kashibai and Mastani. Bajirao's relationship with his second wife Mastani is a controversial subject; very little is known with certainty about it. She was generally referenced cryptically in books, letters or documents from that era.",
+                "pageid": 239318
+              },
+              {
+                "title": "Peshwa",
+                "url": "https://en.wikipedia.org/wiki/Peshwa",
+                "extract": "The Peshwa was the second highest office in the Maratha Empire, next in rank and prestige only to that of the Chhatrapati. Initially serving as the appointed prime minister in the Maratha Kingdom, the office became hereditary when Shahu gave the seat of Peshwa to Bajirao Ballal. During the reign of Shahu, the office of Peshwas were handed more responsibilities to keep the Jagirdars and Vatandars of the Maratha Empire from rebelling. After the death of Shahu I the empire had no male heir apparent; hence the duty of maintaining peace lay with the Peshwas till the heir apparent (Rajaram II) was of age. The Peshwas from the time of Balaji Rao became the supreme authority in Maratha empire and the Chhatrapati's position became nominal. All Peshwas during the rule of Shivaji, Sambhaji and Rajaram belonged to Marathi Deshastha Brahmin community. The first Peshwa was Moropant Pingle, who was appointed as the head of the Ashta Pradhan (council of eight ministers) by Shivaji, the founder of the Maratha Kingdom. The initial Peshwas were all ministers who served as the chief executives to the king. The later Peshwas held the highest administrative office and also controlled the Maratha confederacy. Under the Bhat family, the Peshwas became the de facto hereditary administrators of the Confederacy. The Peshwa's office was most powerful under Baji Rao I (r. 1720\u20131740). [...]",
+                "pageid": 638327
+              },
+              {
+                "title": "Maratha Empire",
+                "url": "https://en.wikipedia.org/wiki/Maratha_Empire",
+                "extract": "The Maratha Empire, also referred to as the Maratha Confederacy, was an early modern polity in the Indian subcontinent. For most of its existence, it comprised the realms of the Peshwa and four major independent Maratha states under the nominal leadership of the former and nominal loyalty to the Chhatrapatis who were successors of Shivaji. The Marathas were a Marathi-speaking warrior group from the western Deccan Plateau (present-day Maharashtra) that rose to prominence under leadership of Shivaji (17th century), who revolted against the Bijapur Sultanate and the Mughal Empire for establishing \"Hindavi Swarajya\" (lit. 'self-rule of Hindus'). The religious attitude of Emperor Aurangzeb estranged non-Muslims, and the Maratha insurgency came at a great cost for his men and treasury. The Maratha government also included warriors, administrators, and other nobles from other Marathi groups. Shivaji's monarchy, referred to as the Maratha Kingdom, expanded into a large realm in the 18th century under the leadership of Peshwa Bajirao I. Marathas from the time of Shahu I recognised the Mughal emperor as their nominal suzerain, similar to other contemporary Indian entities, though in practice, Mughal politics were largely controlled by the Marathas between 1737 and 1803. [...]",
+                "pageid": 349068
+              },
+              {
+                "title": "Bhat family",
+                "url": "https://en.wikipedia.org/wiki/Bhat_family",
+                "extract": "The Bhatt Peshw\u0101 family earlier known as Bhatt family is a prominent Indian Marathi Chitpavan Brahmin royal family. Most of the members in this family were the Peshwas (prime ministers) in the Maratha Empire, and Peshwa later became their family name. In the eighteenth century, most of the Indian subcontinent came under their control.",
+                "pageid": 48761490
+              },
+              {
+                "title": "Ranoji Scindia",
+                "url": "https://en.wikipedia.org/wiki/Ranoji_Scindia",
+                "extract": "Ranoji Scindia (c. 1700 \u2013 3 July 1745), also known as Ranoji Sendrak, was a Maratha military commander and the founder of the Scindia dynasty, and the first monarch establishing the Gwalior State as an independent ruler. He served the Peshwas of the Maratha Empire in several military campaigns. The Scindia dynasty rose to prominence in the 18th century and went on to dominate central and north India as one of the most prominent powers due to their influential presence in Delhi and their highly modernized army.",
+                "pageid": 13617397
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.575
+          },
+          "rendered": "[1] Bajirao I (id 239318)\nBajirao I (born Visaji, Marathi: [\u02c8ba\u02d0d\u0291i\u027ea\u02d0\u028b b\u0259\u02c8l\u02d0a\u02d0\u026d\u0306]; 18 August 1700 \u2013 28 April 1740) was the 7th Peshwa of the Maratha Empire. In the Deccan region, the Nizam of Hyderabad emerged as a significant threat. Bajirao then led a campaign against the Nizam in which Nizam suffered a decisive defeat at Palkheda. This victory solidified the Marathas\u2019 authority in the Deccan region. In Bundelkhand, he rescued the Bundela ruler Chhatrasal from a Mughal siege, gaining independence for Bundelkhand. Gratefully, Chhatrasal granted Bajirao a jagir and his daughter's hand in marriage. In the 1730s, Bajirao asserted Maratha tax rights in Gujarat, defeating rebel Trimbak Rao Dabhade in 1731 at Battle of Dabhoi; he also engaged in a diplomatic mission to persuade Rajput courts for chauth payments. Further efforts to establish Maratha dominance saw him responsible for the Battle of Delhi (1737) which may be said to mark the pinnacle of his military career. He secured the important territory of Malwa after defeating the combined forces of Mughal-Nizam-Nawab of Awadh in Battle of Bhopal (1737). Bajirao's adventurous life has been picturized in Indian cinema and also featured in novels. Bajirao had two wives Kashibai and Mastani. Bajirao's relationship with his second wife Mastani is a controversial subject; very little is known with certainty about it. She was generally referenced cryptically in books, letters or documents from that era.\n\n[2] Peshwa (id 638327)\nThe Peshwa was the second highest office in the Maratha Empire, next in rank and prestige only to that of the Chhatrapati. Initially serving as the appointed prime minister in the Maratha Kingdom, the office became hereditary when Shahu gave the seat of Peshwa to Bajirao Ballal. During the reign of Shahu, the office of Peshwas were handed more responsibilities to keep the Jagirdars and Vatandars of the Maratha Empire from rebelling. After the death of Shahu I the empire had no male heir apparent; hence the duty of maintaining peace lay with the Peshwas till the heir apparent (Rajaram II) was of age. The Peshwas from the time of Balaji Rao became the supreme authority in Maratha empire and the Chhatrapati's position became nominal. All Peshwas during the rule of Shivaji, Sambhaji and Rajaram belonged to Marathi Deshastha Brahmin community. The first Peshwa was Moropant Pingle, who was appointed as the head of the Ashta Pradhan (council of eight ministers) by Shivaji, the founder of the Maratha Kingdom. The initial Peshwas were all ministers who served as the chief executives to the king. The later Peshwas held the highest administrative office and also controlled the Maratha confederacy. Under the Bhat family, the Peshwas became the de facto hereditary administrators of the Confederacy. The Peshwa's office was most powerful under Baji Rao I (r. 1720\u20131740). [...]\n\n[3] Maratha Empire (id 349068)\nThe Maratha Empire, also referred to as the Maratha Confederacy, was an early modern polity in the Indian subcontinent. For most of its existence, it comprised the realms of the Peshwa and four major independent Maratha states under the nominal leadership of the former and nominal loyalty to the Chhatrapatis who were successors of Shivaji. The Marathas were a Marathi-speaking warrior group from the western Deccan Plateau (present-day Maharashtra) that rose to prominence under leadership of Shivaji (17th century), who revolted against the Bijapur Sultanate and the Mughal Empire for establishing \"Hindavi Swarajya\" (lit. 'self-rule of Hindus'). The religious attitude of Emperor Aurangzeb estranged non-Muslims, and the Maratha insurgency came at a great cost for his men and treasury. The Maratha government also included warriors, administrators, and other nobles from other Marathi groups. Shivaji's monarchy, referred to as the Maratha Kingdom, expanded into a large realm in the 18th century under the leadership of Peshwa Bajirao I. Marathas from the time of Shahu I recognised the Mughal emperor as their nominal suzerain, similar to other contemporary Indian entities, though in practice, Mughal politics were largely controlled by the Marathas between 1737 and 1803. [...]",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1896,
+      "output_tokens": 96,
+      "cache_read_tokens": 0,
+      "latency_s": 1.2490829169983044
+    },
+    {
+      "index": 2,
+      "thinking": null,
+      "text": "Let me fetch the full Bajirao I article to find if he's specifically called the \"second founder.\"",
+      "tool_calls": [
+        {
+          "query": "Bajirao I",
+          "raw": {
+            "query": "Bajirao I",
+            "results": [
+              {
+                "title": "Bajirao I",
+                "url": "https://en.wikipedia.org/wiki/Bajirao_I",
+                "extract": "Bajirao I (born Visaji, Marathi: [\u02c8ba\u02d0d\u0291i\u027ea\u02d0\u028b b\u0259\u02c8l\u02d0a\u02d0\u026d\u0306]; 18 August 1700 \u2013 28 April 1740) was the 7th Peshwa of the Maratha Empire. In the Deccan region, the Nizam of Hyderabad emerged as a significant threat. Bajirao then led a campaign against the Nizam in which Nizam suffered a decisive defeat at Palkheda. This victory solidified the Marathas\u2019 authority in the Deccan region. In Bundelkhand, he rescued the Bundela ruler Chhatrasal from a Mughal siege, gaining independence for Bundelkhand. Gratefully, Chhatrasal granted Bajirao a jagir and his daughter's hand in marriage. In the 1730s, Bajirao asserted Maratha tax rights in Gujarat, defeating rebel Trimbak Rao Dabhade in 1731 at Battle of Dabhoi; he also engaged in a diplomatic mission to persuade Rajput courts for chauth payments. Further efforts to establish Maratha dominance saw him responsible for the Battle of Delhi (1737) which may be said to mark the pinnacle of his military career. He secured the important territory of Malwa after defeating the combined forces of Mughal-Nizam-Nawab of Awadh in Battle of Bhopal (1737). Bajirao's adventurous life has been picturized in Indian cinema and also featured in novels. Bajirao had two wives Kashibai and Mastani. Bajirao's relationship with his second wife Mastani is a controversial subject; very little is known with certainty about it. She was generally referenced cryptically in books, letters or documents from that era. == Early life == Bajirao was born into the Bhat family in Sinnar, near Nashik. His father Balaji Vishwanath was the Peshwa of Shahu I and his mother was Radhabai Barve. Bajirao had a younger brother, Chimaji Appa, and two younger sisters, Anubai and Bhiubai. Anubai was married to Venkatrao Ghorpade (Joshi) of Ichalkaranji and Bhiubai was married to Abaji Naik Joshi of Baramati. Being born in a Brahmin family, his education included reading, writing and learning Sanskrit however, he did not remain confined to his books. Bajirao displayed a passion for the military at an early age and often accompanied his father on military campaigns. He was with his father when his father was imprisoned by Damaji Thorat before being released for a ransom. Bajirao had been on the expedition to Delhi in 1719 with his father and was convinced the Mughal Empire was disintegrating and would be unable to resist northward Maratha expansion. When Balaji Vishwanath died in 1720, Shahu appointed the 20-year-old Bajirao as Peshwa despite opposition from other chieftains. == Personal life == Bajirao's first wife was Kashibai, the daughter of Mahadji Krishna Joshi and Bhawanibai of Chas (a wealthy banking family). Bajirao always treated his wife Kashibai with love and respect. Their relationship was healthy and happy. They had four sons: Balaji Bajirao (also called Nanasaheb), Ramachandra Rao, Raghunath Rao and Janardhan Rao, who died at an early age. Nanasaheb was appointed Peshwa by Shahu in 1740, succeeding his father. Bajirao took Mastani as his wife, the daughter of Rajput king Chhatrasal, born from his Muslim concubine. The relationship was a political one, arranged to please Chhatrasal. Mastani had a son, Krishna Rao, in 1734. Since his mother was Muslim, Hindu priests refused to conduct the upanayana ceremony and he became known as Shamsher Bahadur. After the deaths of Bajirao and Mastani in 1740, Kashibai raised six-year-old Shamsher Bahadur as her own. Shamsher received a portion of his father's dominion of Banda and Kalpi. In 1761, he and his army fought alongside the Peshwa in the Third Battle of Panipat between the Marathas and the Afghans. Wounded in the battle, Shamsher died several days later in Deeg. Bajirao moved his base of operations from Saswad to Pune in 1728, laying the foundation for the transformation of the kasba into a large city. He began the construction of Shaniwar Wada on 10 January 1730. Bajirao was appointed Peshwa, succeeding his father, by Shahu on 17 April 1720. By the time of his appointment, the Mughal emperor Muhammad Shah had upheld Maratha claims to the territories held by Shivaji at his death. A treaty gave the Marathas the right to collect taxes (chauth) in the Deccan's six provinces. Bajirao convinced Shahu that the Maratha Empire had to go on the offensive against its enemies to defend itself. He believed the Mughal Empire was in decline, and wanted to take advantage of the situation with aggressive expansion into North India. Bajirao compared the Mughals' declining fortune to a tree which, if attacked at its roots, would collapse. He is reported to have said: Let us strike at the trunk of the withering tree and the branches will fall off themselves. Listen but to my counsel and I shall plant the Maratha flag on the walls of Attock. As a new Peshwa, however, he faced several challenges. Bajirao promoted young men like himself, such as Malhar Rao Holkar, Ranoji Shinde, the Pawar brothers and Fateh Singh Bhosle, as commanders; these men did not belong to families who were hereditary Deshmukhs in the Deccan sultanates. The Mughal viceroy of the Deccan, Asaf Jah I, Nizam of Hyderabad, had created a de facto autonomous kingdom in the region. He challenged Shahu 's right to collect taxes on the pretext that he did not know whether Shahu or his cousin, Sambhaji II of Kolhapur, was the rightful heir to the Maratha throne. The Marathas needed to assert their rights over the nobles of newly acquired territories in Malwa and Gujarat. Several nominally-Maratha areas were not actually under the Peshwa's control; for example, the Siddis controlled the Janjira fort. == Military campaigns and wars == === The Nizam === At the outset of Bajirao's Peshwa rule, the Mughal leaders, led by Nizam-ul-Mulk, rebelled against the Sayyid Brothers. To quell the uprising, the Sayyid brothers sought assistance from the Marathas. However, in the Battle of Balapur, where Bajirao, Malhar Rao Holkar, and Khanderao Dabhade were present, the combined forces of the Sayyid Brothers and the Marathas were defeated by the Nizam's forces. Sankarji Malhar was captured as a prisoner of war, marking Bajirao's first significant military engagement as Peshwa. On 4 January 1721, Bajirao met Nizam of Hyderabad at Chikhalthana to resolve their disputes. However, the Nizam refused to recognize the Maratha right to collect taxes from the Deccan provinces. He was made vizier of the Mughal Empire in 1721 by emperor Muhammad Shah, who, alarmed at his increasing power, transferred him from the Deccan to Awadh in 1723. The Nizam rebelled against the order, resigned as vizier and marched towards the Deccan. The emperor sent an army against him, which the Nizam defeated at the Battle of Sakhar-kheda; this forced the emperor to recognise him as viceroy of the Deccan. The Marathas, led by Bajirao, helped the Nizam win this battle. For his valor, Bajirao was honored with a robe, a 7,000-man mansabdari, an elephant, and a jewel. After the battle, the Nizam tried to appease the Maratha Chhatrapati Shahu and the Mughal emperor; in reality, however, he wanted to carve out a sovereign kingdom and considered the Marathas his rivals in the Deccan. In 1725, the Nizam sent an army to clear Maratha revenue collectors from the Carnatic region. The Marathas dispatched a force under Fateh Singh Bhosle to counter him; Bajirao accompanied Bhosle, but according to Stewart Gordon, Bajirao did not command the army. According to Govind Sakharam Sardesai, Bajirao personally led the campaign under Shahu's command. In contrast, Stewart Gordon's account suggests that Bajirao was present during the campaign but did not assume command. In the Deccan, Sambhaji II of Kolhapur State had become a rival claimant to the title of Maratha King. The Nizam took advantage of the internal dispute, refusing to pay the chauth because it was unclear who was the real Chhatrapati (Shahu or Sambhaji II) and offering to arbitrate. Shripatrao Pant Pratinidhi advised Shahu to begin negotiations and agree to arbitration. [...]",
+                "pageid": 239318
+              }
+            ],
+            "top_k": 1,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 1.845
+          },
+          "rendered": "[1] Bajirao I (id 239318)\nBajirao I (born Visaji, Marathi: [\u02c8ba\u02d0d\u0291i\u027ea\u02d0\u028b b\u0259\u02c8l\u02d0a\u02d0\u026d\u0306]; 18 August 1700 \u2013 28 April 1740) was the 7th Peshwa of the Maratha Empire. In the Deccan region, the Nizam of Hyderabad emerged as a significant threat. Bajirao then led a campaign against the Nizam in which Nizam suffered a decisive defeat at Palkheda. This victory solidified the Marathas\u2019 authority in the Deccan region. In Bundelkhand, he rescued the Bundela ruler Chhatrasal from a Mughal siege, gaining independence for Bundelkhand. Gratefully, Chhatrasal granted Bajirao a jagir and his daughter's hand in marriage. In the 1730s, Bajirao asserted Maratha tax rights in Gujarat, defeating rebel Trimbak Rao Dabhade in 1731 at Battle of Dabhoi; he also engaged in a diplomatic mission to persuade Rajput courts for chauth payments. Further efforts to establish Maratha dominance saw him responsible for the Battle of Delhi (1737) which may be said to mark the pinnacle of his military career. He secured the important territory of Malwa after defeating the combined forces of Mughal-Nizam-Nawab of Awadh in Battle of Bhopal (1737). Bajirao's adventurous life has been picturized in Indian cinema and also featured in novels. Bajirao had two wives Kashibai and Mastani. Bajirao's relationship with his second wife Mastani is a controversial subject; very little is known with certainty about it. She was generally referenced cryptically in books, letters or documents from that era. == Early life == Bajirao was born into the Bhat family in Sinnar, near Nashik. His father Balaji Vishwanath was the Peshwa of Shahu I and his mother was Radhabai Barve. Bajirao had a younger brother, Chimaji Appa, and two younger sisters, Anubai and Bhiubai. Anubai was married to Venkatrao Ghorpade (Joshi) of Ichalkaranji and Bhiubai was married to Abaji Naik Joshi of Baramati. Being born in a Brahmin family, his education included reading, writing and learning Sanskrit however, he did not remain confined to his books. Bajirao displayed a passion for the military at an early age and often accompanied his father on military campaigns. He was with his father when his father was imprisoned by Damaji Thorat before being released for a ransom. Bajirao had been on the expedition to Delhi in 1719 with his father and was convinced the Mughal Empire was disintegrating and would be unable to resist northward Maratha expansion. When Balaji Vishwanath died in 1720, Shahu appointed the 20-year-old Bajirao as Peshwa despite opposition from other chieftains. == Personal life == Bajirao's first wife was Kashibai, the daughter of Mahadji Krishna Joshi and Bhawanibai of Chas (a wealthy banking family). Bajirao always treated his wife Kashibai with love and respect. Their relationship was healthy and happy. They had four sons: Balaji Bajirao (also called Nanasaheb), Ramachandra Rao, Raghunath Rao and Janardhan Rao, who died at an early age. Nanasaheb was appointed Peshwa by Shahu in 1740, succeeding his father. Bajirao took Mastani as his wife, the daughter of Rajput king Chhatrasal, born from his Muslim concubine. The relationship was a political one, arranged to please Chhatrasal. Mastani had a son, Krishna Rao, in 1734. Since his mother was Muslim, Hindu priests refused to conduct the upanayana ceremony and he became known as Shamsher Bahadur. After the deaths of Bajirao and Mastani in 1740, Kashibai raised six-year-old Shamsher Bahadur as her own. Shamsher received a portion of his father's dominion of Banda and Kalpi. In 1761, he and his army fought alongside the Peshwa in the Third Battle of Panipat between the Marathas and the Afghans. Wounded in the battle, Shamsher died several days later in Deeg. Bajirao moved his base of operations from Saswad to Pune in 1728, laying the foundation for the transformation of the kasba into a large city. He began the construction of Shaniwar Wada on 10 January 1730. Bajirao was appointed Peshwa, succeeding his father, by Shahu on 17 April 1720. By the time of his appointment, the Mughal emperor Muhammad Shah had upheld Maratha claims to the territories held by Shivaji at his death. A treaty gave the Marathas the right to collect taxes (chauth) in the Deccan's six provinces. Bajirao convinced Shahu that the Maratha Empire had to go on the offensive against its enemies to defend itself. He believed the Mughal Empire was in decline, and wanted to take advantage of the situation with aggressive expansion into North India. Bajirao compared the Mughals' declining fortune to a tree which, if attacked at its roots, would collapse. He is reported to have said: Let us strike at the trunk of the withering tree and the branches will fall off themselves. Listen but to my counsel and I shall plant the Maratha flag on the walls of Attock. As a new Peshwa, however, he faced several challenges. Bajirao promoted young men like himself, such as Malhar Rao Holkar, Ranoji Shinde, the Pawar brothers and Fateh Singh Bhosle, as commanders; these men did not belong to families who were hereditary Deshmukhs in the Deccan sultanates. The Mughal viceroy of the Deccan, Asaf Jah I, Nizam of Hyderabad, had created a de facto autonomous kingdom in the region. He challenged Shahu 's right to collect taxes on the pretext that he did not know whether Shahu or his cousin, Sambhaji II of Kolhapur, was the rightful heir to the Maratha throne. The Marathas needed to assert their rights over the nobles of newly acquired territories in Malwa and Gujarat. Several nominally-Maratha areas were not actually under the Peshwa's control; for example, the Siddis controlled the Janjira fort. == Military campaigns and wars == === The Nizam === At the outset of Bajirao's Peshwa rule, the Mughal leaders, led by Nizam-ul-Mulk, rebelled against the Sayyid Brothers. To quell the uprising, the Sayyid brothers sought assistance from the Marathas. However, in the Battle of Balapur, where Bajirao, Malhar Rao Holkar, and Khanderao Dabhade were present, the combined forces of the Sayyid Brothers and the Marathas were defeated by the Nizam's forces. Sankarji Malhar was captured as a prisoner of war, marking Bajirao's first significant military engagement as Peshwa. On 4 January 1721, Bajirao met Nizam of Hyderabad at Chikhalthana to resolve their disputes. However, the Nizam refused to recognize the Maratha right to collect taxes from the Deccan provinces. He was made vizier of the Mughal Empire in 1721 by emperor Muhammad Shah, who, alarmed at his increasing power, transferred him from the Deccan to Awadh in 1723. The Nizam rebelled against the order, resigned as vizier and marched towards the Deccan. The emperor sent an army against him, which the Nizam defeated at the Battle of Sakhar-kheda; this forced the emperor to recognise him as viceroy of the Deccan. The Marathas, led by Bajirao, helped the Nizam win this battle. For his valor, Bajirao was honored with a robe, a 7,000-man mansabdari, an elephant, and a jewel. After the battle, the Nizam tried to appease the Maratha Chhatrapati Shahu and the Mughal emperor; in reality, however, he wanted to carve out a sovereign kingdom and considered the Marathas his rivals in the Deccan. In 1725, the Nizam sent an army to clear Maratha revenue collectors from the Carnatic region. The Marathas dispatched a force under Fateh Singh Bhosle to counter him; Bajirao accompanied Bhosle, but according to Stewart Gordon, Bajirao did not command the army. According to Govind Sakharam Sardesai, Bajirao personally led the campaign under Shahu's command. In contrast, Stewart Gordon's account suggests that Bajirao was present during the campaign but did not assume command. In the Deccan, Sambhaji II of Kolhapur State had become a rival claimant to the title of Maratha King. The Nizam took advantage of the internal dispute, refusing to pay the chauth because it was unclear who was the real Chhatrapati (Shahu or Sambhaji II) and offering to arbitrate. Shripatrao Pant Pratinidhi advised Shahu to begin negotiations and agree to arbitration. [...]",
+          "top_k": 1,
+          "tool": "fetch_article"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 3178,
+      "output_tokens": 79,
+      "cache_read_tokens": 0,
+      "latency_s": 1.4830089579918422
+    },
+    {
+      "index": 3,
+      "thinking": null,
+      "text": "The article doesn't explicitly call Bajirao I the \"second founder.\" Let me search more directly for this title.",
+      "tool_calls": [
+        {
+          "query": "\"second founder\" Maratha kingdom",
+          "raw": {
+            "query": "\"second founder\" Maratha kingdom",
+            "results": [
+              {
+                "title": "Bhat family",
+                "url": "https://en.wikipedia.org/wiki/Bhat_family",
+                "extract": "The Bhatt Peshw\u0101 family earlier known as Bhatt family is a prominent Indian Marathi Chitpavan Brahmin royal family. Most of the members in this family were the Peshwas (prime ministers) in the Maratha Empire, and Peshwa later became their family name. In the eighteenth century, most of the Indian subcontinent came under their control.",
+                "pageid": 48761490
+              },
+              {
+                "title": "History of Maharashtra",
+                "url": "https://en.wikipedia.org/wiki/History_of_Maharashtra",
+                "extract": "Maharashtra is a state in the western region of India. It is India's second-most populous state and third-largest state by area. The region that comprises the state has a long history dating back to approximately 1300\u2013700 BCE, although the present-day state was not established until 1960 CE. Prior to Indian independence, notable dynasties and entities that ruled the region included, in chronological order, the Asmaka, Vidarbha kingdom, Maurya Empire, Satavahana Empire, Vakataka dynasty, Chalukya Empire, Rashtrakuta Empire, Western Chalukya Empire, Seuna Yadava dynasty, Shilahara, Bahamani Sultanate, Deccan sultanates, Mughal Empire, Maratha Empire, and British Raj. Ruins, monuments, tombs, forts, and places of worship left by these rulers are dotted around the state. At the time of the Indian independence movement in the early 20th century, the region\u2014along with the British-ruled areas of Bombay Presidency, and Central Provinces and Berar\u2014included many British vassal states. Among these, the erstwhile Hyderabad State was the largest, and extended over many modern Indian states. Other states grouped under the Deccan States Agency included Kolhapur, Miraj, Sangli, Aundh, Bhor, and Sawantwadi. Following independence from the British in 1947 and a campaign to create a Marathi-speaking state in the 1950s, the state of Maharashtra was formed in 1960. From the 4th century BCE until 875, Maharashtri Prakrit and its dialects were the dominant languages of the region. [...]",
+                "pageid": 33640291
+              },
+              {
+                "title": "History of India",
+                "url": "https://en.wikipedia.org/wiki/History_of_India",
+                "extract": "Anatomically modern humans are estimated to have first arrived on the Indian subcontinent between 73,000 and 55,000 years ago. The earliest known human remains in South Asia date to 30,000 years ago. Sedentariness began in South Asia around 7000 BCE; by 4500 BCE, settled life had spread, and gradually evolved into the Indus Valley Civilisation, one of three early cradles of civilisation in the Old World, which flourished between 2500 BCE and 1900 BCE in present-day Pakistan and north-western India. Early in the second millennium BCE, persistent drought caused the population of the Indus Valley to scatter from large urban centres to villages. Around 1800 - 1500 BCE the Indo-Aryan tribes moved into the north western region of India, modern day Punjab from Central Asia in several waves of migration. The Vedic Period of the Vedic people in northern India (1500\u2013500 BCE) was marked by the composition of their extensive collections of hymns (Vedas). The social structure was loosely stratified via the varna system, incorporated into the highly evolved present-day J\u0101ti system. The pastoral and nomadic Indo-Aryans spread from the Punjab into the Indo-Gangetic Plain. Around 600 BCE a second urbanization occurred resulting in a new interregional culture; then, smaller janapadas (realms) were consolidated into mahajanapadas (great states). [...]",
+                "pageid": 13890
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.327
+          },
+          "rendered": "[1] Bhat family (id 48761490)\nThe Bhatt Peshw\u0101 family earlier known as Bhatt family is a prominent Indian Marathi Chitpavan Brahmin royal family. Most of the members in this family were the Peshwas (prime ministers) in the Maratha Empire, and Peshwa later became their family name. In the eighteenth century, most of the Indian subcontinent came under their control.\n\n[2] History of Maharashtra (id 33640291)\nMaharashtra is a state in the western region of India. It is India's second-most populous state and third-largest state by area. The region that comprises the state has a long history dating back to approximately 1300\u2013700 BCE, although the present-day state was not established until 1960 CE. Prior to Indian independence, notable dynasties and entities that ruled the region included, in chronological order, the Asmaka, Vidarbha kingdom, Maurya Empire, Satavahana Empire, Vakataka dynasty, Chalukya Empire, Rashtrakuta Empire, Western Chalukya Empire, Seuna Yadava dynasty, Shilahara, Bahamani Sultanate, Deccan sultanates, Mughal Empire, Maratha Empire, and British Raj. Ruins, monuments, tombs, forts, and places of worship left by these rulers are dotted around the state. At the time of the Indian independence movement in the early 20th century, the region\u2014along with the British-ruled areas of Bombay Presidency, and Central Provinces and Berar\u2014included many British vassal states. Among these, the erstwhile Hyderabad State was the largest, and extended over many modern Indian states. Other states grouped under the Deccan States Agency included Kolhapur, Miraj, Sangli, Aundh, Bhor, and Sawantwadi. Following independence from the British in 1947 and a campaign to create a Marathi-speaking state in the 1950s, the state of Maharashtra was formed in 1960. From the 4th century BCE until 875, Maharashtri Prakrit and its dialects were the dominant languages of the region. [...]\n\n[3] History of India (id 13890)\nAnatomically modern humans are estimated to have first arrived on the Indian subcontinent between 73,000 and 55,000 years ago. The earliest known human remains in South Asia date to 30,000 years ago. Sedentariness began in South Asia around 7000 BCE; by 4500 BCE, settled life had spread, and gradually evolved into the Indus Valley Civilisation, one of three early cradles of civilisation in the Old World, which flourished between 2500 BCE and 1900 BCE in present-day Pakistan and north-western India. Early in the second millennium BCE, persistent drought caused the population of the Indus Valley to scatter from large urban centres to villages. Around 1800 - 1500 BCE the Indo-Aryan tribes moved into the north western region of India, modern day Punjab from Central Asia in several waves of migration. The Vedic Period of the Vedic people in northern India (1500\u2013500 BCE) was marked by the composition of their extensive collections of hymns (Vedas). The social structure was loosely stratified via the varna system, incorporated into the highly evolved present-day J\u0101ti system. The pastoral and nomadic Indo-Aryans spread from the Punjab into the Indo-Gangetic Plain. Around 600 BCE a second urbanization occurred resulting in a new interregional culture; then, smaller janapadas (realms) were consolidated into mahajanapadas (great states). [...]",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 5550,
+      "output_tokens": 85,
+      "cache_read_tokens": 0,
+      "latency_s": 1.475159417022951
+    },
+    {
+      "index": 4,
+      "thinking": null,
+      "text": "Let me try searching for Balaji Vishwanath, who was Bajirao I's father and an early Peshwa.",
+      "tool_calls": [
+        {
+          "query": "Balaji Vishwanath Peshwa Maratha",
+          "raw": {
+            "query": "Balaji Vishwanath Peshwa Maratha",
+            "results": [
+              {
+                "title": "Balaji Vishwanath",
+                "url": "https://en.wikipedia.org/wiki/Balaji_Vishwanath",
+                "extract": "Balaji Vishwanath Bhat (1 January 1662 \u2013 12 April 1720) was the first of a series of hereditary Peshwas hailing from the Bhat family who gained effective control of the Maratha Confederacy and other Mughal vassals during the early 18th century. Balaji Vishwanath assisted a young Maratha king Shahu to consolidate his grip on a kingdom that had been racked by civil war and persistently intruded on by the Mughals under Aurangzeb.",
+                "pageid": 2354632
+              },
+              {
+                "title": "Peshwa",
+                "url": "https://en.wikipedia.org/wiki/Peshwa",
+                "extract": "The Peshwa was the second highest office in the Maratha Empire, next in rank and prestige only to that of the Chhatrapati. Initially serving as the appointed prime minister in the Maratha Kingdom, the office became hereditary when Shahu gave the seat of Peshwa to Bajirao Ballal. During the reign of Shahu, the office of Peshwas were handed more responsibilities to keep the Jagirdars and Vatandars of the Maratha Empire from rebelling. After the death of Shahu I the empire had no male heir apparent; hence the duty of maintaining peace lay with the Peshwas till the heir apparent (Rajaram II) was of age. The Peshwas from the time of Balaji Rao became the supreme authority in Maratha empire and the Chhatrapati's position became nominal. All Peshwas during the rule of Shivaji, Sambhaji and Rajaram belonged to Marathi Deshastha Brahmin community. The first Peshwa was Moropant Pingle, who was appointed as the head of the Ashta Pradhan (council of eight ministers) by Shivaji, the founder of the Maratha Kingdom. The initial Peshwas were all ministers who served as the chief executives to the king. The later Peshwas held the highest administrative office and also controlled the Maratha confederacy. Under the Bhat family, the Peshwas became the de facto hereditary administrators of the Confederacy. The Peshwa's office was most powerful under Baji Rao I (r. 1720\u20131740). [...]",
+                "pageid": 638327
+              },
+              {
+                "title": "Balaji Baji Rao",
+                "url": "https://en.wikipedia.org/wiki/Balaji_Baji_Rao",
+                "extract": "Balaji Baji Rao (8 December 1720 \u2013 23 June 1761), commonly known as Nana Saheb I, was the eighth Peshwa of the Maratha Empire. He succeeded his father, Bajirao I, as Peshwa in 1740. During his tenure, the Chhatrapati (Maratha monarch) served largely as a titular head, while effective power remained with the Peshwa. Under Balaji Baji Rao\u2019s administration, the Maratha Empire evolved into a confederation, with prominent chiefs such as the Holkars, the Scindias, and the Bhonsles of Nagpur gaining semi-autonomous authority. The Maratha domains reached their greatest territorial extent during his period. Balaji Baji Rao\u2019s administration, assisted by his paternal cousin Sadashivrao Bhau, introduced several fiscal and administrative reforms. Under his leadership, the boundaries of the Maratha Empire extended from Peshawar (in present-day Pakistan) in the northwest to Srirangapatna in Karnataka, and to Midnapore in West Bengal. Balaji Baji Rao sponsored public works across the empire, including the construction of canals, bridges, temples, and travellers\u2019 rest houses, particularly in Pune, the imperial capital. During his twenty-year reign, he brought under Maratha dominance several major powers of the Indian subcontinent\u2014subduing the Mughals in the north, the Nizam of Hyderabad in the south, and the Nawab of Bengal in the east. [...]",
+                "pageid": 944147
+              },
+              {
+                "title": "Madhavrao I",
+                "url": "https://en.wikipedia.org/wiki/Madhavrao_I",
+                "extract": "Madhavrao I (15 February 1745 \u2013 18 November 1772), also known as Madhavrao Ballal Bhat (Marathi: \u092e\u093e\u0927\u0935\u0930\u093e\u0935 \u092a\u0947\u0936\u0935\u0947), was the ninth Peshwa of the Maratha Empire, ruling from 1761 until his death in 1772. He was the second son of Balaji Baji Rao and the grandson of Bajirao I. Madhavrao assumed the office of Peshwa at the age of sixteen following the Marathas' defeat in the Third Battle of Panipat in 1761. His reign included a period of political and administrative recovery known as the \"Maratha Resurrection\", during which the empire reasserted authority over territories lost following the Third Battle of Panipat. Madhavrao restructured the administration, reduced corruption, and revived the empire's finances. Under his leadership, the Marathas reasserted their authority over several regions of the western and southern Indian subcontinent, notably the Carnatic region, Mysore, and Hyderabad through administrative reforms and military campaigns. Madhavrao worked to maintain unity within the Maratha Confederacy through diplomacy and political negotiation. He promoted trade, sought to improve revenue collection, and introduced measures aimed at supporting agricultural stability during his time as prime minister.",
+                "pageid": 1094239
+              },
+              {
+                "title": "Bhat family",
+                "url": "https://en.wikipedia.org/wiki/Bhat_family",
+                "extract": "The Bhatt Peshw\u0101 family earlier known as Bhatt family is a prominent Indian Marathi Chitpavan Brahmin royal family. Most of the members in this family were the Peshwas (prime ministers) in the Maratha Empire, and Peshwa later became their family name. In the eighteenth century, most of the Indian subcontinent came under their control.",
+                "pageid": 48761490
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.409
+          },
+          "rendered": "[1] Balaji Vishwanath (id 2354632)\nBalaji Vishwanath Bhat (1 January 1662 \u2013 12 April 1720) was the first of a series of hereditary Peshwas hailing from the Bhat family who gained effective control of the Maratha Confederacy and other Mughal vassals during the early 18th century. Balaji Vishwanath assisted a young Maratha king Shahu to consolidate his grip on a kingdom that had been racked by civil war and persistently intruded on by the Mughals under Aurangzeb.\n\n[2] Peshwa (id 638327)\nThe Peshwa was the second highest office in the Maratha Empire, next in rank and prestige only to that of the Chhatrapati. Initially serving as the appointed prime minister in the Maratha Kingdom, the office became hereditary when Shahu gave the seat of Peshwa to Bajirao Ballal. During the reign of Shahu, the office of Peshwas were handed more responsibilities to keep the Jagirdars and Vatandars of the Maratha Empire from rebelling. After the death of Shahu I the empire had no male heir apparent; hence the duty of maintaining peace lay with the Peshwas till the heir apparent (Rajaram II) was of age. The Peshwas from the time of Balaji Rao became the supreme authority in Maratha empire and the Chhatrapati's position became nominal. All Peshwas during the rule of Shivaji, Sambhaji and Rajaram belonged to Marathi Deshastha Brahmin community. The first Peshwa was Moropant Pingle, who was appointed as the head of the Ashta Pradhan (council of eight ministers) by Shivaji, the founder of the Maratha Kingdom. The initial Peshwas were all ministers who served as the chief executives to the king. The later Peshwas held the highest administrative office and also controlled the Maratha confederacy. Under the Bhat family, the Peshwas became the de facto hereditary administrators of the Confederacy. The Peshwa's office was most powerful under Baji Rao I (r. 1720\u20131740). [...]\n\n[3] Balaji Baji Rao (id 944147)\nBalaji Baji Rao (8 December 1720 \u2013 23 June 1761), commonly known as Nana Saheb I, was the eighth Peshwa of the Maratha Empire. He succeeded his father, Bajirao I, as Peshwa in 1740. During his tenure, the Chhatrapati (Maratha monarch) served largely as a titular head, while effective power remained with the Peshwa. Under Balaji Baji Rao\u2019s administration, the Maratha Empire evolved into a confederation, with prominent chiefs such as the Holkars, the Scindias, and the Bhonsles of Nagpur gaining semi-autonomous authority. The Maratha domains reached their greatest territorial extent during his period. Balaji Baji Rao\u2019s administration, assisted by his paternal cousin Sadashivrao Bhau, introduced several fiscal and administrative reforms. Under his leadership, the boundaries of the Maratha Empire extended from Peshawar (in present-day Pakistan) in the northwest to Srirangapatna in Karnataka, and to Midnapore in West Bengal. Balaji Baji Rao sponsored public works across the empire, including the construction of canals, bridges, temples, and travellers\u2019 rest houses, particularly in Pune, the imperial capital. During his twenty-year reign, he brought under Maratha dominance several major powers of the Indian subcontinent\u2014subduing the Mughals in the north, the Nizam of Hyderabad in the south, and the Nawab of Bengal in the east. [...]",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 6501,
+      "output_tokens": 98,
+      "cache_read_tokens": 0,
+      "latency_s": 1.3664294159971178
+    },
+    {
+      "index": 5,
+      "thinking": null,
+      "text": "Based on the search results, I can see that Shivaji is called the founder of the Maratha Kingdom, and Bajirao I was credited with greatly expanding it in the 18th century. However, the Wikipedia articles I've found don't explicitly use the title \"second founder.\" Let me search more specifically.",
+      "tool_calls": [
+        {
+          "query": "Shivaji founder Maratha kingdom",
+          "raw": {
+            "query": "Shivaji founder Maratha kingdom",
+            "results": [
+              {
+                "title": "Shivaji",
+                "url": "https://en.wikipedia.org/wiki/Shivaji",
+                "extract": "Shivaji I (Shivaji Shahaji Bhonsale, Marathi pronunciation: [\u0283i\u02c8\u028ba\u02d0d\u0291i\u02d0 \u02c8b\u02b1os(\u0259)le]; c. 19 February 1630 \u2013 3 April 1680) was an Indian ruler and a member of the Bhonsle dynasty. Shivaji inherited a fiefdom (Marathi: jagir) from his father who served as a retainer for the Sultanate of Bijapur, which later formed the genesis of the Maratha Kingdom. In 1674, he was formally crowned the Chhatrapati of his realm at Raigad Fort. Shivaji offered passage and his service to the Mughal emperor Aurangzeb to invade the declining Sultanate of Bijapur. After Aurangzeb's departure for the north due to a war of succession, Shivaji conquered territories ceded by Bijapur in the name of the Mughals. Following his defeat at the hands of Jai Singh I in the Battle of Purandar, Shivaji entered into vassalage with the Mughal empire, assuming the role of a Mughal chief. During this time Shivaji also wrote a series of letters apologising to Mughal emperor Aurangzeb for his actions and requested additional honors for his services. He was later conferred with the title of Raja by the emperor. He undertook military expeditions on behalf of the Mughal Empire for a brief duration. In 1674, Shivaji was crowned as the king despite opposition from local Brahmins. Shivaji employed people of all castes and religions, including Muslims and Europeans, in his administration and armed forces. [...]",
+                "pageid": 149337
+              },
+              {
+                "title": "Maratha Empire",
+                "url": "https://en.wikipedia.org/wiki/Maratha_Empire",
+                "extract": "The Maratha Empire, also referred to as the Maratha Confederacy, was an early modern polity in the Indian subcontinent. For most of its existence, it comprised the realms of the Peshwa and four major independent Maratha states under the nominal leadership of the former and nominal loyalty to the Chhatrapatis who were successors of Shivaji. The Marathas were a Marathi-speaking warrior group from the western Deccan Plateau (present-day Maharashtra) that rose to prominence under leadership of Shivaji (17th century), who revolted against the Bijapur Sultanate and the Mughal Empire for establishing \"Hindavi Swarajya\" (lit. 'self-rule of Hindus'). The religious attitude of Emperor Aurangzeb estranged non-Muslims, and the Maratha insurgency came at a great cost for his men and treasury. The Maratha government also included warriors, administrators, and other nobles from other Marathi groups. Shivaji's monarchy, referred to as the Maratha Kingdom, expanded into a large realm in the 18th century under the leadership of Peshwa Bajirao I. Marathas from the time of Shahu I recognised the Mughal emperor as their nominal suzerain, similar to other contemporary Indian entities, though in practice, Mughal politics were largely controlled by the Marathas between 1737 and 1803. [...]",
+                "pageid": 349068
+              },
+              {
+                "title": "Jijabai",
+                "url": "https://en.wikipedia.org/wiki/Jijabai",
+                "extract": "Jijabai (n\u00e9e Jadhavrao; 12 January 1598 \u2013 17 June 1674), was the mother of Chhatrapati Shivaji Maharaj, founder of the Maratha Kingdom. She was a daughter of Lakhuji Jadhav of Sindkhed Raja. He belonged to the lineage of Devagiri Yadavas.",
+                "pageid": 1708698
+              },
+              {
+                "title": "Sai Bhonsale",
+                "url": "https://en.wikipedia.org/wiki/Sai_Bhonsale",
+                "extract": "Saibai Bhonsale (n\u00e9e Nimbalkar; 29 October 1633 \u2013 5 September 1659) was the first wife of Chhatrapati Shivaji, the founder of the Maratha Kingdom. She was the mother of her husband's successor Chhatrapati Sambhaji.",
+                "pageid": 9901151
+              },
+              {
+                "title": "Shivaji's forts",
+                "url": "https://en.wikipedia.org/wiki/Shivaji%27s_forts",
+                "extract": "",
+                "pageid": 6661349
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.519
+          },
+          "rendered": "[1] Shivaji (id 149337)\nShivaji I (Shivaji Shahaji Bhonsale, Marathi pronunciation: [\u0283i\u02c8\u028ba\u02d0d\u0291i\u02d0 \u02c8b\u02b1os(\u0259)le]; c. 19 February 1630 \u2013 3 April 1680) was an Indian ruler and a member of the Bhonsle dynasty. Shivaji inherited a fiefdom (Marathi: jagir) from his father who served as a retainer for the Sultanate of Bijapur, which later formed the genesis of the Maratha Kingdom. In 1674, he was formally crowned the Chhatrapati of his realm at Raigad Fort. Shivaji offered passage and his service to the Mughal emperor Aurangzeb to invade the declining Sultanate of Bijapur. After Aurangzeb's departure for the north due to a war of succession, Shivaji conquered territories ceded by Bijapur in the name of the Mughals. Following his defeat at the hands of Jai Singh I in the Battle of Purandar, Shivaji entered into vassalage with the Mughal empire, assuming the role of a Mughal chief. During this time Shivaji also wrote a series of letters apologising to Mughal emperor Aurangzeb for his actions and requested additional honors for his services. He was later conferred with the title of Raja by the emperor. He undertook military expeditions on behalf of the Mughal Empire for a brief duration. In 1674, Shivaji was crowned as the king despite opposition from local Brahmins. Shivaji employed people of all castes and religions, including Muslims and Europeans, in his administration and armed forces. [...]\n\n[2] Maratha Empire (id 349068)\nThe Maratha Empire, also referred to as the Maratha Confederacy, was an early modern polity in the Indian subcontinent. For most of its existence, it comprised the realms of the Peshwa and four major independent Maratha states under the nominal leadership of the former and nominal loyalty to the Chhatrapatis who were successors of Shivaji. The Marathas were a Marathi-speaking warrior group from the western Deccan Plateau (present-day Maharashtra) that rose to prominence under leadership of Shivaji (17th century), who revolted against the Bijapur Sultanate and the Mughal Empire for establishing \"Hindavi Swarajya\" (lit. 'self-rule of Hindus'). The religious attitude of Emperor Aurangzeb estranged non-Muslims, and the Maratha insurgency came at a great cost for his men and treasury. The Maratha government also included warriors, administrators, and other nobles from other Marathi groups. Shivaji's monarchy, referred to as the Maratha Kingdom, expanded into a large realm in the 18th century under the leadership of Peshwa Bajirao I. Marathas from the time of Shahu I recognised the Mughal emperor as their nominal suzerain, similar to other contemporary Indian entities, though in practice, Mughal politics were largely controlled by the Marathas between 1737 and 1803. [...]\n\n[3] Jijabai (id 1708698)\nJijabai (n\u00e9e Jadhavrao; 12 January 1598 \u2013 17 June 1674), was the mother of Chhatrapati Shivaji Maharaj, founder of the Maratha Kingdom. She was a daughter of Lakhuji Jadhav of Sindkhed Raja. He belonged to the lineage of Devagiri Yadavas.",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 7539,
+      "output_tokens": 129,
+      "cache_read_tokens": 0,
+      "latency_s": 1.6955429590307176
+    },
+    {
+      "index": 6,
+      "thinking": null,
+      "text": "Based on my searches, Wikipedia sources do not explicitly refer to anyone as the \"second founder\" of the Maratha Kingdom. The articles consistently identify **Shivaji** as the founder of the Maratha Kingdom (17th century), and **Bajirao I** (Baji Rao I) as the Peshwa who greatly expanded the Maratha Empire in the 18th century. The Maratha Empire \"expanded into a large realm in the 18th century under the leadership of Peshwa Bajirao I.\"\n\nWhile Bajirao I's role in expanding the Maratha Empire was extremely significant, Wikipedia does not use the specific title \"second founder\" for him or anyone else in the available articles. If this is a specific historical epithet used in certain sources or textbooks, it may not be covered in Wikipedia's opening sections.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 8542,
+      "output_tokens": 187,
+      "cache_read_tokens": 0,
+      "latency_s": 2.3908202499733306
+    }
+  ]
+}

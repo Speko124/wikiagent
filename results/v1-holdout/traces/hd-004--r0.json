@@ -1,0 +1,110 @@
+{
+  "question": "who performed at last year's super bowl 2017",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v1",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on the search results, **Lady Gaga** performed at Super Bowl LI in 2017. The halftime show took place on February 5, 2017, at NRG Stadium in Houston, Texas. She headlined the show solo with no special guests, performing a medley of her songs including material from her album \"Joanne\" (2016). The performance was notable for featuring 300 drones that formed an image of the American flag during the introduction.",
+  "error": null,
+  "latency_s": 3.973,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_fetches": 0,
+    "fetched_titles": [],
+    "escalated": false,
+    "n_turns": 2,
+    "cache_hits": 0,
+    "queries": [
+      "Super Bowl LI 2017 halftime performance"
+    ],
+    "shown_titles": [
+      "List of Super Bowl halftime shows",
+      "Super Bowl LI halftime show",
+      "Super Bowl LX halftime show"
+    ],
+    "retrieved_titles": [
+      "List of Super Bowl halftime shows",
+      "Super Bowl LI halftime show",
+      "Super Bowl LX halftime show",
+      "Super Bowl LI",
+      "Super Bowl XLVIII halftime show"
+    ],
+    "usage": {
+      "input_tokens": 3271,
+      "output_tokens": 273,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I need to clarify: \"last year's super bowl 2017\" is ambiguous. Do you mean the Super Bowl that was played in 2017, or the Super Bowl LI from early 2017?\n\nThe Super Bowl played in February 2017 was Super Bowl LI (51), and the Super Bowl played in February 2018 would be Super Bowl LII (52).\n\nLet me search for the halftime performer at Super Bowl LI (2017):",
+      "tool_calls": [
+        {
+          "query": "Super Bowl LI 2017 halftime performance",
+          "raw": {
+            "query": "Super Bowl LI 2017 halftime performance",
+            "results": [
+              {
+                "title": "List of Super Bowl halftime shows",
+                "url": "https://en.wikipedia.org/wiki/List_of_Super_Bowl_halftime_shows",
+                "extract": "Halftime shows are common during many American football games. Entertainment during the Super Bowl, the annual championship game of the National Football League (NFL), is one of the more lavish of these performances and is usually very widely watched on television in the United States.",
+                "pageid": 1730307
+              },
+              {
+                "title": "Super Bowl LI halftime show",
+                "url": "https://en.wikipedia.org/wiki/Super_Bowl_LI_halftime_show",
+                "extract": "The Super Bowl LI Halftime show took place on February 5, 2017, at NRG Stadium in Houston, Texas, as part of Super Bowl LI. Lady Gaga headlined the show, with no special guests (the first overall solo-headlined show since the 2010 edition and the first female solo-headlined show without special guests since the 1996 edition), performing a medley of her songs, including material from her then-most recent studio album, Joanne (2016). The show formerly held the record as the most nominated Super Bowl halftime show in Emmy Awards history, winning the Primetime Emmy Award for Outstanding Lighting Design / Lighting Direction for a Variety Special. This record was later broken by Super Bowl LX halftime show headlined by Bad Bunny, securing 9 nominations. Gaga began rehearsing for the show in January 2017. Her sister gave her the idea of performing from atop the NRG Stadium; Gaga worked on the logistics behind it. She promoted the performance by uploading short clips on her social media accounts. Fashion house Versace created the wardrobe for the show, while designers Bruce Rodgers and LeRoy Bennett did the show's production work with lighting designer Bob Barnhart. The stage was created by All Access Staging & Productions, which had also created previous Super Bowl halftime stages. During the introduction scene, Gaga was accompanied by a fleet of 300 drones, which formed an image of the American flag behind her. [...]",
+                "pageid": 45280343
+              },
+              {
+                "title": "Super Bowl LX halftime show",
+                "url": "https://en.wikipedia.org/wiki/Super_Bowl_LX_halftime_show",
+                "extract": "The Super Bowl LX halftime show, officially known as the Apple Music Super Bowl LX Halftime Show for sponsorship purposes, was the halftime entertainment of Super Bowl LX, which took place on February 8, 2026, at Levi's Stadium in Santa Clara, California, United States. It was headlined by Bad Bunny and featured guest appearances from Lady Gaga, Ricky Martin, and Los Pleneros de la Cresta. The performance marked the first time a Latino solo artist headlined the Super Bowl halftime show and the first halftime set performed almost entirely in Spanish. The show was broadcast across the US on NBC, Peacock, Telemundo, Universo, NFL+ and select NBC Sports digital platforms. It drew 128.2 million viewers domestically across all platforms\u2014making it the fourth-most-watched halftime show in history\u2014and attracted 4.8 million viewers on Telemundo, the network's largest audience for an American football broadcast. It was met with widespread critical acclaim, with critics praising the performance, production, tone, and themes. Analysts highlighted the show's social commentary on Puerto Rico's history, its pan-Latino cultural affirmation, and its recontextualization of \"America\" and \"American\" to encompass the entire continent.",
+                "pageid": 78180404
+              },
+              {
+                "title": "Super Bowl LI",
+                "url": "https://en.wikipedia.org/wiki/Super_Bowl_LI",
+                "extract": "Super Bowl LI was an American football game played at NRG Stadium in Houston, Texas, on February 5, 2017, to determine the champion of the National Football League (NFL) for the 2016 season. The American Football Conference (AFC) champion New England Patriots defeated the National Football Conference (NFC) champion Atlanta Falcons 34\u201328 in overtime. Super Bowl LI featured the largest comeback in Super Bowl history, with the Patriots overcoming a 28\u20133 deficit to emerge victorious. The game was also the first Super Bowl to be decided in overtime. The Patriots' victory was their fifth, moving them into a three-way tie with the Dallas Cowboys and the San Francisco 49ers for the second-most Super Bowl wins. After finishing the regular season with a league-best 14\u20132 record, New England advanced to their record-setting ninth Super Bowl appearance and their seventh under the leadership of head coach Bill Belichick and quarterback Tom Brady. The Falcons, led by the league's top offense and MVP quarterback Matt Ryan, finished the regular season with an 11\u20135 record and the NFC's second seed. They were seeking their first Super Bowl title in their second appearance after last playing in 1998's Super Bowl XXXIII. Atlanta scored three consecutive touchdowns to take a 21\u20133 halftime lead, which they increased to 28\u20133 midway through the third quarter. However, the Patriots scored 25 unanswered points to tie the game in the final seconds of regulation. [...]",
+                "pageid": 37412403
+              },
+              {
+                "title": "Super Bowl XLVIII halftime show",
+                "url": "https://en.wikipedia.org/wiki/Super_Bowl_XLVIII_halftime_show",
+                "extract": "The Super Bowl XLVIII halftime show occurred on February 2, 2014, at MetLife Stadium in New Jersey as part of Super Bowl XLVIII and was headlined by Bruno Mars alongside his band The Hooligans, with special guests The Red Hot Chili Peppers. The Fox telecast of the halftime show attracted the largest audience in the history of the Super Bowl, attracting 115.3 million viewers, later surpassed by the Super Bowl XLIX, Super Bowl 50, and Super Bowl LI halftime shows. The show was produced by Ricky Kirshner and directed by Hamish Hamilton, receiving two 2014 Primetime Emmy Award nominations for Outstanding Short-Format Live-Action Entertainment Program and Outstanding Lighting Design / Lighting Direction for a Variety Special. The performance generated 2.2 million tweets, due to interest for tickets to Mars' Moonshine Jungle Tour.",
+                "pageid": 41825918
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": false,
+            "error": null,
+            "latency_s": 0.531
+          },
+          "rendered": "[1] List of Super Bowl halftime shows (id 1730307)\nHalftime shows are common during many American football games. Entertainment during the Super Bowl, the annual championship game of the National Football League (NFL), is one of the more lavish of these performances and is usually very widely watched on television in the United States.\n\n[2] Super Bowl LI halftime show (id 45280343)\nThe Super Bowl LI Halftime show took place on February 5, 2017, at NRG Stadium in Houston, Texas, as part of Super Bowl LI. Lady Gaga headlined the show, with no special guests (the first overall solo-headlined show since the 2010 edition and the first female solo-headlined show without special guests since the 1996 edition), performing a medley of her songs, including material from her then-most recent studio album, Joanne (2016). The show formerly held the record as the most nominated Super Bowl halftime show in Emmy Awards history, winning the Primetime Emmy Award for Outstanding Lighting Design / Lighting Direction for a Variety Special. This record was later broken by Super Bowl LX halftime show headlined by Bad Bunny, securing 9 nominations. Gaga began rehearsing for the show in January 2017. Her sister gave her the idea of performing from atop the NRG Stadium; Gaga worked on the logistics behind it. She promoted the performance by uploading short clips on her social media accounts. Fashion house Versace created the wardrobe for the show, while designers Bruce Rodgers and LeRoy Bennett did the show's production work with lighting designer Bob Barnhart. The stage was created by All Access Staging & Productions, which had also created previous Super Bowl halftime stages. During the introduction scene, Gaga was accompanied by a fleet of 300 drones, which formed an image of the American flag behind her. [...]\n\n[3] Super Bowl LX halftime show (id 78180404)\nThe Super Bowl LX halftime show, officially known as the Apple Music Super Bowl LX Halftime Show for sponsorship purposes, was the halftime entertainment of Super Bowl LX, which took place on February 8, 2026, at Levi's Stadium in Santa Clara, California, United States. It was headlined by Bad Bunny and featured guest appearances from Lady Gaga, Ricky Martin, and Los Pleneros de la Cresta. The performance marked the first time a Latino solo artist headlined the Super Bowl halftime show and the first halftime set performed almost entirely in Spanish. The show was broadcast across the US on NBC, Peacock, Telemundo, Universo, NFL+ and select NBC Sports digital platforms. It drew 128.2 million viewers domestically across all platforms\u2014making it the fourth-most-watched halftime show in history\u2014and attracted 4.8 million viewers on Telemundo, the network's largest audience for an American football broadcast. It was met with widespread critical acclaim, with critics praising the performance, production, tone, and themes. Analysts highlighted the show's social commentary on Puerto Rico's history, its pan-Latino cultural affirmation, and its recontextualization of \"America\" and \"American\" to encompass the entire continent.",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1182,
+      "output_tokens": 167,
+      "cache_read_tokens": 0,
+      "latency_s": 1.7945966250263155
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Based on the search results, **Lady Gaga** performed at Super Bowl LI in 2017. The halftime show took place on February 5, 2017, at NRG Stadium in Houston, Texas. She headlined the show solo with no special guests, performing a medley of her songs including material from her album \"Joanne\" (2016). The performance was notable for featuring 300 drones that formed an image of the American flag during the introduction.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 2089,
+      "output_tokens": 106,
+      "cache_read_tokens": 0,
+      "latency_s": 1.646702500001993
+    }
+  ]
+}

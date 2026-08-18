@@ -1,0 +1,41 @@
+{
+  "question": "What's the weather in Paris right now?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v1",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "I don't have access to real-time weather data. The tools available to me can only search and read Wikipedia articles, which contain general knowledge information rather than current weather conditions.\n\nTo check the weather in Paris right now, you could:\n- Visit weather websites like Weather.com, Weather.gov, or your local weather service\n- Search \"Paris weather\" on Google\n- Check a weather app on your phone\n\nIf you have questions about Paris itself\u2014its geography, history, climate patterns, or other factual information\u2014I'd be happy to help with those!",
+  "error": null,
+  "latency_s": 1.676,
+  "summary": {
+    "searched": false,
+    "n_searches": 0,
+    "n_fetches": 0,
+    "fetched_titles": [],
+    "escalated": false,
+    "n_turns": 1,
+    "cache_hits": 0,
+    "queries": [],
+    "shown_titles": [],
+    "retrieved_titles": [],
+    "usage": {
+      "input_tokens": 1180,
+      "output_tokens": 121,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I don't have access to real-time weather data. The tools available to me can only search and read Wikipedia articles, which contain general knowledge information rather than current weather conditions.\n\nTo check the weather in Paris right now, you could:\n- Visit weather websites like Weather.com, Weather.gov, or your local weather service\n- Search \"Paris weather\" on Google\n- Check a weather app on your phone\n\nIf you have questions about Paris itself\u2014its geography, history, climate patterns, or other factual information\u2014I'd be happy to help with those!",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1180,
+      "output_tokens": 121,
+      "cache_read_tokens": 0,
+      "latency_s": 1.675786582985893
+    }
+  ]
+}
