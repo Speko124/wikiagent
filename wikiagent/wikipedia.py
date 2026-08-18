@@ -17,7 +17,7 @@ import httpx
 API_URL = "https://en.wikipedia.org/w/api.php"
 # MediaWiki's User-Agent policy asks for a way to contact the operator. A
 # project URL satisfies it without publishing a personal address.
-USER_AGENT = "wikiagent/0.1 (https://github.com/USER/wikiagent)"
+USER_AGENT = "wikiagent/0.1 (https://github.com/Speko124/wikiagent)"
 
 DEFAULT_CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
 

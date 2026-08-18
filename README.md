@@ -13,7 +13,7 @@ be traced back to the exact bytes the model saw.
 Needs Python 3.11+ and an Anthropic API key.
 
 ```bash
-git clone <repo-url> && cd anthropic_wikiagent
+git clone https://github.com/Speko124/wikiagent.git && cd wikiagent
 uv sync                                    # or: pip install -e ".[dev]"
 echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env # or export it
 ```
