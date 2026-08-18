@@ -1,0 +1,111 @@
+{
+  "question": "Which countries border Switzerland?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v2",
+  "prompt_digest": "7cb5b7e9905b9f76",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "Based on the search results, **Switzerland borders five countries**:\n\n1. **France** - The France-Switzerland border is 572 km long\n2. **Germany** - The Germany-Switzerland border is 362 km long\n3. **Italy** - Mentioned as an EU member state that borders Switzerland\n4. **Austria** - Mentioned as an EU member state that borders Switzerland\n5. **Liechtenstein** - Mentioned as the one non-EU neighboring country of Switzerland\n\nThese five countries are all the nations that share a border with Switzerland.",
+  "error": null,
+  "latency_s": 2.222,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_fetches": 0,
+    "fetched_titles": [],
+    "escalated": false,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "Switzerland borders"
+    ],
+    "shown_titles": [
+      "France\u2013Switzerland border",
+      "Germany\u2013Switzerland border",
+      "Switzerland\u2013European Union relations"
+    ],
+    "retrieved_titles": [
+      "France\u2013Switzerland border",
+      "Germany\u2013Switzerland border",
+      "Switzerland\u2013European Union relations",
+      "Italy\u2013Switzerland border",
+      "Austria\u2013Switzerland border"
+    ],
+    "usage": {
+      "input_tokens": 2930,
+      "output_tokens": 178,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Switzerland borders",
+          "raw": {
+            "query": "Switzerland borders",
+            "results": [
+              {
+                "title": "France\u2013Switzerland border",
+                "url": "https://en.wikipedia.org/wiki/France%E2%80%93Switzerland_border",
+                "extract": "The France\u2013Switzerland border is 572 km (355 mi) long. Its current path is mostly the product of the Congress of Vienna of 1815, with the accession of Geneva, Neuch\u00e2tel and Valais to the Swiss Confederation, but it has since been modified in detail, the last time being in 2002. Although most of the border, marked with border stones, is unguarded, several checkpoints remain staffed, most notably on busy roads.",
+                "pageid": 38318130
+              },
+              {
+                "title": "Germany\u2013Switzerland border",
+                "url": "https://en.wikipedia.org/wiki/Germany%E2%80%93Switzerland_border",
+                "extract": "The border between the modern states of Germany and Switzerland extends to 362 kilometres (225 mi), mostly following Lake Constance and the High Rhine (Hochrhein), with territories to the north mostly belonging to Germany and territories to the south mainly to Switzerland. Exceptions are the Swiss canton of Schaffhausen, the Rafzerfeld and hamlet of Nohl of the canton of Z\u00fcrich, Bettingen and Riehen municipalities and part of the city of Basel in the canton of Basel-City (these regions of Switzerland all lie north of the High Rhine) and the old town of the German city of Konstanz, which is located south of the Seerhein. The canton of Schaffhausen is located almost entirely on the northern side of the High Rhine, with the exception of the southern part of the municipality of Stein am Rhein. The German municipality of B\u00fcsingen am Hochrhein is an enclave surrounded by Swiss territory.",
+                "pageid": 44082726
+              },
+              {
+                "title": "Switzerland\u2013European Union relations",
+                "url": "https://en.wikipedia.org/wiki/Switzerland%E2%80%93European_Union_relations",
+                "extract": "Switzerland is not a member state of the European Union (EU). It is associated with the Union through a series of bilateral treaties in which Switzerland has adopted various provisions of European Union law in order to participate in the Union's single market, without joining as a member state. Among Switzerland's neighbouring countries, all but one (the microstate Liechtenstein) are EU member states (though all including Liechtenstein are EEA members). Switzerland borders four EU member states: Austria, France, Germany and Italy.",
+                "pageid": 6018611
+              },
+              {
+                "title": "Italy\u2013Switzerland border",
+                "url": "https://en.wikipedia.org/wiki/Italy%E2%80%93Switzerland_border",
+                "extract": "The border between the modern states of Switzerland and Italy extends for 744 kilometres (462 mi), from the French-Swiss-Italian tripoint at Mont Dolent in the west to the Austrian-Swiss-Italian tripoint near Piz Lad in the east. Much of the border runs across the High Alps, rising above 4,600 metres (15,100 ft) as it passes east of Dufourspitze, but it also descends to the lowest point in Switzerland as it passes Lago Maggiore at below 200 metres (660 ft). It is the longest border of both Italy and of Switzerland.",
+                "pageid": 44526370
+              },
+              {
+                "title": "Austria\u2013Switzerland border",
+                "url": "https://en.wikipedia.org/wiki/Austria%E2%80%93Switzerland_border",
+                "extract": "The border between the modern states of Austria and Switzerland is divided into two parts, separated by the Principality of Liechtenstein, with a total length of 180 km (110 mi). The longer, southern stretch runs across the Grison Alps and the shorter one following mostly the Alpine Rhine (which was straightened), except near Diepoldsau and between Lustenau and Lake Constance, where it follows the Old Rhine bed. The border continues northward to the Austrian-Swiss-German tripoint located within Upper Lake Constance.",
+                "pageid": 44082983
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] France\u2013Switzerland border (id 38318130)\nThe France\u2013Switzerland border is 572 km (355 mi) long. Its current path is mostly the product of the Congress of Vienna of 1815, with the accession of Geneva, Neuch\u00e2tel and Valais to the Swiss Confederation, but it has since been modified in detail, the last time being in 2002. Although most of the border, marked with border stones, is unguarded, several checkpoints remain staffed, most notably on busy roads.\n\n[2] Germany\u2013Switzerland border (id 44082726)\nThe border between the modern states of Germany and Switzerland extends to 362 kilometres (225 mi), mostly following Lake Constance and the High Rhine (Hochrhein), with territories to the north mostly belonging to Germany and territories to the south mainly to Switzerland. Exceptions are the Swiss canton of Schaffhausen, the Rafzerfeld and hamlet of Nohl of the canton of Z\u00fcrich, Bettingen and Riehen municipalities and part of the city of Basel in the canton of Basel-City (these regions of Switzerland all lie north of the High Rhine) and the old town of the German city of Konstanz, which is located south of the Seerhein. The canton of Schaffhausen is located almost entirely on the northern side of the High Rhine, with the exception of the southern part of the municipality of Stein am Rhein. The German municipality of B\u00fcsingen am Hochrhein is an enclave surrounded by Swiss territory.\n\n[3] Switzerland\u2013European Union relations (id 6018611)\nSwitzerland is not a member state of the European Union (EU). It is associated with the Union through a series of bilateral treaties in which Switzerland has adopted various provisions of European Union law in order to participate in the Union's single market, without joining as a member state. Among Switzerland's neighbouring countries, all but one (the microstate Liechtenstein) are EU member states (though all including Liechtenstein are EEA members). Switzerland borders four EU member states: Austria, France, Germany and Italy.",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1200,
+      "output_tokens": 55,
+      "cache_read_tokens": 0,
+      "latency_s": 0.8170259579783306
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "Based on the search results, **Switzerland borders five countries**:\n\n1. **France** - The France-Switzerland border is 572 km long\n2. **Germany** - The Germany-Switzerland border is 362 km long\n3. **Italy** - Mentioned as an EU member state that borders Switzerland\n4. **Austria** - Mentioned as an EU member state that borders Switzerland\n5. **Liechtenstein** - Mentioned as the one non-EU neighboring country of Switzerland\n\nThese five countries are all the nations that share a border with Switzerland.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1730,
+      "output_tokens": 123,
+      "cache_read_tokens": 0,
+      "latency_s": 1.4039545830455609
+    }
+  ]
+}

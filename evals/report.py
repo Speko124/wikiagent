@@ -270,7 +270,7 @@ def compare(curated_dir, holdout_dir=None) -> str:
     cur, hld = _metrics(cur_rows), _metrics(hld_rows) if hld_rows else None
 
     out = [
-        "# V0 baseline",
+        f"# Sweep report — prompt `{cur_cfg.get('prompt_version', '?')}`",
         "",
         f"`{cur_cfg.get('model')}` · prompt `{cur_cfg.get('prompt_version')}` · "
         f"top_k {cur_cfg.get('top_k')} · {cur_cfg.get('repeats')}x per case",

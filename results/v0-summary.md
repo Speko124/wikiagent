@@ -1,4 +1,4 @@
-# V0 baseline
+# Sweep report — prompt `v0`
 
 `claude-haiku-4-5` · prompt `v0` · top_k 3 · 3x per case
 

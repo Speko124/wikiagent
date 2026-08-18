@@ -1,0 +1,42 @@
+{
+  "question": "What's the weather in Paris right now?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v2",
+  "prompt_digest": "7cb5b7e9905b9f76",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "I don't have access to real-time weather data. The tools available to me only allow me to search Wikipedia, which contains encyclopedic information but not current weather conditions.\n\nTo check the weather in Paris right now, you could:\n- Visit a weather website like Weather.com, AccuWeather, or your local meteorological service\n- Search \"Paris weather\" on Google\n- Check a weather app on your phone\n\nIs there something about Paris or weather in general that I could help you with using Wikipedia?",
+  "error": null,
+  "latency_s": 1.482,
+  "summary": {
+    "searched": false,
+    "n_searches": 0,
+    "n_fetches": 0,
+    "fetched_titles": [],
+    "escalated": false,
+    "n_turns": 1,
+    "cache_hits": 0,
+    "queries": [],
+    "shown_titles": [],
+    "retrieved_titles": [],
+    "usage": {
+      "input_tokens": 1204,
+      "output_tokens": 111,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": "I don't have access to real-time weather data. The tools available to me only allow me to search Wikipedia, which contains encyclopedic information but not current weather conditions.\n\nTo check the weather in Paris right now, you could:\n- Visit a weather website like Weather.com, AccuWeather, or your local meteorological service\n- Search \"Paris weather\" on Google\n- Check a weather app on your phone\n\nIs there something about Paris or weather in general that I could help you with using Wikipedia?",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1204,
+      "output_tokens": 111,
+      "cache_read_tokens": 0,
+      "latency_s": 1.4817248330218717
+    }
+  ]
+}

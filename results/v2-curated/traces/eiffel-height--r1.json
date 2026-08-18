@@ -1,0 +1,111 @@
+{
+  "question": "How tall is the Eiffel Tower?",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v2",
+  "prompt_digest": "7cb5b7e9905b9f76",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "According to the **Eiffel Tower** article on Wikipedia, the tower is **330 metres (1,083 feet) tall**. This makes it about the same height as an 81-storey building, and it is the tallest structure in Paris.",
+  "error": null,
+  "latency_s": 1.722,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_fetches": 0,
+    "fetched_titles": [],
+    "escalated": false,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "Eiffel Tower"
+    ],
+    "shown_titles": [
+      "Eiffel Tower",
+      "Gustave Eiffel",
+      "List of names on the Eiffel Tower"
+    ],
+    "retrieved_titles": [
+      "Eiffel Tower",
+      "Gustave Eiffel",
+      "List of names on the Eiffel Tower",
+      "Eiffel Tower replicas and derivatives",
+      "Eiffel Tower (disambiguation)"
+    ],
+    "usage": {
+      "input_tokens": 3394,
+      "output_tokens": 118,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "Eiffel Tower",
+          "raw": {
+            "query": "Eiffel Tower",
+            "results": [
+              {
+                "title": "Eiffel Tower",
+                "url": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+                "extract": "The Eiffel Tower ( EYE-f\u0259l; French: Tour Eiffel [tu\u0281 \u025bf\u025bl] ) is a lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889. Locally nicknamed \"La dame de fer\" (French for \"Iron Lady\") for its use of wrought iron, it was constructed as the centrepiece of the 1889 World's Fair, and to crown the centennial anniversary of the French Revolution. Although initially criticised by some of France's leading artists and intellectuals for its design, it has since become a global cultural icon of France and one of the most recognisable structures in the world. The tower received 5,889,000 visitors in 2022. The Eiffel Tower is the most visited monument with an entrance fee in the world: 6.91 million people ascended it in 2015. It was designated a monument historique in 1964, and was named part of a UNESCO World Heritage Site (\"Paris, Banks of the Seine\") in 1991. The tower is 330 metres (1,083 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become by far the tallest human-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930. It was the first structure in the world to surpass both the 200-metre and 300-metre mark in height. [...]",
+                "pageid": 9232
+              },
+              {
+                "title": "Gustave Eiffel",
+                "url": "https://en.wikipedia.org/wiki/Gustave_Eiffel",
+                "extract": "Alexandre Gustave Eiffel ( EYE-f\u0259l, French: [al\u025bks\u0251\u0303d\u0281 \u0261ystav \u025bf\u025bl]; n\u00e9 Bonickhausen dit Eiffel; 15 December 1832 \u2013 27 December 1923) was a French civil engineer. A graduate of \u00c9cole Centrale des Arts et M\u00e9tiers, he made his name with various bridges for the French railway network, most famously the Garabit Viaduct. He is best known for the Eiffel Tower, designed by his company and built for the 1889 Universal Exposition in Paris, and his contribution to building the Statue of Liberty (Liberty Enlightening the World) in New York. After his retirement from engineering, Eiffel focused on research into meteorology and aerodynamics, making significant contributions in both fields.",
+                "pageid": 12232
+              },
+              {
+                "title": "List of names on the Eiffel Tower",
+                "url": "https://en.wikipedia.org/wiki/List_of_names_on_the_Eiffel_Tower",
+                "extract": "On the Eiffel Tower, 72 names of French male scientists, engineers, and mathematicians appear in raised lettering in recognition of their contributions. Gustave Eiffel chose this \"invocation of science\" because of his concern over the protests against the tower, and chose names of those who had distinguished themselves since 1789. The engravings are found on the sides of the tower under the first balcony, in letters about 60 cm (24 in) tall, and were originally painted in gold. The engraving was painted over at the beginning of the 20th century and restored in 1986\u201387 by Soci\u00e9t\u00e9 Nouvelle d'exploitation de la Tour Eiffel, the company that the city of Paris contracts to operate the Tower. The repainting of 2010\u201311 restored the letters to their original gold colour. There are also names of the engineers who helped build the Tower and design its architecture on a plaque on the top of the Tower, where a laboratory was built as well. It has been proposed to add the names of 72 leading women to the tower and a list for agreement with the Mayor of Paris was presented in 2026.",
+                "pageid": 1278990
+              },
+              {
+                "title": "Eiffel Tower replicas and derivatives",
+                "url": "https://en.wikipedia.org/wiki/Eiffel_Tower_replicas_and_derivatives",
+                "extract": "As one of the most iconic and recognizable structures in the world, the Eiffel Tower, completed in 1889, has been the inspiration for the creation of over 50 similar towers around the world. Most are not exact replicas, though there are many that resemble it closely, while others look slightly different. The Eiffel Tower has also inspired other towers that are not close resembling replicas and therefore are not listed here, for example the Blackpool Tower.",
+                "pageid": 31655286
+              },
+              {
+                "title": "Eiffel Tower (disambiguation)",
+                "url": "https://en.wikipedia.org/wiki/Eiffel_Tower_(disambiguation)",
+                "extract": "The Eiffel Tower is an iron lattice tower in Paris. Eiffel Tower or similar may also refer to:",
+                "pageid": 41731654
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] Eiffel Tower (id 9232)\nThe Eiffel Tower ( EYE-f\u0259l; French: Tour Eiffel [tu\u0281 \u025bf\u025bl] ) is a lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889. Locally nicknamed \"La dame de fer\" (French for \"Iron Lady\") for its use of wrought iron, it was constructed as the centrepiece of the 1889 World's Fair, and to crown the centennial anniversary of the French Revolution. Although initially criticised by some of France's leading artists and intellectuals for its design, it has since become a global cultural icon of France and one of the most recognisable structures in the world. The tower received 5,889,000 visitors in 2022. The Eiffel Tower is the most visited monument with an entrance fee in the world: 6.91 million people ascended it in 2015. It was designated a monument historique in 1964, and was named part of a UNESCO World Heritage Site (\"Paris, Banks of the Seine\") in 1991. The tower is 330 metres (1,083 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become by far the tallest human-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930. It was the first structure in the world to surpass both the 200-metre and 300-metre mark in height. [...]\n\n[2] Gustave Eiffel (id 12232)\nAlexandre Gustave Eiffel ( EYE-f\u0259l, French: [al\u025bks\u0251\u0303d\u0281 \u0261ystav \u025bf\u025bl]; n\u00e9 Bonickhausen dit Eiffel; 15 December 1832 \u2013 27 December 1923) was a French civil engineer. A graduate of \u00c9cole Centrale des Arts et M\u00e9tiers, he made his name with various bridges for the French railway network, most famously the Garabit Viaduct. He is best known for the Eiffel Tower, designed by his company and built for the 1889 Universal Exposition in Paris, and his contribution to building the Statue of Liberty (Liberty Enlightening the World) in New York. After his retirement from engineering, Eiffel focused on research into meteorology and aerodynamics, making significant contributions in both fields.\n\n[3] List of names on the Eiffel Tower (id 1278990)\nOn the Eiffel Tower, 72 names of French male scientists, engineers, and mathematicians appear in raised lettering in recognition of their contributions. Gustave Eiffel chose this \"invocation of science\" because of his concern over the protests against the tower, and chose names of those who had distinguished themselves since 1789. The engravings are found on the sides of the tower under the first balcony, in letters about 60 cm (24 in) tall, and were originally painted in gold. The engraving was painted over at the beginning of the 20th century and restored in 1986\u201387 by Soci\u00e9t\u00e9 Nouvelle d'exploitation de la Tour Eiffel, the company that the city of Paris contracts to operate the Tower. The repainting of 2010\u201311 restored the letters to their original gold colour. There are also names of the engineers who helped build the Tower and design its architecture on a plaque on the top of the Tower, where a laboratory was built as well. It has been proposed to add the names of 72 leading women to the tower and a list for agreement with the Mayor of Paris was presented in 2026.",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1205,
+      "output_tokens": 58,
+      "cache_read_tokens": 0,
+      "latency_s": 0.7535600419505499
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "According to the **Eiffel Tower** article on Wikipedia, the tower is **330 metres (1,083 feet) tall**. This makes it about the same height as an 81-storey building, and it is the tallest structure in Paris.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 2189,
+      "output_tokens": 60,
+      "cache_read_tokens": 0,
+      "latency_s": 0.9681194169679657
+    }
+  ]
+}

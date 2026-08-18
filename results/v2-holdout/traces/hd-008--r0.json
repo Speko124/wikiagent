@@ -1,0 +1,111 @@
+{
+  "question": "writer of 10 things i hate about you",
+  "model": "claude-haiku-4-5",
+  "prompt_version": "v2",
+  "prompt_digest": "7cb5b7e9905b9f76",
+  "effort": null,
+  "tools_enabled": true,
+  "top_k": 3,
+  "answer": "The screenplay for the 1999 film **10 Things I Hate About You** was written by **Karen McCullah Lutz and Kirsten Smith**.",
+  "error": null,
+  "latency_s": 1.742,
+  "summary": {
+    "searched": true,
+    "n_searches": 1,
+    "n_fetches": 0,
+    "fetched_titles": [],
+    "escalated": false,
+    "n_turns": 2,
+    "cache_hits": 1,
+    "queries": [
+      "10 Things I Hate About You"
+    ],
+    "shown_titles": [
+      "10 Things I Hate About You",
+      "10 Things I Hate About You (TV series)",
+      "10 Things I Hate About You (song)"
+    ],
+    "retrieved_titles": [
+      "10 Things I Hate About You",
+      "10 Things I Hate About You (TV series)",
+      "10 Things I Hate About You (song)",
+      "10 Things I Hate About Life",
+      "Not Another Teen Movie"
+    ],
+    "usage": {
+      "input_tokens": 3176,
+      "output_tokens": 99,
+      "cache_read_tokens": 0
+    }
+  },
+  "turns": [
+    {
+      "index": 0,
+      "thinking": null,
+      "text": null,
+      "tool_calls": [
+        {
+          "query": "10 Things I Hate About You",
+          "raw": {
+            "query": "10 Things I Hate About You",
+            "results": [
+              {
+                "title": "10 Things I Hate About You",
+                "url": "https://en.wikipedia.org/wiki/10_Things_I_Hate_About_You",
+                "extract": "10 Things I Hate About You is a 1999 American teen romantic comedy directed by Gil Junger (in his directorial debut) from a screenplay by Karen McCullah Lutz and Kirsten Smith. Loosely inspired by and based on William Shakespeare's comedy The Taming of the Shrew, it stars Julia Stiles, Heath Ledger, Joseph Gordon-Levitt, Larisa Oleynik, Larry Miller, Andrew Keegan, David Krumholtz, Susan May Pratt, and Gabrielle Union. In the film, high-school student Cameron James (Gordon-Levitt) is unable to date Bianca Stratford (Oleynik) until her asocial feminist sister Kat (Stiles) dates, leading to Cameron recruiting bad boy classmate Patrick Verona (Ledger) to date Kat. Development on 10 Things I Hate About You began once Lutz and Smith completed the screenplay in November 1997, with Junger attached to direct soon after. He sought to cast lesser profile actors for the film's lead roles; Stiles joined after several actors declined the role, while Ledger was cast three-and-a-half week prior to the start of principal photography, which took place between June and August 1998 in Tacoma and Seattle. 10 Things I Hate About You was theatrically released in the United States on 31 March 1999, by Buena Vista Pictures Distribution. It received generally positive reviews from critics, with praise for its screenplay and Stiles', Ledger's and Gordon-Levitt's performances: the film became their breakthrough roles. It grossed $53.5 million worldwide. [...]",
+                "pageid": 398934
+              },
+              {
+                "title": "10 Things I Hate About You (TV series)",
+                "url": "https://en.wikipedia.org/wiki/10_Things_I_Hate_About_You_(TV_series)",
+                "extract": "10 Things I Hate About You is an American television sitcom broadcast on ABC Family beginning in 2009. Developed by Carter Covington, the show is a half-hour, single-camera series based on the 1999 film of the same name. It premiered on Tuesday, July 7, 2009, at 8 pm. Following its initial 10-episode run, a second set of 10 episodes aired from March 29, 2010, to May 24, 2010. The series was cancelled in April 2010.",
+                "pageid": 21495081
+              },
+              {
+                "title": "10 Things I Hate About You (song)",
+                "url": "https://en.wikipedia.org/wiki/10_Things_I_Hate_About_You_(song)",
+                "extract": "\"10 Things I Hate About You\" is a song by American singer Leah Kate from her third extended play, Alive and Unwell (2022). It was released independently on March 23, 2022. The track was written by Kate, Mike Wise, and Madi Yanofski, with Wise handling the production. A pop-punk song, Kate wrote a list of things she disliked about an ex from a previous relationship she was trying to get over, which later turned into a song. It went viral on TikTok.",
+                "pageid": 71232439
+              },
+              {
+                "title": "10 Things I Hate About Life",
+                "url": "https://en.wikipedia.org/wiki/10_Things_I_Hate_About_Life",
+                "extract": "10 Things I Hate About Life is an unfinished American romantic comedy film directed and written by Gil Junger, and starring Evan Rachel Wood, Thomas McDonell and Billy Campbell. It tells the story of Willow and Ben who meet while attempting suicide and fall in love. While not a direct sequel to Junger's 10 Things I Hate About You (1999), it bred the same genre with some similar themes. Filming began in late 2012, but was interrupted after two months due to management changes at the production company and Wood's pregnancy. In late 2013, production was set to resume, with an estimated wrap date of April 2014, though filming was delayed indefinitely following Wood's departure. Producers sued for $30 million for breach of contract; Wood's lawyers have responded that she was never adequately paid since the production company ran out of money. Some production stills, from approximately 30 minutes of footage, have been released, but as of 2026 the lawsuit is ongoing and the film is seen as unlikely to ever resume shooting.",
+                "pageid": 42082979
+              },
+              {
+                "title": "Not Another Teen Movie",
+                "url": "https://en.wikipedia.org/wiki/Not_Another_Teen_Movie",
+                "extract": "Not Another Teen Movie is a 2001 American teen parody film directed by Joel Gallen and written by Mike Bender, Adam Jay Epstein, Andrew Jacobson, Phil Beauman, and Buddy Johnson. It features Chyler Leigh, Chris Evans, Jaime Pressly, Eric Christian Olsen, Eric Jungmann, Mia Kirshner, Deon Richmond, Cody McMains, Sam Huntington, Samm Levine, Cerina Vincent, Ron Lester, Randy Quaid, Lacey Chabert, Riley Smith and Samaire Armstrong. Released on December 14, 2001, by Sony Pictures Releasing under its Columbia Pictures label, the film is a parody of teen films released during the 1980s and 90s. The general plot is primarily derived from She's All That, as well as 10 Things I Hate About You, Can't Hardly Wait, Pretty in Pink, and Varsity Blues. It is also filled with allusions to other films featuring teen and college-aged characters, such as American Beauty, American Pie, Bring It On, Can't Buy Me Love, Cruel Intentions, Dazed and Confused, Fast Times at Ridgemont High, Ferris Bueller's Day Off, Grease, Jawbreaker, Lucas, Never Been Kissed, Risky Business, Road Trip, Rudy, and Sixteen Candles, while Paul Gleason reprises his role as Vice Principal Vernon from The Breakfast Club. Not Another Teen Movie received generally negative reviews from critics and grossed $66.5 million on a $15 million budget.",
+                "pageid": 1519350
+              }
+            ],
+            "top_k": 3,
+            "cache_hit": true,
+            "error": null,
+            "latency_s": 0.0
+          },
+          "rendered": "[1] 10 Things I Hate About You (id 398934)\n10 Things I Hate About You is a 1999 American teen romantic comedy directed by Gil Junger (in his directorial debut) from a screenplay by Karen McCullah Lutz and Kirsten Smith. Loosely inspired by and based on William Shakespeare's comedy The Taming of the Shrew, it stars Julia Stiles, Heath Ledger, Joseph Gordon-Levitt, Larisa Oleynik, Larry Miller, Andrew Keegan, David Krumholtz, Susan May Pratt, and Gabrielle Union. In the film, high-school student Cameron James (Gordon-Levitt) is unable to date Bianca Stratford (Oleynik) until her asocial feminist sister Kat (Stiles) dates, leading to Cameron recruiting bad boy classmate Patrick Verona (Ledger) to date Kat. Development on 10 Things I Hate About You began once Lutz and Smith completed the screenplay in November 1997, with Junger attached to direct soon after. He sought to cast lesser profile actors for the film's lead roles; Stiles joined after several actors declined the role, while Ledger was cast three-and-a-half week prior to the start of principal photography, which took place between June and August 1998 in Tacoma and Seattle. 10 Things I Hate About You was theatrically released in the United States on 31 March 1999, by Buena Vista Pictures Distribution. It received generally positive reviews from critics, with praise for its screenplay and Stiles', Ledger's and Gordon-Levitt's performances: the film became their breakthrough roles. It grossed $53.5 million worldwide. [...]\n\n[2] 10 Things I Hate About You (TV series) (id 21495081)\n10 Things I Hate About You is an American television sitcom broadcast on ABC Family beginning in 2009. Developed by Carter Covington, the show is a half-hour, single-camera series based on the 1999 film of the same name. It premiered on Tuesday, July 7, 2009, at 8 pm. Following its initial 10-episode run, a second set of 10 episodes aired from March 29, 2010, to May 24, 2010. The series was cancelled in April 2010.\n\n[3] 10 Things I Hate About You (song) (id 71232439)\n\"10 Things I Hate About You\" is a song by American singer Leah Kate from her third extended play, Alive and Unwell (2022). It was released independently on March 23, 2022. The track was written by Kate, Mike Wise, and Madi Yanofski, with Wise handling the production. A pop-punk song, Kate wrote a list of things she disliked about an ex from a previous relationship she was trying to get over, which later turned into a song. It went viral on TikTok.",
+          "top_k": 3,
+          "tool": "search_wikipedia"
+        }
+      ],
+      "stop_reason": "tool_use",
+      "input_tokens": 1205,
+      "output_tokens": 61,
+      "cache_read_tokens": 0,
+      "latency_s": 0.8493511659908108
+    },
+    {
+      "index": 1,
+      "thinking": null,
+      "text": "The screenplay for the 1999 film **10 Things I Hate About You** was written by **Karen McCullah Lutz and Kirsten Smith**.",
+      "tool_calls": [],
+      "stop_reason": "end_turn",
+      "input_tokens": 1971,
+      "output_tokens": 38,
+      "cache_read_tokens": 0,
+      "latency_s": 0.8905002920073457
+    }
+  ]
+}
