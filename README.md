@@ -163,7 +163,26 @@ when used.
 citations across 138 runs. Every specific figure spot-checked against the
 rendered tool output was present in it.
 
-Full analysis: [docs/error-analysis.md](docs/error-analysis.md) ·
+**Where the failures sat, by funnel stage** — attribution is computed from
+exact signals, not hand-labelled:
+
+| Stage | v0 | v1 | v2 |
+|---|---|---|---|
+| 1 · query — never searched | 0 | 0 | 0 |
+| 2 · retrieval — article never surfaced | 0 | 1 | 0 |
+| **3 · evidence — fact not in the returned text** | **15** | **5** | **4** |
+| 4 · synthesis — had it, joined it wrong | 0 | 0 | 1 |
+| 5 · grounding — claimed what wasn't there | **0** | **0** | **0** |
+| correct | 37 | 47 | 49 |
+
+*(curated arm, 54 runs each)*
+
+One stage held everything, and the stage everyone expects to dominate —
+hallucination — never appeared at all. That is what made the fix obvious, and
+the fix moved the stage it targeted while the others stayed flat.
+
+Full analysis: [docs/design-rationale.md](docs/design-rationale.md) ·
+[docs/error-analysis.md](docs/error-analysis.md) ·
 [docs/v1-trace-review.md](docs/v1-trace-review.md) ·
 [docs/v1b-trace-review.md](docs/v1b-trace-review.md)
 

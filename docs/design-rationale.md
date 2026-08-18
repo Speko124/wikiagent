@@ -139,6 +139,74 @@ and we have one instance of each:
 
 Neither dominates. Disagreements are surfaced and adjudicated by hand.
 
+
+### The failure funnel, and why it drove every fix
+
+Six stages, ordered the way a run flows. **Failure propagates downstream:** a
+stage-2 miss guarantees every stage below it fails too, so the same headline
+score can mean completely different things and demands completely different
+fixes. Attributing each run to its earliest failing stage is what made the fix
+obvious rather than a guess.
+
+```mermaid
+flowchart TD
+    Q[question] --> S1
+    S1["**1 · query formulation**<br/>did it search, and search well?"] --> S2
+    S2["**2 · retrieval**<br/>did the right article come back?"] --> S3
+    S3["**3 · evidence**<br/>was the fact in the text we returned?"] --> S4
+    S4["**4 · synthesis**<br/>right ingredients, right join?"] --> S5
+    S5["**5 · grounding**<br/>is every claim in the evidence?"] --> S6
+    S6["**6 · answer**<br/>correct, and correctly hedged?"] --> A[answer]
+
+    S3 -. "**v0: 15 of 54 runs**<br/>the whole bottleneck" .-> F3[fetch_article]
+    S5 -. "0 of 138 runs<br/>never the problem" .-> F5[no work needed]
+
+    style S3 fill:#ffdddd,stroke:#cc0000,stroke-width:3px
+    style S5 fill:#ddffdd,stroke:#00aa00
+    style F3 fill:#fff3cd,stroke:#856404
+    style F5 fill:#ddffdd,stroke:#00aa00
+```
+
+The stage attribution is **computed, not hand-labelled** — it falls out of
+crossing two exact signals (`answer_match` × `evidence_match`) plus `searched`,
+so it comes free with every sweep. Iteration 0 needed a human reading 31 traces
+to produce the same picture.
+
+**Runs per stage, all three versions:**
+
+| Stage | v0 | v1 | v2 | | v0 | v1 | v2 |
+|---|---|---|---|---|---|---|---|
+| | *curated (54)* | | | | *holdout (30)* | | |
+| 1 · query — never searched | 0 | 0 | 0 | | 0 | 0 | 0 |
+| 2 · retrieval — article never surfaced | 0 | 1 | 0 | | 2 | 0 | 0 |
+| **3 · evidence — fact not in returned text** | **15** | **5** | **4** | | **3** | **0** | **0** |
+| 4 · synthesis — had it, joined it wrong | 0 | 0 | 1 | | 0 | 2 | 2 |
+| 5 · grounding — claimed what wasn't there | **0** | **0** | **0** | | **0** | **0** | **0** |
+| correct | 37 | 47 | 49 | | 21 | 25 | 26 |
+| not scorable (abstention cases) | 2 | 0 | 0 | | 4 | 3 | 2 |
+
+Three things fall straight out of this table, and none are visible in an
+accuracy number:
+
+- **One stage held everything.** Stage 3 was 15 of 54 curated runs at v0 and
+  every other stage was near zero. That is what made `fetch_article` the
+  obvious intervention rather than one option among several — and why prompt
+  tuning, better query wording or a bigger `top_k` would all have been wasted
+  effort.
+- **The stage we expected to dominate never appeared.** Grounding is zero in
+  every version, in both arms, across 138 runs. Effort budgeted for
+  hallucination went to retrieval depth instead.
+- **The fix moved the stage it targeted and nothing else.** Stage 3 went
+  15 → 5 → 4 curated and 3 → 0 → 0 held out, while stages 1, 2 and 5 stayed
+  flat. A change that improves a score by moving several stages at once is
+  usually a measurement artifact; this one didn't.
+
+**Upstream matters more than downstream** — and it cuts both ways. It is why
+stage 3 was worth fixing before anything below it, and it is why the two
+remaining stage-3 failures (a fact past the 8,000-char cap) are worth more than
+the stage-4 ones: nothing downstream can recover from evidence that never
+arrived.
+
 ### The variance floor is measured
 
 Two identical sweeps agree on **54/54** deterministic verdicts and differ on
