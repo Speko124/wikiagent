@@ -225,7 +225,7 @@ def test_no_metric_counts_an_unmeasured_signal_as_a_failure(tmp_path):
     assert m["correct"] == "n/a"            # no judge verdict
     assert m["correct_contains"] == "n/a"   # no accepted phrasings
     assert m["evidence_found"] == "n/a"
-    assert m["completeness"] == "n/a"
+    assert m["coverage"].startswith("n/a")
     assert m["_clashes"] == []
     # Nor in any funnel stage that names a failure.
     f = report.funnel([blank])
@@ -388,3 +388,36 @@ def test_all_scored_runs_wrong_is_systematic_not_incomplete():
     rows = [row("c", answer_match=False) for _ in range(3)]
     _, _, buckets = report.pass_at_k(rows, repeats=3)
     assert buckets["systematic (0/k)"] == 1
+
+
+def test_ambiguity_verdicts_reach_the_report():
+    """They were being collected per run and never surfaced, so the dimension
+    was paid for and invisible. Counted over distinct cases, since ambiguity
+    is a property of the question and does not vary across repeats."""
+    amb = {"ambiguity": {"ambiguous": True, "why": "two readings", "flags": []},
+           "correctness": {"verdict": "correct"}}
+    plain = {"ambiguity": {"ambiguous": False, "why": "", "flags": []},
+             "correctness": {"verdict": "correct"}}
+    rows = [row("a", judge=amb), row("a", judge=amb), row("b", judge=plain)]
+    m = report._metrics(rows)
+    assert m["ambiguous_questions"] == "1/2 (50%)"
+    assert m["correct_on_ambiguous"] == "2/2 (100%)"
+
+
+def test_coverage_ignores_single_requirement_cases():
+    """A one-requirement spec scores 0.0 or 1.0, which is `answer_match` under
+    another name. Averaging those in produced a metric that looked like a
+    fourth dimension and tracked correctness exactly - 39 of 45 curated runs,
+    and zero partial scores across two versions."""
+    rows = [
+        row("single", answer_completeness=1.0, n_answer_requirements=1),
+        row("multi", answer_completeness=0.5, n_answer_requirements=5),
+    ]
+    m = report._metrics(rows)
+    assert m["coverage"].startswith("50%")      # the multi-fact case only
+    assert "1 multi-fact cases" in m["coverage"]
+
+
+def test_coverage_says_so_when_no_case_exercises_it():
+    rows = [row("single", answer_completeness=1.0, n_answer_requirements=1)]
+    assert report._metrics(rows)["coverage"].startswith("n/a")

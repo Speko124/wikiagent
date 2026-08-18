@@ -194,7 +194,12 @@ def grade(case: Case, trace: Trace) -> dict:
         # didn't use it" from "answered from memory", but that cross-tab is
         # analysis, not a grader's job.
         "answer_match": answer_match,
+        # Coverage is only a distinct signal when a case has more than one
+        # required fact. With a single requirement the fraction is 0.0 or 1.0,
+        # i.e. `answer_match` restated - so the count travels with it and the
+        # report scopes the metric to cases where it can say something new.
         "answer_completeness": answer_completeness,
+        "n_answer_requirements": len(case.answer_contains),
         "evidence_match": evidence_match,
         "evidence_found_at_search": evidence_at,
         "evidence_found_in": evidence_in,

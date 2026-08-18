@@ -73,10 +73,35 @@ def _metrics(rows: list[dict], config: dict | None = None) -> dict:
         and judged_correct(r) != bool(r["answer_match"])
     ]
     with_ev = [r for r in ok if r.get("evidence_match") is not None]
-    completeness = [
-        r["answer_completeness"] for r in ok if r.get("answer_completeness") is not None
+    # Only multi-requirement cases. On single-requirement cases the fraction is
+    # 0.0 or 1.0 and identical to `answer_match`, so averaging over everything
+    # produced a number that looked like a fourth dimension and was correctness
+    # restated: 39 of 45 curated runs, and zero partial scores in V1 and V2.
+    coverage = [
+        r["answer_completeness"] for r in ok
+        if r.get("answer_completeness") is not None
+        and (r.get("n_answer_requirements") or 0) > 1
     ]
+    coverage_cases = {
+        r["case_id"] for r in ok if (r.get("n_answer_requirements") or 0) > 1
+    }
     solid, n_cases, buckets = pass_at_k(rows, repeats=(config or {}).get('repeats'))
+    # Ambiguity is judged per question, not per run, so it is counted over
+    # distinct cases. Reported alongside how the agent fared on them: a set
+    # where a third of questions have more than one reasonable reading is a
+    # property of real user questions, and worth seeing next to correctness.
+    ambiguous_cases, flagged_cases = {}, set()
+    for r in rows:
+        verdict = (r.get("judge") or {}).get("ambiguity") or {}
+        if verdict.get("ambiguous") is not None:
+            ambiguous_cases[r["case_id"]] = verdict["ambiguous"]
+        if verdict.get("flags"):
+            flagged_cases.add(r["case_id"])
+    n_ambiguous = sum(1 for v in ambiguous_cases.values() if v)
+    amb_ok = [
+        r for r in ok
+        if ambiguous_cases.get(r["case_id"]) and judged_correct(r) is not None
+    ]
     judged = [
         r for r in ok
         if (r.get("judge") or {}).get("correctness", {}).get("verdict")
@@ -111,7 +136,11 @@ def _metrics(rows: list[dict], config: dict | None = None) -> dict:
         "evidence_found": _rate(
             sum(1 for r in with_ev if r["evidence_match"]), len(with_ev)
         ),
-        "completeness": f"{statistics.mean(completeness):.0%}" if completeness else "n/a",
+        "coverage": (
+            f"{statistics.mean(coverage):.0%} "
+            f"({len(coverage_cases)} multi-fact cases, {len(coverage)} runs)"
+            if coverage else "n/a (no multi-fact cases)"
+        ),
         "pass_at_k": _rate(solid, n_cases),
         "buckets": " · ".join(f"{v} {k}" for k, v in buckets.items()),
         "searched": _rate(sum(1 for r in ok if r["searched"]), len(ok)),
@@ -149,6 +178,10 @@ def _metrics(rows: list[dict], config: dict | None = None) -> dict:
         if ok else "n/a",
         "judge_clashes": f"{len(clashes)}/{len(judged)}" if judged else "n/a",
         "judge_hedged": f"{len(hedged)}",
+        "ambiguous_questions": _rate(n_ambiguous, len(ambiguous_cases)),
+        "correct_on_ambiguous": _rate(
+            sum(1 for r in amb_ok if judged_correct(r)), len(amb_ok)),
+        "ambiguity_flags": str(len(flagged_cases)),
         "_clashes": clashes,
         "_hedged": hedged,
         "_guardrail_clash": guardrail_clash,
@@ -313,7 +346,6 @@ def compare(curated_dir, holdout_dir=None) -> str:
         ("**pass^k** (correct on every repeat)", "pass_at_k"),
         ("  of which", "buckets"),
         ("Evidence retrieved", "evidence_found"),
-        ("Answer completeness (mean)", "completeness"),
         ("Searched at all", "searched"),
         ("Searches per run", "mean_searches"),
         ("Turns", "turns"),
@@ -329,6 +361,10 @@ def compare(curated_dir, holdout_dir=None) -> str:
         ("Latency (median s)", "latency_s"),
         ("Judge/matcher disagreements", "judge_clashes"),
         ("Judge unclear, matcher confident", "judge_hedged"),
+        ("Questions judged ambiguous", "ambiguous_questions"),
+        ("  correct on those", "correct_on_ambiguous"),
+        ("Multi-fact coverage", "coverage"),
+        ("  flagged as suspect rubric calls", "ambiguity_flags"),
         ("Errors", "errors"),
     ]
     out += [

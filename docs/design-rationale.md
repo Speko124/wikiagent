@@ -114,8 +114,8 @@ exactly:
 | **answer right** | grounded | answered from memory |
 | **answer wrong** | had it, didn't use it | never had it |
 
-Plus corroboration (distinct articles cited), completeness (fraction of
-required facts), tool discipline, turns, tokens, latency — and **pass^k**,
+Plus corroboration (distinct articles cited), multi-fact coverage (see the
+caveat below), tool discipline, turns, tokens, latency — and **pass^k**,
 cases correct on *every* repeat, bucketed solid / flaky / systematic /
 incomplete. A per-run rate hides the shape: 50% could be one case that always
 works beside one that never does. It is **strict about unscored runs** — a
@@ -283,7 +283,7 @@ movements are not results.
 | Correct (judge, primary) | 71% | **89%** | **91%** | | 81% | **93%** | **93%** |
 | Correct (contains, guardrail) | 62% | 89% | 91% | | 77% | 90% | 90% |
 | pass^3 | 12/18 | **15/18** | 15/18 | | 7/9 | **8/10** | 8/10 |
-| Completeness | 65% | **89%** | 91% | | 77% | **90%** | 90% |
+| Multi-fact coverage *(2 cases, 6 runs)* | 89% | 100% | 100% | | 100% | 100% | 100% |
 | **Retrieval** | | | | | | | |
 | Evidence retrieved | 64% | **88%** | 90% | | 80% | **97%** | **100%** |
 | Searched at all | 94% | 94% | 94% | | 100% | 100% | 100% |
@@ -304,10 +304,21 @@ movements are not results.
 
 **What improved.** Quality and retrieval move together and clear the bar at
 v0→v1: correctness +18 curated / +12 held out, evidence retrieved +24 / +17,
-completeness +24 / +13. Held-out evidence retrieval reaches **100%** at v2 —
+and held-out evidence retrieval reaches **100%** at v2 —
 every question's answer-bearing text was returned. Both correctness signals
 move in lockstep, which is worth more than either alone: they are computed
 independently and disagree on 1 of 41 runs.
+
+**A metric that did not earn its place.** I built a completeness signal — the
+fraction of a case's required facts present in the answer — and it turned out
+to be near-degenerate on this set. Only 2 of 18 curated cases have more than
+one required fact, so for 39 of 45 scored runs the fraction is 0.0 or 1.0 and
+identical to `answer_match`, and no run scored partial in v1 or v2. Averaged
+over everything it looked like a fourth dimension while restating correctness.
+It is now reported only over the cases that exercise it, with the sample size
+inline, and it does work there: `switzerland-borders` named 4 of 5 bordering
+countries at v0 and all 5 from v1. Making it meaningful needs more multi-fact
+cases, which is a case-set problem rather than a metric problem.
 
 **What degraded, honestly.** Output tokens rose 223 → 251 (+13%) and answer
 length returned to the v0 level after dipping at v1 — the fetch tool makes

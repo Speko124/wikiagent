@@ -11,7 +11,6 @@
 | **pass^k** (correct on every repeat) | 15/18 (83%) | 8/9 (89%) |
 |   of which | 15 solid (k/k) · 0 flaky · 2 systematic (0/k) · 1 incomplete | 8 solid (k/k) · 0 flaky · 0 systematic (0/k) · 1 incomplete |
 | Evidence retrieved | 36/42 (86%) | 30/30 (100%) |
-| Answer completeness (mean) | 87% | 87% |
 | Searched at all | 51/54 (94%) | 30/30 (100%) |
 | Searches per run | 1.5 | 1.4 |
 | Turns | 2.8 mean, 10 max | 2.7 mean, 9 max |
@@ -27,6 +26,10 @@
 | Latency (median s) | 3.2 | 3.2 |
 | Judge/matcher disagreements | 0/40 | 0/25 |
 | Judge unclear, matcher confident | 0 | 4 |
+| Questions judged ambiguous | 8/18 (44%) | 7/10 (70%) |
+|   correct on those | 20/23 (87%) | 15/17 (88%) |
+| Multi-fact coverage | 100% (2 multi-fact cases, 6 runs) | 100% (1 multi-fact cases, 3 runs) |
+|   flagged as suspect rubric calls | 3 | 0 |
 | Errors | 0 | 0 |
 
 ## Answer × evidence
