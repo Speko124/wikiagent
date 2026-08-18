@@ -11,10 +11,7 @@ Last updated: 2026-08-17 (V0 baseline measured; `fetch_article` is next)
 ## 1. Goal
 
 Build a system that answers questions using Claude + Wikipedia, and an eval
-suite that measures how well it works. Assignment brief kept locally in `assignment.md` (not published);
-methodology pointers in `references.md`.
-
-Deliverables: runnable prototype, code, design rationale (video + doc).
+suite that measures how well it works. Methodology pointers in `references.md`.
 
 ---
 
@@ -42,8 +39,8 @@ Deliverables: runnable prototype, code, design rationale (video + doc).
 
 | Decision | Choice | Why |
 |---|---|---|
-| Data source | Live MediaWiki API | No dump/index infra; assignment says don't build a search system |
-| Tool surface | Single `search_wikipedia(query)` | Assignment specifies it; simplest e2e |
+| Data source | Live MediaWiki API | No dump/index infra; building a search system is explicitly not the goal |
+| Tool surface | Single `search_wikipedia(query)` | Simplest thing that works end to end |
 | Result shape | Title + first ~1500 chars of intro, per result | Enough for most questions, bounded token cost |
 | Results shown | `top_k`, default 3 | The one tunable knob (`--top-k`) |
 | Results fetched | `max(OVERFETCH=5, top_k)` | See below |
@@ -74,7 +71,7 @@ Haiku ~$1.30, Sonnet 5 ~$2.60, Opus 5 ~$6.60.
 
 **Open trade-off, to be resolved with data.** Haiku is cheapest but some of its
 failures will be plain capability limits, which teach nothing about prompt or
-tool design — the actual subject of the assignment. **Planned:** once the
+tool design — the actual subject of this project. **Planned:** once the
 harness and case set exist, run one baseline sweep on Haiku and one on Sonnet 5
 over identical cases, and decide from the measured gap rather than argument. If
 Haiku's error taxonomy is dominated by "model wasn't strong enough," switch.
@@ -172,10 +169,10 @@ which is the point of keeping the baseline this short.
 
 Considered to avoid API spend by using a Claude plan. **Rejected.** It required
 wrapping the tool as an MCP server, actively suppressing Claude Code's built-in
-WebSearch/WebFetch (which the assignment forbids), neutralising ambient
+WebSearch/WebFetch (hosted search is ruled out here), neutralising ambient
 `CLAUDE.md`/skills/hooks contamination, and it made the CLI version part of the
 system under test. Cost saving didn't justify the added confounds on the
-project's central deliverable. Removed the MCP server and dependency.
+project's central concern. Removed the MCP server and dependency.
 
 ### 3.5 Debuggability
 
@@ -398,7 +395,7 @@ check: if the control scores near the agent baseline, the set measures
 parametric memory rather than the system. It also exposes the interesting cell,
 control passes / tool-on fails — retrieval actively hurting by distraction.
 
-Deferred because the assignment is to improve *the agent*, and the control arm
+Deferred because the goal is to improve *the agent*, and the control arm
 diagnoses the *dataset*. It answers "is this eval set worth anything?", not
 "where is the agent wrong?" — so it earns its cost only once the agent work is
 done. The flag, the structural guarantee that the arm cannot retrieve, and its
@@ -628,5 +625,5 @@ Three more candidate eval dimensions:
 ## 9. Non-goals
 
 Vector search / embeddings · multi-agent · web UI · production-grade retrieval ·
-fine-tuning · running the agent through Claude Code (§3.4). The assignment
-directs effort to prompt quality and eval design.
+fine-tuning · running the agent through Claude Code (§3.4). Effort goes to
+prompt quality and eval design instead.

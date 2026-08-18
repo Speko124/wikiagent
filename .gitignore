@@ -11,8 +11,9 @@ misc-dont-read/
 # Conversation transcripts exported by the CLI (any date-stamped export)
 20*-*.txt
 
-# Anthropic's assignment brief - kept locally, not republished
+# Working notes and briefs kept out of the published repo
 docs/assignment.md
 
 # Personal working notes - kept locally, not published
 docs/evals_assessment.md
+CLAUDE.md

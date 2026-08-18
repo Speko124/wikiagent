@@ -414,16 +414,3 @@ Ordered by evidence behind them, not appeal.
    against human labels, exactly as the judge was — is the highest-leverage
    remaining piece of infrastructure.
 
----
-
-## 10. Time spent
-
-**About 6 hours**, spread over four days.
-
-Roughly: an hour on design and a working prototype, an hour on the eval
-harness, and the rest on the loop that actually produced the results — read
-traces, categorise, fix, measure, three times through, plus the writing.
-
-The split is the point. Building the agent was the small part; **most of the
-time went into the evals and into reading what the system actually did**, and
-that is where every finding came from.
