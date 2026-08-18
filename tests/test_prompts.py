@@ -98,7 +98,7 @@ def test_the_default_prompt_asks_for_exact_titles():
 # already been scored against silently makes those results uninterpretable —
 # the trace still says `v0`. Seeing this test fail is the reminder to add a new
 # version instead. If the change really is intended, update the digest here.
-FROZEN = {"v0": "7bd4894e018a175b", "v1": "c243201bc72665bb"}
+FROZEN = {"v0": "7bd4894e018a175b", "v1": "c243201bc72665bb", "v2": "7cb5b7e9905b9f76"}
 
 
 @pytest.mark.parametrize("version,digest", sorted(FROZEN.items()))

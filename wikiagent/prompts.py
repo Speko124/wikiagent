@@ -132,7 +132,44 @@ or giving up.""",
     ),
 )
 
-PROMPTS = {"v0": V0, "v1": V1}
+# v2 generalises v1's escalation rule instead of adding to it.
+#
+# v1 said: open the article when *its* opening section lacks the answer. The
+# traces show the agent obeyed that literally and narrowly - it fetched the
+# article whose title matched the topic, and never the article about the person
+# who did the thing. Across six `arpanet-first-message` runs, `Leonard
+# Kleinrock` was returned as a top-3 result every time and fetched zero times,
+# while the agent re-read `ARPANET` up to six times per run.
+#
+# So v2 hands the choice back to the model: decide *which* article is most
+# likely to carry the answer, and say that it may not be the one matching the
+# question's subject. The specific-to-general direction is deliberate - if this
+# proves flaky, narrowing again is a smaller change than widening was.
+V2 = PromptSet(
+    system=V1.system.replace(
+        """- If the results name the right article but its opening section does not \
+contain the answer, open that article with fetch_article rather than guessing \
+or giving up.""",
+        """- If the search results don't contain the answer, decide which article is \
+most likely to carry it and open that one with fetch_article. It is often not \
+the article matching the question's subject — a detail about a thing is \
+frequently recorded in the article about the person, work or event involved.""",
+    ),
+    tool_description=V1.tool_description,
+    fetch_description=(
+        "Read one Wikipedia article in full, given its exact title or its id "
+        "from a search result.\n\n"
+        "Search returns only opening sections. Specific details — who did what, "
+        "when, where, how many — usually live further down the article, so open "
+        "the article rather than concluding the fact is unrecorded.\n\n"
+        "Returns the article's prose only. **Infoboxes, sidebars and tables are "
+        "not included.** Long articles are cut short, marked with "
+        f"{TRUNCATION_MARKER}; text after that point was not returned, so it "
+        "cannot be called absent."
+    ),
+)
+
+PROMPTS = {"v0": V0, "v1": V1, "v2": V2}
 
 # v1 by default, on measured evidence rather than on it being newest: 89% vs
 # 71% correct on the curated set and 93% vs 81% on the held-out set, confirmed
