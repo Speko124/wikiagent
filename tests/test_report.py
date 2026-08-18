@@ -310,3 +310,20 @@ def test_the_guardrail_disagreeing_with_the_judge_is_surfaced():
     clash = row("c1", answer_match=True,
                 judge={"correctness": {"verdict": "incorrect", "why": "wrong entity"}})
     assert len(report._metrics([clash])["_guardrail_clash"]) == 1
+
+
+def test_the_report_shows_turn_max_not_only_the_mean():
+    """A runaway loop is invisible in a mean over 54 runs. V1 had one run hit
+    the 10-turn guard while the mean stayed at 2.6."""
+    rows = [row("a", n_turns=2), row("b", n_turns=2), row("c", n_turns=10)]
+    turns = report._metrics(rows)["turns"]
+    assert "10 max" in turns
+
+
+def test_fetch_use_is_reported_as_a_rate_not_only_a_total():
+    """'22 fetches' does not say whether one run made 22 or 22 runs made one.
+    The rate is what tells you the tool is used selectively."""
+    rows = [row("a", n_fetches=1, escalated=True), row("b", n_fetches=0)]
+    m = report._metrics(rows)
+    assert m["fetch_rate"] == "1/2 (50%)"
+    assert m["unescalated_fetches"] == "0"

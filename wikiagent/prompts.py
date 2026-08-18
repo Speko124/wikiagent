@@ -21,6 +21,7 @@ sitting in the version table is just clutter that invites someone to select it.
 
 from __future__ import annotations
 
+import hashlib
 from dataclasses import dataclass
 
 from .wikipedia import TRUNCATION_MARKER
@@ -31,6 +32,21 @@ class PromptSet:
     system: str
     tool_description: str  # `{n}` is filled in with the result count
     fetch_description: str = ""  # empty means the agent has search only
+
+    @property
+    def digest(self) -> str:
+        """Fingerprint of everything the model reads.
+
+        Recorded in every trace because `prompt_version` alone is a promise,
+        not evidence: a version can be edited after a sweep and the rows still
+        name it. With the digest on the row, "which wording produced these
+        numbers?" is answerable from the results rather than from file
+        timestamps — which is how it had to be answered once already.
+        """
+        joined = "\x00".join(
+            (self.system, self.tool_description, self.fetch_description)
+        )
+        return hashlib.sha256(joined.encode()).hexdigest()[:16]
 
 
 # The baseline. Three properties are load-bearing and easy to lose in an edit:

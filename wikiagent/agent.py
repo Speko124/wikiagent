@@ -62,6 +62,7 @@ def ask(
         question=question,
         model=model,
         prompt_version=prompt_version,
+        prompt_digest=prompts.get(prompt_version).digest,
         effort=effort,
         tools_enabled=use_tools,
         top_k=top_k,

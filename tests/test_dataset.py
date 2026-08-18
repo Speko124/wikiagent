@@ -101,8 +101,11 @@ def test_core_covers_every_mode_the_read_pass_found(core):
         "factual", "must-search", "no-search-needed", "multi-hop", "bridge",
         "ambiguous-entity", "query-formulation", "false-premise",
         "negative-existence", "completeness", "unanswerable",
-        # the dominant failure mode and its variants
-        "body-fact", "infobox-fact", "aggregation",
+        # the dominant failure mode and its variants. `infobox-fact` and
+        # `aggregation` were removed after V1: both were causes we asserted
+        # and then disproved from the traces - the real constraints are the
+        # fetch char cap and extraction from text already on screen.
+        "body-fact", "beyond-char-cap", "extraction",
         # modes the read pass surfaced
         "memory-seeded-query", "persistence", "no-article",
         "comparison", "query-reformulation", "false-premise-control",

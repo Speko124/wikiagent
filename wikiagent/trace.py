@@ -54,6 +54,7 @@ class Trace:
     question: str
     model: str
     prompt_version: str
+    prompt_digest: str = ""  # what the version actually contained at run time
     effort: str | None = None
     tools_enabled: bool = True
     top_k: int = 3
@@ -161,6 +162,7 @@ class Trace:
             "question": self.question,
             "model": self.model,
             "prompt_version": self.prompt_version,
+            "prompt_digest": self.prompt_digest,
             "effort": self.effort,
             "tools_enabled": self.tools_enabled,
             "top_k": self.top_k,
@@ -195,6 +197,7 @@ class Trace:
             question=data["question"],
             model=data["model"],
             prompt_version=data["prompt_version"],
+            prompt_digest=data.get("prompt_digest", ""),
             effort=data.get("effort"),
             tools_enabled=data.get("tools_enabled", True),
             top_k=data.get("top_k", 3),

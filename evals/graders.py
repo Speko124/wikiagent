@@ -173,6 +173,7 @@ def grade(case: Case, trace: Trace) -> dict:
         # Needed downstream to score `declined`: on a case with no answer to
         # give, declining is the correct answer, not a failure.
         "answer_kind": case.answer_kind,
+        "prompt_digest": trace.prompt_digest,
         # query formulation
         "searched": trace.searched,
         "n_searches": trace.n_searches,

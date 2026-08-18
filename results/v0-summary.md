@@ -6,14 +6,19 @@
 |---|---|---|
 | Runs | 54 | 30 |
 | **Correct** (judge, primary) | 37/52 (71%) | 21/26 (81%) |
-| Correct (contains, guardrail) | 28/42 (67%) | 23/30 (77%) |
+| Correct (contains, guardrail) | 28/45 (62%) | 23/30 (77%) |
 | Guardrail disagrees with judge | 0 | 0 |
 | **pass^k** (correct on every repeat) | 13/18 (72%) | 7/9 (78%) |
 |   of which | 13 solid (k/k) · 0 flaky · 5 systematic (0/k) | 7 solid (k/k) · 0 flaky · 2 systematic (0/k) |
-| Evidence retrieved | 27/39 (69%) | 24/30 (80%) |
-| Answer completeness (mean) | 70% | 77% |
+| Evidence retrieved | 27/42 (64%) | 24/30 (80%) |
+| Answer completeness (mean) | 65% | 77% |
 | Searched at all | 51/54 (94%) | 30/30 (100%) |
 | Searches per run | 1.5 | 1.2 |
+| Turns | 2.4 mean, 5 max | 2.2 mean, 4 max |
+| Runs that opened an article | 0/54 (0%) | 0/30 (0%) |
+| Fetches per run | 0.00 | 0.00 |
+| Failed fetches | 0 | 0 |
+| Fetches with no prior search | 0 | 0 |
 | Articles named per answer | 1.5 | 1.2 |
 | Answer length (chars) | 496 | 399 |
 | Output tokens | 223 | 194 |
@@ -29,7 +34,7 @@
 | grounded | right, and the evidence was there | 25 | 23 |
 | from memory | **right without the evidence — not grounded** | 0 | 0 |
 | evidence unused | **had the evidence, still wrong** | 2 | 1 |
-| neither | never had the evidence | 12 | 6 |
+| neither | never had the evidence | 15 | 6 |
 
 ## Funnel
 

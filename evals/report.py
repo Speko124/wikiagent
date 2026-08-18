@@ -117,6 +117,17 @@ def _metrics(rows: list[dict]) -> dict:
         "searched": _rate(sum(1 for r in ok if r["searched"]), len(ok)),
         "mean_searches": f"{statistics.mean([r['n_searches'] for r in ok]):.1f}"
         if ok else "n/a",
+        # Turns are the agent's own control loop. The mean says what a typical
+        # run costs; the max says whether anything ran away, and a runaway is
+        # invisible in an average over 54 runs.
+        "turns": (f"{statistics.mean([r['n_turns'] for r in ok]):.1f} mean, "
+                  f"{max(r['n_turns'] for r in ok)} max") if ok else "n/a",
+        "fetch_rate": _rate(sum(1 for r in ok if r.get("n_fetches")), len(ok)),
+        "mean_fetches": (f"{statistics.mean([r.get('n_fetches', 0) for r in ok]):.2f}"
+                         if ok else "n/a"),
+        "failed_fetches": str(sum(r.get("failed_fetches", 0) for r in ok)),
+        "unescalated_fetches": str(sum(
+            1 for r in ok if r.get("n_fetches") and not r.get("escalated"))),
         "corroboration": f"{statistics.mean([len(r['cited_titles']) for r in ok]):.1f}"
         if ok else "n/a",
         "answer_chars": f"{statistics.mean([len(r['answer']) for r in ok]):.0f}"
@@ -275,6 +286,11 @@ def compare(curated_dir, holdout_dir=None) -> str:
         ("Answer completeness (mean)", "completeness"),
         ("Searched at all", "searched"),
         ("Searches per run", "mean_searches"),
+        ("Turns", "turns"),
+        ("Runs that opened an article", "fetch_rate"),
+        ("Fetches per run", "mean_fetches"),
+        ("Failed fetches", "failed_fetches"),
+        ("Fetches with no prior search", "unescalated_fetches"),
         ("Articles named per answer", "corroboration"),
         ("Answer length (chars)", "answer_chars"),
         ("Output tokens", "output_tokens"),

@@ -135,12 +135,32 @@ def test_fetch_reaches_a_body_fact_that_search_cannot():
 
 
 @requires_network
-def test_infobox_data_is_still_missing_after_a_full_fetch():
-    """The boundary of the fix, asserted rather than assumed.
-    `lets-make-a-deal-location` should still fail at V1 - if it starts passing,
-    the measurement changed, not the capability."""
-    [full] = wikipedia.fetch("Let's Make a Deal", use_cache=False).results
-    assert "Raleigh" not in full.extract
+def test_the_char_cap_is_the_binding_constraint_not_the_tool():
+    """Replaces a circular test.
+
+    The old version asserted `"Raleigh" not in fetch(...).extract` and called
+    that proof the fact was infobox-only. But `fetch` truncates at
+    ARTICLE_CHARS, and Raleigh sits at offset ~15,650 of a 44,579-char article
+    - so the assertion passed because of the cap, and would have passed no
+    matter where the fact lived. It "verified" a claim it could not see.
+
+    What is actually true: the fact is in the prose, past our cap. So
+    `lets-make-a-deal-location` fails because the article is longer than we
+    read, not because plaintext extracts omit infoboxes."""
+    import httpx
+
+    raw = httpx.get(wikipedia.API_URL, params={
+        "action": "query", "prop": "extracts", "explaintext": 1,
+        "titles": "Let's Make a Deal", "redirects": 1, "format": "json",
+    }, headers={"User-Agent": wikipedia.USER_AGENT}, timeout=30)
+    body = next(iter(raw.json()["query"]["pages"].values()))["extract"]
+
+    assert "Raleigh" in body, "fact is in the prose, not an infobox"
+    assert body.index("Raleigh") > wikipedia.ARTICLE_CHARS, "and past our cap"
+
+    [fetched] = wikipedia.fetch("Let's Make a Deal", use_cache=False).results
+    assert "Raleigh" not in fetched.extract
+    assert fetched.extract.endswith(wikipedia.TRUNCATION_MARKER)
 
 
 # --- addressing an article ---------------------------------------------------

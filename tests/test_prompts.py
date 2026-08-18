@@ -113,3 +113,20 @@ def test_frozen_versions_are_not_edited_in_place(version, digest):
         f"Prompt {version} changed. Results already scored against it can no "
         "longer be compared. Add a new version instead of editing this one."
     )
+
+
+def test_every_trace_records_what_the_prompt_actually_contained():
+    """`prompt_version` is a promise; the digest is evidence.
+
+    A version can be edited after a sweep while every row still names it. This
+    had to be settled once already by comparing file timestamps to trace
+    mtimes - which works, but only while the files sit on one machine.
+    """
+    client = StubClient([Response([text("answer")])])
+    trace = agent.ask("q", prompt_version="v1", client=client)
+    assert trace.prompt_digest == prompts.get("v1").digest
+    assert trace.to_dict()["prompt_digest"] == prompts.get("v1").digest
+
+
+def test_two_versions_have_different_digests():
+    assert prompts.get("v0").digest != prompts.get("v1").digest
