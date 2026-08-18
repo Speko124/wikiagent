@@ -1,82 +1,197 @@
 # wikiagent
 
-A Claude agent that answers questions using Wikipedia, plus an eval suite that
+A Claude agent that answers questions using Wikipedia, and an eval suite that
 measures how well it does.
 
-Design decisions and their rationale live in [`docs/project.md`](docs/project.md).
+Two tools, an explicit agent loop, and a harness built so that every number can
+be traced back to the exact bytes the model saw.
+
+---
 
 ## Setup
 
-Requires Python 3.11+ and an Anthropic API key.
+Needs Python 3.11+ and an Anthropic API key.
 
 ```bash
-uv venv --python 3.11
-uv pip install -e .
-echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env
+git clone <repo-url> && cd anthropic_wikiagent
+uv sync                                    # or: pip install -e ".[dev]"
+echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env # or export it
 ```
 
-The agent defaults to `claude-haiku-4-5`. `--effort` is rejected on Haiku with
-a clear message rather than a 400 — it's an Opus/Sonnet-5-family parameter, and
-the request is built per-model.
+No other services, no index to build, no database. Wikipedia is read live from
+the MediaWiki API and cached on disk under `cache/`.
 
-## Use
+## See it work
 
 ```bash
-# Answer one question
-wikiagent ask "Who discovered penicillin, and roughly when?"
-
-# See everything: each turn, every query, the raw text the model was shown
-wikiagent ask "Which university did the author of 'The Selfish Gene' study at?" --verbose
-
-# Five sample questions covering the behaviours worth watching
-wikiagent demo
+uv run python -m wikiagent.cli demo
 ```
 
-Normal output is the answer plus a provenance footer — what was searched and
-what came back. That footer is built by the harness from the tool-call log, so
-it is always accurate; the answer's own source attributions are the model's,
-naming what it actually drew on.
+Six questions, chosen so the interesting behaviour is visible in one screen: a
+plain lookup, a two-article join, a fact that lives in an article's body rather
+than its opening section, an ambiguous entity, a false premise, and a question
+Wikipedia cannot answer at all.
 
-### Useful flags
+Single questions:
 
-| Flag | What it does |
-|---|---|
-| `--verbose` | Every turn, query, and full raw tool result |
-| `--json` | The whole trace as JSON |
-| `--save PATH` | Write the trace to disk |
-| `--no-tools` | Control arm: answer without Wikipedia at all |
-| `--no-cache` | Bypass the response cache and hit the live API |
-| `--model` / `--prompt` / `--effort` | Swap model, prompt version, or effort level |
+```bash
+uv run python -m wikiagent.cli ask "How tall is the Eiffel Tower?"
+uv run python -m wikiagent.cli ask "name of toy store in home alone 2" -v
+```
+
+Every answer prints what was **searched** and what was **retrieved**, kept
+separate from what the model claims it used — the harness knows the first two
+for certain and only the model knows the third.
+
+`-v` shows everything: each turn, each query, every result including the ones
+fetched but never shown to the model, and the exact string handed back as the
+tool result.
+
+Useful flags: `--prompt v0` (the pre-`fetch_article` baseline) · `--no-tools`
+(answer from memory only) · `--top-k N` · `--json` · `--save PATH` ·
+`--model claude-sonnet-5`.
 
 ## Tests
 
 ```bash
-uv pip install -e ".[dev]"
-pytest                              # 61 tests, no API key, no network
-WIKIAGENT_NETWORK=1 pytest -m network   # 2 more, against the live MediaWiki API
+uv run pytest -q                       # 264 tests, no API key, no network, <1s
+WIKIAGENT_NETWORK=1 uv run pytest -q   # + 4 live Wikipedia tests
 ```
 
-Agent tests run against a stub Anthropic client, so the whole suite is free and
-offline. The emphasis is on invariants whose failure would be *silent* — a
-poisoned cache, a control arm that quietly retrieves, a trace that misreports
-what the model saw. Those corrupt eval numbers without ever raising an error.
+The suite runs with a stubbed Anthropic client, so it needs neither a key nor a
+network. It is weighted toward invariants whose failure would be **silent**
+rather than loud — cache integrity, `None` never being read as `False`, the
+control arm being structurally unable to retrieve, frozen prompts and rubrics,
+and the holdout being unreadable. Several of these exist because the
+corresponding bug actually happened; see [docs/README.md](docs/README.md).
+
+## Running the evals
+
+```bash
+# read pass: one run per case, produces a human-readable worksheet
+uv run python -m evals.run --cases evals/cases/core.jsonl --repeats 1
+
+# score pass: three runs per case, with the LLM judge
+uv run python -m evals.run --cases evals/cases/core.jsonl --repeats 3
+
+# held-out set: metrics only, no worksheet, no label file
+uv run python -m evals.run --cases evals/cases/holdout.jsonl --repeats 3 --holdout
+
+# compare the two arms
+uv run python -m evals.report results/<curated-dir> results/<holdout-dir>
+```
+
+A sweep writes one directory: full traces, a machine-readable `results.jsonl`, a
+`review.md` worksheet for reading by hand, a seeded `labels.jsonl` for verdicts,
+and `summary.md`. Sweeps resume — pass an existing `--out` and it runs only what
+is missing. `evals/regrade.py` re-scores a finished sweep from its saved traces
+with no API calls, so a grader fix never costs a re-run.
+
+Committed results: `results/v0-*` (baseline), `results/v1-*` and `results/v1b-*`
+(after `fetch_article`, run twice).
+
+---
 
 ## How it works
 
 ```
-question → agent loop ──search_wikipedia(query)──→ MediaWiki API
-                     ←──title + article intro ×3──┘   (cached on disk)
-         → answer + provenance
+wikiagent/
+  wikipedia.py   MediaWiki API + on-disk cache
+  tools.py       tool schemas + dispatch
+  prompts.py     system prompt AND tool descriptions, versioned together
+  agent.py       explicit tool-use loop, emits a Trace
+  trace.py       everything one run did
+  cli.py         ask / demo / --verbose
+evals/
+  cases/         18 curated + 20 explore + 10 holdout
+  graders.py     exact signals only
+  judge.py       ambiguity (owned) + correctness (primary), rubric-versioned
+  run.py         resumable sweep runner
+  report.py      cross-arm report, funnel, pass^k
+  regrade.py     re-score from traces, no API calls
 ```
 
-- **`wikiagent/wikipedia.py`** — MediaWiki API plus an on-disk cache. The cache
-  isn't a speed optimization: live Wikipedia changes underneath repeated eval
-  runs, so without it a score change can't be attributed to a prompt change.
-- **`wikiagent/tools.py`** — the tool schema. The description is prompt
-  engineering, and gets iterated like the system prompt.
-- **`wikiagent/prompts.py`** — system prompts, versioned.
-- **`wikiagent/agent.py`** — an explicit tool-use loop.
-- **`wikiagent/trace.py`** — one record per run, holding **full raw tool
-  results**. Both `--verbose` and the eval harness read it, so what you see
-  while debugging can't drift from what gets scored.
-- **`wikiagent/cli.py`** — the CLI.
+**Two tools.** `search_wikipedia(query)` returns the opening section of the top
+3 matching articles. `fetch_article(title, pageid)` opens one article in full.
+The second exists because the evals said so — see below.
+
+**The cache is a correctness requirement, not an optimisation.** Live Wikipedia
+changes underneath repeated runs, so without it a score delta can't be
+attributed to a prompt change. Errors are never cached: one network blip must
+not poison a query forever.
+
+**Fetch more than you show.** Search always retrieves at least 5 results and
+renders `top_k` (default 3). The surplus is cached and traced but never enters
+the prompt, so "would showing more have helped?" is answerable from traces we
+already have, at zero extra cost.
+
+---
+
+## What the evals found
+
+Three iterations. Each number below comes from a committed sweep in `results/`.
+
+| | Curated | Held out | pass^3 | Body-fact failures |
+|---|---|---|---|---|
+| **Pre-baseline** (never scored) | — | — | — | — |
+| **V0** search only | 71% | 81% | 13/18 | 12 |
+| **V1** + `fetch_article` | **89%** | **93%** | 15/18 | 5 |
+| **V1 repeat** (same prompt digest) | **89%** | 92% | 16/18 | 5 |
+
+**The dominant failure was retrieval depth, and it was found by random
+questions rather than by the ones we wrote.** Of six failures in a 20-question
+random sample from Natural Questions, five were identical: the right article
+was retrieved, and the answer lived in the article body, which the tool never
+fetched. Our hand-written set surfaced none of it — real users ask about cast
+members, filming locations and counts, and that material sits below the intro.
+
+Adding `fetch_article` moved correctness +18 points on the curated set and +12
+on questions never read during development, with zero regressions among cases
+that already passed. The tool is used selectively — about a third of runs, only
+where the intro genuinely lacked the answer — and costs exactly one extra turn
+when used.
+
+**Where it still fails**, and both are now understood precisely:
+
+- The 8,000-character fetch cap is the binding constraint. 19 of 22 fetches came
+  back truncated, and the agent then asserts facts are *absent from the article*
+  having read only part of it.
+- One case's answer sits at offset ~15,650 of a 44,579-character article — in
+  the prose, past what we read.
+
+**Grounding was never the problem.** Zero fabricated claims and zero fabricated
+citations across 138 runs. Every specific figure spot-checked against the
+rendered tool output was present in it.
+
+Full analysis: [docs/error-analysis.md](docs/error-analysis.md) ·
+[docs/v1-trace-review.md](docs/v1-trace-review.md) ·
+[docs/v1b-trace-review.md](docs/v1b-trace-review.md)
+
+## How quality is measured
+
+**Deterministic wherever possible.** Correctness is checked against
+hand-authored accepted phrasings; retrieval quality against whether the
+retrieved text actually carried the evidence, matched per tool call and
+accumulated across calls, so a multi-hop question is not blamed on retrieval.
+Crossing the two gives the funnel stage exactly:
+
+| | evidence found | not found |
+|---|---|---|
+| **answer right** | grounded | answered from memory |
+| **answer wrong** | had it, didn't use it | never had it |
+
+**An LLM judge where determinism was measured to fail.** Correctness is
+judge-primary with the string matcher kept as a guardrail — the matcher
+produced three silent false passes on 54 runs and the judge caught all three.
+Ambiguity is judged because the obvious deterministic proxy was tested and
+misfired in both directions. The judge is Sonnet 5 judging Haiku 4.5, rubric
+frozen and digest-tested, calibrated at 51/54 against hand labels with **zero
+cases where it said `correct` and a human said `incorrect`**.
+
+**The variance floor is measured, not assumed.** Two identical sweeps agree on
+54/54 deterministic verdicts and differ on 2 judged runs — both on the one case
+whose answer does not exist in Wikipedia. Variance is concentrated: zero flips
+across 39 runs on cases with a reachable answer. An improvement smaller than
+about one whole case is not distinguishable from noise on this set.
+
+More: [docs/eval-plan.md](docs/eval-plan.md) · [docs/project.md](docs/project.md)

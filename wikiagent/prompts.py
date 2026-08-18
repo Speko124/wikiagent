@@ -134,7 +134,11 @@ or giving up.""",
 
 PROMPTS = {"v0": V0, "v1": V1}
 
-DEFAULT_VERSION = "v0"
+# v1 by default, on measured evidence rather than on it being newest: 89% vs
+# 71% correct on the curated set and 93% vs 81% on the held-out set, confirmed
+# by an identical repeat sweep. v0 stays selectable (`--prompt v0`) and still
+# declares search only, so the V0 baseline in results/ remains reproducible.
+DEFAULT_VERSION = "v1"
 
 
 def get(version: str = DEFAULT_VERSION) -> PromptSet:

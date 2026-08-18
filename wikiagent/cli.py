@@ -13,16 +13,20 @@ from . import agent, prompts, wikipedia
 from .trace import Trace
 
 DEMO_QUESTIONS = [
-    # Single-hop factual
+    # Single-hop lookup. Should search, answer, and name the article.
     "Who discovered penicillin, and roughly when?",
-    # Multi-hop: needs two articles joined
-    "Which university did the author of 'The Selfish Gene' study at?",
-    # Should abstain: not the kind of fact Wikipedia records
-    "What did Ada Lovelace eat for breakfast on her tenth birthday?",
-    # False premise
+    # Multi-hop: two facts from two articles, joined.
+    "What nationality was the composer of the opera Tosca?",
+    # The fact is in the article BODY, not its opening section. This is what
+    # the agent could not answer at all before `fetch_article` existed - watch
+    # it search, come up short, then open the article.
+    "name of toy store in home alone 2",
+    # Ambiguous: "Tesla" is a person and a company. A good answer says so.
+    "Where is Tesla from?",
+    # False premise - the prize was for the photoelectric effect.
     "Why did Albert Einstein win the Nobel Prize for the theory of relativity?",
-    # Needs no search at all
-    "What is 17 times 23?",
+    # Wikipedia does not carry this. Should decline rather than guess.
+    "What's the weather in Paris right now?",
 ]
 
 
