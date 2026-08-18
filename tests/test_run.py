@@ -455,5 +455,5 @@ def test_the_sweep_summary_also_refuses_to_count_unmeasured_signals(tmp_path):
              "error": None, "searched": True, "n_turns": 1, "input_tokens": 1,
              "output_tokens": 1, "latency_s": 0.1, "cited_titles": []}]
     text = run.summarize(rows, run.Config())
-    gold_line = next(ln for ln in text.splitlines() if "gold" in ln.lower())
-    assert "0/1" not in gold_line and "n/a" in gold_line
+    line = next(ln for ln in text.splitlines() if "Reference article" in ln)
+    assert "0/1" not in line and "n/a" in line
