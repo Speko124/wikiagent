@@ -8,7 +8,10 @@ dependencies = [
     "httpx>=0.27",
 ]
 
-[project.optional-dependencies]
+# A dependency-group rather than an optional-extra: `uv sync` installs groups
+# by default, so a fresh clone can run the tests without a second flag. As an
+# extra it silently did not, and the README's own test command failed.
+[dependency-groups]
 dev = ["pytest>=8.0"]
 
 [project.scripts]

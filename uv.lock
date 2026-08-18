@@ -419,7 +419,7 @@ dependencies = [
     { name = "httpx" },
 ]
 
-[package.optional-dependencies]
+[package.dev-dependencies]
 dev = [
     { name = "pytest" },
 ]
@@ -428,6 +428,7 @@ dev = [
 requires-dist = [
     { name = "anthropic", specifier = ">=0.69" },
     { name = "httpx", specifier = ">=0.27" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0" },
 ]
-provides-extras = ["dev"]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.0" }]
