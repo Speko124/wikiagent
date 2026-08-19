@@ -1,4 +1,7 @@
-# Error analysis — read pass
+# Error analysis
+
+Sections 1-7 are the read pass and the V0 baseline, in the order they
+happened. Section 8 is the current state across all versions.
 
 31 runs · `claude-haiku-4-5` · prompt `v0` · `top_k` 3 · one run per case.
 Sources: `results/read-core/`, `results/read-explore/`, hand labels in each
@@ -265,3 +268,98 @@ every attempted run, and the outcome decomposition names those runs explicitly
 as `answerable non-answer` rather than dropping them. That bucket turned out to
 be where almost the entire V0 → V2 gain came from (13 → 4 curated), which it
 could not have shown while the runs were unscored.
+
+---
+
+## 8. All versions, one table
+
+Sections 1 to 7 record how the taxonomy was built and what the V0 baseline
+showed. This section is the current state across every version, so the story
+does not have to be reassembled from three trace reviews.
+
+All numbers follow the metric contract in `project.md` §3.7 and are computed
+from the committed sweeps. Correctness counts confirmed successes over **every
+attempted run**.
+
+### Headline
+
+| | V0 | V1 | V1 repeat | V2 |
+|---|---|---|---|---|
+| Correct, curated | 37/54 (69%) | 47/54 (87%) | 47/54 (87%) | **49/54 (91%)** |
+| Correct, holdout | 21/30 (70%) | 25/30 (83%) | 24/30 (80%) | **26/30 (87%)** |
+| pass^3, curated | 12/18 | 15/18 | 15/18 | 15/18 |
+| pass^3, holdout | 7/10 | 8/10 | 8/10 | 8/10 |
+| Evidence available, curated | 27/42 (64%) | 36/41 (88%) | 36/42 (86%) | 38/42 (90%) |
+| Evidence available, holdout | 24/30 (80%) | 29/30 (97%) | 30/30 (100%) | 30/30 (100%) |
+
+The curated and holdout arms start level (69% and 70%) and stay within a few
+points through an 18-point intervention. Overfitting would show as that gap
+widening exactly when something was fixed.
+
+### Outcome decomposition
+
+Mutually exclusive, exhaustive, sums to every attempted run.
+
+| Outcome | V0 | V1 | V1 repeat | V2 |
+|---|---|---|---|---|
+| **curated** | | | | |
+| confirmed success | 37 | 47 | 47 | 49 |
+| wrong answer | 2 | 1 | 1 | 1 |
+| **answerable non-answer** | **13** | **5** | **5** | **4** |
+| evaluator unresolved | 2 | 0 | 1 | 0 |
+| execution failure | 0 | 1 | 0 | 0 |
+| **holdout** | | | | |
+| confirmed success | 21 | 25 | 24 | 26 |
+| wrong answer | 2 | 0 | 1 | 2 |
+| answerable non-answer | 3 | 2 | 1 | 0 |
+| **evaluator unresolved** | **4** | **3** | **4** | **2** |
+| execution failure | 0 | 0 | 0 | 0 |
+
+**Almost the entire gain is one bucket.** Curated `answerable non-answer` went
+13 → 4: runs where the agent declined on a question that did have an answer.
+That is precisely what `fetch_article` was built for, and the decomposition
+shows the fix landing there rather than being spread thinly across categories.
+
+`evaluator unresolved` is kept separate from `answerable non-answer` on
+purpose. The judge failing to decide is an instrument problem; the agent
+declining is a behaviour. Merged, the holdout story below would be invisible.
+
+### What each failure implies
+
+Every non-success crossed with whether the answer-bearing evidence reached the
+model. Not a score: five different kinds of work that do not trade off.
+
+| Implies | V0 | V1 | V1 repeat | V2 |
+|---|---|---|---|---|
+| **curated** | | | | |
+| retrieval / selection / truncation / source format | 15 | 6 | 6 | 4 |
+| synthesis or reasoning | 0 | 0 | 0 | 1 |
+| judge rubric / reference / ambiguity | 2 | 0 | 1 | 0 |
+| agent loop or infrastructure | 0 | 1 | 0 | 0 |
+| **holdout** | | | | |
+| retrieval / selection / truncation / source format | 5 | 0 | 0 | **0** |
+| synthesis or reasoning | 0 | 0 | 1 | 2 |
+| escalation or abstention policy | 0 | 2 | 1 | 0 |
+| **judge rubric / reference / ambiguity** | 4 | 3 | 4 | **2** |
+
+Two findings that only appear at this resolution:
+
+**The fix exhausted the stage it targeted.** Curated retrieval-class failures
+fell 15 → 4 and holdout retrieval-class failures reached **zero at V1 and
+stayed there**, with evidence availability at 30/30. Whatever still fails on
+the holdout is no longer a retrieval problem.
+
+**By V2 the largest remaining holdout failure class is the evaluator, not the
+agent.** Two of four remaining failures are judge rubric, reference answer or
+ambiguity issues. Some are unresolvable by construction: roughly a fifth of the
+Natural Questions reference answers are wrong or stale, and one holdout case
+asks about a phrase that appears nowhere in the article it names.
+
+That is a result of the eval design rather than a shortfall of it. The
+decomposition made the bottleneck legible instead of leaving it inside a
+13% gap in the headline denominator. **The next iteration belongs on the
+evaluator**, in this order: separate genuinely unresolvable references from
+rubric misfires, write a `j3` targeting the known defect (it conflates "the
+answer cannot be determined" with "the question has two readings"), re-calibrate
+against the 54 existing hand labels, and require the current zero
+judge-correct / human-incorrect property to hold before adopting it.
