@@ -63,6 +63,13 @@ def _rate(hits: int, total: int) -> str:
 
 def _metrics(rows: list[dict], config: dict | None = None) -> dict:
     ok = [r for r in rows if not r.get("error")]
+    # Headline correctness is confirmed-correct over EVERY attempted run.
+    # `unclear`, errors, wrong answers and inappropriate declines are all
+    # non-successes. Excluding unresolved runs flatters the score: it moved
+    # the V0 holdout from 70% to 81%, which is the difference between "the
+    # system answered this" and "the system answered this when it answered".
+    confirmed = sum(1 for r in rows if judged_correct(r) is True)
+    unresolved = sum(1 for r in rows if judged_correct(r) is None)
     judged_ok = [r for r in ok if judged_correct(r) is not None]
     scorable = [r for r in ok if r.get("answer_match") is not None]
     # Where the guardrail and the primary signal disagree, one of them is
@@ -129,7 +136,9 @@ def _metrics(rows: list[dict], config: dict | None = None) -> dict:
     return {
         "runs": len(rows),
         "errors": len(rows) - len(ok),
-        "correct": _rate(sum(1 for r in judged_ok if judged_correct(r)), len(judged_ok)),
+        "correct": _rate(confirmed, len(rows)),
+        "judge_coverage": _rate(len(rows) - unresolved, len(rows)),
+        "unresolved": str(unresolved),
         "correct_contains": _rate(
             sum(1 for r in scorable if r["answer_match"]), len(scorable)),
         "guardrail_clash": f"{len(guardrail_clash)}",
@@ -149,8 +158,10 @@ def _metrics(rows: list[dict], config: dict | None = None) -> dict:
         # Turns are the agent's own control loop. The mean says what a typical
         # run costs; the max says whether anything ran away, and a runaway is
         # invisible in an average over 54 runs.
-        "turns": (f"{statistics.mean([r['n_turns'] for r in ok]):.1f} mean, "
-                  f"{max(r['n_turns'] for r in ok)} max") if ok else "n/a",
+        "turns": (f"{statistics.mean([r['n_turns'] for r in ok]):.1f} / "
+                  f"{max(r['n_turns'] for r in ok)}") if ok else "n/a",
+        "input_tokens": (f"{statistics.mean([r['input_tokens'] for r in ok]):,.0f}"
+                         if ok else "n/a"),
         "fetch_rate": _rate(sum(1 for r in ok if r.get("n_fetches")), len(ok)),
         "mean_fetches": (f"{statistics.mean([r.get('n_fetches', 0) for r in ok]):.2f}"
                          if ok else "n/a"),
@@ -282,15 +293,22 @@ def pass_at_k(rows: list[dict], repeats: int | None = None) -> tuple[int, int, d
         by_case.setdefault(row["case_id"], []).append(
             None if row.get("error") else judged_correct(row)
         )
+    if not by_case:
+        return 0, 0, {"solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0,
+                      "incomplete": 0, "unresolved": 0}
 
-    buckets = {"solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0, "incomplete": 0}
+    buckets = {"solid (k/k)": 0, "flaky": 0, "systematic (0/k)": 0,
+               "incomplete": 0, "unresolved": 0}
     solid = 0
     for verdicts in by_case.values():
         scored = [v for v in verdicts if v is not None]
         expected = repeats or len(verdicts)
         if not scored:
-            continue                       # nothing to say about this case
-        if len(scored) < expected:
+            # Nothing could be said about this question. That is a question
+            # the system failed to resolve, so it stays in the denominator
+            # rather than quietly leaving the set.
+            buckets["unresolved"] += 1
+        elif len(scored) < expected:
             buckets["incomplete"] += 1     # cannot claim k/k on fewer than k
         elif all(scored):
             buckets["solid (k/k)"] += 1
@@ -299,8 +317,7 @@ def pass_at_k(rows: list[dict], repeats: int | None = None) -> tuple[int, int, d
             buckets["systematic (0/k)"] += 1
         else:
             buckets["flaky"] += 1
-    scoreable = sum(1 for v in by_case.values() if any(x is not None for x in v))
-    return solid, scoreable, buckets
+    return solid, len(by_case), buckets
 
 
 def _buckets(rows: list[dict]) -> list[tuple[str, int, int]]:
@@ -339,42 +356,66 @@ def compare(curated_dir, holdout_dir=None) -> str:
                 "",
             ]
 
-    rows_ = [
-        ("**Correct** (judge, primary)", "correct"),
-        ("Correct (contains, guardrail)", "correct_contains"),
-        ("Guardrail disagrees with judge", "guardrail_clash"),
+    # Three tiers, per the metric contract. Headline answers "how good is it";
+    # supporting explains a version tradeoff; appendix is instrument health,
+    # which matters but is not the result.
+    headline = [
+        ("**Correct** (all attempted runs)", "correct"),
         ("**pass^k** (correct on every repeat)", "pass_at_k"),
         ("  of which", "buckets"),
-        ("Evidence retrieved", "evidence_found"),
+        ("**Evidence available** (eligible runs)", "evidence_found"),
+    ]
+    supporting = [
+        ("Turns (mean / max)", "turns"),
+        ("Input tokens / run", "input_tokens"),
         ("Searched at all", "searched"),
-        ("Searches per run", "mean_searches"),
-        ("Turns", "turns"),
+        ("Searches / run", "mean_searches"),
         ("Runs that opened an article", "fetch_rate"),
-        ("Fetches per run", "mean_fetches"),
-        ("Fetches per run (spread)", "fetch_spread"),
+        ("Fetches / run (spread)", "fetch_spread"),
         ("Turns by fetch count", "turns_by_fetch"),
         ("Failed fetches", "failed_fetches"),
         ("Fetches with no prior search", "unescalated_fetches"),
-        ("Articles named per answer", "corroboration"),
+        ("Latency median (s)", "latency_s"),
         ("Answer length (chars)", "answer_chars"),
         ("Output tokens", "output_tokens"),
-        ("Latency (median s)", "latency_s"),
+    ]
+    appendix = [
+        ("Judge coverage (resolved / attempted)", "judge_coverage"),
+        ("Unresolved runs", "unresolved"),
         ("Judge/matcher disagreements", "judge_clashes"),
         ("Judge unclear, matcher confident", "judge_hedged"),
+        ("Correct (contains matcher, guardrail)", "correct_contains"),
+        ("Articles named per answer", "corroboration"),
         ("Questions judged ambiguous", "ambiguous_questions"),
         ("  correct on those", "correct_on_ambiguous"),
-        ("Multi-fact coverage", "coverage"),
         ("  flagged as suspect rubric calls", "ambiguity_flags"),
+        ("Multi-fact coverage", "coverage"),
         ("Errors", "errors"),
     ]
-    out += [
-        "| Metric | Curated | Holdout |",
-        "|---|---|---|",
-        f"| Runs | {cur['runs']} | {hld['runs'] if hld else '—'} |",
-    ]
-    for label, key in rows_:
-        out.append(f"| {label} | {cur[key]} | {hld[key] if hld else '—'} |")
-    out += [""]
+
+    def block(title, keys, note=""):
+        lines = [f"## {title}", ""]
+        if note:
+            lines += [note, ""]
+        lines += ["| Metric | Curated | Holdout |", "|---|---|---|"]
+        for label, key in keys:
+            lines.append(f"| {label} | {cur[key]} | {hld[key] if hld else '—'} |")
+        return lines + [""]
+
+    out += [f"**Runs** {cur['runs']} curated"
+            + (f", {hld['runs']} holdout" if hld else "") + "", ""]
+    out += block("Headline",
+                 headline,
+                 "Correctness counts confirmed successes over **every attempted "
+                 "run**: unclear verdicts, errors, wrong answers and declines on "
+                 "answerable questions are all non-successes. pass^k keeps "
+                 "unresolved questions in the denominator. Evidence shows its "
+                 "eligible denominator, since it is only checkable where a case "
+                 "declares what the evidence should contain.")
+    out += block("Supporting (cost and behaviour)", supporting,
+                 "Used to explain tradeoffs between versions, not to claim one.")
+    out += block("Appendix (instrument health)", appendix,
+                 "How much the measurement itself can be trusted.")
 
     out += ["## Answer × evidence", "",
             "| Cell | Meaning | Curated | Holdout |", "|---|---|---|---|"]

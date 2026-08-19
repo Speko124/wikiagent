@@ -134,10 +134,15 @@ Three iterations. Each number below comes from a committed sweep in `results/`.
 | | Curated | Held out | pass^3 | Body-fact failures |
 |---|---|---|---|---|
 | **Pre-baseline** (never scored) | — | — | — | — |
-| **V0** search only | 71% | 81% | 12/18 | 15 |
-| **V1** + `fetch_article` | **89%** | **93%** | 15/18 | 5 |
-| **V1 repeat** (same prompt digest) | **89%** | 92% | 15/18 | 5 |
-| **V2** generalised escalation | **91%** | **93%** | 15/18 | 4 |
+| **V0** search only | 69% | 70% | 12/18 | 15 |
+| **V1** + `fetch_article` | **87%** | **83%** | 15/18 | 5 |
+| **V1 repeat** (same prompt digest) | 87% | 80% | 15/18 | 5 |
+| **V2** generalised escalation | **91%** | **87%** | 15/18 | 4 |
+
+Correctness is confirmed-correct over **every attempted run**: unclear judge
+verdicts, errors, wrong answers and declines on answerable questions all count
+against it. pass^3 is questions correct on all three repeats, with unresolved
+questions kept in the denominator.
 
 **The dominant failure was retrieval depth, and it was found by random
 questions rather than by the ones we wrote.** Of six failures in a 20-question

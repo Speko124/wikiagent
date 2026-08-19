@@ -213,6 +213,21 @@ relabelling, not rewriting the harness.
 dimensions. Measuring what could be computed exactly collapsed it to one judged
 dimension plus one audit role. Full reasoning in `eval-plan.md`.
 
+**The metric contract**, which fixes what each number is allowed to claim:
+
+| Category | Metric | Denominator | Placement |
+|---|---|---|---|
+| Outcome | All-run correctness | **Every attempted run.** Unclear verdicts, errors, wrong answers and declines on answerable questions are non-successes | Headline |
+| Reliability | pass^k | **All questions**, including unresolved ones | Headline |
+| Diagnosis | Evidence available | Eligible runs only, denominator shown | Headline |
+| Efficiency | Turns, input tokens | Completed runs | Supporting |
+| Audit | Judge coverage, disagreements | Attempted runs | Appendix |
+| Exploratory | Multi-fact coverage | Multi-fact questions only, sample size inline | Appendix |
+
+The outcome denominator is the load-bearing choice. Excluding unresolved runs
+answers "how good is it when it manages to answer", which is a different and
+easier question; it flattered the V0 holdout by 11 points.
+
 **Deterministic — no LLM.** Preferred wherever a signal can be computed rather
 than judged.
 
@@ -225,7 +240,7 @@ than judged.
 | `n_distinct_articles_cited` | Corroboration: an answer resting on three agreeing articles is stronger |
 | answer length · output tokens | Crispness, kept separate since a thinking model conflates them |
 | `n_searches` · turns · latency | Effort and distress signals — **not** retrieval quality |
-| `pass^k` | Cases correct on *every* repeat, bucketed solid / flaky / systematic. A per-run rate hides the shape: 50% could be one case that always works beside one that never does |
+| `pass^k` | Questions correct on *every* repeat, bucketed solid / flaky / systematic / incomplete / unresolved. Unresolved questions stay in the denominator. A per-run rate hides the shape: 50% could be one question that always works beside one that never does |
 | `cited ⊆ retrieved` | Citation integrity |
 
 **`answer_contains` and `evidence_contains` are separate fields.** For a derived

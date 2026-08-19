@@ -186,7 +186,7 @@ to produce the same picture.
 | 5 · grounding — claimed what wasn't there | **0** | **0** | **0** | | **0** | **0** | **0** |
 | correct | 37 | 47 | 49 | | 21 | 25 | 26 |
 | not scorable (abstention cases) | 2 | 0 | 0 | | 4 | 3 | 2 |
-| **accuracy** | **71%** | **89%** | **91%** | | **81%** | **93%** | **93%** |
+| **accuracy** (all attempted runs) | **69%** | **87%** | **91%** | | **70%** | **83%** | **87%** |
 
 Three things fall straight out of this table, and none are visible in an
 accuracy number:
@@ -210,6 +210,14 @@ remaining stage-3 failures (a fact past the 8,000-char cap) are worth more than
 the stage-4 ones: nothing downstream can recover from evidence that never
 arrived.
 
+
+> **Metric contract.** Correctness counts confirmed successes over **every
+> attempted run**: unclear judge verdicts, harness errors, wrong answers and
+> declines on answerable questions are all non-successes. pass^3 keeps
+> unresolved questions in the denominator. Evidence is reported over its
+> eligible subset, with that denominator shown. Earlier drafts excluded
+> unresolved runs, which flattered the V0 holdout by 11 points.
+
 ### The variance floor is measured
 
 Two identical sweeps agree on **54/54** deterministic verdicts and differ on
@@ -227,10 +235,10 @@ overclaimed.
 | Version | What changed | Curated | Holdout | pass^3 |
 |---|---|---|---|---|
 | *pre-baseline* | first draft; never scored | — | — | — |
-| **v0** | search only, intros, top-3 | 71% | 81% | 12/18 |
-| **v1** | **+ `fetch_article`** + 1 prompt line | **89%** | **93%** | **15/18** |
-| v1 repeat | identical, to measure variance | 89% | 92% | 15/18 |
-| **v2** | generalised escalation rule | **91%** | 93% | 15/18 |
+| **v0** | search only, intros, top-3 | 69% | 70% | 12/18 |
+| **v1** | **+ `fetch_article`** + 1 prompt line | **87%** | **83%** | **15/18** |
+| v1 repeat | identical, to measure variance | 87% | 80% | 15/18 |
+| **v2** | generalised escalation rule | **91%** | **87%** | 15/18 |
 
 **Pre-baseline → v0** was defect repair, not tuning. The first draft hardcoded
 "three articles" while `top_k` is a knob, asked for citations without saying
@@ -238,7 +246,7 @@ how, and never explained the truncation marker. It was never scored, so it was
 never a baseline — it's archived rather than kept as a version.
 
 **v0 → v1: the one intervention that mattered.** Adding `fetch_article` and a
-single prompt line moved correctness **+18 points curated and +12 held out**,
+single prompt line moved correctness **+18 points curated and +13 held out**,
 with zero regressions among the 13 cases that already passed and stage-3
 body-fact failures down 12 → 5. The tool is used selectively — a third of runs,
 only where the intro genuinely lacked the answer, zero failed fetches, zero
@@ -280,9 +288,9 @@ movements are not results.
 | | v0 cur | v1 cur | v2 cur | | v0 hold | v1 hold | v2 hold |
 |---|---|---|---|---|---|---|---|
 | **Quality** | | | | | | | |
-| Correct (judge, primary) | 71% | **89%** | **91%** | | 81% | **93%** | **93%** |
+| Correct (all attempted runs) | 69% | **87%** | **91%** | | 70% | **83%** | **87%** |
 | Correct (contains, guardrail) | 62% | 89% | 91% | | 77% | 90% | 90% |
-| pass^3 | 12/18 | **15/18** | 15/18 | | 7/9 | **8/10** | 8/10 |
+| pass^3 | 12/18 | **15/18** | 15/18 | | 7/10 | **8/10** | 8/10 |
 | Multi-fact coverage *(2 cases, 6 runs)* | 89% | 100% | 100% | | 100% | 100% | 100% |
 | **Retrieval** | | | | | | | |
 | Evidence retrieved | 64% | **88%** | 90% | | 80% | **97%** | **100%** |
@@ -303,7 +311,7 @@ movements are not results.
 | Errors | 0 | 1 | **0** | | 0 | 0 | 0 |
 
 **What improved.** Quality and retrieval move together and clear the bar at
-v0→v1: correctness +18 curated / +12 held out, evidence retrieved +24 / +17,
+v0→v1: correctness +18 curated / +13 held out, evidence retrieved +24 / +17,
 and held-out evidence retrieval reaches **100%** at v2 —
 every question's answer-bearing text was returned. Both correctness signals
 move in lockstep, which is worth more than either alone: they are computed

@@ -222,7 +222,8 @@ def test_no_metric_counts_an_unmeasured_signal_as_a_failure(tmp_path):
     m = report._metrics([blank])
 
     # Nothing unmeasured may land in a rate's numerator or denominator.
-    assert m["correct"] == "n/a"            # no judge verdict
+    assert m["correct"] == "0/1 (0%)"       # unresolved is not a success
+    assert m["unresolved"] == "1"           # and is visible as such
     assert m["correct_contains"] == "n/a"   # no accepted phrasings
     assert m["evidence_found"] == "n/a"
     assert m["coverage"].startswith("n/a")
@@ -274,20 +275,20 @@ def test_pass_at_k_is_stricter_than_the_run_rate():
         row("never", answer_match=False), row("never", answer_match=False),
         row("coinflip", answer_match=True), row("coinflip", answer_match=False),
     ]
-    solid, n_cases, buckets = report.pass_at_k(rows, repeats=2)
-    assert (solid, n_cases) == (1, 3)          # only `always` passes every repeat
+    solid, n_questions, buckets = report.pass_at_k(rows, repeats=2)
+    assert (solid, n_questions) == (1, 3)      # only `always` passes every repeat
     assert buckets == {"solid (k/k)": 1, "flaky": 1, "systematic (0/k)": 1,
-                       "incomplete": 0}
+                       "incomplete": 0, "unresolved": 0}
 
 
-def test_pass_at_k_ignores_cases_with_nothing_to_score():
-    """An abstention case with no judge verdict at all contributes to no
-    bucket - distinct from a case that was partly scored, which is
-    `incomplete`."""
-    solid, n_cases, buckets = report.pass_at_k(
+def test_a_question_with_nothing_scored_stays_in_the_denominator():
+    """Superseded the old behaviour of dropping it. A question nothing could
+    be said about is one the system failed to resolve, and removing it from
+    the denominator makes the set look easier than it was."""
+    solid, n_questions, buckets = report.pass_at_k(
         [row("x", answer_match=None, judge=None)], repeats=1)
-    assert (solid, n_cases) == (0, 0)
-    assert sum(buckets.values()) == 0
+    assert (solid, n_questions) == (0, 1)
+    assert buckets["unresolved"] == 1
 
 
 def test_declining_is_correct_only_where_the_case_has_no_answer_to_give():
@@ -303,11 +304,16 @@ def test_declining_is_correct_only_where_the_case_has_no_answer_to_give():
     assert report.judged_correct(lookup) is False
 
 
-def test_an_unclear_verdict_is_excluded_from_correctness_not_counted_wrong():
+def test_an_unclear_verdict_is_not_a_success():
+    """It stays in the denominator. `judged_correct` still returns None so the
+    run is never scored as *wrong* in the funnel, but headline correctness
+    counts confirmed successes over everything attempted."""
     unclear = row("c1", answer_match=True,
                   judge={"correctness": {"verdict": "unclear", "why": "disputed"}})
     assert report.judged_correct(unclear) is None
-    assert report._metrics([unclear])["correct"] == "n/a"
+    m = report._metrics([unclear])
+    assert m["correct"] == "0/1 (0%)"
+    assert m["unresolved"] == "1"
 
 
 def test_the_guardrail_disagreeing_with_the_judge_is_surfaced():
@@ -323,7 +329,7 @@ def test_the_report_shows_turn_max_not_only_the_mean():
     the 10-turn guard while the mean stayed at 2.6."""
     rows = [row("a", n_turns=2), row("b", n_turns=2), row("c", n_turns=10)]
     turns = report._metrics(rows)["turns"]
-    assert "10 max" in turns
+    assert turns.endswith("/ 10")     # "mean / max"
 
 
 def test_fetch_use_is_reported_as_a_rate_not_only_a_total():
@@ -421,3 +427,48 @@ def test_coverage_ignores_single_requirement_cases():
 def test_coverage_says_so_when_no_case_exercises_it():
     rows = [row("single", answer_completeness=1.0, n_answer_requirements=1)]
     assert report._metrics(rows)["coverage"].startswith("n/a")
+
+
+# --- the canonical metric contract ------------------------------------------
+
+def test_all_run_correctness_counts_every_attempted_run():
+    """Headline correctness is confirmed-correct over ALL attempted runs.
+    `unclear`, errors and declines are not successes, and excluding them from
+    the denominator flatters the score - it moved holdout V0 from 70% to 81%."""
+    rows = [
+        row("a", answer_match=True),                                    # correct
+        row("b", answer_match=False),                                   # incorrect
+        row("c", answer_match=None,
+            judge={"correctness": {"verdict": "unclear", "why": ""}}),  # unresolved
+        row("d", answer_match=None, error="boom", judge=None),          # errored
+    ]
+    assert report._metrics(rows)["correct"] == "1/4 (25%)"
+
+
+def test_an_inappropriate_decline_is_not_a_success():
+    """Declining is correct only where the case has no answer to give."""
+    declined = {"correctness": {"verdict": "declined", "why": ""}}
+    lookup = row("has-answer", answer_kind="extractive", judge=declined)
+    abstention = row("no-answer", answer_kind="none", judge=declined)
+    assert report._metrics([lookup])["correct"] == "0/1 (0%)"
+    assert report._metrics([abstention])["correct"] == "1/1 (100%)"
+
+
+def test_pass_at_k_keeps_unresolved_questions_in_the_denominator():
+    """A question nothing could be said about is not removed from the set; it
+    is a question the system failed to resolve."""
+    rows = [
+        row("solid", answer_match=True), row("solid", answer_match=True),
+        row("dark", answer_match=None, judge=None),
+        row("dark", answer_match=None, judge=None),
+    ]
+    solid, n_questions, buckets = report.pass_at_k(rows, repeats=2)
+    assert (solid, n_questions) == (1, 2)          # 2 questions, not 1
+    assert buckets["unresolved"] == 1
+
+
+def test_evidence_shows_its_eligible_denominator():
+    """Evidence is only checkable where a case declares what evidence would
+    look like, so the eligible count has to be visible next to the rate."""
+    rows = [row("a", evidence_match=True), row("b", evidence_match=None)]
+    assert report._metrics(rows)["evidence_found"] == "1/1 (100%)"

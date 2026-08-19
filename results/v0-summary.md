@@ -2,34 +2,54 @@
 
 `claude-haiku-4-5` · prompt `v0` · top_k 3 · 3x per case
 
+**Runs** 54 curated, 30 holdout
+
+## Headline
+
+Correctness counts confirmed successes over **every attempted run**: unclear verdicts, errors, wrong answers and declines on answerable questions are all non-successes. pass^k keeps unresolved questions in the denominator. Evidence shows its eligible denominator, since it is only checkable where a case declares what the evidence should contain.
+
 | Metric | Curated | Holdout |
 |---|---|---|
-| Runs | 54 | 30 |
-| **Correct** (judge, primary) | 37/52 (71%) | 21/26 (81%) |
-| Correct (contains, guardrail) | 28/45 (62%) | 23/30 (77%) |
-| Guardrail disagrees with judge | 0 | 0 |
-| **pass^k** (correct on every repeat) | 12/18 (67%) | 7/9 (78%) |
-|   of which | 12 solid (k/k) · 0 flaky · 5 systematic (0/k) · 1 incomplete | 7 solid (k/k) · 0 flaky · 1 systematic (0/k) · 1 incomplete |
-| Evidence retrieved | 27/42 (64%) | 24/30 (80%) |
+| **Correct** (all attempted runs) | 37/54 (69%) | 21/30 (70%) |
+| **pass^k** (correct on every repeat) | 12/18 (67%) | 7/10 (70%) |
+|   of which | 12 solid (k/k) · 0 flaky · 5 systematic (0/k) · 1 incomplete · 0 unresolved | 7 solid (k/k) · 0 flaky · 1 systematic (0/k) · 1 incomplete · 1 unresolved |
+| **Evidence available** (eligible runs) | 27/42 (64%) | 24/30 (80%) |
+
+## Supporting (cost and behaviour)
+
+Used to explain tradeoffs between versions, not to claim one.
+
+| Metric | Curated | Holdout |
+|---|---|---|
+| Turns (mean / max) | 2.4 / 5 | 2.2 / 4 |
+| Input tokens / run | 3,902 | 3,227 |
 | Searched at all | 51/54 (94%) | 30/30 (100%) |
-| Searches per run | 1.5 | 1.2 |
-| Turns | 2.4 mean, 5 max | 2.2 mean, 4 max |
+| Searches / run | 1.5 | 1.2 |
 | Runs that opened an article | 0/54 (0%) | 0/30 (0%) |
-| Fetches per run | 0.00 | 0.00 |
-| Fetches per run (spread) | 0x54 | 0x30 |
+| Fetches / run (spread) | 0x54 | 0x30 |
 | Turns by fetch count | 0 fetch: 2.4t | 0 fetch: 2.2t |
 | Failed fetches | 0 | 0 |
 | Fetches with no prior search | 0 | 0 |
-| Articles named per answer | 1.5 | 1.2 |
+| Latency median (s) | 3.4 | 3.1 |
 | Answer length (chars) | 496 | 399 |
 | Output tokens | 223 | 194 |
-| Latency (median s) | 3.4 | 3.1 |
+
+## Appendix (instrument health)
+
+How much the measurement itself can be trusted.
+
+| Metric | Curated | Holdout |
+|---|---|---|
+| Judge coverage (resolved / attempted) | 52/54 (96%) | 26/30 (87%) |
+| Unresolved runs | 2 | 4 |
 | Judge/matcher disagreements | 0/31 | 0/23 |
 | Judge unclear, matcher confident | 2 | 4 |
+| Correct (contains matcher, guardrail) | 28/45 (62%) | 23/30 (77%) |
+| Articles named per answer | 1.5 | 1.2 |
 | Questions judged ambiguous | 7/17 (41%) | 5/10 (50%) |
 |   correct on those | 13/19 (68%) | 9/12 (75%) |
-| Multi-fact coverage | 89% (2 multi-fact cases, 6 runs) | 100% (1 multi-fact cases, 3 runs) |
 |   flagged as suspect rubric calls | 3 | 0 |
+| Multi-fact coverage | 89% (2 multi-fact cases, 6 runs) | 100% (1 multi-fact cases, 3 runs) |
 | Errors | 0 | 0 |
 
 ## Answer × evidence

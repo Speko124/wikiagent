@@ -9,7 +9,7 @@
 ## Deterministic signals
 
 - Searched at all: 30/30 (100%)
-- Gold article shown to the model: 27/30 (90%) — denominator is runs whose case has a gold article
+- Reference article shown to the model: 27/30 (90%) — a weak proxy kept for cases with no checkable answer string; `evidence_match` in the cross-arm report is the retrieval metric
 - Gold fetched but past top_k (raising top_k would have helped): 1
 - Named a retrieved article: 21/30 (70%)
 - Turns: median 2, max 8
