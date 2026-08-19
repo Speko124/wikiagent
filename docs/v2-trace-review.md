@@ -1,5 +1,11 @@
 # V2 trace review — did generalising the escalation rule change what gets opened?
 
+> **Note on numbers.** This review was written before the metric contract in
+> `project.md` §3.7 was adopted. Its correctness figures use the earlier
+> denominator, which excluded unresolved runs and so read a few points high.
+> The analysis and the per-run findings are unaffected; for current headline
+> numbers see `results/*-summary.md`.
+
 Two paid sweeps, identical config to V1 except `prompt_version="v2"`:
 `results/v2-curated` (54 runs) and `results/v2-holdout` (30 runs),
 `claude-haiku-4-5`, top_k 3, 3x per case, judge `claude-sonnet-5`/`j2`.

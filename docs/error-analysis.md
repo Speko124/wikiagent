@@ -251,10 +251,17 @@ The baseline was re-graded from saved traces after the fix — 3 rows changed, n
 API calls. Without that, V1 would have shown a phantom grounding improvement at
 precisely the stage the fix targets.
 
-### 7.4 Open measurement gap
+### 7.4 Measurement gap, since closed
 
-**22% of curated runs (12 of 54) have no deterministic correctness signal** —
-the `answer_kind: "none"` abstention cases. They are judge-only. `fetch_article`
-is the change most likely to move exactly them: an agent that can open articles
-may stop abstaining where it should abstain. Worth an exact signal before the
-tool lands, not after.
+At the time of this pass, 22% of curated runs (12 of 54) had no correctness
+signal at all: the `answer_kind: "none"` abstention cases. That mattered
+precisely because `fetch_article` was the change most likely to move them, so
+the fix was pointed at the least-instrumented dimension.
+
+**Closed by the judge rubric and metric contract.** `declined` became its own
+verdict, scored against the case: declining is a success where the case has no
+answer to give and a failure where it does. The correctness denominator is now
+every attempted run, and the outcome decomposition names those runs explicitly
+as `answerable non-answer` rather than dropping them. That bucket turned out to
+be where almost the entire V0 → V2 gain came from (13 → 4 curated), which it
+could not have shown while the runs were unscored.

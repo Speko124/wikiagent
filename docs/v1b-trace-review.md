@@ -1,5 +1,11 @@
 # V1b trace review — repeat sweep vs V1
 
+> **Note on numbers.** This review was written before the metric contract in
+> `project.md` §3.7 was adopted. Its correctness figures use the earlier
+> denominator, which excluded unresolved runs and so read a few points high.
+> The analysis and the per-run findings are unaffected; for current headline
+> numbers see `results/*-summary.md`.
+
 Compares `results/v1b-curated/` (54 runs) against the identical prior sweep `results/v1-curated/` (54 runs), with `results/v0-curated/` as the no-fetch baseline. Same model (`claude-haiku-4-5`), same 18 cases x 3 repeats, same top_k=3.
 
 **Caveat on "identical".** Every v1b trace carries `prompt_digest: c243201bc72665bb`. **No v1 trace carries a digest field at all** (`prompt_digest` is absent from all 54 v1 traces and from `results/v1-curated/results.jsonl`). Prompt identity between the two sweeps is therefore asserted by the runner config, not verifiable from the stored artifacts. Everything below assumes it holds.

@@ -1,5 +1,11 @@
 # V1 trace review — what `fetch_article` bought and what it cost
 
+> **Note on numbers.** This review was written before the metric contract in
+> `project.md` §3.7 was adopted. Its correctness figures use the earlier
+> denominator, which excluded unresolved runs and so read a few points high.
+> The analysis and the per-run findings are unaffected; for current headline
+> numbers see `results/*-summary.md`.
+
 54 curated runs · `claude-haiku-4-5` · prompt `v1` · `top_k` 3 · 3× per case.
 Sources: `results/v1-curated/traces/`, `results/v1-curated/results.jsonl`,
 compared run-by-run against `results/v0-curated/`. Holdout untouched.
