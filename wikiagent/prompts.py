@@ -171,11 +171,16 @@ frequently recorded in the article about the person, work or event involved.""",
 
 PROMPTS = {"v0": V0, "v1": V1, "v2": V2}
 
-# v1 by default, on measured evidence rather than on it being newest: 89% vs
-# 71% correct on the curated set and 93% vs 81% on the held-out set, confirmed
-# by an identical repeat sweep. v0 stays selectable (`--prompt v0`) and still
-# declares search only, so the V0 baseline in results/ remains reproducible.
-DEFAULT_VERSION = "v1"
+# v2 by default. The headline gain over v1 (91% vs 87% curated, 87% vs 83%
+# holdout) sits inside the measured noise floor and is NOT the reason: what
+# earned the default is the tail. The worst case fell from 9/9/10 turns to
+# 7/6/8, roughly 40% cheaper, and v1's single runaway that exhausted the turn
+# budget is gone. Correctness did not regress on any case.
+#
+# Every version stays selectable, and each still declares exactly the tools it
+# shipped with, so every sweep in results/ remains reproducible from its own
+# `prompt_version` - which is also recorded as a digest in each trace.
+DEFAULT_VERSION = "v2"
 
 
 def get(version: str = DEFAULT_VERSION) -> PromptSet:

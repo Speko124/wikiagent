@@ -47,7 +47,7 @@ for certain and only the model knows the third.
 fetched but never shown to the model, and the exact string handed back as the
 tool result.
 
-Useful flags: `--prompt v0` (the pre-`fetch_article` baseline) · `--no-tools`
+Useful flags: `--prompt v0` (search only, the baseline) or `--prompt v1` · `--no-tools`
 (answer from memory only) · `--top-k N` · `--json` · `--save PATH` ·
 `--model claude-sonnet-5`.
 
@@ -139,6 +139,13 @@ declines on answerable questions all count against it.
 | **V1** | **+ `fetch_article`** | **87%** | **83%** | 15/18 · 8/10 |
 | V1 repeat | identical, to measure variance | 87% | 80% | 15/18 · 8/10 |
 | **V2** | generalised article choice | **91%** | **87%** | 15/18 · 8/10 |
+
+**V2 is the default.** Not for the headline gain over V1, which sits inside the
+measured noise floor: what earned it is the tail. The worst case fell from
+9/9/10 turns to 7/6/8, roughly 40% cheaper, and V1's single runaway that
+exhausted the turn budget is gone, with no case regressing. Every version stays
+selectable and each declares exactly the tools it shipped with, so every sweep
+in `results/` reproduces from its own `prompt_version`.
 
 ### Where the gain came from
 
