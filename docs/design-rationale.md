@@ -176,24 +176,33 @@ crossing two exact signals (`answer_match` × `evidence_match`) plus `searched`,
 so it comes free with every sweep. Iteration 0 needed a human reading 31 traces
 to produce the same picture.
 
-**Runs per stage, all three versions:**
+**Runs per stage, all three versions.** Each run is attributed to its earliest
+failing stage, and the columns sum to every attempted run.
 
 | Stage | V0 | V1 | V2 | | V0 | V1 | V2 |
 |---|---|---|---|---|---|---|---|
 | | *curated (54)* | | | | *holdout (30)* | | |
-| 1 · query — never searched | 0 | 0 | 0 | | 0 | 0 | 0 |
-| 2 · retrieval — article never surfaced | 0 | 1 | 0 | | 2 | 0 | 0 |
-| **3 · evidence — fact not in returned text** | **15** | **5** | **4** | | **3** | **0** | **0** |
-| 4 · synthesis — had it, joined it wrong | 0 | 0 | 1 | | 0 | 2 | 2 |
-| 5 · grounding — claimed what wasn't there | **0** | **0** | **0** | | **0** | **0** | **0** |
-| correct | 37 | 47 | 49 | | 21 | 25 | 26 |
-| not scorable (abstention cases) | 2 | 0 | 0 | | 4 | 3 | 2 |
+| 1 · Query — never searched | 0 | 0 | 0 | | 0 | 0 | 0 |
+| 2 · Retrieval — article never surfaced | 0 | 1 | 0 | | 2 | 0 | 0 |
+| **3 · Evidence — fact not in returned text** | **15** | **5** | **4** | | **3** | **0** | **0** |
+| 4 · Synthesis — had it, answered wrong | 0 | 0 | 1 | | 0 | 0 | 2 |
+| 5 · Grounding — claimed what wasn't there | **0** | **0** | **0** | | **0** | **0** | **0** |
+| 6 · Answer — declined with it in hand | 0 | 0 | 0 | | 0 | **2** | 0 |
+| Evaluator — judge unresolved | 2 | 0 | 0 | | **4** | **3** | **2** |
+| Execution — no final answer | 0 | 1 | 0 | | 0 | 0 | 0 |
+| **confirmed success** | **37** | **47** | **49** | | **21** | **25** | **26** |
+| *total* | *54* | *54* | *54* | | *30* | *30* | *30* |
 | **accuracy** (all attempted runs) | **69%** | **87%** | **91%** | | **70%** | **83%** | **87%** |
+
+Declines are kept out of Synthesis on purpose: an agent that declined with the
+evidence in hand did not reason badly, it failed to commit, and those need
+different fixes. That distinction is what makes the V1 holdout column readable
+— its two failures are Answer, not Synthesis.
 
 Three things fall straight out of this table, and none are visible in an
 accuracy number:
 
-- **One stage held everything.** Stage 3 was 15 of 54 curated runs at V0 and
+- **One stage held everything.** Evidence was 15 of 54 curated runs at V0 and
   every other stage was near zero. That is what made `fetch_article` the
   obvious intervention rather than one option among several — and why prompt
   tuning, better query wording or a bigger `top_k` would all have been wasted

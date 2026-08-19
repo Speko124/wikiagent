@@ -50,10 +50,14 @@ Copied into core with new ids; `explore.jsonl` stays frozen and untouched.
 | Source | Mode it buys |
 |---|---|
 | nq-001 | 3a body-fact **+ 1a memory-seeded query** — two modes in one case |
-| nq-004 | 3b infobox-only data (a full-page fetch will *not* fix this) |
-| nq-010 | 3c aggregation over tables (a full-page fetch only partly fixes this) |
+| nq-004 | 3a body-fact ~~3b infobox-only~~ — **the infobox claim was later disproved**: the fact is in the prose, past the 8,000-char fetch cap |
+| nq-010 | ~~3c aggregation over tables~~ — **also disproved**: the article states the record outright and the fetch returns it untruncated |
 | nq-017 | 3a body-fact, with a second route (FAO Schwarz) available |
 | nq-011 | 2a/2c no article exists + gave up after one search |
+
+*(Both strike-throughs are corrections the V1 traces forced. Each was a
+plausible cause written into a case note and never checked against what the
+tool actually returned — see `error-analysis.md` §7.3.)*
 
 Deliberately **not** promoting nq-007: it's a fourth instance of plain 3a and
 would over-weight a mode that already has three cases. One case per mode.

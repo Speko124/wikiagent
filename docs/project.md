@@ -16,7 +16,7 @@ Used consistently across code, generated reports and docs:
 |---|---|
 | **V0 / V1 / V2** | An *iteration*: one measured sweep of the whole eval set |
 | `v0` / `v1` / `v2` | The literal *prompt version* string, as it appears in code and traces |
-| **curated set** | `evals/cases/core.jsonl` — 18 hand-written questions, scored every iteration |
+| **curated set** | `evals/cases/core.jsonl` — 18 questions, scored every iteration. Hand-written, except five promoted from the explore set after the read pass |
 | **explore set** | `evals/cases/explore.jsonl` — 20 random Natural Questions, read once to build the taxonomy |
 | **holdout set** | `evals/cases/holdout.jsonl` — 10 random Natural Questions, disjoint, scored every iteration, aggregate metrics only |
 | **Failure stages** | Retrieval / Evidence · Synthesis · Answer · Grounding · Evaluator · Execution |
@@ -595,7 +595,7 @@ DB, no orchestration layer. API key from `.env` or the environment.
 
 ## 6. Testing
 
-272 tests: 270 offline (stub Anthropic client, no key, no network) + 2 live-API
+293 tests: 289 offline (stub Anthropic client, no key, no network) + 4 live-API
 behind `WIKIAGENT_NETWORK=1`. The whole suite runs in under half a second, so
 there's never a reason to skip it.
 

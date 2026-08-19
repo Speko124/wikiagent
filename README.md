@@ -47,7 +47,8 @@ for certain and only the model knows the third.
 fetched but never shown to the model, and the exact string handed back as the
 tool result.
 
-Useful flags: `--prompt v0` (search only, the baseline) or `--prompt v1` · `--no-tools`
+Useful flags: `--prompt v0` (search only, the baseline), `v1` or `v2` (the
+default) · `--no-tools`
 (answer from memory only) · `--top-k N` · `--json` · `--save PATH` ·
 `--model claude-sonnet-5`.
 
