@@ -282,7 +282,7 @@ cached — no new retrieval needed.
 
 ### B5. Prompt wording — generalise the fetch description
 
-The v1 description names "cast members, specific figures and dates", which may
+The V1 description names "cast members, specific figures and dates", which may
 over-anchor. A generalised phrasing exists but was written after the V1 sweep,
-so it is unscored and belongs to a v2. Minimal on its own; bundle it with B1
+so it is unscored and belongs to a V2. Minimal on its own; bundle it with B1
 or B2 rather than spending a sweep on it alone.

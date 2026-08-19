@@ -74,7 +74,7 @@ uv run python -m evals.run --cases evals/cases/core.jsonl --repeats 1
 # score pass: three runs per case, with the LLM judge
 uv run python -m evals.run --cases evals/cases/core.jsonl --repeats 3
 
-# held-out set: metrics only, no worksheet, no label file
+# holdout set: metrics only, no worksheet, no label file
 uv run python -m evals.run --cases evals/cases/holdout.jsonl --repeats 3 --holdout
 
 # compare the two arms
@@ -214,10 +214,11 @@ retrieved text actually carried the evidence, matched per tool call and
 accumulated across calls, so a multi-hop question is not blamed on retrieval.
 Crossing the two gives the funnel stage exactly:
 
-| | evidence found | not found |
+| | evidence reached the model | it did not |
 |---|---|---|
-| **answer right** | grounded | answered from memory |
-| **answer wrong** | had it, didn't use it | never had it |
+| **answered correctly** | success, grounded | **Grounding** — answered from memory |
+| **wrong answer** | **Synthesis** | **Retrieval / Evidence** |
+| **declined** | **Answer** — declined with it in hand | **Retrieval / Evidence** |
 
 **An LLM judge where determinism was measured to fail.** Correctness is
 judge-primary with the string matcher kept as a guardrail — the matcher
@@ -259,5 +260,5 @@ about one whole case is not distinguishable from noise on this set.
 | [eval-plan.md](docs/eval-plan.md) | Case set, rubric, and the backlog of candidate fixes |
 | [project.md](docs/project.md) | Living spec — every decision as it was taken |
 | [prompt-archive.md](docs/prompt-archive.md) | Replaced prompts and the defects that replaced them |
-| v1 / v1b / v2 trace reviews | Per-sweep analysis, including the ones that found bugs in the eval itself |
+| V1 / V1B / V2 trace reviews | Per-sweep analysis, including the ones that found bugs in the eval itself |
 

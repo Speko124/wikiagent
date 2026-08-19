@@ -8,6 +8,25 @@ Last updated: 2026-08-17 (V0 baseline measured; `fetch_article` is next)
 
 ---
 
+## Naming conventions
+
+Used consistently across code, generated reports and docs:
+
+| Term | Means |
+|---|---|
+| **V0 / V1 / V2** | An *iteration*: one measured sweep of the whole eval set |
+| `v0` / `v1` / `v2` | The literal *prompt version* string, as it appears in code and traces |
+| **curated set** | `evals/cases/core.jsonl` — 18 hand-written questions, scored every iteration |
+| **explore set** | `evals/cases/explore.jsonl` — 20 random Natural Questions, read once to build the taxonomy |
+| **holdout set** | `evals/cases/holdout.jsonl` — 10 random Natural Questions, disjoint, scored every iteration, aggregate metrics only |
+| **Failure stages** | Retrieval / Evidence · Synthesis · Answer · Grounding · Evaluator · Execution |
+| **Outcomes** | confirmed success · wrong answer · answerable non-answer · evaluator unresolved · execution failure |
+
+V1 was run twice (**V1 repeat**) with an identical prompt digest, to measure
+the variance floor. It is not a separate iteration.
+
+---
+
 ## 1. Goal
 
 Build a system that answers questions using Claude + Wikipedia, and an eval
@@ -228,7 +247,7 @@ dimension plus one audit role. Full reasoning in `eval-plan.md`.
 attempted run. Kept as a decomposition rather than a score, because these are
 different kinds of problem:
 
-| Outcome | Curated v0 → v2 | Holdout v0 → v2 |
+| Outcome | Curated V0 → V2 | Holdout V0 → V2 |
 |---|---|---|
 | confirmed success | 37 → 49 | 21 → 26 |
 | wrong answer | 2 → 1 | 2 → 2 |
@@ -252,7 +271,7 @@ answer-bearing evidence reached the model:
 | Execution | no final answer | agent loop or infrastructure |
 
 Curated retrieval-class failures went 15 → 4 across versions, which is the fix
-working on the stage it targeted. On the **holdout at v2 the largest remaining
+working on the stage it targeted. On the **holdout at V2 the largest remaining
 failure class is the evaluator** (2 of 4), not the agent: the instrument is now
 the limiting factor there.
 
@@ -266,7 +285,7 @@ than judged.
 | Signal | What it is |
 |---|---|
 | `answer_match` | **Guardrail**, not the score — see below. Hand-authored accepted phrasings, as an AND of ORs |
-| `answer_completeness` | Fraction of requirements met — a partial list presented as complete scores below 1.0 |
+| multi-fact coverage | Fraction of a case's required facts present. Only meaningful on multi-fact questions, so it is reported over those alone with the sample size inline (appendix, not headline) |
 | `evidence_match` | Retrieval quality: did the text that came back carry the evidence, per tool call |
 | `evidence_found_at_search` | *Which* search found it — how many were wasted getting there |
 | `n_distinct_articles_cited` | Corroboration: an answer resting on three agreeing articles is stronger |
@@ -282,10 +301,11 @@ finding the evidence rather than being blamed for a synthesis question.
 
 **Crossing the two gives the funnel stage, deterministically:**
 
-| | evidence found | not found |
+| | evidence reached the model | it did not |
 |---|---|---|
-| **answer right** | grounded | **answered from memory** |
-| **answer wrong** | **had it, didn't use it** | never had it |
+| **answered correctly** | success, grounded | **Grounding** — answered from memory |
+| **wrong answer** | **Synthesis** | **Retrieval / Evidence** |
+| **declined** | **Answer** — declined with it in hand | **Retrieval / Evidence** |
 
 **`gold_shown` is retired.** It asked "did the article I predicted come back",
 which is the wrong question — facts are carried by many articles, and both of
@@ -664,7 +684,7 @@ Three more candidate eval dimensions:
   seen? — the judge audit exists to answer this; disagreement rate is the
   measurement.
 - Does the explore set's pop-culture skew (13 of 20 are entertainment or sport)
-  exercise retrieval differently from the encyclopedic core set? — read pass
+  exercise retrieval differently from the encyclopedic curated set? — read pass
   will show it, and it's a property of real queries, not a flaw in the draw.
 
 ---

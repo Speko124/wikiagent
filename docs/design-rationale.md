@@ -109,10 +109,11 @@ evidence, matched per tool call and accumulated across calls so a multi-hop
 question isn't blamed on retrieval. Crossing the two gives the funnel stage
 exactly:
 
-| | evidence found | not found |
+| | evidence reached the model | it did not |
 |---|---|---|
-| **answer right** | grounded | answered from memory |
-| **answer wrong** | had it, didn't use it | never had it |
+| **answered correctly** | success, grounded | **Grounding** — answered from memory |
+| **wrong answer** | **Synthesis** | **Retrieval / Evidence** |
+| **declined** | **Answer** — declined with it in hand | **Retrieval / Evidence** |
 
 Plus corroboration (distinct articles cited), multi-fact coverage (see the
 caveat below), tool discipline, turns, tokens, latency — and **pass^k**,
@@ -160,7 +161,7 @@ flowchart TD
     S5["**5 · grounding**<br/>is every claim in the evidence?"] --> S6
     S6["**6 · answer**<br/>correct, and correctly hedged?"] --> A[answer]
 
-    S3 -. "**v0: 15 of 54 runs**<br/>the whole bottleneck" .-> F3[fetch_article]
+    S3 -. "**V0: 15 of 54 runs**<br/>the whole bottleneck" .-> F3[fetch_article]
     S5 -. "0 of 138 runs<br/>never the problem" .-> F5[no work needed]
 
     style S3 fill:#ffdddd,stroke:#cc0000,stroke-width:3px
@@ -176,7 +177,7 @@ to produce the same picture.
 
 **Runs per stage, all three versions:**
 
-| Stage | v0 | v1 | v2 | | v0 | v1 | v2 |
+| Stage | V0 | V1 | V2 | | V0 | V1 | V2 |
 |---|---|---|---|---|---|---|---|
 | | *curated (54)* | | | | *holdout (30)* | | |
 | 1 · query — never searched | 0 | 0 | 0 | | 0 | 0 | 0 |
@@ -191,7 +192,7 @@ to produce the same picture.
 Three things fall straight out of this table, and none are visible in an
 accuracy number:
 
-- **One stage held everything.** Stage 3 was 15 of 54 curated runs at v0 and
+- **One stage held everything.** Stage 3 was 15 of 54 curated runs at V0 and
   every other stage was near zero. That is what made `fetch_article` the
   obvious intervention rather than one option among several — and why prompt
   tuning, better query wording or a bigger `top_k` would all have been wasted
@@ -235,17 +236,17 @@ overclaimed.
 | Version | What changed | Curated | Holdout | pass^3 |
 |---|---|---|---|---|
 | *pre-baseline* | first draft; never scored | — | — | — |
-| **v0** | search only, intros, top-3 | 69% | 70% | 12/18 |
-| **v1** | **+ `fetch_article`** + 1 prompt line | **87%** | **83%** | **15/18** |
-| v1 repeat | identical, to measure variance | 87% | 80% | 15/18 |
-| **v2** | generalised escalation rule | **91%** | **87%** | 15/18 |
+| **V0** | search only, intros, top-3 | 69% | 70% | 12/18 |
+| **V1** | **+ `fetch_article`** + 1 prompt line | **87%** | **83%** | **15/18** |
+| V1 repeat | identical, to measure variance | 87% | 80% | 15/18 |
+| **V2** | generalised escalation rule | **91%** | **87%** | 15/18 |
 
-**Pre-baseline → v0** was defect repair, not tuning. The first draft hardcoded
+**Pre-baseline → V0** was defect repair, not tuning. The first draft hardcoded
 "three articles" while `top_k` is a knob, asked for citations without saying
 how, and never explained the truncation marker. It was never scored, so it was
 never a baseline — it's archived rather than kept as a version.
 
-**v0 → v1: the one intervention that mattered.** Adding `fetch_article` and a
+**V0 → V1: the one intervention that mattered.** Adding `fetch_article` and a
 single prompt line moved correctness **+18 points curated and +13 held out**,
 with zero regressions among the 13 cases that already passed and stage-3
 body-fact failures down 12 → 5. The tool is used selectively — a third of runs,
@@ -254,18 +255,18 @@ fetches without a preceding search — and costs exactly one extra turn when
 used. Cost: +63% input tokens, latency unchanged (the fetch *replaces* search
 rounds).
 
-**v1 → v2: a proven mechanism of unsized magnitude.** v1's rule said open *the*
+**V1 → V2: a proven mechanism of unsized magnitude.** V1's rule said open *the*
 article when its opening section lacked the answer, and the traces showed the
 agent obeying it narrowly — it fetched the article whose title matched the
 topic and never the article about the person who did the thing. `Leonard
-Kleinrock` was a top-3 result in all six v1 runs of one case and fetched
-**zero** times. v2 hands the choice back to the model, and it fetched Kleinrock
+Kleinrock` was a top-3 result in all six V1 runs of one case and fetched
+**zero** times. V2 hands the choice back to the model, and it fetched Kleinrock
 in 2 of 3 runs; both flipped to correct, and that article is the *only*
 reachable path to the answer.
 
 But **+2 runs against a 3-run noise bar is not a result**, and it is recorded
-as unresolved rather than claimed. The real v2 win is efficiency: the worst case
-went 9/9/10 turns → 7/6/8, **40% cheaper and 28% faster**, and v1's single
+as unresolved rather than claimed. The real V2 win is efficiency: the worst case
+went 9/9/10 turns → 7/6/8, **40% cheaper and 28% faster**, and V1's single
 runaway error disappeared.
 
 **That is the expected shape at ~90%.** With most headroom gone, further prompt
@@ -273,8 +274,8 @@ changes mostly buy efficiency, and pushing correctness higher on *these*
 questions risks fitting the prompt to them. The right next move is harder
 questions, not more prompt.
 
-**The holdout tracked the curated set throughout** — within 3 points at v0
-(71/81), v1 (89/93) and v2 (91/93), *including through a +18-point
+**The holdout tracked the curated set throughout** — within 3 points at V0
+(71/81), V1 (89/93) and V2 (91/93), *including through a +18-point
 intervention*. Overfitting would show as that gap widening exactly when
 something was fixed. It didn't.
 
@@ -285,7 +286,7 @@ Reported in full rather than selectively, so improvements and degradations are
 equally visible. **Noise bar: ~3 runs (~6%) on the curated arm** — smaller
 movements are not results.
 
-| | v0 cur | v1 cur | v2 cur | | v0 hold | v1 hold | v2 hold |
+| | V0 cur | V1 cur | V2 cur | | V0 hold | V1 hold | V2 hold |
 |---|---|---|---|---|---|---|---|
 | **Quality** | | | | | | | |
 | Correct (all attempted runs) | 69% | **87%** | **91%** | | 70% | **83%** | **87%** |
@@ -311,8 +312,8 @@ movements are not results.
 | Errors | 0 | 1 | **0** | | 0 | 0 | 0 |
 
 **What improved.** Quality and retrieval move together and clear the bar at
-v0→v1: correctness +18 curated / +13 held out, evidence retrieved +24 / +17,
-and held-out evidence retrieval reaches **100%** at v2 —
+V0→V1: correctness +18 curated / +13 held out, evidence retrieved +24 / +17,
+and held-out evidence retrieval reaches **100%** at V2 —
 every question's answer-bearing text was returned. Both correctness signals
 move in lockstep, which is worth more than either alone: they are computed
 independently and disagree on 1 of 41 runs.
@@ -321,15 +322,15 @@ independently and disagree on 1 of 41 runs.
 fraction of a case's required facts present in the answer — and it turned out
 to be near-degenerate on this set. Only 2 of 18 curated cases have more than
 one required fact, so for 39 of 45 scored runs the fraction is 0.0 or 1.0 and
-identical to `answer_match`, and no run scored partial in v1 or v2. Averaged
+identical to `answer_match`, and no run scored partial in V1 or V2. Averaged
 over everything it looked like a fourth dimension while restating correctness.
 It is now reported only over the cases that exercise it, with the sample size
 inline, and it does work there: `switzerland-borders` named 4 of 5 bordering
-countries at v0 and all 5 from v1. Making it meaningful needs more multi-fact
+countries at V0 and all 5 from V1. Making it meaningful needs more multi-fact
 cases, which is a case-set problem rather than a metric problem.
 
 **What degraded, honestly.** Output tokens rose 223 → 251 (+13%) and answer
-length returned to the v0 level after dipping at v1 — the fetch tool makes
+length returned to the V0 level after dipping at V1 — the fetch tool makes
 answers slightly wordier. **Articles cited per answer fell 1.5 → 1.3**, and on
 the held-out arm 1.2 → 1.1: the agent leans on one deeply-read article where it
 used to name several, which is a small loss of corroboration and the one
