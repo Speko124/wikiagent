@@ -129,76 +129,82 @@ already have, at zero extra cost.
 
 ## What the evals found
 
-Three iterations. Each number below comes from a committed sweep in `results/`.
+Three versions, ~370 agent runs. Correctness counts confirmed successes over
+**every attempted run**: unclear judge verdicts, errors, wrong answers and
+declines on answerable questions all count against it.
 
-| | Curated | Held out | pass^3 | Answerable non-answers |
+| Version | Change | Curated | Holdout | pass^3 (cur / hold) |
 |---|---|---|---|---|
-| **Pre-baseline** (never scored) | — | — | — | — |
-| **V0** search only | 69% | 70% | 12/18 | **13** |
-| **V1** + `fetch_article` | **87%** | **83%** | 15/18 | **5** |
-| **V1 repeat** (same prompt digest) | 87% | 80% | 15/18 | 5 |
-| **V2** generalised escalation | **91%** | **87%** | 15/18 | **4** |
+| **V0** | search only, opening sections | 69% | 70% | 12/18 · 7/10 |
+| **V1** | **+ `fetch_article`** | **87%** | **83%** | 15/18 · 8/10 |
+| V1 repeat | identical, to measure variance | 87% | 80% | 15/18 · 8/10 |
+| **V2** | generalised article choice | **91%** | **87%** | 15/18 · 8/10 |
 
-Correctness is confirmed-correct over **every attempted run**: unclear judge
-verdicts, errors, wrong answers and declines on answerable questions all count
-against it. pass^3 is questions correct on all three repeats, with unresolved
-questions kept in the denominator.
+### Where the gain came from
 
-The last column is the single most informative diagnostic: runs where the agent
-declined on a question that *did* have an answer. It went 13 → 4 on the curated
-set, and that is where almost the entire headline gain came from. Every sweep
-report carries the full mutually exclusive breakdown (confirmed success, wrong
-answer, answerable non-answer, evaluator unresolved, execution failure) and a
-cross-tab of each failure against whether the evidence ever reached the model,
-which says what work each one implies.
+Every run lands in exactly one outcome, and the buckets sum to all attempted
+runs. Almost the entire improvement is one of them:
 
-**The dominant failure was retrieval depth, and it was found by random
-questions rather than by the ones we wrote.** Of six failures in a 20-question
-random sample from Natural Questions, five were identical: the right article
-was retrieved, and the answer lived in the article body, which the tool never
-fetched. Our hand-written set surfaced none of it — real users ask about cast
-members, filming locations and counts, and that material sits below the intro.
+| Outcome (curated) | V0 | V1 | V2 |
+|---|---|---|---|
+| confirmed success | 37 | 47 | **49** |
+| wrong answer | 2 | 1 | 1 |
+| **answerable non-answer** | **13** | **5** | **4** |
+| evaluator unresolved | 2 | 0 | 0 |
+| execution failure | 0 | 1 | 0 |
 
-Adding `fetch_article` moved correctness +18 points on the curated set and +12
-on questions never read during development, with zero regressions among cases
-that already passed. The tool is used selectively — about a third of runs, only
-where the intro genuinely lacked the answer — and costs exactly one extra turn
-when used.
+**Answerable non-answer** is the diagnostic that matters: runs where the agent
+declined on a question that did have an answer. 13 → 4. That is what
+`fetch_article` was built for, and the decomposition shows the fix landing
+there rather than spread thinly.
 
-**Where it still fails**, and both are now understood precisely:
+`evaluator unresolved` is kept separate from `answerable non-answer` on
+purpose. The judge failing to decide is an instrument problem; the agent
+declining is a behaviour. Merged, the finding below would be invisible.
 
-- The 8,000-character fetch cap is the binding constraint. 19 of 22 fetches came
-  back truncated, and the agent then asserts facts are *absent from the article*
-  having read only part of it.
-- One case's answer sits at offset ~15,650 of a 44,579-character article — in
-  the prose, past what we read.
+### Failure stage, by version
+
+Each failed run is attributed to its earliest failing stage, computed from
+exact signals rather than hand-labelled.
+
+| Stage | V0 cur | V0 hold | V1 cur | V1 hold | V2 cur | V2 hold |
+|---|---|---|---|---|---|---|
+| Retrieval | 0 | 2 | 1 | 0 | 0 | 0 |
+| **Evidence** | **15** | **3** | **5** | **0** | **4** | **0** |
+| Synthesis | 0 | 0 | 0 | 0 | 1 | 2 |
+| Answer (declined with evidence) | 0 | 0 | 0 | 2 | 0 | 0 |
+| **Evaluator** | 2 | 4 | 0 | 3 | 0 | **2** |
+| Execution | 0 | 0 | 1 | 0 | 0 | 0 |
+
+Three things only visible at this resolution:
+
+- **One stage held everything at V0.** Evidence was 15 of 54 curated runs while
+  every other stage sat near zero, which ruled out prompt tuning, query
+  rewording and a bigger `top_k` before any of them was tried.
+- **The fix moved the stage it targeted and left the others flat.** A change
+  that moves several stages at once is usually a measurement artifact.
+- **By V2 the largest remaining holdout failure class is the evaluator, not
+  the agent.** Retrieval has been at zero since V1 and evidence availability is
+  30/30. That is the eval design working: the decomposition made the bottleneck
+  legible instead of hiding it in the denominator.
+
+### Where it still fails
+
+- The **8,000-character fetch cap**: 19 of 22 fetches came back truncated, and
+  the agent asserts absence from text it only half-read.
+- **Infobox and table data** is unreachable; plaintext extracts omit both.
+- **Judge quality** is now a visible constraint, and some references are
+  unresolvable by construction — roughly a fifth of the Natural Questions
+  reference answers are wrong or stale against current Wikipedia.
 
 **Grounding was never the problem.** Zero fabricated claims and zero fabricated
-citations across 138 runs. Every specific figure spot-checked against the
-rendered tool output was present in it.
-
-**Where the failures sat, by funnel stage** — attribution is computed from
-exact signals, not hand-labelled:
-
-| Stage | v0 | v1 | v2 |
-|---|---|---|---|
-| 1 · query — never searched | 0 | 0 | 0 |
-| 2 · retrieval — article never surfaced | 0 | 1 | 0 |
-| **3 · evidence — fact not in the returned text** | **15** | **5** | **4** |
-| 4 · synthesis — had it, joined it wrong | 0 | 0 | 1 |
-| 5 · grounding — claimed what wasn't there | **0** | **0** | **0** |
-| correct | 37 | 47 | 49 |
-
-*(curated arm, 54 runs each)*
-
-One stage held everything, and the stage everyone expects to dominate —
-hallucination — never appeared at all. That is what made the fix obvious, and
-the fix moved the stage it targeted while the others stayed flat.
+citations across every reviewed run.
 
 Full analysis: [docs/design-rationale.md](docs/design-rationale.md) ·
-[docs/error-analysis.md](docs/error-analysis.md) ·
+[docs/error-analysis.md](docs/error-analysis.md) §8 ·
 [docs/v1-trace-review.md](docs/v1-trace-review.md) ·
-[docs/v1b-trace-review.md](docs/v1b-trace-review.md)
+[docs/v1b-trace-review.md](docs/v1b-trace-review.md) ·
+[docs/v2-trace-review.md](docs/v2-trace-review.md)
 
 ## How quality is measured
 

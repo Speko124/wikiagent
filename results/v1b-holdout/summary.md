@@ -29,9 +29,9 @@ Mutually exclusive and exhaustive; sums to every attempted run.
 
 ## What each failure implies
 
-- synthesis or reasoning: 1
-- escalation or abstention policy: 1
-- judge rubric / reference answer / ambiguity: 4
+- Synthesis — evidence present, answer wrong: 1
+- Answer — evidence present, declined anyway: 1
+- Evaluator — judge rubric, reference answer, or ambiguity: 4
 
 ## Retrieval by case
 

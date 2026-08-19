@@ -27,8 +27,8 @@ Mutually exclusive and exhaustive; sums to every attempted run.
 
 ## What each failure implies
 
-- retrieval / selection / truncation / source format: 6
-- agent loop or infrastructure: 1
+- Retrieval / Evidence — no answer-bearing text reached the model: 6
+- Execution — agent loop or infrastructure: 1
 
 ## Retrieval by case
 

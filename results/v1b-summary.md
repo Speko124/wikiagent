@@ -34,11 +34,11 @@ Every non-success crossed with whether the answer-bearing evidence reached the m
 
 | Failure implies | Curated | Holdout |
 |---|---|---|
-| retrieval / selection / truncation / source format | 6 | 0 |
-| synthesis or reasoning | 0 | 1 |
-| escalation or abstention policy | 0 | 1 |
-| judge rubric / reference answer / ambiguity | 1 | 4 |
-| agent loop or infrastructure | 0 | 0 |
+| Retrieval / Evidence — no answer-bearing text reached the model | 6 | 0 |
+| Synthesis — evidence present, answer wrong | 0 | 1 |
+| Answer — evidence present, declined anyway | 0 | 1 |
+| Evaluator — judge rubric, reference answer, or ambiguity | 1 | 4 |
+| Execution — agent loop or infrastructure | 0 | 0 |
 | *total failures* | *7* | *6* |
 
 ## Supporting (cost and behaviour)
@@ -96,8 +96,9 @@ Computed from `answer_match`, `evidence_match` and `searched` — the same attri
 | 1 query: did not search at all | 0 | 0 |
 | 2 retrieval: the answer-bearing article never surfaced | 0 | 0 |
 | 3 evidence: right article, fact not in the retrieved text | 6 | 0 |
-| 4 synthesis: had the evidence, answered wrong | 0 | 2 |
+| 4 synthesis: had the evidence, answered wrong | 0 | 1 |
 | 5 grounding: answered from memory | 0 | 0 |
+| 6 answer: declined with the evidence in hand | 0 | 1 |
 | correct, grounded | 36 | 24 |
 | correct, evidence not checkable | 11 | 0 |
 | not scorable (abstention cases) | 1 | 4 |

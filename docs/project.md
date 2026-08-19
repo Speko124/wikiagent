@@ -243,13 +243,13 @@ behaviour, and merging them would hide which one moved.
 **What each failure implies** — every non-success crossed with whether the
 answer-bearing evidence reached the model:
 
-| Evidence | Outcome | Implies |
+| Stage | Condition | Work it implies |
 |---|---|---|
-| absent | any failure | retrieval, article selection, truncation, or source format |
-| present | wrong answer | synthesis or reasoning |
-| present | non-answer | escalation or abstention policy |
-| — | evaluator unresolved | judge rubric, reference answer, or ambiguity review |
-| — | execution failure | agent loop or infrastructure |
+| Retrieval / Evidence | no answer-bearing text reached the model | article selection, fetch depth, truncation, source format |
+| Synthesis | evidence present, answer wrong | reasoning over evidence already in hand |
+| Answer | evidence present, declined anyway | escalation and abstention policy |
+| Evaluator | judge unresolved | rubric, reference answer, or ambiguity review |
+| Execution | no final answer | agent loop or infrastructure |
 
 Curated retrieval-class failures went 15 → 4 across versions, which is the fix
 working on the stage it targeted. On the **holdout at v2 the largest remaining

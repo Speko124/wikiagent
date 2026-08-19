@@ -29,8 +29,8 @@ Mutually exclusive and exhaustive; sums to every attempted run.
 
 ## What each failure implies
 
-- escalation or abstention policy: 2
-- judge rubric / reference answer / ambiguity: 3
+- Answer — evidence present, declined anyway: 2
+- Evaluator — judge rubric, reference answer, or ambiguity: 3
 
 ## Retrieval by case
 

@@ -27,8 +27,8 @@ Mutually exclusive and exhaustive; sums to every attempted run.
 
 ## What each failure implies
 
-- retrieval / selection / truncation / source format: 4
-- synthesis or reasoning: 1
+- Retrieval / Evidence — no answer-bearing text reached the model: 4
+- Synthesis — evidence present, answer wrong: 1
 
 ## Retrieval by case
 

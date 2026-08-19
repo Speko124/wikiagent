@@ -27,8 +27,8 @@ Mutually exclusive and exhaustive; sums to every attempted run.
 
 ## What each failure implies
 
-- retrieval / selection / truncation / source format: 6
-- judge rubric / reference answer / ambiguity: 1
+- Retrieval / Evidence — no answer-bearing text reached the model: 6
+- Evaluator — judge rubric, reference answer, or ambiguity: 1
 
 ## Retrieval by case
 

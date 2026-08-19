@@ -332,15 +332,15 @@ model. Not a score: five different kinds of work that do not trade off.
 | Implies | V0 | V1 | V1 repeat | V2 |
 |---|---|---|---|---|
 | **curated** | | | | |
-| retrieval / selection / truncation / source format | 15 | 6 | 6 | 4 |
-| synthesis or reasoning | 0 | 0 | 0 | 1 |
-| judge rubric / reference / ambiguity | 2 | 0 | 1 | 0 |
-| agent loop or infrastructure | 0 | 1 | 0 | 0 |
+| Retrieval / Evidence | 15 | 6 | 6 | 4 |
+| Synthesis | 0 | 0 | 0 | 1 |
+| Evaluator | 2 | 0 | 1 | 0 |
+| Execution | 0 | 1 | 0 | 0 |
 | **holdout** | | | | |
-| retrieval / selection / truncation / source format | 5 | 0 | 0 | **0** |
-| synthesis or reasoning | 0 | 0 | 1 | 2 |
-| escalation or abstention policy | 0 | 2 | 1 | 0 |
-| **judge rubric / reference / ambiguity** | 4 | 3 | 4 | **2** |
+| Retrieval / Evidence | 5 | 0 | 0 | **0** |
+| Synthesis | 0 | 0 | 1 | 2 |
+| Answer (declined with evidence) | 0 | 2 | 1 | 0 |
+| **Evaluator** | 4 | 3 | 4 | **2** |
 
 Two findings that only appear at this resolution:
 

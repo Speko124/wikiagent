@@ -29,8 +29,8 @@ Mutually exclusive and exhaustive; sums to every attempted run.
 
 ## What each failure implies
 
-- synthesis or reasoning: 2
-- judge rubric / reference answer / ambiguity: 2
+- Synthesis — evidence present, answer wrong: 2
+- Evaluator — judge rubric, reference answer, or ambiguity: 2
 
 ## Retrieval by case
 

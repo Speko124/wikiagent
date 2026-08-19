@@ -101,12 +101,14 @@ def outcomes(rows: list[dict]) -> dict[str, int]:
     return counts
 
 
+# Stage names first, the work each implies as the gloss. One vocabulary across
+# the code, the generated reports and the write-up.
 DIAGNOSES = (
-    "retrieval / selection / truncation / source format",
-    "synthesis or reasoning",
-    "escalation or abstention policy",
-    "judge rubric / reference answer / ambiguity",
-    "agent loop or infrastructure",
+    "Retrieval / Evidence — no answer-bearing text reached the model",
+    "Synthesis — evidence present, answer wrong",
+    "Answer — evidence present, declined anyway",
+    "Evaluator — judge rubric, reference answer, or ambiguity",
+    "Execution — agent loop or infrastructure",
 )
 
 
@@ -128,17 +130,17 @@ def diagnose(rows: list[dict]) -> dict[str, int]:
         if outcome == "confirmed success":
             continue
         if outcome == "execution failure":
-            counts["agent loop or infrastructure"] += 1
+            counts["Execution — agent loop or infrastructure"] += 1
         elif outcome == "evaluator unresolved":
-            counts["judge rubric / reference answer / ambiguity"] += 1
+            counts["Evaluator — judge rubric, reference answer, or ambiguity"] += 1
         elif row.get("evidence_match") is not True:
             # Includes evidence never checked: if a case declares no evidence
             # spec we cannot claim the model had what it needed.
-            counts["retrieval / selection / truncation / source format"] += 1
+            counts["Retrieval / Evidence — no answer-bearing text reached the model"] += 1
         elif outcome == "wrong answer":
-            counts["synthesis or reasoning"] += 1
+            counts["Synthesis — evidence present, answer wrong"] += 1
         else:                                    # answerable non-answer
-            counts["escalation or abstention policy"] += 1
+            counts["Answer — evidence present, declined anyway"] += 1
     return counts
 
 
@@ -317,6 +319,7 @@ FUNNEL_STAGES = (
     "3 evidence: right article, fact not in the retrieved text",
     "4 synthesis: had the evidence, answered wrong",
     "5 grounding: answered from memory",
+    "6 answer: declined with the evidence in hand",
     "correct, grounded",
     "correct, evidence not checkable",
     "not scorable (abstention cases)",
@@ -340,6 +343,7 @@ def funnel(rows: list[dict]) -> dict[str, int]:
         if r.get("error"):
             continue
         answer, evidence = judged_correct(r), r.get("evidence_match")
+        outcome = outcome_of(r)
         if answer is None:
             out["not scorable (abstention cases)"] += 1
         elif answer and evidence:
@@ -352,7 +356,11 @@ def funnel(rows: list[dict]) -> dict[str, int]:
         elif answer:
             out["5 grounding: answered from memory"] += 1
         elif evidence:
-            out["4 synthesis: had the evidence, answered wrong"] += 1
+            # A decline is not a wrong answer. Routing it to synthesis claimed
+            # the model reasoned badly when it never committed to a claim.
+            out["6 answer: declined with the evidence in hand"
+                if outcome == "answerable non-answer"
+                else "4 synthesis: had the evidence, answered wrong"] += 1
         elif not r.get("searched"):
             out["1 query: did not search at all"] += 1
         elif r.get("gold_shown"):

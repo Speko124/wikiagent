@@ -27,7 +27,7 @@ Mutually exclusive and exhaustive; sums to every attempted run.
 
 ## What each failure implies
 
-- judge rubric / reference answer / ambiguity: 11
+- Evaluator — judge rubric, reference answer, or ambiguity: 11
 
 ## Retrieval by case
 

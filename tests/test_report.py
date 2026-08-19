@@ -566,11 +566,11 @@ def test_diagnosis_routes_each_failure_to_the_work_it_implies():
         row("f", error="boom", judge=None),
     ]
     d = report.diagnose(rows)
-    assert d["retrieval / selection / truncation / source format"] == 2  # a, c
-    assert d["synthesis or reasoning"] == 1                              # b
-    assert d["escalation or abstention policy"] == 1                     # d
-    assert d["judge rubric / reference answer / ambiguity"] == 1         # e
-    assert d["agent loop or infrastructure"] == 1                        # f
+    assert d["Retrieval / Evidence — no answer-bearing text reached the model"] == 2  # a, c
+    assert d["Synthesis — evidence present, answer wrong"] == 1                              # b
+    assert d["Answer — evidence present, declined anyway"] == 1                     # d
+    assert d["Evaluator — judge rubric, reference answer, or ambiguity"] == 1         # e
+    assert d["Execution — agent loop or infrastructure"] == 1                        # f
 
 
 def test_diagnosis_only_covers_failures_and_is_exhaustive_over_them():
@@ -601,6 +601,18 @@ def test_diagnosis_is_stable_across_every_outcome_kind():
     ]
     d = report.diagnose(rows)
     assert sum(d.values()) == 3          # the appropriate decline is a success
-    assert d["judge rubric / reference answer / ambiguity"] == 1
-    assert d["escalation or abstention policy"] == 1
-    assert d["agent loop or infrastructure"] == 1
+    assert d["Evaluator — judge rubric, reference answer, or ambiguity"] == 1
+    assert d["Answer — evidence present, declined anyway"] == 1
+    assert d["Execution — agent loop or infrastructure"] == 1
+
+
+def test_a_decline_with_evidence_is_an_answer_stage_failure_not_synthesis():
+    """Declining is not answering wrongly. Routing declines into synthesis
+    said the model reasoned badly when it never committed to a claim, and it
+    put the same two runs in two different stages depending on which table you
+    read."""
+    rows = [row("d", evidence_match=True, answer_kind="extractive",
+                judge={"correctness": {"verdict": "declined"}})]
+    f = report.funnel(rows)
+    assert f["4 synthesis: had the evidence, answered wrong"] == 0
+    assert f["6 answer: declined with the evidence in hand"] == 1
