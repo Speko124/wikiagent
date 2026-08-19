@@ -15,6 +15,32 @@ Correctness counts confirmed successes over **every attempted run**: unclear ver
 |   of which | 12 solid (k/k) · 0 flaky · 5 systematic (0/k) · 1 incomplete · 0 unresolved | 7 solid (k/k) · 0 flaky · 1 systematic (0/k) · 1 incomplete · 1 unresolved |
 | **Evidence available** (eligible runs) | 27/42 (64%) | 24/30 (80%) |
 
+## Outcome decomposition
+
+Mutually exclusive and exhaustive: these sum to every attempted run. `evaluator unresolved` is deliberately kept apart from `answerable non-answer` - the judge failing to decide is an instrument problem, the agent declining is a behaviour, and merging them would hide which one moved.
+
+| Outcome | Curated | Holdout |
+|---|---|---|
+| **confirmed success** | 37 | 21 |
+| wrong answer | 2 | 2 |
+| answerable non-answer | 13 | 3 |
+| evaluator unresolved | 2 | 4 |
+| execution failure | 0 | 0 |
+| *total* | *54* | *30* |
+
+## What each failure implies
+
+Every non-success crossed with whether the answer-bearing evidence reached the model. Not a score: these are five different kinds of work and they do not trade off against each other.
+
+| Failure implies | Curated | Holdout |
+|---|---|---|
+| retrieval / selection / truncation / source format | 15 | 5 |
+| synthesis or reasoning | 0 | 0 |
+| escalation or abstention policy | 0 | 0 |
+| judge rubric / reference answer / ambiguity | 2 | 4 |
+| agent loop or infrastructure | 0 | 0 |
+| *total failures* | *17* | *9* |
+
 ## Supporting (cost and behaviour)
 
 Used to explain tradeoffs between versions, not to claim one.

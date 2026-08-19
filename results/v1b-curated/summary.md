@@ -14,6 +14,22 @@
 - Tokens: 399,011 in / 13,320 out
 - Latency: median 3.2s
 
+## Outcome decomposition
+
+Mutually exclusive and exhaustive; sums to every attempted run.
+
+- confirmed success: 47
+- wrong answer: 1
+- answerable non-answer: 5
+- evaluator unresolved: 1
+- execution failure: 0
+- *total: 54 of 54 runs*
+
+## What each failure implies
+
+- retrieval / selection / truncation / source format: 6
+- judge rubric / reference answer / ambiguity: 1
+
 ## Retrieval by case
 
 | case | gold shown | bucket |

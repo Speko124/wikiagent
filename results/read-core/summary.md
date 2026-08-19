@@ -14,6 +14,21 @@
 - Tokens: 28,135 in / 1,710 out
 - Latency: median 2.7s
 
+## Outcome decomposition
+
+Mutually exclusive and exhaustive; sums to every attempted run.
+
+- confirmed success: 0
+- wrong answer: 0
+- answerable non-answer: 0
+- evaluator unresolved: 11
+- execution failure: 0
+- *total: 11 of 11 runs*
+
+## What each failure implies
+
+- judge rubric / reference answer / ambiguity: 11
+
 ## Retrieval by case
 
 | case | gold shown | bucket |

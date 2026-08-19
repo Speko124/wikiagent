@@ -14,6 +14,21 @@
 - Tokens: 80,575 in / 4,364 out
 - Latency: median 3.3s
 
+## Outcome decomposition
+
+Mutually exclusive and exhaustive; sums to every attempted run.
+
+- confirmed success: 0
+- wrong answer: 0
+- answerable non-answer: 0
+- evaluator unresolved: 20
+- execution failure: 0
+- *total: 20 of 20 runs*
+
+## What each failure implies
+
+- judge rubric / reference answer / ambiguity: 20
+
 ## Not measured here
 
 Correctness, faithfulness and posture are **not measured** — no judge ran for this sweep. Nothing above is an answer-quality score.

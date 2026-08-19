@@ -89,7 +89,8 @@ how** versus **how good was the answer when it didn't fail**.
 
 ### Deterministic (no judge)
 
-*(Denominators follow the metric contract in `project.md` §3.7: outcome metrics
+*(Outcome decomposition and the failure-implies cross-tab are defined in
+`project.md` §3.7. Denominators follow the metric contract there: outcome metrics
 count every attempted run, pass^k keeps unresolved questions in the
 denominator, and diagnostic metrics show their eligible subset.)*
 

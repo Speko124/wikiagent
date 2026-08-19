@@ -57,6 +57,91 @@ def judged_correct(row: dict) -> bool | None:
     return False
 
 
+OUTCOMES = (
+    "confirmed success",
+    "wrong answer",
+    "answerable non-answer",
+    "evaluator unresolved",
+    "execution failure",
+)
+
+
+def outcome_of(row: dict) -> str:
+    """Classify one run into exactly one outcome.
+
+    Order is precedence, and it matters. A run that never produced a final
+    answer has nothing to grade, so execution failure outranks any verdict
+    left on the row. `evaluator unresolved` is kept strictly separate from
+    `answerable non-answer`: the judge failing to decide is an instrument
+    problem, the agent declining is a behaviour, and merging them would hide
+    which of the two moved between versions.
+    """
+    correctness = (row.get("judge") or {}).get("correctness")
+    # A malformed or missing judge payload is unresolved, never a crash: one
+    # bad row must not take down a whole sweep's aggregation.
+    verdict = correctness.get("verdict") if isinstance(correctness, dict) else None
+    if row.get("error") or not (row.get("answer") or "").strip():
+        return "execution failure"
+    if verdict in (None, "unclear"):
+        return "evaluator unresolved"
+    if verdict == "correct":
+        return "confirmed success"
+    if verdict == "declined":
+        # Declining is the right answer only where the case has none to give.
+        return ("confirmed success" if row.get("answer_kind") == "none"
+                else "answerable non-answer")
+    return "wrong answer"
+
+
+def outcomes(rows: list[dict]) -> dict[str, int]:
+    """Mutually exclusive, exhaustive: the counts sum to every attempted run."""
+    counts = dict.fromkeys(OUTCOMES, 0)
+    for row in rows:
+        counts[outcome_of(row)] += 1
+    return counts
+
+
+DIAGNOSES = (
+    "retrieval / selection / truncation / source format",
+    "synthesis or reasoning",
+    "escalation or abstention policy",
+    "judge rubric / reference answer / ambiguity",
+    "agent loop or infrastructure",
+)
+
+
+def diagnose(rows: list[dict]) -> dict[str, int]:
+    """Cross each non-success with whether the evidence reached the model.
+
+    This is what turns a failure count into a work item. The same wrong answer
+    means retrieval work when the evidence never arrived and reasoning work
+    when it did, and those are not interchangeable. Successes are excluded:
+    they need no diagnosis, and including them would let a headline gain hide
+    inside a diagnostic table.
+
+    Deliberately not combined into a score. These are five different kinds of
+    work, and averaging them would imply they trade off against each other.
+    """
+    counts = dict.fromkeys(DIAGNOSES, 0)
+    for row in rows:
+        outcome = outcome_of(row)
+        if outcome == "confirmed success":
+            continue
+        if outcome == "execution failure":
+            counts["agent loop or infrastructure"] += 1
+        elif outcome == "evaluator unresolved":
+            counts["judge rubric / reference answer / ambiguity"] += 1
+        elif row.get("evidence_match") is not True:
+            # Includes evidence never checked: if a case declares no evidence
+            # spec we cannot claim the model had what it needed.
+            counts["retrieval / selection / truncation / source format"] += 1
+        elif outcome == "wrong answer":
+            counts["synthesis or reasoning"] += 1
+        else:                                    # answerable non-answer
+            counts["escalation or abstention policy"] += 1
+    return counts
+
+
 def _rate(hits: int, total: int) -> str:
     return f"{hits}/{total} ({hits / total:.0%})" if total else "n/a"
 
@@ -68,8 +153,9 @@ def _metrics(rows: list[dict], config: dict | None = None) -> dict:
     # non-successes. Excluding unresolved runs flatters the score: it moved
     # the V0 holdout from 70% to 81%, which is the difference between "the
     # system answered this" and "the system answered this when it answered".
-    confirmed = sum(1 for r in rows if judged_correct(r) is True)
-    unresolved = sum(1 for r in rows if judged_correct(r) is None)
+    decomposition = outcomes(rows)
+    confirmed = decomposition["confirmed success"]
+    unresolved = decomposition["evaluator unresolved"]
     judged_ok = [r for r in ok if judged_correct(r) is not None]
     scorable = [r for r in ok if r.get("answer_match") is not None]
     # Where the guardrail and the primary signal disagree, one of them is
@@ -139,6 +225,7 @@ def _metrics(rows: list[dict], config: dict | None = None) -> dict:
         "correct": _rate(confirmed, len(rows)),
         "judge_coverage": _rate(len(rows) - unresolved, len(rows)),
         "unresolved": str(unresolved),
+        "_outcomes": decomposition,
         "correct_contains": _rate(
             sum(1 for r in scorable if r["answer_match"]), len(scorable)),
         "guardrail_clash": f"{len(guardrail_clash)}",
@@ -412,6 +499,32 @@ def compare(curated_dir, holdout_dir=None) -> str:
                  "unresolved questions in the denominator. Evidence shows its "
                  "eligible denominator, since it is only checkable where a case "
                  "declares what the evidence should contain.")
+    out += ["## Outcome decomposition", "",
+            "Mutually exclusive and exhaustive: these sum to every attempted "
+            "run. `evaluator unresolved` is deliberately kept apart from "
+            "`answerable non-answer` - the judge failing to decide is an "
+            "instrument problem, the agent declining is a behaviour, and "
+            "merging them would hide which one moved.", "",
+            "| Outcome | Curated | Holdout |", "|---|---|---|"]
+    for name in OUTCOMES:
+        c = cur["_outcomes"][name]
+        h = hld["_outcomes"][name] if hld else "—"
+        label = f"**{name}**" if name == "confirmed success" else name
+        out.append(f"| {label} | {c} | {h} |")
+    out += [f"| *total* | *{sum(cur['_outcomes'].values())}* | "
+            f"*{sum(hld['_outcomes'].values()) if hld else '—'}* |", ""]
+
+    cur_diag, hld_diag = diagnose(cur_rows), diagnose(hld_rows) if hld_rows else {}
+    out += ["## What each failure implies", "",
+            "Every non-success crossed with whether the answer-bearing evidence "
+            "reached the model. Not a score: these are five different kinds of "
+            "work and they do not trade off against each other.", "",
+            "| Failure implies | Curated | Holdout |", "|---|---|---|"]
+    for name in DIAGNOSES:
+        out.append(f"| {name} | {cur_diag[name]} | {hld_diag.get(name, '—')} |")
+    out += [f"| *total failures* | *{sum(cur_diag.values())}* | "
+            f"*{sum(hld_diag.values()) if hld_diag else '—'}* |", ""]
+
     out += block("Supporting (cost and behaviour)", supporting,
                  "Used to explain tradeoffs between versions, not to claim one.")
     out += block("Appendix (instrument health)", appendix,

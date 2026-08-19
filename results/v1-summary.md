@@ -15,6 +15,32 @@ Correctness counts confirmed successes over **every attempted run**: unclear ver
 |   of which | 15 solid (k/k) · 1 flaky · 1 systematic (0/k) · 1 incomplete · 0 unresolved | 8 solid (k/k) · 0 flaky · 0 systematic (0/k) · 2 incomplete · 0 unresolved |
 | **Evidence available** (eligible runs) | 36/41 (88%) | 29/30 (97%) |
 
+## Outcome decomposition
+
+Mutually exclusive and exhaustive: these sum to every attempted run. `evaluator unresolved` is deliberately kept apart from `answerable non-answer` - the judge failing to decide is an instrument problem, the agent declining is a behaviour, and merging them would hide which one moved.
+
+| Outcome | Curated | Holdout |
+|---|---|---|
+| **confirmed success** | 47 | 25 |
+| wrong answer | 1 | 0 |
+| answerable non-answer | 5 | 2 |
+| evaluator unresolved | 0 | 3 |
+| execution failure | 1 | 0 |
+| *total* | *54* | *30* |
+
+## What each failure implies
+
+Every non-success crossed with whether the answer-bearing evidence reached the model. Not a score: these are five different kinds of work and they do not trade off against each other.
+
+| Failure implies | Curated | Holdout |
+|---|---|---|
+| retrieval / selection / truncation / source format | 6 | 0 |
+| synthesis or reasoning | 0 | 0 |
+| escalation or abstention policy | 0 | 2 |
+| judge rubric / reference answer / ambiguity | 0 | 3 |
+| agent loop or infrastructure | 1 | 0 |
+| *total failures* | *7* | *5* |
+
 ## Supporting (cost and behaviour)
 
 Used to explain tradeoffs between versions, not to claim one.
@@ -40,8 +66,8 @@ How much the measurement itself can be trusted.
 
 | Metric | Curated | Holdout |
 |---|---|---|
-| Judge coverage (resolved / attempted) | 53/54 (98%) | 27/30 (90%) |
-| Unresolved runs | 1 | 3 |
+| Judge coverage (resolved / attempted) | 54/54 (100%) | 27/30 (90%) |
+| Unresolved runs | 0 | 3 |
 | Judge/matcher disagreements | 0/40 | 1/25 |
 | Judge unclear, matcher confident | 0 | 3 |
 | Correct (contains matcher, guardrail) | 39/44 (89%) | 27/30 (90%) |

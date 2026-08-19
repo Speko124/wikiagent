@@ -358,6 +358,20 @@ def summarize(rows: list[dict], config: Config) -> str:
             "",
         ]
 
+    from .report import OUTCOMES, outcomes as _outcomes
+    decomposition = _outcomes(rows)
+    out += ["## Outcome decomposition", "",
+            "Mutually exclusive and exhaustive; sums to every attempted run.", ""]
+    out += [f"- {name}: {decomposition[name]}" for name in OUTCOMES]
+    out += [f"- *total: {sum(decomposition.values())} of {len(rows)} runs*", ""]
+
+    from .report import DIAGNOSES, diagnose as _diagnose
+    diag = _diagnose(rows)
+    if sum(diag.values()):
+        out += ["## What each failure implies", ""]
+        out += [f"- {name}: {diag[name]}" for name in DIAGNOSES if diag[name]]
+        out += [""]
+
     out += _retrieval_by_case(gold)
 
     out += [

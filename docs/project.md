@@ -224,6 +224,38 @@ dimension plus one audit role. Full reasoning in `eval-plan.md`.
 | Audit | Judge coverage, disagreements | Attempted runs | Appendix |
 | Exploratory | Multi-fact coverage | Multi-fact questions only, sample size inline | Appendix |
 
+**Outcome decomposition** — mutually exclusive, exhaustive, sums to every
+attempted run. Kept as a decomposition rather than a score, because these are
+different kinds of problem:
+
+| Outcome | Curated v0 → v2 | Holdout v0 → v2 |
+|---|---|---|
+| confirmed success | 37 → 49 | 21 → 26 |
+| wrong answer | 2 → 1 | 2 → 2 |
+| **answerable non-answer** | **13 → 4** | 3 → 0 |
+| evaluator unresolved | 2 → 0 | 4 → 2 |
+| execution failure | 0 → 0 | 0 → 0 |
+
+`evaluator unresolved` is kept strictly apart from `answerable non-answer`: the
+judge failing to decide is an instrument problem, the agent declining is a
+behaviour, and merging them would hide which one moved.
+
+**What each failure implies** — every non-success crossed with whether the
+answer-bearing evidence reached the model:
+
+| Evidence | Outcome | Implies |
+|---|---|---|
+| absent | any failure | retrieval, article selection, truncation, or source format |
+| present | wrong answer | synthesis or reasoning |
+| present | non-answer | escalation or abstention policy |
+| — | evaluator unresolved | judge rubric, reference answer, or ambiguity review |
+| — | execution failure | agent loop or infrastructure |
+
+Curated retrieval-class failures went 15 → 4 across versions, which is the fix
+working on the stage it targeted. On the **holdout at v2 the largest remaining
+failure class is the evaluator** (2 of 4), not the agent: the instrument is now
+the limiting factor there.
+
 The outcome denominator is the load-bearing choice. Excluding unresolved runs
 answers "how good is it when it manages to answer", which is a different and
 easier question; it flattered the V0 holdout by 11 points.

@@ -472,3 +472,135 @@ def test_evidence_shows_its_eligible_denominator():
     look like, so the eligible count has to be visible next to the rate."""
     rows = [row("a", evidence_match=True), row("b", evidence_match=None)]
     assert report._metrics(rows)["evidence_found"] == "1/1 (100%)"
+
+
+# --- outcome decomposition ---------------------------------------------------
+
+def test_the_five_outcomes_are_mutually_exclusive_and_sum_to_all_runs():
+    """The decomposition's whole value is that it accounts for every attempted
+    run exactly once. If the categories can overlap or leave a gap, the
+    breakdown stops explaining the headline."""
+    rows = [
+        row("a", judge={"correctness": {"verdict": "correct"}}),
+        row("b", judge={"correctness": {"verdict": "incorrect"}}),
+        row("c", answer_kind="none", judge={"correctness": {"verdict": "declined"}}),
+        row("d", answer_kind="extractive",
+            judge={"correctness": {"verdict": "declined"}}),
+        row("e", judge={"correctness": {"verdict": "unclear"}}),
+        row("f", error="boom", judge=None),
+    ]
+    out = report.outcomes(rows)
+    assert sum(out.values()) == len(rows)
+    assert out["confirmed success"] == 2      # correct + appropriate decline
+    assert out["wrong answer"] == 1
+    assert out["answerable non-answer"] == 1
+    assert out["evaluator unresolved"] == 1
+    assert out["execution failure"] == 1
+
+
+def test_an_evaluator_unresolved_run_is_not_an_agent_non_answer():
+    """The judge failing to decide is an instrument problem; the agent
+    declining is a behaviour. Merging them would hide which one moved."""
+    rows = [row("a", judge={"correctness": {"verdict": "unclear"}})]
+    out = report.outcomes(rows)
+    assert out["evaluator unresolved"] == 1
+    assert out["answerable non-answer"] == 0
+
+
+def test_an_execution_failure_outranks_any_verdict():
+    """A run that produced no final answer has nothing to grade, so a stale or
+    partial verdict must not reclassify it."""
+    rows = [row("a", error="stopped after 10 turns",
+                judge={"correctness": {"verdict": "correct"}})]
+    assert report.outcomes(rows)["execution failure"] == 1
+
+
+def test_confirmed_success_matches_the_headline_correctness_numerator():
+    """The decomposition explains the headline, so its success bucket has to
+    be the same number, computed the same way."""
+    rows = [
+        row("a", judge={"correctness": {"verdict": "correct"}}),
+        row("b", answer_kind="none", judge={"correctness": {"verdict": "declined"}}),
+        row("c", judge={"correctness": {"verdict": "incorrect"}}),
+    ]
+    assert report.outcomes(rows)["confirmed success"] == 2
+    assert report._metrics(rows)["correct"].startswith("2/3")
+
+
+def test_an_errored_run_with_a_stale_verdict_is_not_counted_correct():
+    """The headline numerator and the decomposition's success bucket are the
+    same computation, so they cannot disagree. Computed separately, a run that
+    errored while carrying an old `correct` verdict counted as a success in
+    one place and a failure in the other."""
+    rows = [row("a", error="boom", judge={"correctness": {"verdict": "correct"}})]
+    m = report._metrics(rows)
+    assert m["correct"] == "0/1 (0%)"
+    assert m["_outcomes"]["execution failure"] == 1
+    assert m["_outcomes"]["confirmed success"] == 0
+
+
+def test_a_malformed_judge_payload_is_unresolved_not_a_crash():
+    """One bad row must not take down aggregation for a whole sweep."""
+    assert report.outcome_of(
+        {"judge": {"correctness": "correct"}, "answer": "x"}
+    ) == "evaluator unresolved"
+    assert report.outcome_of({"judge": None, "answer": "x"}) == "evaluator unresolved"
+
+
+# --- outcome x evidence diagnosis -------------------------------------------
+
+def test_diagnosis_routes_each_failure_to_the_work_it_implies():
+    """The point of crossing outcome with evidence: the same wrong answer
+    means retrieval work or reasoning work depending on whether the evidence
+    ever reached the model, and those are different fixes."""
+    rows = [
+        row("a", evidence_match=False,
+            judge={"correctness": {"verdict": "incorrect"}}),
+        row("b", evidence_match=True,
+            judge={"correctness": {"verdict": "incorrect"}}),
+        row("c", evidence_match=False, answer_kind="extractive",
+            judge={"correctness": {"verdict": "declined"}}),
+        row("d", evidence_match=True, answer_kind="extractive",
+            judge={"correctness": {"verdict": "declined"}}),
+        row("e", judge={"correctness": {"verdict": "unclear"}}),
+        row("f", error="boom", judge=None),
+    ]
+    d = report.diagnose(rows)
+    assert d["retrieval / selection / truncation / source format"] == 2  # a, c
+    assert d["synthesis or reasoning"] == 1                              # b
+    assert d["escalation or abstention policy"] == 1                     # d
+    assert d["judge rubric / reference answer / ambiguity"] == 1         # e
+    assert d["agent loop or infrastructure"] == 1                        # f
+
+
+def test_diagnosis_only_covers_failures_and_is_exhaustive_over_them():
+    """Successes need no diagnosis, and every non-success must land in exactly
+    one bucket or the breakdown stops accounting for the gap."""
+    rows = [
+        row("ok", judge={"correctness": {"verdict": "correct"}}),
+        row("abstain-ok", answer_kind="none",
+            judge={"correctness": {"verdict": "declined"}}),
+        row("bad", evidence_match=True,
+            judge={"correctness": {"verdict": "incorrect"}}),
+    ]
+    d = report.diagnose(rows)
+    failures = len(rows) - report.outcomes(rows)["confirmed success"]
+    assert sum(d.values()) == failures == 1
+
+
+def test_diagnosis_is_stable_across_every_outcome_kind():
+    """Exercises unclear, appropriate decline, inappropriate decline and error
+    together, since those are the four that shift between versions."""
+    rows = [
+        row("unclear", judge={"correctness": {"verdict": "unclear"}}),
+        row("good-decline", answer_kind="none",
+            judge={"correctness": {"verdict": "declined"}}),
+        row("bad-decline", answer_kind="extractive", evidence_match=True,
+            judge={"correctness": {"verdict": "declined"}}),
+        row("err", error="boom", judge=None),
+    ]
+    d = report.diagnose(rows)
+    assert sum(d.values()) == 3          # the appropriate decline is a success
+    assert d["judge rubric / reference answer / ambiguity"] == 1
+    assert d["escalation or abstention policy"] == 1
+    assert d["agent loop or infrastructure"] == 1

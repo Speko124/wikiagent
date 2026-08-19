@@ -131,18 +131,26 @@ already have, at zero extra cost.
 
 Three iterations. Each number below comes from a committed sweep in `results/`.
 
-| | Curated | Held out | pass^3 | Body-fact failures |
+| | Curated | Held out | pass^3 | Answerable non-answers |
 |---|---|---|---|---|
 | **Pre-baseline** (never scored) | — | — | — | — |
-| **V0** search only | 69% | 70% | 12/18 | 15 |
-| **V1** + `fetch_article` | **87%** | **83%** | 15/18 | 5 |
+| **V0** search only | 69% | 70% | 12/18 | **13** |
+| **V1** + `fetch_article` | **87%** | **83%** | 15/18 | **5** |
 | **V1 repeat** (same prompt digest) | 87% | 80% | 15/18 | 5 |
-| **V2** generalised escalation | **91%** | **87%** | 15/18 | 4 |
+| **V2** generalised escalation | **91%** | **87%** | 15/18 | **4** |
 
 Correctness is confirmed-correct over **every attempted run**: unclear judge
 verdicts, errors, wrong answers and declines on answerable questions all count
 against it. pass^3 is questions correct on all three repeats, with unresolved
 questions kept in the denominator.
+
+The last column is the single most informative diagnostic: runs where the agent
+declined on a question that *did* have an answer. It went 13 → 4 on the curated
+set, and that is where almost the entire headline gain came from. Every sweep
+report carries the full mutually exclusive breakdown (confirmed success, wrong
+answer, answerable non-answer, evaluator unresolved, execution failure) and a
+cross-tab of each failure against whether the evidence ever reached the model,
+which says what work each one implies.
 
 **The dominant failure was retrieval depth, and it was found by random
 questions rather than by the ones we wrote.** Of six failures in a 20-question
