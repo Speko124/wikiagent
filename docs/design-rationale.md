@@ -13,7 +13,7 @@ Four, chosen up front and visible in every decision that follows.
 
 **Simple surfaces.** One prompt, one tool to start. Every capability added
 later had to be argued for by an eval result, not by anticipation. The system
-ended with two tools and a ~150-word prompt.
+ended with two tools and a prompt under 200 words.
 
 **Deterministic wherever possible.** An LLM judge is a last resort, used only
 where a deterministic signal was *built, measured, and observed to fail*. This
@@ -64,7 +64,8 @@ been scored against, and every trace now records the digest of what actually
 ran, so "which wording produced these numbers?" is answerable from the results
 rather than from file timestamps.
 
-**Short on purpose.** ~150 words. A long prompt makes a delta unattributable
+**Short on purpose.** Under 200 words, growing from 141 at v0 to 194 at v2 as
+evals justified each addition. A long prompt makes a delta unattributable
 and leaves no room to hill-climb where evals point.
 
 **Every line traceable to an observed failure.** Examples: *"Name the articles
@@ -274,9 +275,8 @@ changes mostly buy efficiency, and pushing correctness higher on *these*
 questions risks fitting the prompt to them. The right next move is harder
 questions, not more prompt.
 
-**The holdout tracked the curated set throughout** — within 3 points at V0
-(71/81), V1 (89/93) and V2 (91/93), *including through a +18-point
-intervention*. Overfitting would show as that gap widening exactly when
+**The holdout tracked the curated set throughout** — V0 69/70, V1 87/83 and
+V2 91/87, *including through an 18-point intervention*. Overfitting would show as that gap widening exactly when
 something was fixed. It didn't.
 
 
@@ -358,9 +358,12 @@ the check that the new tool never became a guessing mechanism.
 - **Ambiguity handling is inconsistent**, and often decided upstream by the
   agent's own query wording before it notices an ambiguity exists.
 
-**What does *not* fail: grounding.** Zero fabricated claims and zero fabricated
-citations across 138 runs. Every figure spot-checked against the rendered tool
-output was present in it. The system's honest failure mode is declining to
+**What does *not* fail: grounding.** No measured correct-without-evidence
+answers, and no fabricated citation in any reviewed run: every figure
+spot-checked against the rendered tool output was present in it. Stated that
+way rather than as "zero fabrications", because it is what the evidence
+actually supports — the check is a spot-check plus an exact citation match, not
+an exhaustive proof of absence. The system's honest failure mode is declining to
 answer, not inventing one.
 
 ---

@@ -14,7 +14,7 @@ Needs Python 3.11+ and an Anthropic API key.
 
 ```bash
 git clone https://github.com/Speko124/wikiagent.git && cd wikiagent
-uv sync                                    # or: pip install -e ".[dev]"
+uv sync                                    # installs the dev group too
 echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env # or export it
 ```
 
@@ -54,7 +54,7 @@ Useful flags: `--prompt v0` (search only, the baseline) or `--prompt v1` · `--n
 ## Tests
 
 ```bash
-uv run pytest -q                       # 272 tests, no API key, no network, <1s
+uv run pytest -q                       # 289 tests, no API key, no network, <1s
 WIKIAGENT_NETWORK=1 uv run pytest -q   # + 4 live Wikipedia tests
 ```
 
@@ -88,7 +88,8 @@ is missing. `evals/regrade.py` re-scores a finished sweep from its saved traces
 with no API calls, so a grader fix never costs a re-run.
 
 Committed results: `results/v0-*` (baseline), `results/v1-*` and `results/v1b-*`
-(after `fetch_article`, run twice).
+(after `fetch_article`, run twice to measure variance), and `results/v2-*`
+(generalised article choice, the current default).
 
 ---
 
@@ -112,7 +113,8 @@ evals/
 ```
 
 **Two tools.** `search_wikipedia(query)` returns the opening section of the top
-3 matching articles. `fetch_article(title, pageid)` opens one article in full.
+3 matching articles. `fetch_article(title, pageid)` opens one article and returns up to 8,000
+characters of its prose (infoboxes and tables are not included).
 The second exists because the evals said so — see below.
 
 **The cache is a correctness requirement, not an optimisation.** Live Wikipedia

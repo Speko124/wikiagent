@@ -4,7 +4,7 @@ Living document. Decisions land here as they're made; open questions stay
 visible until closed. Written to be self-contained — someone picking this up
 cold should need nothing but this file and the code.
 
-Last updated: 2026-08-17 (V0 baseline measured; `fetch_article` is next)
+Last updated: 2026-08-18 (V0 → V1 → V2 measured; `v2` is the default)
 
 ---
 
@@ -433,20 +433,27 @@ main functionality pass; a candidate for one run at the end if time allows.
 Also deferred: a matched control for the false-premise case (FalseQA's design),
 temporal-arithmetic joins.
 
-Starting small is the point, not a compromise: 11 cases × 3 repeats = 33 runs is
-one cheap loop through observe → categorise → fix → re-run, and cases written
-*after* seeing real failures are better targeted than cases written up front.
-The cost is statistical: at n=11 the headline rates are noise. So the summary is
-read as **per-case buckets and traces**, never as a percentage moving by a few
-points. Aggregates only become meaningful nearer 25.
+Starting small was the point, not a compromise: a small set makes one cheap
+loop through observe → categorise → fix → re-run, and cases written *after*
+seeing real failures are better targeted than cases written up front. The read
+pass began with 11 curated questions; the set was rebuilt to **18** once the
+traces showed which modes actually existed.
 
-**The core 11**, one per mode: single-hop factual (regression floor) ·
-multi-hop bridge · deep fact outside the intro · unanswerable · false premise ·
-term ambiguity (*Tesla* — company or person) · must-search (a fact the model
-certainly knows: does it search anyway?) · negative existence (*did Turing ever
-win a Nobel* — "not mentioned" ≠ "didn't happen") · query formulation with no
-entity name given · no-search-needed (live weather) · completeness (a
-five-country border list, where a partial answer reads as correct).
+The cost is statistical and stays true at 18: headline rates move on small
+numbers, so results are read as **per-case buckets and traces**, and against a
+measured noise floor of about one case — not as a percentage shifting a few
+points.
+
+**The curated 18**, one per mode: single-hop factual (regression floor) ·
+multi-hop bridge · multi-hop comparison · deep fact outside the intro ·
+body-fact (four variants, promoted from real user questions) · unanswerable ·
+false premise *and its matched control* · term ambiguity (*Tesla* — company or
+person) · must-search (a fact the model certainly knows: does it search
+anyway?) · negative existence (*did Turing ever win a Nobel* — "not mentioned"
+≠ "didn't happen") · query formulation with no entity name given · query
+reformulation (the obvious query returns a weak set) · no-search-needed (live
+weather) · multi-fact list (five bordering countries, where a partial answer
+reads as correct) · no-article (nothing on Wikipedia covers it).
 
 Fields: `id` · `question` · `expected` · `gold_articles` (**optional**) ·
 `dimension` tags.

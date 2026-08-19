@@ -66,12 +66,18 @@ would over-weight a mode that already has three cases. One case per mode.
 | Obvious query fails | The straightforward phrasing returns a weak set and a re-query is required — generalises 2b |
 | False-premise control | Near-identical answerable twin of `einstein-nobel-premise`, per FalseQA. Without it, "rejects any odd-sounding premise" scores as success |
 
-### Held-out set
+### Holdout set
 
-The 15 un-promoted explore cases stay frozen and become the **held-out** set.
-This matters: once we promote failures into the scored set and fix against
-them, core is training data. Re-running the untouched 15 after the fix is the
-only check that we generalised rather than fitted.
+*(Superseded during Phase 4. The plan was to reuse the un-promoted explore
+cases; what shipped is a **separate disjoint draw of 10** from Natural
+Questions, seed `20260817`, excluding every row the explore draw used. Reusing
+explore cases would have made the holdout a subset of a set already read by
+hand, which is not a holdout.)*
+
+The reason is unchanged: once failures are promoted into the scored set and
+fixed against, the curated set is training data. A disjoint set, scored every
+iteration and never read during development, is the only check that a fix
+generalised rather than fitted.
 
 ### Resampling
 
