@@ -10,13 +10,24 @@ be traced back to the exact bytes the model saw.
 
 ## Setup
 
-Needs Python 3.11+ and an Anthropic API key.
+Needs [uv](https://docs.astral.sh/uv/) and an Anthropic API key. Nothing else,
+including Python: uv installs the right version (3.11+) if you don't have it.
 
 ```bash
+# 1. install uv, if you don't already have it
+curl -LsSf https://astral.sh/uv/install.sh | sh   # macOS/Linux
+# Windows: powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# 2. clone and install
 git clone https://github.com/Speko124/wikiagent.git && cd wikiagent
-uv sync                                    # installs the dev group too
-echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env # or export it
+uv sync                    # Python + deps + dev group, into a local .venv
+
+# 3. add your key
+echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env        # or export it
 ```
+
+Then `uv run python -m wikiagent.cli demo`. Every command below is prefixed
+with `uv run`, which uses that venv without you having to activate it.
 
 No other services, no index to build, no database. Wikipedia is read live from
 the MediaWiki API and cached on disk under `cache/`.
@@ -90,7 +101,7 @@ with no API calls, so a grader fix never costs a re-run.
 
 Committed results: `results/v0-*` (baseline), `results/v1-*` and `results/v1b-*`
 (after `fetch_article`, run twice to measure variance), and `results/v2-*`
-(generalised article choice, the current default).
+(a prompt-only refinement of article selection, and the current default).
 
 ---
 
@@ -105,7 +116,7 @@ wikiagent/
   trace.py       everything one run did
   cli.py         ask / demo / --verbose
 evals/
-  cases/         18 curated + 20 explore + 10 holdout
+  cases/         18 curated (diagnostic) + 20 explore + 10 holdout (transfer check)
   graders.py     exact signals only
   judge.py       ambiguity (owned) + correctness (primary), rubric-versioned
   run.py         resumable sweep runner
@@ -132,8 +143,21 @@ already have, at zero extra cost.
 
 ## What the evals found
 
-Three versions, ~370 agent runs. Correctness counts confirmed successes over
-**every attempted run**: unclear judge verdicts, errors, wrong answers and
+Three versions, ~370 agent runs, over two scored sets with different jobs.
+
+The **curated set (18)** is a *diagnostic, failure-enriched* set: one question
+per failure mode, deliberately weighted toward things that were observed to
+break, including five promoted from real user questions after the read pass. It
+is built to expose problems, not to estimate a population accuracy — its
+absolute numbers are pessimistic by construction, and its value is that a
+change moves a specific mode.
+
+The **holdout set (10)** is the *transfer check*: a disjoint random draw from
+Natural Questions, never read during development, scored every iteration with
+aggregate metrics only. It answers whether a fix generalises beyond the set it
+was designed against.
+
+Correctness counts confirmed successes over **every attempted run**: unclear judge verdicts, errors, wrong answers and
 declines on answerable questions all count against it.
 
 | Version | Change | Curated | Holdout | pass^3 (cur / hold) |
@@ -141,7 +165,7 @@ declines on answerable questions all count against it.
 | **V0** | search only, opening sections | 69% | 70% | 12/18 · 7/10 |
 | **V1** | **+ `fetch_article`** | **87%** | **83%** | 15/18 · 8/10 |
 | V1 repeat | identical, to measure variance | 87% | 80% | 15/18 · 8/10 |
-| **V2** | generalised article choice | **91%** | **87%** | 15/18 · 8/10 |
+| **V2** | prompt-only refinement of article selection | **91%** | **87%** | 15/18 · 8/10 |
 
 **V2 is the default.** Not for the headline gain over V1, which sits inside the
 measured noise floor: what earned it is the tail. The worst case fell from

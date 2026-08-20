@@ -292,8 +292,10 @@ attempted run**.
 | Evidence available, curated | 27/42 (64%) | 36/41 (88%) | 36/42 (86%) | 38/42 (90%) |
 | Evidence available, holdout | 24/30 (80%) | 29/30 (97%) | 30/30 (100%) | 30/30 (100%) |
 
-The curated and holdout arms start level (69% and 70%) and stay within a few
-points through an 18-point intervention. Overfitting would show as that gap
+The curated arm is diagnostic and failure-enriched (one question per observed
+failure mode); the holdout is the transfer check (disjoint, never read during
+development). They start level (69% and 70%) and stay within a few points
+through an 18-point intervention. Overfitting would show as that gap
 widening exactly when something was fixed.
 
 ### Outcome decomposition

@@ -81,9 +81,9 @@ exists because of an observed multi-hop failure.
 
 | Set | Size | Job |
 |---|---|---|
-| **Curated** | 18 | Test what we decided matters; regression anchors |
+| **Curated** *(diagnostic, failure-enriched)* | 18 | One question per failure mode, weighted toward what was observed to break. Exposes problems; not a population estimate |
 | **Explore** (random) | 20 | Find what we *didn't think of* |
-| **Holdout** (random, disjoint) | 10 | Ground the result |
+| **Holdout** *(transfer check)* | 10 | Disjoint random draw, never read during development. Does a fix generalise? |
 
 The random sets are drawn from Natural Questions — real Google queries, frozen
 by seed, **nothing filtered**. Dropping the awkward ones would put our own
@@ -249,7 +249,7 @@ overclaimed.
 | **V0** | search only, intros, top-3 | 69% | 70% | 12/18 |
 | **V1** | **+ `fetch_article`** + 1 prompt line | **87%** | **83%** | **15/18** |
 | V1 repeat | identical, to measure variance | 87% | 80% | 15/18 |
-| **V2** | generalised escalation rule | **91%** | **87%** | 15/18 |
+| **V2** | prompt-only refinement of article selection | **91%** | **87%** | 15/18 |
 
 **Pre-baseline → V0** was defect repair, not tuning. The first draft hardcoded
 "three articles" while `top_k` is a knob, asked for citations without saying
@@ -265,7 +265,9 @@ fetches without a preceding search — and costs exactly one extra turn when
 used. Cost: +63% input tokens, latency unchanged (the fetch *replaces* search
 rounds).
 
-**V1 → V2: a proven mechanism of unsized magnitude.** V1's rule said open *the*
+**V1 → V2: a prompt-only refinement of article selection.** No code changed;
+the only difference is the escalation rule in the system prompt. It is a proven
+mechanism of unsized magnitude: V1's rule said open *the*
 article when its opening section lacked the answer, and the traces showed the
 agent obeying it narrowly — it fetched the article whose title matched the
 topic and never the article about the person who did the thing. `Leonard
