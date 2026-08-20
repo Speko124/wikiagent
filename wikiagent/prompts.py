@@ -43,9 +43,10 @@ class PromptSet:
         numbers?" is answerable from the results rather than from file
         timestamps — which is how it had to be answered once already.
         """
-        joined = "\x00".join(
-            (self.system, self.tool_description, self.fetch_description)
-        )
+        # NUL-separated so the fields cannot run together: without it, moving
+        # a sentence from the system prompt to a tool description would leave
+        # the digest unchanged and a real edit would slip past the canary.
+        joined = f"{self.system}\x00{self.tool_description}\x00{self.fetch_description}"
         return hashlib.sha256(joined.encode()).hexdigest()[:16]
 
 
