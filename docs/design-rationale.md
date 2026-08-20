@@ -442,7 +442,9 @@ Ordered by evidence behind them, not appeal.
 5. **Deliberate adversarial evals** — instructions embedded in retrieved text,
    over-refusal on encyclopedic-but-sensitive topics. Scoped out here to keep
    the pass on core functionality.
-6. **A structured trace-analysis agent, itself evaluated.** The analysis loop is
+6. **Compare model fit** across Haiku, Sonnet and Opus, and measure correctness
+   gains against cost and latency rather than in isolation.
+7. **A structured trace-analysis agent, itself evaluated.** The analysis loop is
    now the bottleneck, not the agent: it is the only fully manual step, and it
    is where every finding came from. Making it repeatable — and measuring *it*
    against human labels, exactly as the judge was — is the highest-leverage

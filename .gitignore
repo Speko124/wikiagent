@@ -5,9 +5,9 @@ cache/
 # results/ is deliberately NOT ignored — the sweeps are the evidence behind
 # every claim in docs/, and should be readable.
 .DS_Store
-misc-dont-read/
 .env
 
 # Conversation transcripts exported by the CLI (any date-stamped export)
 20*-*.txt
 CLAUDE.md
+docs/internal/report/

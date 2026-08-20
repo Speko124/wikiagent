@@ -1,7 +1,11 @@
 # Error analysis
 
-Sections 1-7 are the read pass and the V0 baseline, in the order they
+Sections 1-7 are the discovery pass (the *Explore* iteration: 31 traces read
+by hand before any taxonomy was fixed) and the V0 baseline, in the order they
 happened. Section 8 is the current state across all versions.
+
+"Read pass" and "Explore iteration" name the same activity; the former is what
+the harness flag and the `results/read-*` directories call it.
 
 31 runs · `claude-haiku-4-5` · prompt `v0` · `top_k` 3 · one run per case.
 Sources: `results/read-core/`, `results/read-explore/`, hand labels in each

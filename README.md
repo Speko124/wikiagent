@@ -81,7 +81,7 @@ corresponding bug actually happened; see
 ## Running the evals
 
 ```bash
-# read pass: one run per case, produces a human-readable worksheet
+# discovery pass: one run per case, produces a human-readable worksheet
 uv run python -m evals.run --cases evals/cases/core.jsonl --repeats 1
 
 # score pass: three runs per case, with the LLM judge
@@ -148,7 +148,8 @@ Three versions, ~370 agent runs, over two scored sets with different jobs.
 
 The **curated set (18)** is a *diagnostic, failure-enriched* set: one question
 per failure mode, deliberately weighted toward things that were observed to
-break, including five promoted from real user questions after the read pass. It
+break, including five promoted from real user questions after the discovery
+pass. It
 is built to expose problems, not to estimate a population accuracy — its
 absolute numbers are pessimistic by construction, and its value is that a
 change moves a specific mode.
@@ -157,6 +158,10 @@ The **holdout set (10)** is the *transfer check*: a disjoint random draw from
 Natural Questions, never read during development, scored every iteration with
 aggregate metrics only. It answers whether a fix generalises beyond the set it
 was designed against.
+
+Each version ran both sets three times. Repeats measure run-to-run
+reliability, not independent question coverage, so score changes are
+directional rather than statistically significant.
 
 Correctness counts confirmed successes over **every attempted run**: unclear judge verdicts, errors, wrong answers and
 declines on answerable questions all count against it.
@@ -294,4 +299,5 @@ about one whole case is not distinguishable from noise on this set.
 |---|---|
 | [design-rationale.md](docs/design-rationale.md) | **Start here.** Why every choice was made, and what three iterations found |
 | [error-analysis.md](docs/error-analysis.md) | The failure taxonomy, built by reading traces. §8 is the all-versions summary |
+| [eval-coverage.md](docs/eval-coverage.md) | The 18 curated questions and what each one tests |
 | [docs/internal/](docs/internal/) | Living spec, eval plan, per-sweep trace reviews. Committed so the claims above are checkable, **not required reading** |
