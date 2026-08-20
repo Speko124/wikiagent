@@ -75,7 +75,8 @@ network. It is weighted toward invariants whose failure would be **silent**
 rather than loud — cache integrity, `None` never being read as `False`, the
 control arm being structurally unable to retrieve, frozen prompts and rubrics,
 and the holdout being unreadable. Several of these exist because the
-corresponding bug actually happened; see [docs/README.md](docs/README.md).
+corresponding bug actually happened; see
+[design-rationale.md §7](docs/design-rationale.md).
 
 ## Running the evals
 
@@ -236,9 +237,9 @@ citations across every reviewed run.
 
 Full analysis: [docs/design-rationale.md](docs/design-rationale.md) ·
 [docs/error-analysis.md](docs/error-analysis.md) §8 ·
-[docs/v1-trace-review.md](docs/v1-trace-review.md) ·
-[docs/v1b-trace-review.md](docs/v1b-trace-review.md) ·
-[docs/v2-trace-review.md](docs/v2-trace-review.md)
+[docs/internal/v1-trace-review.md](docs/internal/v1-trace-review.md) ·
+[docs/internal/v1b-trace-review.md](docs/internal/v1b-trace-review.md) ·
+[docs/internal/v2-trace-review.md](docs/internal/v2-trace-review.md)
 
 ## How quality is measured
 
@@ -287,12 +288,10 @@ about one whole case is not distinguishable from noise on this set.
 
 ## Where to read more
 
+**Three docs, in order.** Everything else is working notes.
+
 | Doc | What it holds |
 |---|---|
 | [design-rationale.md](docs/design-rationale.md) | **Start here.** Why every choice was made, and what three iterations found |
-| [error-analysis.md](docs/error-analysis.md) | The failure taxonomy, built from reading traces |
-| [eval-plan.md](docs/eval-plan.md) | Case set, rubric, and the backlog of candidate fixes |
-| [project.md](docs/project.md) | Living spec — every decision as it was taken |
-| [prompt-archive.md](docs/prompt-archive.md) | Replaced prompts and the defects that replaced them |
-| V1 / V1B / V2 trace reviews | Per-sweep analysis, including the ones that found bugs in the eval itself |
-
+| [error-analysis.md](docs/error-analysis.md) | The failure taxonomy, built by reading traces. §8 is the all-versions summary |
+| [docs/internal/](docs/internal/) | Living spec, eval plan, per-sweep trace reviews. Committed so the claims above are checkable, **not required reading** |

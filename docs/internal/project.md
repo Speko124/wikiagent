@@ -582,10 +582,14 @@ evals/
   run.py          # sweep runner (see §3.10 for the output layout)
 results/          # one directory per sweep; committed as evidence
 docs/
-  project.md         # this file
-  prompt-archive.md  # replaced drafts, and why
-  error-analysis.md  # read-pass taxonomy, converged from two manual passes
-  eval-plan.md       # final set, rubric, and what the judge is for
+  design-rationale.md   # the write-up: why each choice was made
+  error-analysis.md     # failure taxonomy; §8 is the all-versions summary
+  internal/             # working notes, not required reading
+    project.md          # this file: living spec
+    eval-plan.md        # case set, rubric, backlog
+    prompt-archive.md   # replaced drafts, and why
+    v*-trace-review.md  # per-sweep trace analysis
+    references.md       # prior art on eval methodology
 ```
 
 Python 3.11 · `anthropic` + `httpx` · `uv` · `pytest`. No framework, no vector
